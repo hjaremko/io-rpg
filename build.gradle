@@ -7,7 +7,7 @@ plugins {
 
 group = 'pl.uj.io'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = JavaVersion.VERSION_13
+sourceCompatibility = JavaVersion.VERSION_11
 
 configurations {
 	developmentOnly

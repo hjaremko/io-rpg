@@ -1,0 +1,47 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Cache Gradle packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+      - name: Build with Gradle
+        run: ./gradlew build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: binary
+          path: build/libs
+      - name: Generate test reports
+        run: ./gradlew test jacocoTestReport
+      - name: Upload code coverage report
+        uses: actions/upload-artifact@v1
+        with:
+          name: coverage_report
+          path: build/reports/jacoco/test/html
+      - name: Upload test report
+        uses: actions/upload-artifact@v1
+        with:
+          name: test_report
+          path: build/reports/tests/test

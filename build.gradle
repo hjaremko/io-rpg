@@ -1,9 +1,16 @@
+buildscript {
+    ext {
+        rootGradleDir = "${rootProject.rootDir}/gradle"
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.2.7.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
     id 'jacoco'
     id 'com.github.sherter.google-java-format' version '0.8'
+    id 'com.github.spotbugs' version '4.2.0'
 }
 
 group = 'pl.uj.io'
@@ -38,3 +45,5 @@ test {
 googleJavaFormat {
     options style: 'AOSP'
 }
+
+apply from: "${rootGradleDir}/staticCodeAnalysis.gradle"

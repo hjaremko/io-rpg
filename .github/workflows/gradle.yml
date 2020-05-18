@@ -61,7 +61,7 @@ jobs:
 
   deploy:
     name: Deploy on Heroku
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     needs: build
     runs-on: ubuntu-latest
     steps:

@@ -11,6 +11,7 @@ plugins {
     id 'jacoco'
     id 'com.github.sherter.google-java-format' version '0.8'
     id 'com.github.spotbugs' version '4.2.0'
+    id 'com.google.cloud.tools.jib' version '1.8.0'
 }
 
 group = 'pl.uj.io'
@@ -35,7 +36,7 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-    testImplementation 'org.springframework.security:spring-security-test'
+//    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 test {

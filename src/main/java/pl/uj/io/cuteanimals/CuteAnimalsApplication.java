@@ -2,7 +2,9 @@ package pl.uj.io.cuteanimals;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.*;
 
+@Controller
 @SpringBootApplication
 public class CuteAnimalsApplication {
     public static void main(String[] args) {

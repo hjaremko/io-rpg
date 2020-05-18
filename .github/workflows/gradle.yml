@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    name: Build project
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +30,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build -x verifyGoogleJavaFormat
       - name: Upload artifacts
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: binary
           path: build/libs
@@ -45,7 +46,9 @@ jobs:
         with:
           name: test_report
           path: build/reports/tests/test
+
   formatting:
+    name: Verify formatting
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -55,3 +58,25 @@ jobs:
       - uses: axel-op/googlejavaformat-action@v3.0.0
         with:
           args: "--aosp --dry-run --set-exit-if-changed"
+
+  deploy:
+    name: Deploy on Heroku
+    if: github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download binary
+        uses: actions/download-artifact@v2
+        with:
+          name: binary
+          path: build/libs
+      - run: ls -R
+      - name: Deploy
+        uses: akhileshns/heroku-deploy@v3.0.4
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "io-rpg"
+          heroku_email: "hjaremko@outlook.com"
+          usedocker: true
+          docker_heroku_process_type: "web"

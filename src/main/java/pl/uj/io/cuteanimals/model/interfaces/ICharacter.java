@@ -1,5 +1,7 @@
 package pl.uj.io.cuteanimals.model.interfaces;
 
+import java.util.List;
+
 /**
  * Provides methods to manage character.
  *
@@ -26,7 +28,7 @@ public interface ICharacter {
     /**
      * Gives result of using specific action.
      *
-     * @param iAction specifies action to execute.
+     * @param action specifies action to execute.
      * @return Result type element.
      */
     Result use(IAction action);

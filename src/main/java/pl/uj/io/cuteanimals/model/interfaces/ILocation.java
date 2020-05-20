@@ -6,6 +6,8 @@
  */
 package pl.uj.io.cuteanimals.model.interfaces;
 
+import java.util.List;
+
 public interface ILocation {
 
     /**

@@ -31,7 +31,9 @@ public interface ICharacter {
      * @param action specifies action to execute.
      * @return Result type element.
      */
-    Result use(IAction action);
+    void use(IAction action);
+
+    // TODO: Specify return type of use
 
     // TODO: Result action(IAction iAction);
 }

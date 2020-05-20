@@ -17,7 +17,6 @@ public interface IEquipment {
      */
     List<IItem> getItems();
 
-
     /**
      * Adds given item to the equipment.
      *

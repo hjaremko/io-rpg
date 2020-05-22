@@ -1,5 +1,8 @@
 package pl.uj.io.cuteanimals.model.interfaces;
 
+import java.util.List;
+import pl.uj.io.cuteanimals.model.Result;
+
 /**
  * Provides method to perform actions.
  *
@@ -13,5 +16,11 @@ public interface IAction {
      *
      * @param character specifies character whose state can be modified.
      */
-    void execute(ICharacter character);
+    Result execute(ICharacter character);
+
+    /** @return string representation of action arguments, e.g location name or item name */
+    List<String> getArgs();
+
+    /** @param args string representation of action arguments, e.g location name or item name */
+    void setArgs(List<String> args);
 }

@@ -55,9 +55,7 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: "11"
-      - uses: axel-op/googlejavaformat-action@v3.0.0
-        with:
-          args: "--aosp --dry-run --set-exit-if-changed"
+      - run: ./gradlew verifyGoogleJavaFormat
 
   deploy:
     name: Deploy on Heroku

@@ -24,7 +24,9 @@ public class GameController {
     @GetMapping
     public String receiveOrderAndReturnResult(@RequestBody String command) {
         try {
-            return gameService.execute(Interpreter.parse(command));
+            gameService.execute(Interpreter.parse(command));
+            // TODO: remove this shit
+            return command;
         } catch (InvalidCommandException e) {
             return e.getMessage();
         }

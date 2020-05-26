@@ -8,12 +8,12 @@ public class GameService {
 
     public String execute(Expression expr) {
         // We need to somehow create&provide context&character there:
-//
-//        IAction action = expr.interpret(CONTEXT_PLACEHOLDER);
-//
-//        IResult result = action.execute(CHARACTER_PLACEHOLDER);
-//
-//        return result.getMessage();
+        //
+        // IAction action = expr.interpret(CONTEXT_PLACEHOLDER);
+        //
+        // IResult result = action.execute(CHARACTER_PLACEHOLDER);
+        //
+        // return result.getMessage();
         return null;
     }
 }

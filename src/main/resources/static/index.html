@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Sweet Animals client</title>
+
+    <style>
+        body {
+            text-align: center;
+            background: #DFDFDF;
+            margin: 0 30px 100px 30px;
+            font: 14px/18px 'Lucida Grande', 'Segoe UI', sans-serif;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+</header>
+
+<section>
+
+</section>
+
+<script>
+    // For localhost testing
+    // const proxyURL = "https://cors-anywhere.herokuapp.com/";
+    const proxyURL = "";
+    const URL = "https://io-rpg.herokuapp.com/game/msg";
+    let requestURL = proxyURL + URL;
+    let intBox;
+    let outBox;
+
+    var loadingIndicator = document.createElement('span')
+    loadingIndicator.className = 'loading open-circle';
+
+    function populateOutput(jsonObj) {
+        outBox.value += jsonObj + '\n';
+        outBox.scrollTop = outBox.scrollHeight;
+    }
+
+    window.onload = function () {
+        outBox = document.getElementById('output');
+        inBox = document.getElementById('input');
+    }
+
+    function sendRequest() {
+        let input = inBox.value;
+
+        if (input === "")
+            return;
+
+        let request = new XMLHttpRequest();
+        request.open('POST', requestURL);
+        request.responseType = 'text';
+        request.send(input);
+
+        request.ontimeout = function () {
+            console.error("The request for " + url + " timed out.");
+        };
+
+        inBox.value = "";
+        button = document.getElementById("sendButton");
+        button.innerText = "Loading "
+        button.appendChild(loadingIndicator);
+
+        request.onload = function () {
+            if (request.readyState === 4) {
+                const serverResponse = request.response;
+                console.log(serverResponse);
+                populateOutput(serverResponse);
+            }
+
+            button.removeChild(loadingIndicator);
+            button.innerText = "Send"
+        }
+    }
+
+</script>
+
+<h1> Sweet Animals </h1>
+<label for="output"></label><textarea id="output" rows="24" cols="80"></textarea>
+<br>
+<label for="input"></label><input type="text" id="input" size="80"/>
+<button id="sendButton" onclick="sendRequest()">Send</button>
+
+<link rel="stylesheet" href="https://maxbeier.github.io/text-spinners/spinners.css">
+
+<script>
+    var input = document.getElementById("input");
+    input.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("sendButton").click();
+        }
+    });
+</script>
+
+</body>
+</html>

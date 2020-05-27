@@ -1,10 +1,7 @@
 package pl.uj.io.cuteanimals.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.uj.io.cuteanimals.model.exceptions.InvalidCommandException;
 import pl.uj.io.cuteanimals.model.interpreter.Interpreter;
 import pl.uj.io.cuteanimals.service.GameService;
@@ -21,7 +18,7 @@ public class GameController {
     }
 
     // Maybe we should wrap this with ResponseEntity?
-    @GetMapping
+    @PostMapping(value = "/msg", consumes = "text/plain", produces = "text/plain")
     public String receiveOrderAndReturnResult(@RequestBody String command) {
         try {
             gameService.execute(Interpreter.parse(command));

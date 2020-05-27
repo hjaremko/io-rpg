@@ -4,6 +4,7 @@ import java.util.List;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 /**
  * Prints Location's "look around" message.
@@ -24,7 +25,7 @@ public class InvestigateAction implements IAction {
     }
 
     @Override
-    public Result execute(ICharacter character) {
+    public IResult execute(ICharacter character) {
         // TODO: fetch current player location and return its "look around" method
         return new Result("Looking around null");
     }

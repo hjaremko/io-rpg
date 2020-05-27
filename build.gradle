@@ -49,4 +49,8 @@ googleJavaFormat {
     options style: 'AOSP'
 }
 
+javadoc {
+    options.addBooleanOption('html5', true)
+}
+
 apply from: "${rootGradleDir}/staticCodeAnalysis.gradle"

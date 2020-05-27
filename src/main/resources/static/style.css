@@ -1,0 +1,19 @@
+body {
+    text-align: center;
+    background: #DFDFDF;
+    /*margin: 0 30px 100px 30px;*/
+    margin: 40px auto;
+    max-width: 650px;
+    font: 14px/18px 'Lucida Grande', 'Segoe UI', sans-serif;
+    color: #444;
+    padding: 0 10px;
+    /*line-height: 1.6;*/
+}
+
+textarea {
+    padding: 5px 10px;
+}
+
+button {
+    width: 70px;
+}

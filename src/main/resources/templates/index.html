@@ -1,19 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-
-    <title>Sweet Animals client</title>
-
-    <style>
-        body {
-            text-align: center;
-            background: #DFDFDF;
-            margin: 0 30px 100px 30px;
-            font: 14px/18px 'Lucida Grande', 'Segoe UI', sans-serif;
-        }
-
-    </style>
+    <title>Sweet Animals</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="../static/style.css" rel="stylesheet" th:href="@{/style.css}" type="text/css">
+    <link href="https://maxbeier.github.io/text-spinners/spinners.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -22,7 +14,6 @@
 </header>
 
 <section>
-
 </section>
 
 <script>
@@ -79,15 +70,17 @@
         }
     }
 
+
+
 </script>
 
 <h1> Sweet Animals </h1>
-<label for="output"></label><textarea id="output" rows="24" cols="80"></textarea>
-<br>
-<label for="input"></label><input type="text" id="input" size="80"/>
-<button id="sendButton" onclick="sendRequest()">Send</button>
 
-<link rel="stylesheet" href="https://maxbeier.github.io/text-spinners/spinners.css">
+<div>
+    <label for="output"></label><textarea cols="80" id="output" rows="24"></textarea>
+    <label for="input"></label><input id="input" size="74" type="text"/>
+    <button id="sendButton" onclick="sendRequest()">Send</button>
+</div>
 
 <script>
     var input = document.getElementById("input");
@@ -97,6 +90,8 @@
             document.getElementById("sendButton").click();
         }
     });
+
+
 </script>
 
 </body>

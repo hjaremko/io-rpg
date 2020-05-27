@@ -5,6 +5,7 @@ import java.util.List;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 /**
  * Just printing action, helps parsing and may be used for printing dialogs.
@@ -34,7 +35,7 @@ public class MessageAction implements IAction {
     }
 
     @Override
-    public Result execute(ICharacter character) {
+    public IResult execute(ICharacter character) {
         return new Result(args.toString());
     }
 }

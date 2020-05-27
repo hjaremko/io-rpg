@@ -14,7 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
@@ -50,16 +51,39 @@ jobs:
         with:
           name: test_report
           path: build/reports/tests/test
+      - name: Upload PMD main report
+        uses: actions/upload-artifact@v1
+        with:
+          name: pmd_report
+          path: build/reports/pmd/main.html
+      - name: Upload PMD test report
+        uses: actions/upload-artifact@v1
+        with:
+          name: pmd_report
+          path: build/reports/pmd/test.html
+      - name: Upload SpotBugs main report
+        uses: actions/upload-artifact@v1
+        with:
+          name: spotbugs_report
+          path: build/reports/spotbugs/main.xml
+      - name: Upload SpotBugs test report
+        uses: actions/upload-artifact@v1
+        with:
+          name: spotbugs_report
+          path: build/reports/spotbugs/test.xml
 
   formatting:
     name: Verify formatting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v1
         with:
           java-version: "11"
-      - run: ./gradlew verifyGoogleJavaFormat
+      - name: Verify formatting
+        run: ./gradlew verifyGoogleJavaFormat
 
   deploy:
     name: Deploy on Heroku
@@ -67,7 +91,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Download binary
         uses: actions/download-artifact@v2
         with:

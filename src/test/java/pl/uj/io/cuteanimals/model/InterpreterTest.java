@@ -73,6 +73,10 @@ class InterpreterTest {
     @Test
     void multipleActionTokenTest() {
         assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go invalid go"));
+        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go go go go"));
+        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go go go"));
+        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go go"));
+        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go"));
     }
 
     @Test

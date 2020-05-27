@@ -65,8 +65,8 @@ public class Interpreter {
 
         // Multiple actions on stack, no production for that
         // Should result in parsing error.
-        if (!arg.getType().equals(ParseToken.Type.Argument)) {
-            return null;
+        if (arg.getType() == null || !arg.getType().equals(ParseToken.Type.Argument)) {
+            return new ParseToken(null, null);
         }
 
         // Production expr -> action args
@@ -93,8 +93,8 @@ public class Interpreter {
 
         // We accept only args -> args 'str'.
         // Should result in parsing error.
-        if (!(arg.getType().equals(ParseToken.Type.Argument))) {
-            return null;
+        if (arg.getType() == null || !(arg.getType().equals(ParseToken.Type.Argument))) {
+            return new ParseToken(null, null);
         }
 
         // Production args -> args 'str'
@@ -122,13 +122,7 @@ public class Interpreter {
         int num = tokens.length - 1;
         IntStream.rangeClosed(0, num)
                 .mapToObj(i -> tokens[num - i])
-                .forEach(
-                        token -> {
-                            var parsed = parseToken(token, stack);
-                            if (parsed != null) {
-                                stack.push(parsed);
-                            }
-                        });
+                .forEach(token -> stack.push(parseToken(token, stack)));
 
         // On the stack should be left only one object corresponding to start symbol of out grammar.
 
@@ -142,9 +136,10 @@ public class Interpreter {
         // More than one symbol on stack means invalid command was provided.
         // Symbol which is not start symbol means invalid command was provided.
         // Single Action expression is ok.
-        if (!(symbol.getType().equals(ParseToken.Type.Start)
-                        || symbol.getType().equals(ParseToken.Type.Action))
-                && stack.isEmpty()) {
+        if (symbol.getType() == null
+                || !(symbol.getType().equals(ParseToken.Type.Start)
+                                || symbol.getType().equals(ParseToken.Type.Action))
+                        && stack.isEmpty()) {
             throw new InvalidCommandException("Invalid expression: " + expression);
         }
 

@@ -20,7 +20,7 @@ public interface IAttributes {
      *
      * @return int type summary attack points.
      */
-    int getAttackPoints();
+    int getAttack();
 
     /**
      * Gives character's current level.

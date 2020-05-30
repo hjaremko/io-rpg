@@ -5,7 +5,7 @@ import java.util.Deque;
 import java.util.stream.IntStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.uj.io.cuteanimals.model.exceptions.InvalidCommandException;
+import pl.uj.io.cuteanimals.exception.InvalidCommandException;
 
 /**
  * Interprets provided command according to grammar

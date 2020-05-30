@@ -10,7 +10,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 import pl.uj.io.cuteanimals.model.action.GoAction;
 import pl.uj.io.cuteanimals.model.action.InvestigateAction;
-import pl.uj.io.cuteanimals.model.exceptions.InvalidCommandException;
+import pl.uj.io.cuteanimals.exception.InvalidCommandException;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interpreter.Expression;
 import pl.uj.io.cuteanimals.model.interpreter.Interpreter;

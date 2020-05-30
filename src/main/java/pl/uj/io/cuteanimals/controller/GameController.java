@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pl.uj.io.cuteanimals.model.exceptions.InvalidCommandException;
+import pl.uj.io.cuteanimals.exception.InvalidCommandException;
 import pl.uj.io.cuteanimals.model.interpreter.Interpreter;
 import pl.uj.io.cuteanimals.service.GameService;
 

@@ -1,4 +1,4 @@
-package pl.uj.io.cuteanimals.model.exceptions;
+package pl.uj.io.cuteanimals.exception;
 
 /** Thrown in case of invalid user input */
 public class InvalidCommandException extends Exception {

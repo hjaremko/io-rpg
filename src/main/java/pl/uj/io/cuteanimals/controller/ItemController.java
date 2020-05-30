@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import pl.uj.io.cuteanimals.model.Item;
 import pl.uj.io.cuteanimals.service.ItemService;
@@ -12,6 +13,7 @@ import pl.uj.io.cuteanimals.service.ItemService;
 @RestController
 public class ItemController {
     private static final Logger logger = LoggerFactory.getLogger(ItemController.class);
+
     private final ItemService itemService;
 
     @Autowired
@@ -23,5 +25,11 @@ public class ItemController {
     public List<Item> getAllItems() {
         logger.info("Got request for all items");
         return itemService.getAllItems();
+    }
+
+    @GetMapping("/items/{id}")
+    public Item getItem(@PathVariable int id) {
+        logger.info("Got request for item with id " + id);
+        return itemService.getItem(id);
     }
 }

@@ -10,7 +10,8 @@ public class GameService {
 
     private static final Logger logger = LoggerFactory.getLogger(GameService.class);
 
-    public String execute(Expression expr) {
+    public String execute(int characterId, Expression expr) {
+
         // We need to somehow create&provide context&character there:
         //
         // IAction action = expr.interpret(CONTEXT_PLACEHOLDER);

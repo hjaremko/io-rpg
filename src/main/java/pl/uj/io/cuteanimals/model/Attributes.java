@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
 
 /**
  * Provides methods to represent attributes table.
@@ -14,7 +13,7 @@ import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
  * @since 0.0.1-SNAPSHOT
  */
 @Entity(name = "attributes")
-public class Attributes implements IAttributes {
+public class Attributes {
     @JsonProperty("id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,7 +54,7 @@ public class Attributes implements IAttributes {
 
     @Override
     public String toString() {
-        return "Attributes {"
+        return "Attributes{"
                 + "id="
                 + id
                 + ", health="
@@ -66,26 +65,6 @@ public class Attributes implements IAttributes {
                 + level
                 + ", defence="
                 + defence
-                + "}";
-    }
-
-    @Override
-    public int getHealth() {
-        return health;
-    }
-
-    @Override
-    public int getAttack() {
-        return attack;
-    }
-
-    @Override
-    public int getLevel() {
-        return level;
-    }
-
-    @Override
-    public int getDefence() {
-        return defence;
+                + '}';
     }
 }

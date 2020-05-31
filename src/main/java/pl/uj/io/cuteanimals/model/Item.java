@@ -2,8 +2,6 @@ package pl.uj.io.cuteanimals.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
-import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
-import pl.uj.io.cuteanimals.model.interfaces.IItem;
 
 /**
  * Provides methods to represent items table.
@@ -12,7 +10,7 @@ import pl.uj.io.cuteanimals.model.interfaces.IItem;
  * @since 0.0.1-SNAPSHOT
  */
 @Entity(name = "items")
-public class Item implements IItem {
+public class Item {
     @JsonProperty("id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,72 +52,19 @@ public class Item implements IItem {
 
     @Override
     public String toString() {
-
-        return "Item {"
+        return "Item{"
                 + "id="
                 + id
                 + ", name='"
                 + name
-                + "'"
+                + '\''
                 + ", description='"
                 + description
-                + "'"
+                + '\''
                 + ", size="
                 + size
                 + ", attributes="
-                + "{health="
-                + getAttributes().getHealth()
-                + ", attack="
-                + getAttributes().getAttack()
-                + ", level="
-                + getAttributes().getLevel()
-                + ", defence="
-                + getAttributes().getDefence()
-                + "}"
-                + "}";
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
-    }
-
-    @Override
-    public int getSize() {
-        return size;
-    }
-
-    @Override
-    public IAttributes getAttributes() {
-
-        if (attributes != null) {
-            return new IAttributes() {
-                @Override
-                public int getHealth() {
-                    return attributes.getHealth();
-                }
-
-                @Override
-                public int getAttack() {
-                    return attributes.getAttack();
-                }
-
-                @Override
-                public int getLevel() {
-                    return attributes.getLevel();
-                }
-
-                @Override
-                public int getDefence() {
-                    return attributes.getDefence();
-                }
-            };
-        }
-        return null;
+                + attributes
+                + '}';
     }
 }

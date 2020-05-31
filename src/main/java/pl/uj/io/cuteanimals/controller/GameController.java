@@ -21,11 +21,11 @@ public class GameController {
     }
 
     // Maybe we should wrap this with ResponseEntity?
-    @PostMapping(value = "/msg", consumes = "text/plain", produces = "text/plain")
-    public String receiveOrderAndReturnResult(@RequestBody String command) {
-        logger.info("Received command: " + command);
+    @PostMapping(value = "/{id}/msg", consumes = "text/plain", produces = "text/plain")
+    public String receiveOrderAndReturnResult(@PathVariable int id, @RequestBody String command) {
+        logger.info("User (" + id + ") sent command: " + command);
         try {
-            gameService.execute(Interpreter.parse(command));
+            gameService.execute(id, Interpreter.parse(command));
             // TODO: remove this shit
             return command;
         } catch (InvalidCommandException e) {

@@ -16,13 +16,15 @@ public class Backpack implements IEquipment {
     @Override
     public boolean putItem(IItem item) {
         backpack.add(item);
-        return false;
+        // TODO: check if possible
+        return true;
     }
 
     @Override
     public boolean removeItem(IItem item) {
         backpack.remove(item);
-        return false;
+        // TODO: check of possible (e.g. soul bounded items?)
+        return true;
     }
 
     @Override

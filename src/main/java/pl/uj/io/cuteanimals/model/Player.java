@@ -7,11 +7,6 @@ public class Player implements ICharacter {
     IEquipment armorBackpack = new ArmorBackpack();
     IEquipment backpack = new Backpack();
 
-    //    public Player() {
-
-    //        backpack.putItem( ItemService.getItem( 1) );
-    //    }
-
     @Override
     public IEquipment getEquipment() {
         return backpack;

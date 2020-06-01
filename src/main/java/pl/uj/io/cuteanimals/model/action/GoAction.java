@@ -2,9 +2,11 @@ package pl.uj.io.cuteanimals.model.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
+import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 // TODO: find out if we can reduce boilerplate using FunctionalInterface like Interpreter
@@ -16,30 +18,35 @@ import pl.uj.io.cuteanimals.model.interfaces.IResult;
  * @since 0.0.1-SNAPSHOT
  */
 public class GoAction implements IAction {
-    private List<String> where;
+    private final Map<String, ILocation> locations;
+    private List<String> args;
 
-    public GoAction() {
-        this.where = new ArrayList<>();
-    }
-
-    public GoAction(List<String> where) {
-        this.where = where;
+    public GoAction(Map<String, ILocation> wheres) {
+        locations = wheres;
+        args = new ArrayList<>();
     }
 
     @Override
     public List<String> getArgs() {
-        return where;
+        return args;
     }
 
     @Override
-    public void setArgs(List<String> where) {
-        this.where = where;
+    public void setArgs(List<String> args) {
+        this.args = args;
     }
 
     @Override
     public IResult execute(ICharacter character) {
-        // TODO: fetch location object matching `where` and move player there,
-        //  if location does not exist return suitable message
-        return new Result("Going to " + where.toString());
+        var joined = String.join(" ", args);
+        var toGo = locations.get(joined);
+        args.clear();
+
+        if (toGo == null) {
+            return new Result("You want to go... where?");
+        }
+
+        character.changeLocation(toGo);
+        return new Result(toGo.getDescription());
     }
 }

@@ -33,4 +33,6 @@ public interface ICharacter {
      * @return Result type element.
      */
     Result use(IAction action);
+
+    void changeLocation(ILocation where);
 }

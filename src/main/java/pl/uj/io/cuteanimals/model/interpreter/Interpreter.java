@@ -34,7 +34,7 @@ public class Interpreter {
         logger.debug("Parsing token: " + token);
 
         switch (token) {
-                // TODO: new actions go here, remember to provide corresponding context object
+                // TODO: fetch actions from corresponding context
             case "go":
             case "investigate":
                 // case "...":
@@ -128,7 +128,7 @@ public class Interpreter {
 
         // Empty stack means invalid command was provided.
         if (stack.isEmpty()) {
-            throw new InvalidCommandException("Invalid expression: " + expression);
+            throw new InvalidCommandException("What do you mean?");
         }
 
         var symbol = stack.pop();
@@ -140,7 +140,7 @@ public class Interpreter {
                 || !(symbol.getType().equals(ParseToken.Type.Start)
                                 || symbol.getType().equals(ParseToken.Type.Action))
                         && stack.isEmpty()) {
-            throw new InvalidCommandException("Invalid expression: " + expression);
+            throw new InvalidCommandException("What do you mean?");
         }
 
         return symbol.expr;

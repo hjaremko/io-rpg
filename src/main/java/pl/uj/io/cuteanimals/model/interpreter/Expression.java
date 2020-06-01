@@ -2,6 +2,7 @@ package pl.uj.io.cuteanimals.model.interpreter;
 
 import java.util.List;
 import java.util.Map;
+import pl.uj.io.cuteanimals.exception.InvalidCommandException;
 import pl.uj.io.cuteanimals.model.action.ActionBuilder;
 import pl.uj.io.cuteanimals.model.action.MessageAction;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
@@ -22,7 +23,13 @@ public interface Expression {
      * @return Lambda expression returning IAction
      */
     static Expression action(String name) {
-        return context -> context.get(name);
+        return context -> {
+            var action = context.get(name);
+            if (action == null) {
+                throw new InvalidCommandException("You can't do that here.");
+            }
+            return action;
+        };
     }
 
     /**
@@ -77,5 +84,5 @@ public interface Expression {
      * @param context Maps action strings to their IAction equivalent
      * @return IAction corresponding to given expression
      */
-    IAction interpret(Map<String, IAction> context);
+    IAction interpret(Map<String, IAction> context) throws InvalidCommandException;
 }

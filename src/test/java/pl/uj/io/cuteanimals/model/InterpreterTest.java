@@ -20,7 +20,7 @@ class InterpreterTest {
     void singleActionParseTest() throws InvalidCommandException {
         var expr = parse("investigate");
         Map<String, IAction> context = new HashMap<>();
-        context.put("investigate", new InvestigateAction());
+        context.put("investigate", new InvestigateAction("Looking around null"));
 
         var result = expr.interpret(context);
         assertThat(result.execute(null).getMessage().equals("Looking around null"));
@@ -31,14 +31,14 @@ class InterpreterTest {
         var expr = parse("go flavour town");
         Map<String, IAction> context = new HashMap<>();
 
-        context.put("go", new GoAction());
+        context.put("go", new GoAction(Map.of("flavour", new Town())));
 
         var result = expr.interpret(context);
         assertThat(result.execute(null).getMessage().equals("Going to [flavour, town]"));
     }
 
     @Test
-    void argumentInterpretTest() {
+    void argumentInterpretTest() throws InvalidCommandException {
         var arg = Expression.argument("left");
         Map<String, IAction> context = new HashMap<>();
         var result = arg.interpret(context);
@@ -47,7 +47,7 @@ class InterpreterTest {
     }
 
     @Test
-    void multipleArgumentParseTest() {
+    void multipleArgumentParseTest() throws InvalidCommandException {
         var left = Expression.argument("left");
         var right = Expression.argument(left, "right");
         var up = Expression.argument(right, "up");

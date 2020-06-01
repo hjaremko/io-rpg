@@ -24,10 +24,14 @@ public class GameController {
     @PostMapping(value = "/{id}/msg", consumes = "text/plain", produces = "text/plain")
     public String receiveOrderAndReturnResult(@PathVariable int id, @RequestBody String command) {
         logger.info("User (" + id + ") sent command: " + command);
+
+        // TODO: replace with login
+        if (command.equals("start")) {
+            return gameService.getLocationInfo();
+        }
+
         try {
-            gameService.execute(id, Interpreter.parse(command));
-            // TODO: remove this shit
-            return command;
+            return gameService.execute(id, Interpreter.parse(command));
         } catch (InvalidCommandException e) {
             logger.debug("Parsing user provided command failed.", e);
             return e.getMessage();

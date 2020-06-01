@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Sweet Animals</title>
+    <title>Cute Animals</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <link href="../static/style.css" rel="stylesheet" th:href="@{/style.css}" type="text/css">
     <link href="https://maxbeier.github.io/text-spinners/spinners.css" rel="stylesheet" type="text/css">
@@ -20,9 +20,9 @@
     // For localhost testing
     // const proxyURL = "https://cors-anywhere.herokuapp.com/";
     const proxyURL = "";
-    const URL = "https://io-rpg.herokuapp.com/game/1/msg";
+    const URL = "http://localhost:8080/game/1/msg";
     let requestURL = proxyURL + URL;
-    let intBox;
+    let inBox;
     let outBox;
 
     var loadingIndicator = document.createElement('span')
@@ -48,11 +48,13 @@
         request.open('POST', requestURL);
         request.responseType = 'text';
         request.send(input);
+        console.log(input);
 
         request.ontimeout = function () {
             console.error("The request for " + url + " timed out.");
         };
 
+        populateOutput("> " + inBox.value);
         inBox.value = "";
         button = document.getElementById("sendButton");
         button.innerText = "Loading "
@@ -74,7 +76,7 @@
 
 </script>
 
-<h1> Sweet Animals </h1>
+<h1> Cute Animals </h1>
 
 <div>
     <label for="output"></label><textarea cols="80" id="output" rows="24"></textarea>

@@ -7,6 +7,7 @@
 package pl.uj.io.cuteanimals.model.interfaces;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ILocation {
 
@@ -25,7 +26,9 @@ public interface ILocation {
      *
      * @return list of elements of IAction type.
      */
-    List<IAction> getAvailableActions();
+    Map<String, IAction> getAvailableActions();
+
+    void addAction(String command, IAction action);
 
     /**
      * Gives a list of non-playable-characters that are currently in the Location that the Player

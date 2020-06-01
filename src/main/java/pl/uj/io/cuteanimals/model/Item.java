@@ -31,12 +31,17 @@ public class Item implements IItem {
     @ManyToOne
     private final Attributes attributes;
 
+    @JsonProperty("type")
+    @Enumerated(EnumType.STRING)
+    private final ItemType type;
+
     public Item() {
         this.id = 0;
         this.name = null;
         this.description = null;
         this.size = 0;
         this.attributes = null;
+        this.type = ItemType.Neutral;
     }
 
     public Item(
@@ -44,30 +49,19 @@ public class Item implements IItem {
             @JsonProperty("name") String name,
             @JsonProperty("description") String description,
             @JsonProperty("size") int size,
-            @JsonProperty("attributes") Attributes attributes) {
+            @JsonProperty("attributes") Attributes attributes,
+            @JsonProperty("type") ItemType type) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.size = size;
         this.attributes = attributes;
+        this.type = type;
     }
 
     @Override
     public String toString() {
-        return "Item{"
-                + "id="
-                + id
-                + ", name='"
-                + name
-                + '\''
-                + ", description='"
-                + description
-                + '\''
-                + ", size="
-                + size
-                + ", attributes="
-                + attributes
-                + '}';
+        return name + ", " + description + ". Type: " + type.toString() + ". Stats: " + attributes;
     }
 
     @Override
@@ -88,5 +82,10 @@ public class Item implements IItem {
     @Override
     public IAttributes getAttributes() {
         return null;
+    }
+
+    @Override
+    public ItemType getType() {
+        return type;
     }
 }

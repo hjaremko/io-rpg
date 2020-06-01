@@ -28,7 +28,9 @@ public class PickupAction implements IAction {
         var joined = String.join(" ", args);
         args.clear();
 
-        if (!names.contains(joined)) return new Result("What do you want to pick up?");
+        if (!names.contains(joined)) {
+            return new Result("What do you want to pick up?");
+        }
 
         character.getEquipment().putItem(toPickup);
         var itemName = toPickup.getName();

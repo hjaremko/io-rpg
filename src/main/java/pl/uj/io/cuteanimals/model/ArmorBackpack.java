@@ -6,29 +6,58 @@ import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
 
 public class ArmorBackpack implements IEquipment {
-    private final List<IItem> backpack = new ArrayList<>();
+    IItem weapon;
+    IItem armor;
 
     @Override
     public List<IItem> getItems() {
-        return backpack;
+        var eq = new ArrayList<IItem>();
+
+        if (weapon != null) {
+            eq.add(weapon);
+        }
+
+        if (armor != null) {
+            eq.add(armor);
+        }
+
+        return eq;
     }
 
     @Override
     public boolean putItem(IItem item) {
-        backpack.add(item);
-        // TODO: check if possible
-        return true;
+        if (item.getType() == ItemType.Weapon && weapon == null) {
+            this.weapon = item;
+            // TODO: increase stats or calculate them during battle
+            return true;
+        }
+
+        if (item.getType() == ItemType.Armor && armor == null) {
+            this.armor = item;
+            // TODO: increase stats or calculate them during battle
+            return true;
+        }
+
+        return false;
     }
 
     @Override
     public boolean removeItem(IItem item) {
-        backpack.remove(item);
-        // TODO: check of possible (e.g. soul bounded items?)
-        return true;
+        if (weapon == item) {
+            weapon = null;
+            return true;
+        }
+
+        if (armor == item) {
+            armor = null;
+            return true;
+        }
+
+        return false;
     }
 
     @Override
     public String showItems() {
-        return backpack.toString();
+        return getItems().toString();
     }
 }

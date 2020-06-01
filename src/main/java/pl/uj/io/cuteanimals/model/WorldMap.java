@@ -36,12 +36,22 @@ public class WorldMap {
 
         // Common actions
         // These actions should be available from every location
+        // TODO: refactor
         var showBackpack = new ShowBackpack();
         var showArmor = new ShowArmor();
+        var throwAway = new ThrowAwayAction();
+        var equipArmor = new EquipItem();
+        var unequipArmor = new UnequipItem();
         town.addAction("backpack", showBackpack);
         town.addAction("eq", showArmor);
+        town.addAction("throw", throwAway);
+        town.addAction("equip", equipArmor);
+        town.addAction("off", unequipArmor);
         inn.addAction("backpack", showBackpack);
         inn.addAction("eq", showArmor);
+        inn.addAction("throw", throwAway);
+        inn.addAction("equip", equipArmor);
+        inn.addAction("off", unequipArmor);
 
         // Make connections
         town.addAction(

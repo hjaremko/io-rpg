@@ -40,6 +40,9 @@ public class Interpreter {
             case "backpack":
             case "pick":
             case "eq":
+            case "throw":
+            case "equip":
+            case "off":
                 // case "...":
                 return parseActionToken(token, stack);
             default:

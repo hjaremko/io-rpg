@@ -23,10 +23,6 @@ public class WorldMap {
         var town = new Town();
         var inn = new Inn();
 
-        // Common actions
-        var showBackpack = new ShowBackpack();
-        var showArmor = new ShowArmor();
-
         // Init town
         // TODO: move this to location builder or something
         town.addAction(
@@ -38,7 +34,10 @@ public class WorldMap {
         // Example item to pick up
         town.addAction("pick", new PickupAction(itemService.getItem(2), List.of("shield")));
 
-        // TODO: These actions should be available from every location
+        // Common actions
+        // These actions should be available from every location
+        var showBackpack = new ShowBackpack();
+        var showArmor = new ShowArmor();
         town.addAction("backpack", showBackpack);
         town.addAction("eq", showArmor);
         inn.addAction("backpack", showBackpack);

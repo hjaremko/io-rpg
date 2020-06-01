@@ -19,8 +19,10 @@
 <script>
     // For localhost testing
     // const proxyURL = "https://cors-anywhere.herokuapp.com/";
+    // const URL = "http://localhost:8080/game/1/msg";
     const proxyURL = "";
-    const URL = "http://localhost:8080/game/1/msg";
+    const URL = "https://io-rpg.herokuapp.com/game/1/msg";
+
     let requestURL = proxyURL + URL;
     let inBox;
     let outBox;
@@ -48,7 +50,6 @@
         request.open('POST', requestURL);
         request.responseType = 'text';
         request.send(input);
-        console.log(input);
 
         // TODO: fix this
         request.ontimeout = function () {

@@ -6,6 +6,7 @@ public class Player implements ICharacter {
     ILocation currentLocation = WorldMap.getInstance().getLocation("town");
     IEquipment armorBackpack = new ArmorBackpack();
     IEquipment backpack = new Backpack();
+    GameState gameState = GameState.EXPLORATION;
 
     @Override
     public IEquipment getEquipment() {
@@ -34,5 +35,14 @@ public class Player implements ICharacter {
 
     public ILocation getCurrentLocation() {
         return currentLocation;
+    }
+
+    @Override
+    public GameState getCurrentGameState() {
+        return gameState;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
     }
 }

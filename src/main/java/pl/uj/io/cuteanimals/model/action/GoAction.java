@@ -3,6 +3,7 @@ package pl.uj.io.cuteanimals.model.action;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
@@ -38,6 +39,10 @@ public class GoAction implements IAction {
 
     @Override
     public IResult execute(ICharacter character) {
+        if (!getAcceptableStates().contains(character.getCurrentGameState())) {
+            return new Result("This action cannot be executed now");
+        }
+
         var joined = String.join(" ", args);
         var toGo = locations.get(joined);
         args.clear();
@@ -48,5 +53,10 @@ public class GoAction implements IAction {
 
         character.changeLocation(toGo);
         return new Result(toGo.getDescription());
+    }
+
+    @Override
+    public List<GameState> getAcceptableStates() {
+        return List.of(GameState.EXPLORATION);
     }
 }

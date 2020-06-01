@@ -9,6 +9,10 @@ import pl.uj.io.cuteanimals.model.interfaces.IResult;
 public class ShowArmor implements IAction {
     @Override
     public IResult execute(ICharacter character) {
+        if (!getAcceptableStates().contains(character.getCurrentGameState())) {
+            return new Result("This action cannot be executed now");
+        }
+
         return new Result(character.getArmor().showItems());
     }
 
@@ -19,4 +23,9 @@ public class ShowArmor implements IAction {
 
     @Override
     public void setArgs(List<String> args) {}
+
+    @Override
+    public List<GameState> getAcceptableStates() {
+        return List.of(GameState.EXPLORATION, GameState.FIGHT);
+    }
 }

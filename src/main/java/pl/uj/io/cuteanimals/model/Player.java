@@ -1,14 +1,25 @@
 package pl.uj.io.cuteanimals.model;
 
-import java.util.List;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
 public class Player implements ICharacter {
     ILocation currentLocation = WorldMap.getInstance().getLocation("town");
+    IEquipment armorBackpack = new ArmorBackpack();
+    IEquipment backpack = new Backpack();
+
+    //    public Player() {
+
+    //        backpack.putItem( ItemService.getItem( 1) );
+    //    }
 
     @Override
-    public List<IEquipment> getEquipment() {
-        return null;
+    public IEquipment getEquipment() {
+        return backpack;
+    }
+
+    @Override
+    public IEquipment getArmor() {
+        return armorBackpack;
     }
 
     @Override

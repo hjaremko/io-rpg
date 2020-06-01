@@ -50,6 +50,7 @@
         request.send(input);
         console.log(input);
 
+        // TODO: fix this
         request.ontimeout = function () {
             console.error("The request for " + url + " timed out.");
         };
@@ -73,7 +74,6 @@
     }
 
 
-
 </script>
 
 <h1> Cute Animals </h1>
@@ -82,6 +82,18 @@
     <label for="output"></label><textarea cols="80" id="output" rows="24"></textarea>
     <label for="input"></label><input id="input" size="74" type="text"/>
     <button id="sendButton" onclick="sendRequest()">Send</button>
+</div>
+
+<div>
+<!--    TODO: make this look nice-->
+    <h3>Available actions:</h3>
+    <ul>
+        <li>go ... - change location</li>
+        <li>investigate - look around you!</li>
+        <li>backpack - show carried items</li>
+        <li>eq - show worn items</li>
+        <li>pick ... - pick something off the ground</li>
+    </ul>
 </div>
 
 <script>

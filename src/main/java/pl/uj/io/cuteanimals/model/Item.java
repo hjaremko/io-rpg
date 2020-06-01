@@ -2,6 +2,8 @@ package pl.uj.io.cuteanimals.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
+import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
+import pl.uj.io.cuteanimals.model.interfaces.IItem;
 
 /**
  * Provides methods to represent items table.
@@ -10,7 +12,7 @@ import javax.persistence.*;
  * @since 0.0.1-SNAPSHOT
  */
 @Entity(name = "items")
-public class Item {
+public class Item implements IItem {
     @JsonProperty("id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,5 +68,25 @@ public class Item {
                 + ", attributes="
                 + attributes
                 + '}';
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public int getSize() {
+        return size;
+    }
+
+    @Override
+    public IAttributes getAttributes() {
+        return null;
     }
 }

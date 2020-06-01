@@ -37,6 +37,9 @@ public class Interpreter {
                 // TODO: fetch actions from corresponding context
             case "go":
             case "investigate":
+            case "backpack":
+            case "pick":
+            case "eq":
                 // case "...":
                 return parseActionToken(token, stack);
             default:

@@ -1,6 +1,5 @@
 package pl.uj.io.cuteanimals.model.interfaces;
 
-import java.util.List;
 import pl.uj.io.cuteanimals.model.Result;
 
 /**
@@ -17,7 +16,9 @@ public interface ICharacter {
      *
      * @return List of IEquipment type element.
      */
-    List<IEquipment> getEquipment();
+    IEquipment getEquipment();
+
+    IEquipment getArmor();
 
     /**
      * Gives characters's current attributes taking account all bonuses.

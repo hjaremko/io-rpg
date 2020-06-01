@@ -3,7 +3,6 @@ package pl.uj.io.cuteanimals.model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import pl.uj.io.cuteanimals.model.action.InvestigateAction;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
@@ -14,9 +13,6 @@ public class Town implements ILocation {
 
     public Town() {
         this.availableActions = new HashMap<>();
-        availableActions.put(
-                "investigate",
-                new InvestigateAction("Looking around you catch a glimpse of small inn. "));
     }
 
     @Override
@@ -26,7 +22,8 @@ public class Town implements ILocation {
 
     @Override
     public String getDescription() {
-        return "You are in the Town. What do you want to do?";
+        return "You are in the Town. This is Town description. It should give player "
+                + "a general idea of what he can do. What do you want to do?";
     }
 
     @Override

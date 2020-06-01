@@ -4,8 +4,11 @@ import pl.uj.io.cuteanimals.model.interfaces.*;
 
 public class Player implements ICharacter {
     ILocation currentLocation = WorldMap.getInstance().getLocation("town");
+
     IEquipment armorBackpack = new ArmorBackpack();
+
     IEquipment backpack = new Backpack();
+
     GameState gameState = GameState.EXPLORATION;
 
     @Override

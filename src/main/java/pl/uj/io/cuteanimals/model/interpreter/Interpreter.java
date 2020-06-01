@@ -43,6 +43,7 @@ public class Interpreter {
             case "throw":
             case "equip":
             case "off":
+            case "talk":
                 // case "...":
                 return parseActionToken(token, stack);
             default:

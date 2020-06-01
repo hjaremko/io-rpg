@@ -35,13 +35,11 @@ public class MessageAction implements IAction {
         this.args = args;
     }
 
-    // TODO change this
     @Override
     public IResult execute(ICharacter character) {
         return new Result(args.toString());
     }
 
-    // TODO change this
     @Override
     public List<GameState> getAcceptableStates() {
         return List.of(GameState.EXPLORATION);

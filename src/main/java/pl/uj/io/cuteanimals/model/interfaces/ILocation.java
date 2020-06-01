@@ -6,6 +6,8 @@
  */
 package pl.uj.io.cuteanimals.model.interfaces;
 
+import pl.uj.io.cuteanimals.model.NPC;
+
 import java.util.List;
 import java.util.Map;
 
@@ -34,9 +36,9 @@ public interface ILocation {
      * Gives a list of non-playable-characters that are currently in the Location that the Player
      * can integrate with (start a fight, conversation, buy something).
      *
-     * @return list of elements of ICharacter type.
+     * @return list of elements of NPC type.
      */
-    List<ICharacter> getNPCs();
+    List<NPC> getNPCs();
 
     /**
      * Gives a list of items that are currently in the Location that the Player can integrate with

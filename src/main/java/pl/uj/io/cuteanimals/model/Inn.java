@@ -1,5 +1,6 @@
 package pl.uj.io.cuteanimals.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,6 @@ import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 
 public class Inn implements ILocation {
     Map<String, IAction> availableActions;
-
     public Inn() {
         this.availableActions = new HashMap<>();
         availableActions.put("investigate", new InvestigateAction("You see nothing interesting"));
@@ -33,7 +33,7 @@ public class Inn implements ILocation {
     }
 
     @Override
-    public List<ICharacter> getNPCs() {
+    public List<NPC> getNPCs() {
         return null;
     }
 

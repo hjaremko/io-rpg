@@ -33,13 +33,17 @@ public class TalkAction implements IAction {
         if (args.size() == 0) {
             return new Result("You want to talk... who?");
         }
+
         if (!getAcceptableStates().contains(character.getCurrentGameState())) {
             return new Result("This action cannot be executed now");
         }
+
         var npc = location.getNPCs()
                 .stream()
                 .filter(x -> x.getName().equals(args.get(0)))
                 .collect(Collectors.toList());
+        args.clear();
+
         return npc.size() >= 1
                 ? new Result(npc.get(0).getQuote())
                 : new Result("This action cannot be executed now");
@@ -57,6 +61,6 @@ public class TalkAction implements IAction {
 
     @Override
     public List<GameState> getAcceptableStates() {
-        return List.of(GameState.EXPLORATION);
+        return List.of(GameState.EXPLORATION, GameState.FIGHT);
     }
 }

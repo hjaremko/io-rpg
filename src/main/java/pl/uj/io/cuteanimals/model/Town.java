@@ -5,19 +5,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 
 public class Town implements ILocation {
     Map<String, IAction> availableActions;
-    List<NPC> npcs;
+
+    List<NPC> npcList;
 
     public Town() {
         this.availableActions = new HashMap<>();
-        this.npcs = new ArrayList<>();
-        npcs.add(new NPC(null, null, null, "Chad",
-                List.of("Elo byczq", "oj tak + 1")));
+        this.npcList = new ArrayList<>();
+        npcList.add(new NPC(null, null, null, "Chad",
+                List.of("Riichi", "Tsumo", "Iipeko", "Dora dora dora")));
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Town implements ILocation {
 
     @Override
     public List<NPC> getNPCs() {
-        return npcs;
+        return npcList;
     }
 
     @Override

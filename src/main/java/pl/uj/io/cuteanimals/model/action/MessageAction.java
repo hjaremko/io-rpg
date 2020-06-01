@@ -42,6 +42,6 @@ public class MessageAction implements IAction {
 
     @Override
     public List<GameState> getAcceptableStates() {
-        return List.of(GameState.EXPLORATION);
+        return List.of(GameState.EXPLORATION, GameState.FIGHT);
     }
 }

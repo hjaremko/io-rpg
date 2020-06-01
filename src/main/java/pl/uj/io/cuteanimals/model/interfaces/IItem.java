@@ -1,5 +1,7 @@
 package pl.uj.io.cuteanimals.model.interfaces;
 
+import pl.uj.io.cuteanimals.model.ItemType;
+
 /**
  * Provides methods that allow attribute handling (health, attack points etc).
  *
@@ -35,4 +37,6 @@ public interface IItem {
      * @return object of IAttribute type including all information
      */
     IAttributes getAttributes();
+
+    ItemType getType();
 }

@@ -72,14 +72,14 @@ public class NPC implements ICharacter {
     }
 
     public String getQuote() {
-        if (quoteIndex == 0 && quotes.size() == 0) {
-            return "";
-        } else if (quoteIndex < quotes.size() - 1) {
+        if (quoteIndex == 0 && quotes.isEmpty()) {
+            return "This character can't tell you anything";
+        } else if (quoteIndex < quotes.size()) {
             var result = quotes.get(quoteIndex);
             quoteIndex++;
             return result;
         } else {
-            return quotes.get(quoteIndex);
+            return "This character can't tell you anything interesting";
         }
     }
 

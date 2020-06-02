@@ -81,7 +81,6 @@ public class NPC implements ICharacter {
     }
 
     public String getQuote() {
-        System.err.println(quoteIndex);
         if (quoteIndex == 0 && quotes.size() == 0) {
             return "";
         } else if (quoteIndex < quotes.size() - 1) {

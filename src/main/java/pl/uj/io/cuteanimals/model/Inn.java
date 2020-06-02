@@ -1,17 +1,16 @@
 package pl.uj.io.cuteanimals.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import pl.uj.io.cuteanimals.model.action.InvestigateAction;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 
 public class Inn implements ILocation {
     Map<String, IAction> availableActions;
+
     public Inn() {
         this.availableActions = new HashMap<>();
         availableActions.put("investigate", new InvestigateAction("You see nothing interesting"));

@@ -16,8 +16,13 @@ public class Town implements ILocation {
     public Town() {
         this.availableActions = new HashMap<>();
         this.npcList = new ArrayList<>();
-        npcList.add(new NPC(null, null, null, "Chad",
-                List.of("Riichi", "Tsumo", "Iipeko", "Dora dora dora")));
+        npcList.add(
+                new NPC(
+                        null,
+                        null,
+                        null,
+                        "Chad",
+                        List.of("Riichi", "Tsumo", "Iipeko", "Dora dora dora")));
     }
 
     @Override

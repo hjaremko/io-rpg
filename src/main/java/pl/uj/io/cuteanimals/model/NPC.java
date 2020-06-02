@@ -1,8 +1,7 @@
 package pl.uj.io.cuteanimals.model;
 
-import pl.uj.io.cuteanimals.model.interfaces.*;
-
 import java.util.List;
+import pl.uj.io.cuteanimals.model.interfaces.*;
 
 public class NPC implements ICharacter {
 
@@ -18,8 +17,12 @@ public class NPC implements ICharacter {
 
     private int quoteIndex;
 
-    public NPC(ILocation currentLocation, IEquipment armorBackpack, IEquipment backpack, String name,
-               List<String> quotes) {
+    public NPC(
+            ILocation currentLocation,
+            IEquipment armorBackpack,
+            IEquipment backpack,
+            String name,
+            List<String> quotes) {
         this.currentLocation = currentLocation;
         this.armorBackpack = armorBackpack;
         this.backpack = backpack;

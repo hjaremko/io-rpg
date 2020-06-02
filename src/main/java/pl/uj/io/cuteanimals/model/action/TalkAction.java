@@ -1,17 +1,14 @@
 package pl.uj.io.cuteanimals.model.action;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import pl.uj.io.cuteanimals.model.GameState;
-import pl.uj.io.cuteanimals.model.NPC;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class TalkAction implements IAction {
 
@@ -38,10 +35,11 @@ public class TalkAction implements IAction {
             return new Result("This action cannot be executed now");
         }
 
-        var npc = location.getNPCs()
-                .stream()
-                .filter(x -> x.getName().equals(args.get(0)))
-                .collect(Collectors.toList());
+        var npc =
+                location.getNPCs()
+                        .stream()
+                        .filter(x -> x.getName().equals(args.get(0)))
+                        .collect(Collectors.toList());
         args.clear();
 
         return npc.size() >= 1

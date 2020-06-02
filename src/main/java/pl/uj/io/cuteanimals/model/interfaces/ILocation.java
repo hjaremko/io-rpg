@@ -6,10 +6,9 @@
  */
 package pl.uj.io.cuteanimals.model.interfaces;
 
-import pl.uj.io.cuteanimals.model.NPC;
-
 import java.util.List;
 import java.util.Map;
+import pl.uj.io.cuteanimals.model.NPC;
 
 public interface ILocation {
 

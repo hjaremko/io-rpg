@@ -20,7 +20,6 @@ public class Town implements ILocation {
                 new NPC(
                         null,
                         null,
-                        null,
                         "Chad",
                         List.of("Riichi", "Tsumo", "Iipeko", "Dora dora dora")));
     }

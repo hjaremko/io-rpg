@@ -5,8 +5,6 @@ import pl.uj.io.cuteanimals.model.interfaces.*;
 
 public class NPC implements ICharacter {
 
-    private ILocation currentLocation;
-
     private IEquipment armorBackpack;
 
     private IEquipment backpack;
@@ -17,13 +15,7 @@ public class NPC implements ICharacter {
 
     private int quoteIndex;
 
-    public NPC(
-            ILocation currentLocation,
-            IEquipment armorBackpack,
-            IEquipment backpack,
-            String name,
-            List<String> quotes) {
-        this.currentLocation = currentLocation;
+    public NPC(IEquipment armorBackpack, IEquipment backpack, String name, List<String> quotes) {
         this.armorBackpack = armorBackpack;
         this.backpack = backpack;
         this.name = name;
@@ -57,10 +49,6 @@ public class NPC implements ICharacter {
     @Override
     public GameState getCurrentGameState() {
         return null;
-    }
-
-    public void setCurrentLocation(ILocation currentLocation) {
-        this.currentLocation = currentLocation;
     }
 
     public void setArmorBackpack(IEquipment armorBackpack) {

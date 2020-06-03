@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class PlayerAttributesTest {
     @Test
     void addExperienceShouldLevelUpProperly() {
-        var attrs = new PlayerAttributes();
+        var attrs = new PlayerAttributes(new Player());
         assertThat(attrs.getLevel() == 1);
         assertThat(attrs.getExperience() == 0);
 

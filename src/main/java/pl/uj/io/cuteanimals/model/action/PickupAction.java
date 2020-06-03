@@ -2,6 +2,7 @@ package pl.uj.io.cuteanimals.model.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
@@ -10,14 +11,12 @@ import pl.uj.io.cuteanimals.model.interfaces.IItem;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class PickupAction implements IAction {
-    IItem toPickup;
+    private final Map<String, IItem> items;
     private List<String> args;
-    private final List<String> names;
 
-    public PickupAction(IItem toPickup, List<String> itemNames) {
-        this.toPickup = toPickup;
+    public PickupAction(Map<String, IItem> items) {
+        this.items = items;
         this.args = new ArrayList<>();
-        this.names = itemNames;
     }
 
     @Override
@@ -26,20 +25,20 @@ public class PickupAction implements IAction {
             return new Result("This action cannot be executed now");
         }
 
+        var joined = String.join(" ", args);
+        var toPickup = items.get(joined);
+        args.clear();
+
         if (toPickup == null) {
             return new Result("Nothing here");
         }
 
-        var joined = String.join(" ", args);
-        args.clear();
-
-        if (!names.contains(joined)) {
-            return new Result("What do you want to pick up?");
+        if (!character.getEquipment().putItem(toPickup)) {
+            return new Result("This item is too heavy!");
         }
 
-        character.getEquipment().putItem(toPickup);
         var itemName = toPickup.getName();
-        toPickup = null;
+        items.remove(joined);
         return new Result("You have picked " + itemName + " up");
     }
 

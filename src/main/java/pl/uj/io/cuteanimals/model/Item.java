@@ -61,7 +61,15 @@ public class Item implements IItem {
 
     @Override
     public String toString() {
-        return name + ", " + description + ". Type: " + type.toString() + ". Stats: " + attributes;
+        return name
+                + ", "
+                + description
+                + ". Type: "
+                + type.toString()
+                + ". Size: "
+                + size
+                + ". Stats: "
+                + attributes;
     }
 
     @Override

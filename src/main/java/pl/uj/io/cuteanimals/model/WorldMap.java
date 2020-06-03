@@ -8,6 +8,7 @@ import pl.uj.io.cuteanimals.model.action.GoAction;
 import pl.uj.io.cuteanimals.model.action.InvestigateAction;
 import pl.uj.io.cuteanimals.model.action.PickupAction;
 import pl.uj.io.cuteanimals.model.action.TalkAction;
+import pl.uj.io.cuteanimals.model.interfaces.IItem;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 import pl.uj.io.cuteanimals.service.ItemService;
 
@@ -34,7 +35,10 @@ public class WorldMap {
                                 + "You also notice a shield on the street. "));
 
         // Example item to pick up
-        town.addAction("pick", new PickupAction(itemService.getItem(2), List.of("shield")));
+        var townItems = new HashMap<String, IItem>();
+        townItems.put("shield", itemService.getItem(2));
+        townItems.put("tank", itemService.getItem(3));
+        town.addAction("pick", new PickupAction(townItems));
 
         var chadBackpack = new Backpack();
         chadBackpack.putItem(itemService.getItem(1));

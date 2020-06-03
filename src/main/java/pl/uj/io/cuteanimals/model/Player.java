@@ -7,7 +7,7 @@ public class Player implements ICharacter {
 
     IEquipment armorBackpack = new ArmorBackpack();
 
-    IEquipment backpack = new Backpack();
+    IEquipment backpack = new PlayerBackpack(this);
 
     GameState gameState = GameState.EXPLORATION;
 

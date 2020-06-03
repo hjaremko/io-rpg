@@ -3,6 +3,7 @@ package pl.uj.io.cuteanimals.model.action;
 import java.util.ArrayList;
 import java.util.List;
 import pl.uj.io.cuteanimals.model.GameState;
+import pl.uj.io.cuteanimals.model.PlayerBackpack;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
@@ -15,7 +16,11 @@ public class ShowBackpack implements IAction {
             return new Result("This action cannot be executed now");
         }
 
-        return new Result(character.getEquipment().showItems());
+        var spaceLeft =
+                "Space left: "
+                        + ((PlayerBackpack) character.getEquipment()).getRemainingCapacity()
+                        + "\n";
+        return new Result(spaceLeft + character.getEquipment().showItems());
     }
 
     @Override

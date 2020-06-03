@@ -54,6 +54,11 @@ public class PlayerAttributes implements IAttributes {
         return experience;
     }
 
+    public int getRequiredExperience() {
+        // TODO: some sane formula
+        return this.level * 100;
+    }
+
     public void addHealth(int health) {
         this.health += health;
     }
@@ -71,10 +76,8 @@ public class PlayerAttributes implements IAttributes {
     }
 
     public void addExperience(int experience) {
-        // TODO: some sane formula
-        var maxExp = this.level * 100;
         var expBefore = this.experience;
-        this.experience = (this.experience + experience) % maxExp;
+        this.experience = (this.experience + experience) % getRequiredExperience();
 
         if (this.experience < expBefore) {
             addLevel(1);

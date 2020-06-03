@@ -2,6 +2,7 @@ package pl.uj.io.cuteanimals.model.action;
 
 import java.util.List;
 import pl.uj.io.cuteanimals.model.GameState;
+import pl.uj.io.cuteanimals.model.PlayerAttributes;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
@@ -14,9 +15,15 @@ public class ShowStats implements IAction {
             return new Result("This action cannot be executed now");
         }
 
-        // TODO: show experience
+        var exp =
+                "Experience: "
+                        + ((PlayerAttributes) character.getAttributes()).getExperience()
+                        + "/"
+                        + ((PlayerAttributes) character.getAttributes()).getRequiredExperience()
+                        + "\n";
         return new Result(
-                "Health: "
+                exp
+                        + "Health: "
                         + character.getAttributes().getHealth()
                         + "\n"
                         + "Level: "

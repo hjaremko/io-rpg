@@ -36,6 +36,15 @@ public class WorldMap {
         // Example item to pick up
         town.addAction("pick", new PickupAction(itemService.getItem(2), List.of("shield")));
 
+        var chadBackpack = new Backpack();
+        chadBackpack.putItem(itemService.getItem(1));
+        var chad = new NPC(
+                null,
+                chadBackpack,
+                "Chad",
+                List.of("Riichi", "Tsumo", "Iipeko", "Dora dora dora"));
+
+        town.addNPC(chad);
         // Common actions
         // These actions should be available from every location
         // TODO: refactor

@@ -7,6 +7,7 @@ import java.util.Map;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
+import pl.uj.io.cuteanimals.repository.ItemsRepository;
 
 public class Town implements ILocation {
     Map<String, IAction> availableActions;
@@ -16,12 +17,6 @@ public class Town implements ILocation {
     public Town() {
         this.availableActions = new HashMap<>();
         this.npcList = new ArrayList<>();
-        npcList.add(
-                new NPC(
-                        null,
-                        null,
-                        "Chad",
-                        List.of("Riichi", "Tsumo", "Iipeko", "Dora dora dora")));
     }
 
     @Override
@@ -48,5 +43,10 @@ public class Town implements ILocation {
     @Override
     public List<IEquipment> getItems() {
         return null;
+    }
+
+    @Override
+    public void addNPC(NPC n) {
+        npcList.add(n);
     }
 }

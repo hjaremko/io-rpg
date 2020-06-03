@@ -46,4 +46,6 @@ public interface ILocation {
      * @return list of elements of IEquipment type.
      */
     List<IEquipment> getItems();
+
+    void addNPC(NPC n);
 }

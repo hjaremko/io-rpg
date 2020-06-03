@@ -40,4 +40,8 @@ public class Inn implements ILocation {
     public List<IEquipment> getItems() {
         return null;
     }
+
+    @Override
+    public void addNPC(NPC n) {
+    }
 }

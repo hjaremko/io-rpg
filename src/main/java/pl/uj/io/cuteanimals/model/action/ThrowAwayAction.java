@@ -1,17 +1,19 @@
-package pl.uj.io.cuteanimals.model;
+package pl.uj.io.cuteanimals.model.action;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import pl.uj.io.cuteanimals.model.GameState;
+import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
-public class EquipItem implements IAction {
+public class ThrowAwayAction implements IAction {
     private List<String> args;
 
-    public EquipItem() {
+    public ThrowAwayAction() {
         this.args = new ArrayList<>();
     }
 
@@ -24,20 +26,15 @@ public class EquipItem implements IAction {
         var joined = String.join(" ", args);
         args.clear();
 
-        var toEquip = getItem(character.getEquipment().getItems(), joined);
+        var toThrow = getItem(character.getEquipment().getItems(), joined);
 
-        if (toEquip.isEmpty()) {
+        if (toThrow.isEmpty()) {
             return new Result("You don't have that");
         }
 
-        var itemName = toEquip.get().getName();
-        character.getEquipment().removeItem(toEquip.get());
-
-        if (character.getArmor().putItem(toEquip.get())) {
-            return new Result("You have put " + itemName + " on");
-        }
-
-        return new Result("You can't wear that");
+        var itemName = toThrow.get().getName();
+        character.getEquipment().removeItem(toThrow.get());
+        return new Result("You have thrown " + itemName + " away");
     }
 
     @Override

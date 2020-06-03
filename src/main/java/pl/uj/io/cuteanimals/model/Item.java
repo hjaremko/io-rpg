@@ -68,7 +68,7 @@ public class Item implements IItem {
                 + type.toString()
                 + ". Size: "
                 + size
-                + ". Stats: "
+                + ". "
                 + attributes;
     }
 
@@ -89,7 +89,7 @@ public class Item implements IItem {
 
     @Override
     public IAttributes getAttributes() {
-        return null;
+        return attributes;
     }
 
     @Override

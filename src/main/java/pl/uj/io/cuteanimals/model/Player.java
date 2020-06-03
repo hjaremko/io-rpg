@@ -3,12 +3,10 @@ package pl.uj.io.cuteanimals.model;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
 public class Player implements ICharacter {
+    IAttributes stats = new PlayerAttributes(this);
     ILocation currentLocation = WorldMap.getInstance().getLocation("town");
-
-    IEquipment armorBackpack = new ArmorBackpack();
-
+    IEquipment armorBackpack = new ArmorBackpack(this);
     IEquipment backpack = new PlayerBackpack(this);
-
     GameState gameState = GameState.EXPLORATION;
 
     @Override
@@ -23,7 +21,7 @@ public class Player implements ICharacter {
 
     @Override
     public IAttributes getAttributes() {
-        return null;
+        return stats;
     }
 
     @Override

@@ -17,6 +17,10 @@ public class EquipItem implements IAction {
 
     @Override
     public IResult execute(ICharacter character) {
+        if (!getAcceptableStates().contains(character.getCurrentGameState())) {
+            return new Result("This action cannot be executed now");
+        }
+
         var joined = String.join(" ", args);
         args.clear();
 
@@ -48,5 +52,10 @@ public class EquipItem implements IAction {
 
     private Optional<IItem> getItem(final List<IItem> list, final String name) {
         return list.stream().filter(o -> o.getName().equals(name)).findFirst();
+    }
+
+    @Override
+    public List<GameState> getAcceptableStates() {
+        return List.of(GameState.EXPLORATION);
     }
 }

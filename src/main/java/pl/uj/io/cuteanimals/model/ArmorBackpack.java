@@ -26,13 +26,13 @@ public class ArmorBackpack implements IEquipment {
 
     @Override
     public boolean putItem(IItem item) {
-        if (item.getType() == ItemType.Weapon && weapon == null) {
+        if (item.getType() == ItemType.WEAPON && weapon == null) {
             this.weapon = item;
             // TODO: increase stats or calculate them during battle
             return true;
         }
 
-        if (item.getType() == ItemType.Armor && armor == null) {
+        if (item.getType() == ItemType.ARMOR && armor == null) {
             this.armor = item;
             // TODO: increase stats or calculate them during battle
             return true;

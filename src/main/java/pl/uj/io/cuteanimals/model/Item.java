@@ -41,7 +41,7 @@ public class Item implements IItem {
         this.description = null;
         this.size = 0;
         this.attributes = null;
-        this.type = ItemType.Neutral;
+        this.type = ItemType.NEUTRAL;
     }
 
     public Item(

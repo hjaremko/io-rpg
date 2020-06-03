@@ -1,6 +1,7 @@
 package pl.uj.io.cuteanimals.model.interfaces;
 
 import java.util.List;
+import pl.uj.io.cuteanimals.model.GameState;
 
 /**
  * Provides method to perform actions.
@@ -23,4 +24,10 @@ public interface IAction {
 
     /** @param args string representation of action arguments, e.g location name or item name */
     void setArgs(List<String> args);
+
+    /**
+     * @return list of states in which action can be performed e.g travelling to another location is
+     *     possible only during EXPLORATION state
+     */
+    List<GameState> getAcceptableStates();
 }

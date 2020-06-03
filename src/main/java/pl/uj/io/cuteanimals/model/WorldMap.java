@@ -1,11 +1,13 @@
 package pl.uj.io.cuteanimals.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import pl.uj.io.cuteanimals.model.action.GoAction;
 import pl.uj.io.cuteanimals.model.action.InvestigateAction;
 import pl.uj.io.cuteanimals.model.action.PickupAction;
+import pl.uj.io.cuteanimals.model.action.TalkAction;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 import pl.uj.io.cuteanimals.service.ItemService;
 
@@ -34,6 +36,16 @@ public class WorldMap {
         // Example item to pick up
         town.addAction("pick", new PickupAction(itemService.getItem(2), List.of("shield")));
 
+        var chadBackpack = new Backpack();
+        chadBackpack.putItem(itemService.getItem(1));
+        var chad =
+                new NPC(
+                        null,
+                        chadBackpack,
+                        "Chad",
+                        List.of("Riichi", "Tsumo", "Iipeko", "Dora dora dora"));
+
+        town.addNPC(chad);
         // Common actions
         // These actions should be available from every location
         // TODO: refactor
@@ -42,17 +54,18 @@ public class WorldMap {
         var throwAway = new ThrowAwayAction();
         var equipArmor = new EquipItem();
         var unequipArmor = new UnequipItem();
+        var talkAction = new TalkAction(new ArrayList<>(), town);
         town.addAction("backpack", showBackpack);
         town.addAction("eq", showArmor);
         town.addAction("throw", throwAway);
         town.addAction("equip", equipArmor);
         town.addAction("off", unequipArmor);
+        town.addAction("talk", talkAction);
         inn.addAction("backpack", showBackpack);
         inn.addAction("eq", showArmor);
         inn.addAction("throw", throwAway);
         inn.addAction("equip", equipArmor);
         inn.addAction("off", unequipArmor);
-
         // Make connections
         town.addAction(
                 "go",

@@ -2,6 +2,7 @@ package pl.uj.io.cuteanimals.model.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
@@ -37,5 +38,10 @@ public class MessageAction implements IAction {
     @Override
     public IResult execute(ICharacter character) {
         return new Result(args.toString());
+    }
+
+    @Override
+    public List<GameState> getAcceptableStates() {
+        return List.of(GameState.EXPLORATION, GameState.FIGHT);
     }
 }

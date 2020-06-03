@@ -1,18 +1,21 @@
 package pl.uj.io.cuteanimals.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 
 public class Town implements ILocation {
     Map<String, IAction> availableActions;
 
+    List<NPC> npcList;
+
     public Town() {
         this.availableActions = new HashMap<>();
+        this.npcList = new ArrayList<>();
     }
 
     @Override
@@ -32,12 +35,17 @@ public class Town implements ILocation {
     }
 
     @Override
-    public List<ICharacter> getNPCs() {
-        return null;
+    public List<NPC> getNPCs() {
+        return npcList;
     }
 
     @Override
     public List<IEquipment> getItems() {
         return null;
+    }
+
+    @Override
+    public void addNPC(NPC n) {
+        npcList.add(n);
     }
 }

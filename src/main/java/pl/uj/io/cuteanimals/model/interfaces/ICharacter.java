@@ -1,5 +1,6 @@
 package pl.uj.io.cuteanimals.model.interfaces;
 
+import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 
 /**
@@ -36,4 +37,6 @@ public interface ICharacter {
     Result use(IAction action);
 
     void changeLocation(ILocation where);
+
+    GameState getCurrentGameState();
 }

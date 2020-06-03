@@ -2,6 +2,7 @@ package pl.uj.io.cuteanimals.model.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
@@ -33,6 +34,15 @@ public class InvestigateAction implements IAction {
 
     @Override
     public IResult execute(ICharacter character) {
+        if (!getAcceptableStates().contains(character.getCurrentGameState())) {
+            return new Result("This action cannot be executed now");
+        }
+
         return new Result(infoMessage);
+    }
+
+    @Override
+    public List<GameState> getAcceptableStates() {
+        return List.of(GameState.EXPLORATION);
     }
 }

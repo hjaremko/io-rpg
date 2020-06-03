@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import pl.uj.io.cuteanimals.model.action.InvestigateAction;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 
@@ -33,7 +32,7 @@ public class Inn implements ILocation {
     }
 
     @Override
-    public List<ICharacter> getNPCs() {
+    public List<NPC> getNPCs() {
         return null;
     }
 
@@ -41,4 +40,7 @@ public class Inn implements ILocation {
     public List<IEquipment> getItems() {
         return null;
     }
+
+    @Override
+    public void addNPC(NPC n) {}
 }

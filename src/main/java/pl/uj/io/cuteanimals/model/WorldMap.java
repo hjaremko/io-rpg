@@ -38,11 +38,12 @@ public class WorldMap {
 
         var chadBackpack = new Backpack();
         chadBackpack.putItem(itemService.getItem(1));
-        var chad = new NPC(
-                null,
-                chadBackpack,
-                "Chad",
-                List.of("Riichi", "Tsumo", "Iipeko", "Dora dora dora"));
+        var chad =
+                new NPC(
+                        null,
+                        chadBackpack,
+                        "Chad",
+                        List.of("Riichi", "Tsumo", "Iipeko", "Dora dora dora"));
 
         town.addNPC(chad);
         // Common actions

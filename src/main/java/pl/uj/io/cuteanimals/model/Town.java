@@ -7,7 +7,6 @@ import java.util.Map;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
-import pl.uj.io.cuteanimals.repository.ItemsRepository;
 
 public class Town implements ILocation {
     Map<String, IAction> availableActions;

@@ -42,6 +42,5 @@ public class Inn implements ILocation {
     }
 
     @Override
-    public void addNPC(NPC n) {
-    }
+    public void addNPC(NPC n) {}
 }

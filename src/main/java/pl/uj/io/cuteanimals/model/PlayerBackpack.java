@@ -46,7 +46,7 @@ public class PlayerBackpack extends Backpack {
     private int getCapacity() {
         // The stronger a player is, the more he can carry
         int baseCapacity = 10;
-        return baseCapacity; // + 3 * owner.getAttributes().getAttack();
+        return baseCapacity + 3 * owner.getAttributes().getAttack();
     }
 
     private int getRemainingCapacity() {

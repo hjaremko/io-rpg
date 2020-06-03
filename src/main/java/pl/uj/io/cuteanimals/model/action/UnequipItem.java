@@ -1,8 +1,10 @@
-package pl.uj.io.cuteanimals.model;
+package pl.uj.io.cuteanimals.model.action;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import pl.uj.io.cuteanimals.model.GameState;
+import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;

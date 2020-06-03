@@ -44,7 +44,7 @@ public class Interpreter {
             case "equip":
             case "off":
             case "talk":
-                // case "...":
+            case "stats":
                 return parseActionToken(token, stack);
             default:
                 return parseArgumentToken(token, stack);

@@ -6,8 +6,13 @@ import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
 
 public class ArmorBackpack implements IEquipment {
-    IItem weapon;
-    IItem armor;
+    //    private final ICharacter owner;
+    private IItem weapon;
+    private IItem armor;
+
+    //    public ArmorBackpack(ICharacter owner) {
+    //        this.owner = owner;
+    //    }
 
     @Override
     public List<IItem> getItems() {
@@ -26,6 +31,10 @@ public class ArmorBackpack implements IEquipment {
 
     @Override
     public boolean putItem(IItem item) {
+        //        if (item.getAttributes().getLevel() > owner.getAttributes().getLevel()) {
+        //            return false;
+        //        }
+
         if (item.getType() == ItemType.WEAPON && weapon == null) {
             this.weapon = item;
             // TODO: increase stats or calculate them during battle

@@ -46,7 +46,7 @@ public class TalkAction implements IAction {
                 ? new Result(npc.get(0).getQuote())
                 : new Result("There is nobody named like that.");
     }
-    
+
     @Override
     public List<String> getArgs() {
         return args;

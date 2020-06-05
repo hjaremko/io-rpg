@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
-import pl.uj.io.cuteanimals.model.interpreter.Interpreter;
 import pl.uj.io.cuteanimals.service.GameService;
 
 @RestController
@@ -34,7 +33,7 @@ public class GameController {
         }
 
         try {
-            return gameService.execute(id, Interpreter.parse(command));
+            return gameService.execute(id, command);
         } catch (InvalidCommandException e) {
             logger.debug("Parsing user provided command failed.", e);
             return e.getMessage();

@@ -2,10 +2,12 @@ package pl.uj.io.cuteanimals.model.interpreter;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Map;
 import java.util.stream.IntStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
+import pl.uj.io.cuteanimals.model.interfaces.IAction;
 
 /**
  * Interprets provided command according to grammar
@@ -28,27 +30,20 @@ public class Interpreter {
      *
      * @param token string representation of a token
      * @param stack parse stack
+     * @param availableActions
      * @return Expression from it is possible to derive tokens on the stack
      */
-    private static ParseToken parseToken(String token, Deque<ParseToken> stack) {
+    private static ParseToken parseToken(
+            String token, Deque<ParseToken> stack, Map<String, IAction> availableActions) {
         logger.debug("Parsing token: " + token);
 
-        switch (token) {
-                // TODO: fetch actions from corresponding context
-            case "go":
-            case "investigate":
-            case "backpack":
-            case "pick":
-            case "eq":
-            case "throw":
-            case "equip":
-            case "off":
-            case "talk":
-            case "stats":
-                return parseActionToken(token, stack);
-            default:
-                return parseArgumentToken(token, stack);
-        }
+        return availableActions
+                .keySet()
+                .stream()
+                .filter(s -> s.equals(token))
+                .findFirst()
+                .map(s -> parseActionToken(s, stack))
+                .orElseGet(() -> parseArgumentToken(token, stack));
     }
 
     /**
@@ -112,12 +107,14 @@ public class Interpreter {
      * Parses input string (user provided).
      *
      * @param expression Command to tokenize
+     * @param availableActions
      * @return Provided command in form of Expression object. Needs to be interpreted using
      *     interpret method.
      * @throws InvalidCommandException - If parsing does not end on starting symbol then the input
      *     is invalid.
      */
-    public static Expression parse(String expression) throws InvalidCommandException {
+    public static Expression parse(String expression, Map<String, IAction> availableActions)
+            throws InvalidCommandException {
         logger.debug("Parsing expression: " + expression);
 
         Deque<ParseToken> stack = new ArrayDeque<>();
@@ -129,7 +126,7 @@ public class Interpreter {
         int num = tokens.length - 1;
         IntStream.rangeClosed(0, num)
                 .mapToObj(i -> tokens[num - i])
-                .forEach(token -> stack.push(parseToken(token, stack)));
+                .forEach(token -> stack.push(parseToken(token, stack, availableActions)));
 
         // On the stack should be left only one object corresponding to start symbol of out grammar.
 

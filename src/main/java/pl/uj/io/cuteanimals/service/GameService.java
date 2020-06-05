@@ -10,6 +10,7 @@ import pl.uj.io.cuteanimals.model.WorldMap;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 import pl.uj.io.cuteanimals.model.interpreter.Expression;
+import pl.uj.io.cuteanimals.model.interpreter.Interpreter;
 
 @Service
 public class GameService {
@@ -28,7 +29,9 @@ public class GameService {
         player.getEquipment().putItem(itemService.getItem(1));
     }
 
-    public String execute(int characterId, Expression expr) throws InvalidCommandException {
+    public String execute(int characterId, String command) throws InvalidCommandException {
+        Expression expr =
+                Interpreter.parse(command, player.getCurrentLocation().getAvailableActions());
         IAction action = expr.interpret(player.getCurrentLocation().getAvailableActions());
         IResult result = action.execute(player);
         return result.getMessage();

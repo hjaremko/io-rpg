@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import pl.uj.io.cuteanimals.model.Item;
+import pl.uj.io.cuteanimals.model.ItemType;
 import pl.uj.io.cuteanimals.repository.ItemsRepository;
 
 @Service
@@ -22,6 +23,37 @@ public class ItemService {
         this.itemsRepository = itemsRepository;
     }
 
+    @Autowired
+    public void initialize(AttributesService attributesService) {
+        // Add dummy items to prevent game from crashing
+        // TODO: remove
+        logger.debug("Inserting dummy items");
+        addItem(
+                new Item(
+                        1,
+                        "Miecz",
+                        "Zwykły miecz",
+                        3,
+                        attributesService.getAttributes(1),
+                        ItemType.WEAPON));
+        addItem(
+                new Item(
+                        2,
+                        "Tarcza",
+                        "Zwykła tarcza",
+                        3,
+                        attributesService.getAttributes(2),
+                        ItemType.ARMOR));
+        addItem(
+                new Item(
+                        3,
+                        "durzy czołg",
+                        "boje sie go",
+                        20,
+                        attributesService.getAttributes(3),
+                        ItemType.WEAPON));
+    }
+
     public List<Item> getAllItems() {
         return itemsRepository.findAll();
     }
@@ -32,5 +64,9 @@ public class ItemService {
                 () ->
                         new ResponseStatusException(
                                 HttpStatus.NOT_FOUND, "Unknown item with id " + id));
+    }
+
+    public void addItem(Item item) {
+        itemsRepository.saveAndFlush(item);
     }
 }

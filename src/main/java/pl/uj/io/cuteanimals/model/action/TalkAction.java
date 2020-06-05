@@ -28,11 +28,11 @@ public class TalkAction implements IAction {
     @Override
     public IResult execute(ICharacter character) {
         if (args.size() == 0) {
-            return new Result("You want to talk... who?");
+            return new Result("There is nobody named like that.");
         }
 
         if (!getAcceptableStates().contains(character.getCurrentGameState())) {
-            return new Result("This action cannot be executed now");
+            return new Result("This isn't the time for that.");
         }
 
         var npc =

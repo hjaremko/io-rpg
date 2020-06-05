@@ -15,14 +15,12 @@ public class Backpack implements IEquipment {
 
     @Override
     public boolean putItem(IItem item) {
-        backpack.add(item);
-        return true;
+        return backpack.add(item);
     }
 
     @Override
     public boolean removeItem(IItem item) {
-        backpack.remove(item);
-        return true;
+        return backpack.remove(item);
     }
 
     @Override

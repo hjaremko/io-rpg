@@ -20,7 +20,7 @@ public class UnequipItem implements IAction {
     @Override
     public IResult execute(ICharacter character) {
         if (!getAcceptableStates().contains(character.getCurrentGameState())) {
-            return new Result("This action cannot be executed now");
+            return new Result("This isn't the time for that.");
         }
 
         var joined = String.join(" ", args);
@@ -28,7 +28,7 @@ public class UnequipItem implements IAction {
 
         var toUnequip = getItem(character.getArmor().getItems(), joined);
 
-        if (toUnequip.isEmpty()) {
+        if (toUnequip.isEmpty()) {g
             return new Result("You are not wearing that");
         }
 

@@ -35,7 +35,7 @@ public class InvestigateAction implements IAction {
     @Override
     public IResult execute(ICharacter character) {
         if (!getAcceptableStates().contains(character.getCurrentGameState())) {
-            return new Result("This action cannot be executed now");
+            return new Result("This isn't the time for that.");
         }
 
         return new Result(infoMessage);

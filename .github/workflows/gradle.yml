@@ -13,6 +13,17 @@ jobs:
     name: Build project
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: io_rpg
+        ports:
+        - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -29,18 +40,18 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: Build with Gradle
-        env:
-          SPRING_DATASOURCE_URL: ${{ secrets.SPRING_DATASOURCE_URL }}
-          SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
-          SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
-          SPRING_PROFILES_ACTIVE: prod
         run: ./gradlew build -x verifyGoogleJavaFormat -x test
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: binary
           path: build/libs
-      - name: Generate test reports
+      - name: Run tests and generate reports
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/io_rpg
+          SPRING_DATASOURCE_USERNAME: postgres
+          SPRING_DATASOURCE_PASSWORD: postgres
+          SPRING_PROFILES_ACTIVE: prod
         run: ./gradlew test jacocoTestReport
       - name: Upload code coverage report
         uses: actions/upload-artifact@v1

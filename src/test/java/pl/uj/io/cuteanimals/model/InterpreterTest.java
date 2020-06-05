@@ -18,40 +18,46 @@ import pl.uj.io.cuteanimals.model.interpreter.Interpreter;
 class InterpreterTest {
     @Test
     void singleActionParseTest() throws InvalidCommandException {
-        var expr = parse("investigate");
+        Player player = new Player();
         Map<String, IAction> context = new HashMap<>();
         context.put("investigate", new InvestigateAction("Looking around null"));
+        var expr = parse("investigate", context);
 
         var result = expr.interpret(context);
-        assertThat(result.execute(null).getMessage().equals("Looking around null"));
+
+        assertThat(result.execute(player).getMessage().equals("Looking around null"));
     }
 
     @Test
     void actionWithArgsParseTest() throws InvalidCommandException {
-        var expr = parse("go flavour town");
+        Player player = new Player();
         Map<String, IAction> context = new HashMap<>();
-
         context.put("go", new GoAction(Map.of("flavour", new Town())));
+        var expr = parse("go flavour town", context);
 
         var result = expr.interpret(context);
-        assertThat(result.execute(null).getMessage().equals("Going to [flavour, town]"));
+
+        assertThat(result.execute(player).getMessage().equals("Going to [flavour, town]"));
     }
 
     @Test
     void argumentInterpretTest() throws InvalidCommandException {
-        var arg = Expression.argument("left");
+        Player player = new Player();
         Map<String, IAction> context = new HashMap<>();
+        var arg = Expression.argument("left");
+
         var result = arg.interpret(context);
 
-        assertThat(result.execute(null).getMessage().equals("[left]"));
+        assertThat(result.execute(player).getMessage().equals("[left]"));
     }
 
     @Test
     void multipleArgumentParseTest() throws InvalidCommandException {
+        Map<String, IAction> context = new HashMap<>();
         var left = Expression.argument("left");
         var right = Expression.argument(left, "right");
         var up = Expression.argument(right, "up");
-        Map<String, IAction> context = new HashMap<>();
+
         var result = up.interpret(context);
 
         assertThat(
@@ -62,25 +68,38 @@ class InterpreterTest {
 
     @Test
     void invalidCommandTest() {
-        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("i am invalid"));
+        Map<String, IAction> context = new HashMap<>();
+
+        assertThrows(
+                InvalidCommandException.class, () -> Interpreter.parse("i am invalid", context));
     }
 
     @Test
     void singleInvalidTokenTest() {
-        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("invalid"));
+        Map<String, IAction> context = new HashMap<>();
+
+        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("invalid", context));
     }
 
     @Test
     void multipleActionTokenTest() {
-        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go invalid go"));
-        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go go go go"));
-        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go go go"));
-        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go go"));
-        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go"));
+        Map<String, IAction> context = new HashMap<>();
+
+        assertThrows(
+                InvalidCommandException.class,
+                () -> Interpreter.parse("go go invalid go", context));
+        assertThrows(
+                InvalidCommandException.class, () -> Interpreter.parse("go go go go go", context));
+        assertThrows(
+                InvalidCommandException.class, () -> Interpreter.parse("go go go go", context));
+        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go go", context));
+        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go", context));
     }
 
     @Test
     void reversedArgumentsTest() {
-        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("flavour go"));
+        Map<String, IAction> context = new HashMap<>();
+
+        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("flavour go", context));
     }
 }

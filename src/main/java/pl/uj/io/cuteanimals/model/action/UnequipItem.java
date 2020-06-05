@@ -28,7 +28,7 @@ public class UnequipItem implements IAction {
 
         var toUnequip = getItem(character.getArmor().getItems(), joined);
 
-        if (toUnequip.isEmpty()) {g
+        if (toUnequip.isEmpty()) {
             return new Result("You are not wearing that");
         }
 

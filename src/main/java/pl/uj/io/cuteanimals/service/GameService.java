@@ -22,7 +22,7 @@ public class GameService {
 
     @Autowired
     public GameService(ItemService itemService) {
-        //TODO: use repository
+        // TODO: use repository
         this.itemService = itemService;
         WorldMap.getInstance().initialize(itemService);
         // Every new player should spawn with sword

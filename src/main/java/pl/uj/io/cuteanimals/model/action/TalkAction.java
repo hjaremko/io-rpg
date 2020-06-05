@@ -28,7 +28,7 @@ public class TalkAction implements IAction {
     @Override
     public IResult execute(ICharacter character) {
         if (args.size() == 0) {
-            return new Result("There is nobody named like that.");
+            return new Result("Who do you want to talk to?");
         }
 
         if (!getAcceptableStates().contains(character.getCurrentGameState())) {
@@ -44,9 +44,9 @@ public class TalkAction implements IAction {
 
         return npc.size() >= 1
                 ? new Result(npc.get(0).getQuote())
-                : new Result("This action cannot be executed now");
+                : new Result("There is nobody named like that.");
     }
-
+    
     @Override
     public List<String> getArgs() {
         return args;

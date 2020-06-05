@@ -33,24 +33,25 @@ jobs:
           SPRING_DATASOURCE_URL: ${{ secrets.SPRING_DATASOURCE_URL }}
           SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
           SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
+          SPRING_PROFILES_ACTIVE: prod
         run: ./gradlew build -x verifyGoogleJavaFormat -x test
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: binary
           path: build/libs
-#      - name: Generate test reports
-#        run: ./gradlew test jacocoTestReport
-#      - name: Upload code coverage report
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: coverage_report
-#          path: build/reports/jacoco/test/html
-#      - name: Upload test report
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: test_report
-#          path: build/reports/tests/test
+      - name: Generate test reports
+        run: ./gradlew test jacocoTestReport
+      - name: Upload code coverage report
+        uses: actions/upload-artifact@v1
+        with:
+          name: coverage_report
+          path: build/reports/jacoco/test/html
+      - name: Upload test report
+        uses: actions/upload-artifact@v1
+        with:
+          name: test_report
+          path: build/reports/tests/test
       - name: Upload PMD main report
         uses: actions/upload-artifact@v1
         with:

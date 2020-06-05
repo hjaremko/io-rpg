@@ -9,9 +9,9 @@ import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 
 public class Town implements ILocation {
-    Map<String, IAction> availableActions;
+    private Map<String, IAction> availableActions;
 
-    List<NPC> npcList;
+    private List<NPC> npcList;
 
     public Town() {
         this.availableActions = new HashMap<>();
@@ -25,8 +25,9 @@ public class Town implements ILocation {
 
     @Override
     public String getDescription() {
-        return "You are in the Town. This is Town description. It should give player "
-                + "a general idea of what he can do. What do you want to do?";
+        return "You are in your hometown. Every place is currently closed even an elegant inn, built within"
+                + "an ancient tower of rune-carved stone which usually bustling with life."
+                + "You can feel the terror in the air. Your leader has a task for you, approach him to talk to him.";
     }
 
     @Override

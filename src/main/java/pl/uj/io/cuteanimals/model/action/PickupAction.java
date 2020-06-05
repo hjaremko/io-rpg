@@ -37,6 +37,8 @@ public class PickupAction implements IAction {
             return new Result("This item is too heavy!");
         }
 
+        // TODO: after picking up gold in chamberOfWealth add money
+
         var itemName = toPickup.getName();
         items.remove(joined);
         return new Result("You have picked " + itemName + " up");

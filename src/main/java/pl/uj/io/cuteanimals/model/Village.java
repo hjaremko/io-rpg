@@ -8,12 +8,12 @@ import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 
-public class Inn implements ILocation {
+public class Village implements ILocation {
     private Map<String, IAction> availableActions;
 
     private List<NPC> npcList;
 
-    public Inn() {
+    public Village() {
         this.availableActions = new HashMap<>();
         npcList = new ArrayList<>();
     }
@@ -25,9 +25,7 @@ public class Inn implements ILocation {
 
     @Override
     public String getDescription() {
-        return "You are in the inn. It is a building of stone walls, "
-                + "with several stained glass windows. Accomodations consist "
-                + "of several large rooms with beds and woolen mattresses.";
+        return "After darkness of the dungeon there is nothing better in here...";
     }
 
     @Override

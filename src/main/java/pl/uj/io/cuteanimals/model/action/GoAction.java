@@ -3,8 +3,7 @@ package pl.uj.io.cuteanimals.model.action;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import pl.uj.io.cuteanimals.model.GameState;
-import pl.uj.io.cuteanimals.model.Result;
+import pl.uj.io.cuteanimals.model.*;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
@@ -49,6 +48,11 @@ public class GoAction implements IAction {
 
         if (toGo == null) {
             return new Result("You want to go... where?");
+        }
+
+        Trap t = new Trap();
+        if (toGo.getClass().equals((t).getClass())) {
+            ((PlayerAttributes) character.getAttributes()).addHealth(-10);
         }
 
         character.changeLocation(toGo);

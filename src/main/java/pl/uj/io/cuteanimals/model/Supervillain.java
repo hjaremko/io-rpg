@@ -8,31 +8,33 @@ import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 
-public class Inn implements ILocation {
+public class Supervillain implements ILocation {
     private Map<String, IAction> availableActions;
 
     private List<NPC> npcList;
 
-    public Inn() {
+    public Supervillain() {
         this.availableActions = new HashMap<>();
-        npcList = new ArrayList<>();
-    }
-
-    @Override
-    public void addAction(String command, IAction action) {
-        availableActions.put(command, action);
+        this.npcList = new ArrayList<>();
     }
 
     @Override
     public String getDescription() {
-        return "You are in the inn. It is a building of stone walls, "
-                + "with several stained glass windows. Accomodations consist "
-                + "of several large rooms with beds and woolen mattresses.";
+        return "The room had that spooky looks, cobwebs everywhere, chandeliers suspended from the ceiling."
+                + "A foul stench invaded your nostrils, You looked around to see where the smell was coming from "
+                + "and nearly vomited at the sight, it was a rotting body. You recognised him as your friend from "
+                + "the different clan who was also sent here to defeat Fasilius... You felt great sorrow and rage. "
+                + "You turned around and saw him watching you... In that very moment you knew that you are ready to kill him...";
     }
 
     @Override
     public Map<String, IAction> getAvailableActions() {
         return availableActions;
+    }
+
+    @Override
+    public void addAction(String command, IAction action) {
+        availableActions.put(command, action);
     }
 
     @Override

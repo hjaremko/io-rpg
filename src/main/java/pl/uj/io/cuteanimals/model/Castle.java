@@ -8,31 +8,30 @@ import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 
-public class Inn implements ILocation {
+public class Castle implements ILocation {
     private Map<String, IAction> availableActions;
 
     private List<NPC> npcList;
 
-    public Inn() {
+    public Castle() {
         this.availableActions = new HashMap<>();
-        npcList = new ArrayList<>();
-    }
-
-    @Override
-    public void addAction(String command, IAction action) {
-        availableActions.put(command, action);
+        this.npcList = new ArrayList<>();
     }
 
     @Override
     public String getDescription() {
-        return "You are in the inn. It is a building of stone walls, "
-                + "with several stained glass windows. Accomodations consist "
-                + "of several large rooms with beds and woolen mattresses.";
+        return "This large walled castle has black stone walls and defensive earthworks, "
+                + "and a shell keep. It appears deserted, but is inhabited by brigands led by Fasilius.";
     }
 
     @Override
     public Map<String, IAction> getAvailableActions() {
         return availableActions;
+    }
+
+    @Override
+    public void addAction(String command, IAction action) {
+        availableActions.put(command, action);
     }
 
     @Override

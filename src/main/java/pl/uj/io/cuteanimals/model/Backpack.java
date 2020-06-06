@@ -25,6 +25,19 @@ public class Backpack implements IEquipment {
 
     @Override
     public String showItems() {
-        return items.toString();
+        int i = 1;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("You have the following items in your backpack: ").append("\n");
+        for (IItem item : items) {
+            stringBuilder.append(i).append(". ").append(item.getName()).append("\n");
+            stringBuilder.append("Description: ").append(item.getDescription());
+            stringBuilder.append(", Type: ").append(item.getType().toString());
+            stringBuilder.append(", Size: ").append(item.getSize()).append(", ");
+            stringBuilder.append(item.getAttributes().toString());
+            stringBuilder.append("\n");
+            i++;
+        }
+
+        return stringBuilder.toString();
     }
 }

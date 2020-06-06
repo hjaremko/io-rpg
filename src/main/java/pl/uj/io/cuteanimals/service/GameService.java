@@ -5,12 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
+import pl.uj.io.cuteanimals.interpreter.Expression;
+import pl.uj.io.cuteanimals.interpreter.Interpreter;
 import pl.uj.io.cuteanimals.model.Player;
 import pl.uj.io.cuteanimals.model.WorldMap;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
-import pl.uj.io.cuteanimals.model.interpreter.Expression;
-import pl.uj.io.cuteanimals.model.interpreter.Interpreter;
 
 @Service
 public class GameService {

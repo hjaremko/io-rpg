@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import pl.uj.io.cuteanimals.model.action.*;
+import pl.uj.io.cuteanimals.action.*;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
+import pl.uj.io.cuteanimals.plot.actions.DungeonEntranceGoAction;
+import pl.uj.io.cuteanimals.plot.actions.DungeonInvestigateAction;
+import pl.uj.io.cuteanimals.plot.locations.*;
 import pl.uj.io.cuteanimals.service.ItemService;
 
 public final class WorldMap {

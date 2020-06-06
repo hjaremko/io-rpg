@@ -1,6 +1,7 @@
 package pl.uj.io.cuteanimals.model;
 
 import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.plot.locations.Trap;
 
 public class Player implements ICharacter {
     PlayerAttributes stats = new PlayerAttributes(this);

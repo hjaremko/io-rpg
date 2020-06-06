@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import pl.uj.io.cuteanimals.model.Attributes;
+import pl.uj.io.cuteanimals.model.entity.Attributes;
 import pl.uj.io.cuteanimals.repository.AttributesRepository;
 
 @Service

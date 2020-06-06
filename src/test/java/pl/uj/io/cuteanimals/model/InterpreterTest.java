@@ -2,18 +2,19 @@ package pl.uj.io.cuteanimals.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static pl.uj.io.cuteanimals.model.interpreter.Interpreter.parse;
+import static pl.uj.io.cuteanimals.interpreter.Interpreter.parse;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
+import pl.uj.io.cuteanimals.action.GoAction;
+import pl.uj.io.cuteanimals.action.InvestigateAction;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
-import pl.uj.io.cuteanimals.model.action.GoAction;
-import pl.uj.io.cuteanimals.model.action.InvestigateAction;
+import pl.uj.io.cuteanimals.interpreter.Expression;
+import pl.uj.io.cuteanimals.interpreter.Interpreter;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
-import pl.uj.io.cuteanimals.model.interpreter.Expression;
-import pl.uj.io.cuteanimals.model.interpreter.Interpreter;
+import pl.uj.io.cuteanimals.plot.locations.Town;
 
 class InterpreterTest {
     @Test

@@ -9,11 +9,11 @@ import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 
-public class Medical implements ILocation {
-    private final Map<String, IAction> availableActions;
-    private final List<NPC> npcList;
+public class MedicalCabin implements ILocation {
+    private Map<String, IAction> availableActions;
+    private List<NPC> npcList;
 
-    public Medical() {
+    public MedicalCabin() {
         this.availableActions = new HashMap<>();
         this.npcList = new ArrayList<>();
     }

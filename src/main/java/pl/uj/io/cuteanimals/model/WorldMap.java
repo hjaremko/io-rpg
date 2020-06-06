@@ -39,7 +39,7 @@ public final class WorldMap {
         var moat = new Moat();
         var castle = new Castle();
         var supervillain = new Supervillain();
-        var medical = new Medical();
+        var medicalCabin = new MedicalCabin();
 
         // Common actions
         // These actions should be available from every location
@@ -49,7 +49,6 @@ public final class WorldMap {
         var throwAway = new ThrowAwayAction();
         var equipArmor = new EquipItem();
         var unequipArmor = new UnequipItem();
-        var talkAction = new TalkAction(new ArrayList<>(), town);
         var showStats = new ShowStats();
 
         town.addAction("backpack", showBackpack);
@@ -57,13 +56,14 @@ public final class WorldMap {
         town.addAction("throw", throwAway);
         town.addAction("equip", equipArmor);
         town.addAction("off", unequipArmor);
-        town.addAction("talk", talkAction);
+        town.addAction("talk", new TalkAction(new ArrayList<>(), town));
         town.addAction("stats", showStats);
         forest.addAction("backpack", showBackpack);
         forest.addAction("eq", showArmor);
         forest.addAction("throw", throwAway);
         forest.addAction("equip", equipArmor);
         forest.addAction("off", unequipArmor);
+        forest.addAction("talk", new TalkAction(new ArrayList<>(), forest));
         forest.addAction("stats", showStats);
         forestGlade.addAction("backpack", showBackpack);
         forestGlade.addAction("eq", showArmor);
@@ -76,15 +76,15 @@ public final class WorldMap {
         shamanCabin.addAction("throw", throwAway);
         shamanCabin.addAction("equip", equipArmor);
         shamanCabin.addAction("off", unequipArmor);
-        shamanCabin.addAction("talk", talkAction);
+        shamanCabin.addAction("talk", new TalkAction(new ArrayList<>(), shamanCabin));
         shamanCabin.addAction("stats", showStats);
-        medical.addAction("backpack", showBackpack);
-        medical.addAction("eq", showArmor);
-        medical.addAction("throw", throwAway);
-        medical.addAction("equip", equipArmor);
-        medical.addAction("off", unequipArmor);
-        medical.addAction("stats", showStats);
-        medical.addAction("talk", talkAction);
+        medicalCabin.addAction("backpack", showBackpack);
+        medicalCabin.addAction("eq", showArmor);
+        medicalCabin.addAction("throw", throwAway);
+        medicalCabin.addAction("equip", equipArmor);
+        medicalCabin.addAction("off", unequipArmor);
+        medicalCabin.addAction("stats", showStats);
+        medicalCabin.addAction("talk", new TalkAction(new ArrayList<>(), medicalCabin));
         dungeonEntrance.addAction("backpack", showBackpack);
         dungeonEntrance.addAction("eq", showArmor);
         dungeonEntrance.addAction("throw", throwAway);
@@ -115,6 +115,7 @@ public final class WorldMap {
         dungeonEgress.addAction("equip", equipArmor);
         dungeonEgress.addAction("off", unequipArmor);
         dungeonEgress.addAction("stats", showStats);
+        dungeonEgress.addAction("talk", new TalkAction(new ArrayList<>(), dungeonEgress));
         village.addAction("backpack", showBackpack);
         village.addAction("eq", showArmor);
         village.addAction("throw", throwAway);
@@ -126,32 +127,33 @@ public final class WorldMap {
         inn.addAction("throw", throwAway);
         inn.addAction("equip", equipArmor);
         inn.addAction("off", unequipArmor);
-        inn.addAction("talk", talkAction);
+        inn.addAction("talk", new TalkAction(new ArrayList<>(), inn));
         inn.addAction("stats", showStats);
         stable.addAction("backpack", showBackpack);
         stable.addAction("eq", showArmor);
         stable.addAction("throw", throwAway);
         stable.addAction("equip", equipArmor);
         stable.addAction("off", unequipArmor);
-        stable.addAction("talk", talkAction);
+        stable.addAction("talk", new TalkAction(new ArrayList<>(), stable));
         stable.addAction("stats", showStats);
         devastatedLands.addAction("backpack", showBackpack);
         devastatedLands.addAction("eq", showArmor);
         devastatedLands.addAction("throw", throwAway);
         devastatedLands.addAction("equip", equipArmor);
         devastatedLands.addAction("off", unequipArmor);
+        devastatedLands.addAction("talk", new TalkAction(new ArrayList<>(), devastatedLands));
         devastatedLands.addAction("stats", showStats);
         moat.addAction("backpack", showBackpack);
         moat.addAction("eq", showArmor);
         moat.addAction("throw", throwAway);
         moat.addAction("equip", equipArmor);
         moat.addAction("off", unequipArmor);
-        moat.addAction("talk", talkAction);
         moat.addAction("stats", showStats);
         castle.addAction("backpack", showBackpack);
         castle.addAction("eq", showArmor);
         castle.addAction("throw", throwAway);
         castle.addAction("equip", equipArmor);
+        castle.addAction("talk", new TalkAction(new ArrayList<>(), castle));
         castle.addAction("off", unequipArmor);
         castle.addAction("stats", showStats);
         supervillain.addAction("backpack", showBackpack);
@@ -159,7 +161,7 @@ public final class WorldMap {
         supervillain.addAction("throw", throwAway);
         supervillain.addAction("equip", equipArmor);
         supervillain.addAction("off", unequipArmor);
-        supervillain.addAction("talk", talkAction);
+        supervillain.addAction("talk", new TalkAction(new ArrayList<>(), supervillain));
         supervillain.addAction("stats", showStats);
 
         // Init town
@@ -169,7 +171,8 @@ public final class WorldMap {
                 new InvestigateAction(
                         "Looking around all you can see are empty streets and"
                                 + "desolated buildings. The only person in your eyesight "
-                                + "is your headman and he looks like he wants to talk to you..."));
+                                + "is your headman and he looks like he wants to talk to you..."
+                                + "(Creatures around you: Headman)"));
 
         forest.addAction(
                 "investigate",
@@ -177,117 +180,331 @@ public final class WorldMap {
                         "You are surrounded by oaks and ferns."
                                 + "Wild animals seem to be restless."
                                 + "Suddenly little squirrel jumps on your shoulder!"
-                                + "She has something important to tell you!"));
+                                + "She has something important to tell you!"
+                                + "(Creatures around you: Jingle)"));
 
         forestGlade.addAction(
                 "investigate",
                 new InvestigateAction(
                         "In the middle of glade you spot something shinny."
-                                + "You are drawn to this object by the power of magic..."));
+                                + "You are drawn to this object by the power of magic..."
+                                + "Now you are sure that it is amulet of eternal love!"
+                                + "(There is no one here)"));
 
         shamanCabin.addAction(
-                "investigate", new InvestigateAction("You are blinded! You can't see anything!"));
-
-        medical.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "You are in the cabin... all you can see is various mixtures and medical tools."));
+                        "You are blinded! You can't see anything!"
+                                + "(Creatures around you: Thaddeus)"));
+
+        medicalCabin.addAction(
+                "investigate",
+                new InvestigateAction(
+                        "You are in the cabin... all you can see is various mixtures and medical tools."
+                                + "(Creatures around you: Britt)"));
 
         dungeonEntrance.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "What are you looking at?" + "The bridge won't cross itself!"));
+                        "What are you looking at?"
+                                + "The bridge won't cross itself!"
+                                + "(There is no one here)"));
 
         dungeon.addAction(
                 "investigate",
                 new DungeonInvestigateAction(
                         "Your torch allows you to see drawings and symbols on the walls,"
-                                + "pillaged and wrecked by time itself... Further ahead are two paths."));
+                                + "pillaged and wrecked by time itself... Further ahead are two paths."
+                                + "(There is no one here)"));
 
-        trap.addAction("investigate", new InvestigateAction("You feel too weak to look around..."));
+        trap.addAction(
+                "investigate",
+                new InvestigateAction(
+                        "You feel too weak to look around..." + "(There is no one here)"));
 
         chamberOfWealth.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "You notice that treasure had to be stuck here for hundreds years..."));
+                        "You notice that treasure had to be stuck here for hundreds years..."
+                                + "(There is no one here)"));
 
         dungeonEgress.addAction(
                 "investigate",
                 new InvestigateAction(
                         "You can't see any useful objects around you "
-                                + "you have to deal with them with what you got!"));
+                                + "you have to deal with them with what you got!"
+                                + "(Creatures around you: Marc, Hubhert)"));
 
         village.addAction(
                 "investigate",
                 new InvestigateAction(
                         "In front of you devastated lands stretching out for several "
-                                + "hundred kilometers across but you also spot the inn and the stable."));
+                                + "hundred kilometers across but you also spot the inn and the stable."
+                                + "(There is no one here)"));
 
         inn.addAction(
                 "investigate",
                 new InvestigateAction(
                         "The innkeeper is a short female. Room is full of injured soldiers... "
                                 + "You can hear someone is chanting songs of the fallen lands. "
-                                + "While you are looking around you spot a stranger "
-                                + "who approach you. He seems very drunk and out of nowhere "
-                                + "disgrace your name... (You cant talk or fight)"));
+                                + "(Creatures around you: Domenic, Raphael, Avery, Galen, Hilda, Darell)"));
 
         stable.addAction(
                 "investigate",
                 new InvestigateAction(
                         "You spot a tall man who smiles at you and "
-                                + "looks like he wants to offer something."));
+                                + "looks like he wants to offer something."
+                                + "(Creatures around you: Elvin)"));
 
         devastatedLands.addAction(
                 "investigate",
-                new InvestigateAction("There is no time to investigate! Hurry or you will die!"));
+                new InvestigateAction(
+                        "There is no time to investigate! Hurry or you will die!"
+                                + "(Creatures around you: Lucas, Claudius, Julian, Annis)"));
 
         moat.addAction(
                 "investigate",
                 new InvestigateAction(
                         "You are looking around and search something that could help you "
                                 + "pass the moat... you can't see anything useful but thin piece of wood. "
-                                + "You pick it up and place it across the moat. Now you can use it to go 'through'!"));
+                                + "You pick it up and place it across the moat. Now you can use it to go 'through'!"
+                                + "(There is no one here)"));
 
         castle.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "A massive granite door blocked your path. Dire warning messages are all over it, "
+                        "At the beginning of the corridor you spot a small cell full of unconscious prisoners..."
+                                + "Only three of them appear to be awake. You recognised them as mags from your village."
+                                + "A massive granite door blocked your path. Dire warning messages are all over it, "
                                 + "somehow untouched by time. You step closer to inspect it and... wait... you think "
                                 + "you can hear a whisper coming from behind the door... You can feel that "
-                                + "evil power is closer then ever... waiting on you."));
+                                + "evil power is closer then ever... waiting on you."
+                                + "(Creatures around you: Herschel, Merlin, Donovan)"));
 
         supervillain.addAction(
                 "investigate",
                 new InvestigateAction(
                         "You looked around but the only thing you could see were visions of all those "
-                                + "horrible things that must have happened in here..."));
+                                + "horrible things that must have happened in here..."
+                                + "(Creatures around you: Fasilius)"));
 
         // TODO: add all items to pick up
         var townItems = new HashMap<String, IItem>();
         townItems.put("shield", itemService.getItem(2));
-        townItems.put("tank", itemService.getItem(3));
         town.addAction("pick", new PickupAction(townItems));
 
-        var chadBackpack = new Backpack();
-        chadBackpack.putItem(itemService.getItem(1));
-        var chad =
+        // TODO: add all NPCs
+        var headmanBackpack = new Backpack();
+        headmanBackpack.putItem(itemService.getItem(1));
+        var headman =
                 new NPC(
                         null,
-                        chadBackpack,
-                        "Chad",
-                        List.of("Riichi", "Tsumo", "Iipeko", "Dora dora dora"));
+                        headmanBackpack,
+                        "Headman",
+                        List.of(
+                                "Your clan needs your help. Dark powers come from the most monstrous creature walking on Earth. "
+                                        + "Master of evil Fasilius has already conquered the other three animal lines, the only survivor is yours...",
+                                "Now, enemy forces have turned to your lands. You are the last living being who can stop him! I have chosen you to save us."
+                                        + "In order to do that you have to defeat Fasilius!",
+                                "I brought you shield, sword, magic wand, bow, arrows and some money. "
+                                        + "Take what you need and head out to save our future."));
 
-        // TODO: add all NPCs
-        town.addNPC(chad);
+        town.addNPC(headman);
+
+        var JingleBackpack = new Backpack();
+        headmanBackpack.putItem(itemService.getItem(1));
+        var magicSquirrel =
+                new NPC(
+                        null,
+                        JingleBackpack,
+                        "Jingle",
+                        List.of(
+                                "Hello, traveler. I am magic squirrel Jingle. My father, the greatest of the squirrel mages, saved me from being killed by Fasilius. "
+                                        + "Before his death he told me to warn the remaining clans... unfortunately only yours survived. "
+                                        + "I bring a story about the tragic occurrences that happened to our lands...",
+                                "In my dreams I still see the dead bodies of animals that fought for their lives with all their strength. "
+                                        + "The atrocities with which enemy forces have plundered villages cannot be described. "
+                                        + "They killed children and women, throwing them to be eaten by beings who barely resembled animals. "
+                                        + "Yellow-purple foam flowed from their mouths, and there was nothing in their eyes but pure madness. "
+                                        + "Men were handcuffed. Shackles wound their wrists and ankles to their bones, "
+                                        + "and later dragged them dying as prisoners straight into Fasilius' Castle.",
+                                "I can't talk about it anymore, good luck!"));
+
+        forest.addNPC(magicSquirrel);
+
+        var shaman =
+                new NPC(
+                        null,
+                        null,
+                        "Thaddeus",
+                        List.of(
+                                "I didn't expect guests...",
+                                "Either way, I'm Thaddeus, make yourself comfortable, I haven't talked to anyone in a long time. "
+                                        + "I will prepare an infusion of earthy leaves. You've probably heard of Fasylius' conquests...",
+                                "Fasilius chose a particularly cruel way to conquer the world. He hired a group of magicians who created "
+                                        + "a magic potion that turned every animal into a warrior entirely devoted to the forces of evil. "
+                                        + "If the mixture doesn't work, the unfortunate who was given it changes into a brainless being who only wants to murder.",
+                                "That's all I know about it. I'm going back to work. Stay as long as you like and good luck on your journey wherever you go. "
+                                        + "It was nice to talk to someone, soon from this loneliness I will start talking to stones."));
+
+        shamanCabin.addNPC(shaman);
+
+        var medical =
+                new NPC(
+                        null,
+                        null,
+                        "Britt",
+                        List.of(
+                                "You finally woke up...",
+                                "You probably wonder where you are, don't worry, I'm not your enemy. They call me Britt and I'm a medical. "
+                                        + "Last night a magical squirrel named Jingle informed me and my husband about an accident that occurred on the bridge... "
+                                        + "I guess you tried to get to the other side. I cured you and you can go back to the dungeon. I am returning to healing the wounded."));
+
+        medicalCabin.addNPC(medical);
+
+        var beast1 =
+                new NPC(
+                        null,
+                        null,
+                        "Hubhert",
+                        List.of("Wooooaaahhhhhh!!! Smash! Smash! Smaaaaash!"));
+
+        var beast2 = new NPC(null, null, "Marc", List.of("Wrrr..."));
+
+        dungeonEgress.addNPC(beast1);
+        dungeonEgress.addNPC(beast2);
+
+        var innNPC1 =
+                new NPC(
+                        null,
+                        null,
+                        "Domenic",
+                        List.of(
+                                "I have barely survived, I am so exhausted...",
+                                "Zzz...",
+                                "...zzz...",
+                                "...zzz...",
+                                "...zzz..."));
+
+        var innNPC2 =
+                new NPC(
+                        null,
+                        null,
+                        "Raphael",
+                        List.of(
+                                "I lost all my relatives, my city was razed to the ground...",
+                                "*sobbing*"));
+
+        var innNPC3 =
+                new NPC(
+                        null,
+                        null,
+                        "Avery",
+                        List.of(
+                                "I help to heal the wounded, but they are still coming...",
+                                "We are running out of antidote..."));
+
+        var innNPC4 =
+                new NPC(
+                        null,
+                        null,
+                        "Rory",
+                        List.of(
+                                "I miss him so much! He was my whole world, we had plans... now he's dead!",
+                                "If I could, I would kill Fasilius with my bare hands for what he has done"));
+
+        var innNPC5 =
+                new NPC(
+                        null,
+                        null,
+                        "Galen",
+                        List.of(
+                                "*chanting* Distant lands obsessed with ash and destruction, beautiful ladies cry for their lovers...",
+                                "*still chanting* Ohhhh they cry, ohhhh they cry, they cry",
+                                "*and still chanting*"));
+
+        var innkeeper = new NPC(null, null, "Hilda", List.of("I'm too busy to talk to you."));
+
+        var stranger =
+                new NPC(
+                        null,
+                        null,
+                        "Darell",
+                        List.of(
+                                "What do you want you dirty... stinky... motherfucker?!",
+                                "Do you want to fight? I will break your bones... "
+                                        + "(Fight him or leave him alone because he is too drunk to talk)"));
+
+        inn.addNPC(innNPC1);
+        inn.addNPC(innNPC2);
+        inn.addNPC(innNPC3);
+        inn.addNPC(innNPC4);
+        inn.addNPC(innNPC5);
+        inn.addNPC(innkeeper);
+        inn.addNPC(stranger);
+
+        var horseBoy =
+                new NPC(
+                        null,
+                        null,
+                        "Elvin",
+                        List.of(
+                                "Hello traveler, you look tired. In my stable there are the best horses that survived. "
+                                        + "I heard that you set out on this dangerous journey to save us. In return, I would like to give you my best steed, Bernard...",
+                                "Take good care of him, and good luck!"));
+
+        stable.addNPC(horseBoy);
+
+        var warrior1 = new NPC(null, null, "Lucas", List.of("Taste my sword you fagot!"));
+
+        var warrior2 =
+                new NPC(
+                        null,
+                        null,
+                        "Claudius",
+                        List.of("If I were you I would run as fast as I can..."));
+
+        var warrior3 = new NPC(null, null, "Julian", List.of("I will cut off all your limbs!"));
+
+        var warrior4 = new NPC(null, null, "Annis", List.of("I will break your neck!"));
+
+        devastatedLands.addNPC(warrior1);
+        devastatedLands.addNPC(warrior2);
+        devastatedLands.addNPC(warrior3);
+        devastatedLands.addNPC(warrior4);
+
+        var mag1 = new NPC(null, null, "Herschel", List.of("Please... help us!"));
+
+        var mag2 =
+                new NPC(
+                        null,
+                        null,
+                        "Merlin",
+                        List.of("Fasilius is using us as his weapon...", "Let us free!"));
+
+        var mag3 = new NPC(null, null, "Donovan", List.of("Oh I'm begging you..."));
+
+        castle.addNPC(mag1);
+        castle.addNPC(mag2);
+        castle.addNPC(mag3);
+
+        var fasilius =
+                new NPC(
+                        null,
+                        null,
+                        "Fasilius",
+                        List.of(
+                                "I was expecting you... I see you noticed your predecessor. As you can see, it didn't end well for him... "
+                                        + "killing him was a minor matter. Do I see tears in your eyes? Don't worry, his life was worth nothing anyway. "
+                                        + "I hope that the fight with you will be more exciting ...",
+                                "Your nation is the last obstacle to me taking over the whole world. Every little creature on this earth will have to submit to my power. "
+                                        + "A new era begins ... An era in which I proclaim the truth.",
+                                "Come on and fight me if you dare!"));
+
+        supervillain.addNPC(fasilius);
 
         // Make connections
-        town.addAction(
-                "go",
-                new GoAction(
-                        Map.of(
-                                "forest", forest,
-                                "woods", forest)));
+        town.addAction("go", new GoAction(Map.of("straight", forest)));
 
         forest.addAction(
                 "go",
@@ -298,11 +515,11 @@ public final class WorldMap {
 
         forestGlade.addAction("go", new GoAction(Map.of("straight", dungeonEntrance)));
 
-        shamanCabin.addAction("go", new GoAction(Map.of("inside", dungeonEntrance)));
+        shamanCabin.addAction("go", new GoAction(Map.of("straight", dungeonEntrance)));
 
-        medical.addAction("go", new GoAction(Map.of("dungeon", dungeonEntrance)));
+        medicalCabin.addAction("go", new GoAction(Map.of("straight", dungeonEntrance)));
 
-        dungeonEntrance.addAction("go", new DungeonEntranceGoAction(Map.of("dungeon", dungeon)));
+        dungeonEntrance.addAction("go", new DungeonEntranceGoAction(Map.of("straight", dungeon)));
 
         dungeon.addAction(
                 "go",
@@ -326,13 +543,13 @@ public final class WorldMap {
                                 "tavern", inn,
                                 "devastated lands", devastatedLands)));
 
-        inn.addAction("go", new GoAction(Map.of("village", village)));
+        inn.addAction("go", new GoAction(Map.of("straight", village)));
 
         stable.addAction("go", new GoAction(Map.of("straight", moat)));
 
         devastatedLands.addAction("go", new GoAction(Map.of("straight", moat)));
 
-        moat.addAction("go", new GoAction(Map.of("through", castle)));
+        moat.addAction("go", new GoAction(Map.of("straight", castle)));
 
         castle.addAction("go", new GoAction(Map.of("straight", supervillain)));
 
@@ -341,7 +558,7 @@ public final class WorldMap {
         locations.put("forest", forest);
         locations.put("forest glade", forestGlade);
         locations.put("shaman's cabin", shamanCabin);
-        locations.put("medical", medical);
+        locations.put("medical", medicalCabin);
         locations.put("dungeon entrance", dungeonEntrance);
         locations.put("dungeon", dungeon);
         locations.put("trap", trap);

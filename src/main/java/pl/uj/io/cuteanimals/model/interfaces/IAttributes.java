@@ -35,4 +35,12 @@ public interface IAttributes {
      * @return int type summary defence points.
      */
     int getDefence();
+
+    void addHealth(int health);
+
+    void addAttack(int attack);
+
+    void addLevel(int level);
+
+    void addDefence(int defence);
 }

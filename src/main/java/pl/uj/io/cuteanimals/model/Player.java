@@ -1,5 +1,7 @@
 package pl.uj.io.cuteanimals.model;
 
+import pl.uj.io.cuteanimals.action.BuffCharacter;
+import pl.uj.io.cuteanimals.model.fight.FightManager;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
 /**
@@ -14,6 +16,15 @@ public class Player implements IPlayer {
     private final IEquipment armorBackpack = new ArmorBackpack(this);
     private final IEquipment backpack = new PlayerBackpack(this);
     private GameState gameState = GameState.EXPLORATION;
+
+    //    List<IAction> abilities;
+    FightManager fightManager;
+
+    public Player() {
+        //        this.abilities = new ArrayList<>();
+        //        this.abilities.add( new StandardAttack(this) );
+        this.fightManager = new FightManager(this);
+    }
 
     @Override
     public IEquipment getEquipment() {
@@ -31,8 +42,11 @@ public class Player implements IPlayer {
     }
 
     @Override
-    public Result use(IAction action) {
-        return null;
+    public IResult use(IItem item) {
+        var eatingResult = new BuffCharacter(item.getAttributes()).execute(this);
+        getEquipment().removeItem(item);
+        var attackResult = fightManager.contrAttack();
+        return new Result(eatingResult.toString() + "\n" + attackResult);
     }
 
     @Override
@@ -50,7 +64,25 @@ public class Player implements IPlayer {
         return gameState;
     }
 
+    @Override
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    @Override
+    public String toString() {
+        return "Player";
+    }
+
+    @Override
+    public FightManager getFightManager() {
+        return fightManager;
+    }
+
+    @Override
+    public int getDamage(int damage) {
+        var taken = Math.max(0, damage - (stats.getDefence() / 2));
+        stats.addHealth(-taken);
+        return taken;
     }
 }

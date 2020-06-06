@@ -24,4 +24,9 @@ public class Result implements IResult {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    @Override
+    public String toString() {
+        return message;
+    }
 }

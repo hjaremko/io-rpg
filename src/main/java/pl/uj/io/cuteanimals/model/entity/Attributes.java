@@ -21,16 +21,16 @@ public class Attributes implements IAttributes {
     private final int id;
 
     @JsonProperty("health")
-    private final int health;
+    private int health;
 
     @JsonProperty("attack")
-    private final int attack;
+    private int attack;
 
     @JsonProperty("level")
-    private final int level;
+    private int level;
 
     @JsonProperty("defence")
-    private final int defence;
+    private int defence;
 
     public Attributes() {
         id = 0;
@@ -81,5 +81,25 @@ public class Attributes implements IAttributes {
     @Override
     public int getDefence() {
         return defence;
+    }
+
+    @Override
+    public void addHealth(int health) {
+        this.health += health;
+    }
+
+    @Override
+    public void addAttack(int attack) {
+        this.attack += attack;
+    }
+
+    @Override
+    public void addLevel(int level) {
+        this.level += level;
+    }
+
+    @Override
+    public void addDefence(int defence) {
+        this.defence += defence;
     }
 }

@@ -97,6 +97,14 @@ public class ItemService {
                         3,
                         attributesService.getAttributes(8),
                         ItemType.USABLE));
+        addItem(
+                new Item(
+                        9,
+                        "Apple",
+                        "Moist nad delicious.",
+                        1,
+                        attributesService.getAttributes(9),
+                        ItemType.USABLE));
     }
 
     public List<Item> getAllItems() {

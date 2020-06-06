@@ -1,28 +1,21 @@
 package pl.uj.io.cuteanimals.model;
 
-import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 
-/**
- * Provides methods to manage player's attributes.
- *
- * @version %I%
- * @since 0.2.0-SNAPSHOT
- */
-public class PlayerAttributes implements IAttributes {
+public class PlayerAttributes extends NPCAttributes {
+    /**
+     * Provides methods to manage player's attributes.
+     *
+     * @version %I%
+     * @since 0.2.0-SNAPSHOT
+     */
     private final ICharacter owner;
-    private int health;
-    private int attack;
-    private int level;
-    private int defence;
+
     private int experience;
 
     public PlayerAttributes(ICharacter owner) {
+        super(100, 1, 1, 0);
         this.owner = owner;
-        this.health = 100;
-        this.attack = 1;
-        this.level = 1;
-        this.defence = 0;
         this.experience = 0;
     }
 
@@ -67,23 +60,7 @@ public class PlayerAttributes implements IAttributes {
 
     public int getRequiredExperience() {
         // TODO: some sane formula
-        return this.level * 100;
-    }
-
-    public void addHealth(int health) {
-        this.health += health;
-    }
-
-    public void addAttack(int attack) {
-        this.attack += attack;
-    }
-
-    public void addLevel(int level) {
-        this.level += level;
-    }
-
-    public void addDefence(int defence) {
-        this.defence += defence;
+        return super.getLevel() * 100;
     }
 
     public void addExperience(int experience) {

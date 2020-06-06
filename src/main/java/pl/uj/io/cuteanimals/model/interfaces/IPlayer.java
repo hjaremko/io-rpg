@@ -1,20 +1,24 @@
 package pl.uj.io.cuteanimals.model.interfaces;
 
 import pl.uj.io.cuteanimals.model.GameState;
-import pl.uj.io.cuteanimals.model.Result;
+import pl.uj.io.cuteanimals.model.fight.FightManager;
 
 public interface IPlayer extends ICharacter {
     /**
-     * Gives result of using specific action.
+     * Gives result of using specific item.
      *
-     * @param action specifies action to execute.
+     * @param item specifies item to use.
      * @return Result type element.
      */
-    Result use(IAction action);
+    IResult use(IItem item);
 
     IResult changeLocation(ILocation where);
 
     GameState getCurrentGameState();
 
     void setGameState(GameState gameState);
+
+    FightManager getFightManager();
+
+    int getDamage(int damage);
 }

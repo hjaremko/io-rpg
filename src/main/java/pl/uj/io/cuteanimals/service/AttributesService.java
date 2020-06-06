@@ -21,7 +21,6 @@ public class AttributesService {
         this.attributesRepository = attributesRepository;
 
         // Add dummy attributes to prevent game from crashing
-        // TODO: remove
         var swordAttr = new Attributes(1, 0, 1, 1, 0);
         var shieldAttr = new Attributes(2, 0, 0, 1, 5);
         var magicWandAttr = new Attributes(3, 0, 3, 1, 0);
@@ -30,6 +29,7 @@ public class AttributesService {
         var coinAttr = new Attributes(6, 0, 0, 0, 0);
         var amuletAttr = new Attributes(7, 0, 0, 5, 0);
         var torchAttr = new Attributes(8, 0, 1, 0, 0);
+        var appleAttr = new Attributes(9, 30, 0, 1, 0);
 
         attributesRepository.saveAndFlush(swordAttr);
         attributesRepository.saveAndFlush(shieldAttr);
@@ -39,6 +39,7 @@ public class AttributesService {
         attributesRepository.saveAndFlush(coinAttr);
         attributesRepository.saveAndFlush(amuletAttr);
         attributesRepository.saveAndFlush(torchAttr);
+        attributesRepository.saveAndFlush(appleAttr);
     }
 
     public List<Attributes> getAllAttributes() {

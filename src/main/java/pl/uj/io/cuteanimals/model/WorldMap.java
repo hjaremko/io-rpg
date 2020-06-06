@@ -3,10 +3,7 @@ package pl.uj.io.cuteanimals.model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import pl.uj.io.cuteanimals.action.GoAction;
-import pl.uj.io.cuteanimals.action.InvestigateAction;
-import pl.uj.io.cuteanimals.action.PickupAction;
-import pl.uj.io.cuteanimals.action.TalkAction;
+import pl.uj.io.cuteanimals.action.*;
 import pl.uj.io.cuteanimals.action.entrance.EntranceRemoveHealthAction;
 import pl.uj.io.cuteanimals.location.LocationBuilder;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
@@ -230,6 +227,11 @@ public final class WorldMap {
         townItems.put("arrow", itemService.getItem(5));
         townItems.put("coin", itemService.getItem(6));
         townItems.put("torch", itemService.getItem(8));
+        townItems.put("apple", itemService.getItem(9));
+
+        var townMonsters = new HashMap<String, Monster>();
+        townMonsters.put("dummy", new Monster("Dummy", new NPCAttributes(30, 1, 1, 2)));
+
         town =
                 new LocationBuilder(town)
                         .addDefaultActions()
@@ -248,6 +250,7 @@ public final class WorldMap {
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", forest)))
                         .addAction("pick", new PickupAction(townItems))
+                        .addAction("fight", new FightAction(townMonsters))
                         .addNPC(headman)
                         .build();
 

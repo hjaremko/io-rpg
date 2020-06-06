@@ -36,6 +36,6 @@ public class TalkAction extends ArgumentAction {
 
     @Override
     public List<GameState> getAcceptableStates() {
-        return List.of(GameState.EXPLORATION, GameState.FIGHT);
+        return List.of(GameState.EXPLORATION);
     }
 }

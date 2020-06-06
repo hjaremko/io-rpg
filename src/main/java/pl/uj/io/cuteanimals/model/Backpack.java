@@ -6,25 +6,25 @@ import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
 
 public class Backpack implements IEquipment {
-    private final List<IItem> backpack = new ArrayList<>();
+    private final List<IItem> items = new ArrayList<>();
 
     @Override
     public List<IItem> getItems() {
-        return backpack;
+        return items;
     }
 
     @Override
     public boolean putItem(IItem item) {
-        return backpack.add(item);
+        return items.add(item);
     }
 
     @Override
     public boolean removeItem(IItem item) {
-        return backpack.remove(item);
+        return items.remove(item);
     }
 
     @Override
     public String showItems() {
-        return backpack.toString();
+        return items.toString();
     }
 }

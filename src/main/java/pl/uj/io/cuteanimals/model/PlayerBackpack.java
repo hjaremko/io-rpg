@@ -1,22 +1,16 @@
 package pl.uj.io.cuteanimals.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
 
 public class PlayerBackpack extends Backpack {
-    private final List<IItem> backpack = new ArrayList<>();
     private final ICharacter owner;
-    private int currentWeight = 0;
+    private int currentWeight;
 
     public PlayerBackpack(ICharacter owner) {
+        super();
         this.owner = owner;
-    }
-
-    @Override
-    public List<IItem> getItems() {
-        return backpack;
+        this.currentWeight = 0;
     }
 
     @Override
@@ -25,22 +19,17 @@ public class PlayerBackpack extends Backpack {
             return false;
         }
 
-        backpack.add(item);
+        getItems().add(item);
         currentWeight += item.getSize();
         return true;
     }
 
     @Override
     public boolean removeItem(IItem item) {
-        backpack.remove(item);
+        getItems().remove(item);
         currentWeight -= item.getSize();
         // TODO: check of possible (e.g. soul bounded items?)
         return true;
-    }
-
-    @Override
-    public String showItems() {
-        return backpack.toString();
     }
 
     public int getCapacity() {

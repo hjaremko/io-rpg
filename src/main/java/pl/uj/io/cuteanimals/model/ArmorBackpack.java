@@ -51,12 +51,12 @@ public class ArmorBackpack implements IEquipment {
 
     @Override
     public boolean removeItem(IItem item) {
-        if (weapon == item) {
+        if (weapon.equals(item)) {
             weapon = null;
             return true;
         }
 
-        if (armor == item) {
+        if (armor.equals(item)) {
             armor = null;
             return true;
         }

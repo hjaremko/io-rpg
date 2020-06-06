@@ -4,15 +4,10 @@ import java.util.List;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
 public class NPC implements ICharacter {
-
     private IEquipment armorBackpack;
-
     private IEquipment backpack;
-
     private String name;
-
-    private List<String> quotes;
-
+    private final List<String> quotes;
     private int quoteIndex;
 
     public NPC(IEquipment armorBackpack, IEquipment backpack, String name, List<String> quotes) {

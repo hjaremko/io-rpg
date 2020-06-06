@@ -177,4 +177,6 @@ public class Interpreter {
             Argument,
         }
     }
+
+    private Interpreter() {}
 }

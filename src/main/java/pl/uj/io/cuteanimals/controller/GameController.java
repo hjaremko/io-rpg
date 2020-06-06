@@ -28,7 +28,7 @@ public class GameController {
         logger.info("User (" + id + ") sent command: " + command);
 
         // TODO: replace with login
-        if (command.equals("start")) {
+        if ("start".equals(command)) {
             return gameService.getLocationInfo();
         }
 

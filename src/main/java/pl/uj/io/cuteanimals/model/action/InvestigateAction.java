@@ -1,6 +1,5 @@
 package pl.uj.io.cuteanimals.model.action;
 
-import java.util.ArrayList;
 import java.util.List;
 import pl.uj.io.cuteanimals.model.*;
 import pl.uj.io.cuteanimals.model.interfaces.*;
@@ -11,22 +10,12 @@ import pl.uj.io.cuteanimals.model.interfaces.*;
  * @version %I%
  * @since 0.0.1-SNAPSHOT
  */
-public class InvestigateAction implements IAction {
+public class InvestigateAction extends ArgumentlessAction {
     private final String infoMessage;
 
     public InvestigateAction(String infoMessage) {
+        super();
         this.infoMessage = infoMessage;
-    }
-
-    // TODO: argumentless actions
-    @Override
-    public List<String> getArgs() {
-        return new ArrayList<>();
-    }
-
-    @Override
-    public void setArgs(List<String> unused) {
-        // Investigate is argumentless.
     }
 
     @Override

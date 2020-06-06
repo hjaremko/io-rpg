@@ -1,30 +1,20 @@
 package pl.uj.io.cuteanimals.model.action;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
-import pl.uj.io.cuteanimals.model.interfaces.IAction;
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
-import pl.uj.io.cuteanimals.model.interfaces.IItem;
-import pl.uj.io.cuteanimals.model.interfaces.IResult;
+import pl.uj.io.cuteanimals.model.interfaces.*;
 
-public class EquipItem implements IAction {
-    private List<String> args;
-
-    public EquipItem() {
-        this.args = new ArrayList<>();
-    }
-
+public class EquipItem extends ArgumentAction {
     @Override
     public IResult execute(ICharacter character) {
         if (!getAcceptableStates().contains(character.getCurrentGameState())) {
             return new Result("This isn't the time for that.");
         }
 
-        var joined = String.join(" ", args);
-        args.clear();
+        var joined = String.join(" ", getArgs());
+        getArgs().clear();
 
         var toEquip = getItem(character.getEquipment().getItems(), joined);
 
@@ -40,16 +30,6 @@ public class EquipItem implements IAction {
         }
 
         return new Result("You can't wear that");
-    }
-
-    @Override
-    public List<String> getArgs() {
-        return args;
-    }
-
-    @Override
-    public void setArgs(List<String> args) {
-        this.args = args;
     }
 
     private Optional<IItem> getItem(final List<IItem> list, final String name) {

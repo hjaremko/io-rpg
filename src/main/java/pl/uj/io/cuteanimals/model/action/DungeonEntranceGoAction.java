@@ -1,32 +1,17 @@
 package pl.uj.io.cuteanimals.model.action;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import pl.uj.io.cuteanimals.model.*;
-import pl.uj.io.cuteanimals.model.interfaces.IAction;
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
-import pl.uj.io.cuteanimals.model.interfaces.ILocation;
-import pl.uj.io.cuteanimals.model.interfaces.IResult;
+import pl.uj.io.cuteanimals.model.interfaces.*;
 
-public class DungeonEntranceGoAction implements IAction {
+public class DungeonEntranceGoAction extends ArgumentAction {
     private final Map<String, ILocation> locations;
-    private List<String> args;
 
     public DungeonEntranceGoAction(Map<String, ILocation> wheres) {
+        super();
         locations = wheres;
-        args = new ArrayList<>();
-    }
-
-    @Override
-    public List<String> getArgs() {
-        return args;
-    }
-
-    @Override
-    public void setArgs(List<String> args) {
-        this.args = args;
     }
 
     @Override
@@ -35,9 +20,9 @@ public class DungeonEntranceGoAction implements IAction {
             return new Result("This action cannot be executed now");
         }
 
-        var joined = String.join(" ", args);
+        var joined = String.join(" ", getArgs());
         var toGo = locations.get(joined);
-        args.clear();
+        getArgs().clear();
 
         if (toGo == null) {
             return new Result("You want to go... where?");

@@ -9,7 +9,7 @@ import pl.uj.io.cuteanimals.model.interfaces.IItem;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 import pl.uj.io.cuteanimals.service.ItemService;
 
-public class WorldMap {
+public final class WorldMap {
     private static final WorldMap instance = new WorldMap();
     private final Map<String, ILocation> locations = new HashMap<>();
 

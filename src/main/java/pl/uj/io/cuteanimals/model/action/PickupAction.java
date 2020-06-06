@@ -1,22 +1,17 @@
 package pl.uj.io.cuteanimals.model.action;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
-import pl.uj.io.cuteanimals.model.interfaces.IAction;
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
-import pl.uj.io.cuteanimals.model.interfaces.IItem;
-import pl.uj.io.cuteanimals.model.interfaces.IResult;
+import pl.uj.io.cuteanimals.model.interfaces.*;
 
-public class PickupAction implements IAction {
+public class PickupAction extends ArgumentAction {
     private final Map<String, IItem> items;
-    private List<String> args;
 
     public PickupAction(Map<String, IItem> items) {
+        super();
         this.items = items;
-        this.args = new ArrayList<>();
     }
 
     @Override
@@ -25,9 +20,9 @@ public class PickupAction implements IAction {
             return new Result("This isn't the time for that.");
         }
 
-        var joined = String.join(" ", args);
+        var joined = String.join(" ", getArgs());
         var toPickup = items.get(joined);
-        args.clear();
+        getArgs().clear();
 
         if (toPickup == null) {
             return new Result("Nothing here");
@@ -42,16 +37,6 @@ public class PickupAction implements IAction {
         var itemName = toPickup.getName();
         items.remove(joined);
         return new Result("You have picked " + itemName + " up");
-    }
-
-    @Override
-    public List<String> getArgs() {
-        return args;
-    }
-
-    @Override
-    public void setArgs(List<String> args) {
-        this.args = args;
     }
 
     @Override

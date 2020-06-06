@@ -9,9 +9,8 @@ import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 
 public class Medical implements ILocation {
-    private Map<String, IAction> availableActions;
-
-    private List<NPC> npcList;
+    private final Map<String, IAction> availableActions;
+    private final List<NPC> npcList;
 
     public Medical() {
         this.availableActions = new HashMap<>();
@@ -44,7 +43,7 @@ public class Medical implements ILocation {
     }
 
     @Override
-    public void addNPC(NPC n) {
-        npcList.add(n);
+    public void addNPC(NPC npc) {
+        npcList.add(npc);
     }
 }

@@ -26,9 +26,9 @@ public class AttributesService {
         var tarczaAttr = new Attributes(2, 0, 0, 1, 5);
         var czolgAttr = new Attributes(3, 0, 5, 3, 20);
 
-        addAttributes(mieczAttr);
-        addAttributes(tarczaAttr);
-        addAttributes(czolgAttr);
+        attributesRepository.saveAndFlush(mieczAttr);
+        attributesRepository.saveAndFlush(tarczaAttr);
+        attributesRepository.saveAndFlush(czolgAttr);
     }
 
     public List<Attributes> getAllAttributes() {

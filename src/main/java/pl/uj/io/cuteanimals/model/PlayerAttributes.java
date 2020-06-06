@@ -5,14 +5,19 @@ import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 
 public class PlayerAttributes implements IAttributes {
     private final ICharacter owner;
-    private int health = 100;
-    private int attack = 1;
-    private int level = 1;
-    private int defence = 0;
-    private int experience = 0;
+    private int health;
+    private int attack;
+    private int level;
+    private int defence;
+    private int experience;
 
     public PlayerAttributes(ICharacter owner) {
         this.owner = owner;
+        this.health = 100;
+        this.attack = 1;
+        this.level = 1;
+        this.defence = 0;
+        this.experience = 0;
     }
 
     @Override

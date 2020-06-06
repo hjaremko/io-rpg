@@ -16,14 +16,12 @@ import pl.uj.io.cuteanimals.model.interpreter.Interpreter;
 public class GameService {
 
     private static final Logger logger = LoggerFactory.getLogger(GameService.class);
-    private final ItemService itemService;
     // TODO: replace with multiple players, they should be initialized after WorldMap
     private final Player player;
 
     @Autowired
     public GameService(ItemService itemService) {
         // TODO: use repository
-        this.itemService = itemService;
         WorldMap.getInstance().initialize(itemService);
         // Every new player should spawn with sword
         player = new Player();

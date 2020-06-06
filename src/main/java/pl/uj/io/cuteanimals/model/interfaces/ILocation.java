@@ -47,5 +47,5 @@ public interface ILocation {
      */
     List<IEquipment> getItems();
 
-    void addNPC(NPC n);
+    void addNPC(NPC npc);
 }

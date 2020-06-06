@@ -12,6 +12,7 @@ import pl.uj.io.cuteanimals.model.interfaces.DefaultLocation;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 
+/** Helper class used to build locations during WorldMap initialization */
 public class LocationBuilder {
     DefaultLocation location;
     String description;

@@ -169,123 +169,140 @@ public final class WorldMap {
         town.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "Looking around all you can see are empty streets and"
+                        "Looking around all you can see are empty streets and "
                                 + "desolated buildings. The only person in your eyesight "
-                                + "is your headman and he looks like he wants to talk to you..."
-                                + "(Creatures around you: Headman)"));
+                                + "is your headman and he looks like he wants to talk to you...\n"
+                                + "(Creatures around you: Headman)\n"
+                                + "(Where you can go: straight)"));
 
         forest.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "You are surrounded by oaks and ferns."
-                                + "Wild animals seem to be restless."
-                                + "Suddenly little squirrel jumps on your shoulder!"
-                                + "She has something important to tell you!"
-                                + "(Creatures around you: Jingle)"));
+                        "You are surrounded by oaks and ferns. "
+                                + "Wild animals seem to be restless. "
+                                + "Suddenly little squirrel jumps on your shoulder! "
+                                + "She has something important to tell you!\n"
+                                + "(Creatures around you: Jingle)\n"
+                                + "(Where you can go: left, right)"));
 
         forestGlade.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "In the middle of glade you spot something shinny."
-                                + "You are drawn to this object by the power of magic..."
-                                + "Now you are sure that it is amulet of eternal love!"
-                                + "(There is no one here)"));
+                        "In the middle of glade you spot something shinny. "
+                                + "You are drawn to this object by the power of magic... "
+                                + "Now you are sure that it is amulet of eternal love!\n"
+                                + "(There is no one here)\n"
+                                + "(Where you can go: straight)"));
 
         shamanCabin.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "You are blinded! You can't see anything!"
-                                + "(Creatures around you: Thaddeus)"));
+                        "You are blinded! You can't see anything!\n"
+                                + "(Creatures around you: Thaddeus)\n"
+                                + "(Where you can go: straight)"));
 
         medicalCabin.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "You are in the cabin... all you can see is various mixtures and medical tools."
-                                + "(Creatures around you: Britt)"));
+                        "You are in the cabin... all you can see is various mixtures and medical tools.\n"
+                                + "(Creatures around you: Britt)\n"
+                                + "(Where you can go: straight)"));
 
         dungeonEntrance.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "What are you looking at?"
-                                + "The bridge won't cross itself!"
-                                + "(There is no one here)"));
+                        "What are you looking at? "
+                                + "The bridge won't cross itself!\n"
+                                + "(There is no one here)\n"
+                                + "(Where you can go: straight)"));
 
         dungeon.addAction(
                 "investigate",
                 new DungeonInvestigateAction(
-                        "Your torch allows you to see drawings and symbols on the walls,"
-                                + "pillaged and wrecked by time itself... Further ahead are two paths."
-                                + "(There is no one here)"));
+                        "Your torch allows you to see drawings and symbols on the walls, "
+                                + "pillaged and wrecked by time itself... Further ahead are two paths.\n"
+                                + "(There is no one here)\n"
+                                + "(Where you can go: left, right)"));
 
         trap.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "You feel too weak to look around..." + "(There is no one here)"));
+                        "You feel too weak to look around...\n"
+                                + "(There is no one here)\n"
+                                + "(Where you can go: straight)"));
 
         chamberOfWealth.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "You notice that treasure had to be stuck here for hundreds years..."
-                                + "(There is no one here)"));
+                        "You notice that treasure had to be stuck here for hundreds years...\n"
+                                + "(There is no one here)\n"
+                                + "(Where you can go: straight)"));
 
         dungeonEgress.addAction(
                 "investigate",
                 new InvestigateAction(
                         "You can't see any useful objects around you "
-                                + "you have to deal with them with what you got!"
-                                + "(Creatures around you: Marc, Hubhert)"));
+                                + "you have to deal with them with what you got!\n"
+                                + "(Creatures around you: Marc, Hubhert)\n"
+                                + "(Where you can go: straight)"));
 
         village.addAction(
                 "investigate",
                 new InvestigateAction(
                         "In front of you devastated lands stretching out for several "
-                                + "hundred kilometers across but you also spot the inn and the stable."
-                                + "(There is no one here)"));
+                                + "hundred kilometers across but you also spot the inn and the stable.\n"
+                                + "(There is no one here)\n"
+                                + "(Where you can go: straight, inn, stable)"));
 
         inn.addAction(
                 "investigate",
                 new InvestigateAction(
                         "The innkeeper is a short female. Room is full of injured soldiers... "
-                                + "You can hear someone is chanting songs of the fallen lands. "
-                                + "(Creatures around you: Domenic, Raphael, Avery, Galen, Hilda, Darell)"));
+                                + "You can hear someone is chanting songs of the fallen lands.\n"
+                                + "(Creatures around you: Domenic, Raphael, Avery, Galen, Hilda, Darell)\n"
+                                + "(Where you can go: village)"));
 
         stable.addAction(
                 "investigate",
                 new InvestigateAction(
                         "You spot a tall man who smiles at you and "
-                                + "looks like he wants to offer something."
-                                + "(Creatures around you: Elvin)"));
+                                + "looks like he wants to offer something.\n"
+                                + "(Creatures around you: Elvin)\n"
+                                + "(Where you can go: straight)"));
 
         devastatedLands.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "There is no time to investigate! Hurry or you will die!"
-                                + "(Creatures around you: Lucas, Claudius, Julian, Annis)"));
+                        "There is no time to investigate! Hurry or you will die!\n"
+                                + "(Creatures around you: Lucas, Claudius, Julian, Annis)\n"
+                                + "(Where you can go: straight)"));
 
         moat.addAction(
                 "investigate",
                 new InvestigateAction(
                         "You are looking around and search something that could help you "
                                 + "pass the moat... you can't see anything useful but thin piece of wood. "
-                                + "You pick it up and place it across the moat. Now you can use it to go 'through'!"
-                                + "(There is no one here)"));
+                                + "You pick it up and place it across the moat. Now you can use it to go through!\n"
+                                + "(There is no one here)\n"
+                                + "(Where you can go: straight)"));
 
         castle.addAction(
                 "investigate",
                 new InvestigateAction(
-                        "At the beginning of the corridor you spot a small cell full of unconscious prisoners..."
-                                + "Only three of them appear to be awake. You recognised them as mags from your village."
+                        "At the beginning of the corridor you spot a small cell full of unconscious prisoners... "
+                                + "Only three of them appear to be awake. You recognised them as mags from your village. "
                                 + "A massive granite door blocked your path. Dire warning messages are all over it, "
                                 + "somehow untouched by time. You step closer to inspect it and... wait... you think "
                                 + "you can hear a whisper coming from behind the door... You can feel that "
-                                + "evil power is closer then ever... waiting on you."
-                                + "(Creatures around you: Herschel, Merlin, Donovan)"));
+                                + "evil power is closer then ever... waiting on you.\n"
+                                + "(Creatures around you: Herschel, Merlin, Donovan)\n"
+                                + "(Where you can go: straight)"));
 
         supervillain.addAction(
                 "investigate",
                 new InvestigateAction(
                         "You looked around but the only thing you could see were visions of all those "
-                                + "horrible things that must have happened in here..."
+                                + "horrible things that must have happened in here...\n"
                                 + "(Creatures around you: Fasilius)"));
 
         // TODO: add all items to pick up
@@ -540,8 +557,7 @@ public final class WorldMap {
                         Map.of(
                                 "stable", stable,
                                 "inn", inn,
-                                "tavern", inn,
-                                "devastated lands", devastatedLands)));
+                                "straight", devastatedLands)));
 
         inn.addAction("go", new GoAction(Map.of("straight", village)));
 

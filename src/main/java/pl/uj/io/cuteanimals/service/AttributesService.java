@@ -22,13 +22,21 @@ public class AttributesService {
 
         // Add dummy attributes to prevent game from crashing
         // TODO: remove
-        var mieczAttr = new Attributes(1, 0, 1, 1, 0);
-        var tarczaAttr = new Attributes(2, 0, 0, 1, 5);
-        var czolgAttr = new Attributes(3, 0, 5, 3, 20);
+        var swordAttr = new Attributes(1, 0, 1, 1, 0);
+        var shieldAttr = new Attributes(2, 0, 0, 1, 5);
+        var magicWandAttr = new Attributes(3, 0, 3, 1, 0);
+        var bowAttr = new Attributes(4, 0, 2, 1, 0);
+        var arrowAttr = new Attributes(5, 0, 1, 1, 0);
+        var coinAttr = new Attributes(6, 0, 0, 0, 0);
+        var amuletAttr = new Attributes(7, 0, 0, 5, 0);
 
-        attributesRepository.saveAndFlush(mieczAttr);
-        attributesRepository.saveAndFlush(tarczaAttr);
-        attributesRepository.saveAndFlush(czolgAttr);
+        attributesRepository.saveAndFlush(swordAttr);
+        attributesRepository.saveAndFlush(shieldAttr);
+        attributesRepository.saveAndFlush(magicWandAttr);
+        attributesRepository.saveAndFlush(bowAttr);
+        attributesRepository.saveAndFlush(arrowAttr);
+        attributesRepository.saveAndFlush(coinAttr);
+        attributesRepository.saveAndFlush(amuletAttr);
     }
 
     public List<Attributes> getAllAttributes() {

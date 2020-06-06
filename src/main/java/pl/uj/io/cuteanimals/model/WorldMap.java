@@ -305,12 +305,21 @@ public final class WorldMap {
                                 + "horrible things that must have happened in here...\n"
                                 + "(Creatures around you: Fasilius)"));
 
-        // TODO: add all items to pick up
+        // Pick up items
         var townItems = new HashMap<String, IItem>();
+        townItems.put("sword", itemService.getItem(1));
         townItems.put("shield", itemService.getItem(2));
+        townItems.put("wand", itemService.getItem(3));
+        townItems.put("bow", itemService.getItem(4));
+        townItems.put("arrow", itemService.getItem(5));
+        townItems.put("coin", itemService.getItem(6));
         town.addAction("pick", new PickupAction(townItems));
 
-        // TODO: add all NPCs
+        var gladeItems = new HashMap<String, IItem>();
+        gladeItems.put("amulet", itemService.getItem(7));
+        forestGlade.addAction("pick", new PickupAction(gladeItems));
+
+        // All NPCs
         var headmanBackpack = new Backpack();
         headmanBackpack.putItem(itemService.getItem(1));
         var headman =

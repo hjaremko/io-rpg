@@ -31,27 +31,63 @@ public class ItemService {
         addItem(
                 new Item(
                         1,
-                        "Miecz",
-                        "Zwykły miecz",
+                        "Sword",
+                        "Regular sword",
                         3,
                         attributesService.getAttributes(1),
                         ItemType.WEAPON));
         addItem(
                 new Item(
                         2,
-                        "Tarcza",
-                        "Zwykła tarcza",
+                        "Shield",
+                        "Regular shield",
                         3,
                         attributesService.getAttributes(2),
                         ItemType.ARMOR));
         addItem(
                 new Item(
                         3,
-                        "durzy czołg",
-                        "boje sie go",
-                        20,
+                        "Magic wand",
+                        "Basic magic wand",
+                        1,
                         attributesService.getAttributes(3),
                         ItemType.WEAPON));
+
+        addItem(
+                new Item(
+                        4,
+                        "Bow",
+                        "Regular bow",
+                        2,
+                        attributesService.getAttributes(4),
+                        ItemType.WEAPON));
+
+        addItem(
+                new Item(
+                        5,
+                        "Arrow",
+                        "regular arrow",
+                        1,
+                        attributesService.getAttributes(5),
+                        ItemType.WEAPON));
+
+        addItem(
+                new Item(
+                        6,
+                        "Coin",
+                        "Golden coin",
+                        1,
+                        attributesService.getAttributes(6),
+                        ItemType.USABLE));
+
+        addItem(
+                new Item(
+                        7,
+                        "Amulet",
+                        "Amulet of eternal love",
+                        1,
+                        attributesService.getAttributes(7),
+                        ItemType.NEUTRAL));
     }
 
     public List<Item> getAllItems() {

@@ -19,8 +19,8 @@ public class InvestigateAction extends ArgumentlessAction {
     }
 
     @Override
-    public IResult execute(ICharacter character) {
-        if (!getAcceptableStates().contains(character.getCurrentGameState())) {
+    public IResult execute(IPlayer player) {
+        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
             return new Result("This isn't the time for that.");
         }
 

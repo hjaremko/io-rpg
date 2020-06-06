@@ -8,24 +8,24 @@ import pl.uj.io.cuteanimals.model.interfaces.*;
 
 public class EquipItem extends ArgumentAction {
     @Override
-    public IResult execute(ICharacter character) {
-        if (!getAcceptableStates().contains(character.getCurrentGameState())) {
+    public IResult execute(IPlayer player) {
+        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
             return new Result("This isn't the time for that.");
         }
 
         var joined = String.join(" ", getArgs());
         getArgs().clear();
 
-        var toEquip = getItem(character.getEquipment().getItems(), joined);
+        var toEquip = getItem(player.getEquipment().getItems(), joined);
 
         if (toEquip.isEmpty()) {
             return new Result("You don't have that");
         }
 
         var itemName = toEquip.get().getName();
-        character.getEquipment().removeItem(toEquip.get());
+        player.getEquipment().removeItem(toEquip.get());
 
-        if (character.getArmor().putItem(toEquip.get())) {
+        if (player.getArmor().putItem(toEquip.get())) {
             return new Result("You have put " + itemName + " on");
         }
 

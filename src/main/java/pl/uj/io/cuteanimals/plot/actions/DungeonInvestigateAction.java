@@ -14,12 +14,12 @@ public class DungeonInvestigateAction extends ArgumentlessAction {
     }
 
     @Override
-    public IResult execute(ICharacter character) {
-        if (!getAcceptableStates().contains(character.getCurrentGameState())) {
+    public IResult execute(IPlayer player) {
+        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
             return new Result("This action cannot be executed now");
         }
 
-        for (IItem item : character.getArmor().getItems()) {
+        for (IItem item : player.getArmor().getItems()) {
             if (item.getName().equals("torch")) {
                 return new Result(infoMessage);
             }

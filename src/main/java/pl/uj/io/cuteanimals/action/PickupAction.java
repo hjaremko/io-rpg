@@ -15,8 +15,8 @@ public class PickupAction extends ArgumentAction {
     }
 
     @Override
-    public IResult execute(ICharacter character) {
-        if (!getAcceptableStates().contains(character.getCurrentGameState())) {
+    public IResult execute(IPlayer player) {
+        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
             return new Result("This isn't the time for that.");
         }
 
@@ -28,7 +28,7 @@ public class PickupAction extends ArgumentAction {
             return new Result("Nothing here");
         }
 
-        if (!character.getEquipment().putItem(toPickup)) {
+        if (!player.getEquipment().putItem(toPickup)) {
             return new Result("This item is too heavy!");
         }
 

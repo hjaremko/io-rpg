@@ -20,12 +20,12 @@ public class TalkAction extends ArgumentAction {
     }
 
     @Override
-    public IResult execute(ICharacter character) {
+    public IResult execute(IPlayer player) {
         if (getArgs().isEmpty()) {
             return new Result("Who do you want to talk to?");
         }
 
-        if (!getAcceptableStates().contains(character.getCurrentGameState())) {
+        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
             return new Result("This isn't the time for that.");
         }
 

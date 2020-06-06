@@ -5,21 +5,21 @@ import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.PlayerBackpack;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction;
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class ShowBackpack extends ArgumentlessAction {
     @Override
-    public IResult execute(ICharacter character) {
-        if (!getAcceptableStates().contains(character.getCurrentGameState())) {
+    public IResult execute(IPlayer player) {
+        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
             return new Result("This isn't the time for that.");
         }
 
         var spaceLeft =
                 "Space left: "
-                        + ((PlayerBackpack) character.getEquipment()).getRemainingCapacity()
+                        + ((PlayerBackpack) player.getEquipment()).getRemainingCapacity()
                         + "\n";
-        return new Result(spaceLeft + character.getEquipment().showItems());
+        return new Result(spaceLeft + player.getEquipment().showItems());
     }
 
     @Override

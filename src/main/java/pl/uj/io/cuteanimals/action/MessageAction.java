@@ -4,7 +4,7 @@ import java.util.List;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.ArgumentAction;
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 /**
@@ -15,7 +15,7 @@ import pl.uj.io.cuteanimals.model.interfaces.IResult;
  */
 public class MessageAction extends ArgumentAction {
     @Override
-    public IResult execute(ICharacter character) {
+    public IResult execute(IPlayer player) {
         return new Result(getArgs().toString());
     }
 

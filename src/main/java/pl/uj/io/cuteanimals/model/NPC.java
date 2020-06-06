@@ -33,19 +33,6 @@ public class NPC implements ICharacter {
         return null;
     }
 
-    @Override
-    public Result use(IAction action) {
-        return null;
-    }
-
-    @Override
-    public void changeLocation(ILocation where) {}
-
-    @Override
-    public GameState getCurrentGameState() {
-        return null;
-    }
-
     public void setArmorBackpack(IEquipment armorBackpack) {
         this.armorBackpack = armorBackpack;
     }

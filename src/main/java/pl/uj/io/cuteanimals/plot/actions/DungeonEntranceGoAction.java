@@ -15,8 +15,8 @@ public class DungeonEntranceGoAction extends ArgumentAction {
     }
 
     @Override
-    public IResult execute(ICharacter character) {
-        if (!getAcceptableStates().contains(character.getCurrentGameState())) {
+    public IResult execute(IPlayer player) {
+        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
             return new Result("This action cannot be executed now");
         }
 
@@ -34,7 +34,7 @@ public class DungeonEntranceGoAction extends ArgumentAction {
             toGo = WorldMap.getInstance().getLocation("medical");
         }
 
-        character.changeLocation(toGo);
+        player.changeLocation(toGo);
         return new Result(toGo.getDescription());
     }
 

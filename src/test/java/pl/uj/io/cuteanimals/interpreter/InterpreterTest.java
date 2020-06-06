@@ -1,4 +1,4 @@
-package pl.uj.io.cuteanimals.model;
+package pl.uj.io.cuteanimals.interpreter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -11,8 +11,7 @@ import org.junit.jupiter.api.Test;
 import pl.uj.io.cuteanimals.action.GoAction;
 import pl.uj.io.cuteanimals.action.InvestigateAction;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
-import pl.uj.io.cuteanimals.interpreter.Expression;
-import pl.uj.io.cuteanimals.interpreter.Interpreter;
+import pl.uj.io.cuteanimals.model.Player;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.plot.locations.Town;
 

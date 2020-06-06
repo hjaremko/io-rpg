@@ -29,8 +29,6 @@ public interface ILocation {
      */
     Map<String, IAction> getAvailableActions();
 
-    void addAction(String command, IAction action);
-
     /**
      * Gives a list of non-playable-characters that are currently in the Location that the Player
      * can integrate with (start a fight, conversation, buy something).
@@ -46,6 +44,4 @@ public interface ILocation {
      * @return list of elements of IEquipment type.
      */
     List<IEquipment> getItems();
-
-    void addNPC(NPC npc);
 }

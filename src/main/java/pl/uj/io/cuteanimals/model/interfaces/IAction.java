@@ -17,7 +17,7 @@ public interface IAction {
      * @param character specifies character whose state can be modified.
      * @return IResult object with information about outcome of the action.
      */
-    IResult execute(IPlayer character);
+    IResult execute(IPlayer player);
 
     /** @return string representation of action arguments, e.g location name or item name */
     List<String> getArgs();

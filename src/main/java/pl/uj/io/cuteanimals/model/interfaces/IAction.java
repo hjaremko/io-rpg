@@ -14,7 +14,7 @@ public interface IAction {
     /**
      * Performs action that can e.g. modify character attributes etc.
      *
-     * @param character specifies character whose state can be modified.
+     * @param player specifies character whose state can be modified.
      * @return IResult object with information about outcome of the action.
      */
     IResult execute(IPlayer player);

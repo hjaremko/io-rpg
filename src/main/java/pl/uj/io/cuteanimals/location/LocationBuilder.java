@@ -27,7 +27,7 @@ public class LocationBuilder {
     }
 
     public LocationBuilder(DefaultLocation location) {
-        super();
+        this();
         this.location = location;
     }
 

@@ -6,23 +6,14 @@ import java.util.Random;
 import pl.uj.io.cuteanimals.model.*;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
-public class DungeonEntranceGoAction extends ArgumentAction {
-    private final Map<String, ILocation> locations;
-
+public class DungeonEntranceGoAction extends ContainerArgumentAction<ILocation> {
     public DungeonEntranceGoAction(Map<String, ILocation> wheres) {
-        super();
-        locations = wheres;
+        super(wheres);
     }
 
     @Override
-    public IResult execute(IPlayer player) {
-        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
-            return new Result("This action cannot be executed now");
-        }
-
-        var joined = String.join(" ", getArgs());
-        var toGo = locations.get(joined);
-        getArgs().clear();
+    public IResult actionBody(IPlayer player, String toGoName) {
+        var toGo = objects.get(toGoName);
 
         if (toGo == null) {
             return new Result("You want to go... where?");

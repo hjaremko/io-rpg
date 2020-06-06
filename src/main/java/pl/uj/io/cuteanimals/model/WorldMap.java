@@ -1,6 +1,5 @@
 package pl.uj.io.cuteanimals.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -234,7 +233,7 @@ public final class WorldMap {
                 (Town)
                         new LocationBuilder(town)
                                 .addDefaultActions()
-                                .addAction("talk", new TalkAction(new ArrayList<>(), town))
+                                .addAction("talk", new TalkAction(town))
                                 .addAction(
                                         "investigate",
                                         new InvestigateAction(
@@ -251,7 +250,7 @@ public final class WorldMap {
                 (Forest)
                         new LocationBuilder(forest)
                                 .addDefaultActions()
-                                .addAction("talk", new TalkAction(new ArrayList<>(), forest))
+                                .addAction("talk", new TalkAction(forest))
                                 .addAction(
                                         "investigate",
                                         new InvestigateAction(
@@ -290,7 +289,7 @@ public final class WorldMap {
                 (ShamanCabin)
                         new LocationBuilder(shamanCabin)
                                 .addDefaultActions()
-                                .addAction("talk", new TalkAction(new ArrayList<>(), shamanCabin))
+                                .addAction("talk", new TalkAction(shamanCabin))
                                 .addAction(
                                         "investigate",
                                         new InvestigateAction(
@@ -304,7 +303,7 @@ public final class WorldMap {
                 (MedicalCabin)
                         new LocationBuilder(medicalCabin)
                                 .addDefaultActions()
-                                .addAction("talk", new TalkAction(new ArrayList<>(), medicalCabin))
+                                .addAction("talk", new TalkAction(medicalCabin))
                                 .addAction(
                                         "investigate",
                                         new InvestigateAction(
@@ -375,7 +374,7 @@ public final class WorldMap {
                 (DungeonEgress)
                         new LocationBuilder(dungeonEgress)
                                 .addDefaultActions()
-                                .addAction("talk", new TalkAction(new ArrayList<>(), dungeonEgress))
+                                .addAction("talk", new TalkAction(dungeonEgress))
                                 .addAction(
                                         "investigate",
                                         new InvestigateAction(
@@ -411,7 +410,7 @@ public final class WorldMap {
                 (Inn)
                         new LocationBuilder(inn)
                                 .addDefaultActions()
-                                .addAction("talk", new TalkAction(new ArrayList<>(), inn))
+                                .addAction("talk", new TalkAction(inn))
                                 .addAction(
                                         "investigate",
                                         new InvestigateAction(
@@ -432,7 +431,7 @@ public final class WorldMap {
                 (Stable)
                         new LocationBuilder(stable)
                                 .addDefaultActions()
-                                .addAction("talk", new TalkAction(new ArrayList<>(), stable))
+                                .addAction("talk", new TalkAction(stable))
                                 .addAction(
                                         "investigate",
                                         new InvestigateAction(
@@ -447,8 +446,7 @@ public final class WorldMap {
                 (DevastatedLands)
                         new LocationBuilder(devastatedLands)
                                 .addDefaultActions()
-                                .addAction(
-                                        "talk", new TalkAction(new ArrayList<>(), devastatedLands))
+                                .addAction("talk", new TalkAction(devastatedLands))
                                 .addAction(
                                         "investigate",
                                         new InvestigateAction(
@@ -479,7 +477,7 @@ public final class WorldMap {
                 (Castle)
                         new LocationBuilder(castle)
                                 .addDefaultActions()
-                                .addAction("talk", new TalkAction(new ArrayList<>(), castle))
+                                .addAction("talk", new TalkAction(castle))
                                 .addAction(
                                         "investigate",
                                         new InvestigateAction(
@@ -500,7 +498,7 @@ public final class WorldMap {
                 (Supervillain)
                         new LocationBuilder(supervillain)
                                 .addDefaultActions()
-                                .addAction("talk", new TalkAction(new ArrayList<>(), supervillain))
+                                .addAction("talk", new TalkAction(supervillain))
                                 .addAction(
                                         "investigate",
                                         new InvestigateAction(

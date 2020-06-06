@@ -15,7 +15,7 @@ import pl.uj.io.cuteanimals.model.interfaces.IResult;
  */
 public class MessageAction extends ArgumentAction {
     @Override
-    public IResult execute(IPlayer player) {
+    protected IResult actionBody(IPlayer player, String object) {
         return new Result(getArgs().toString());
     }
 

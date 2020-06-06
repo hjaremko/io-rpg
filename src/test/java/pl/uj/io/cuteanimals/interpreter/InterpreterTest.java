@@ -61,7 +61,7 @@ class InterpreterTest {
         var result = up.interpret(context);
 
         assertThat(
-                result.execute(null)
+                result.execute(new Player())
                         .getMessage()
                         .equals(List.of("up", "right", "left").toString()));
     }

@@ -1,6 +1,7 @@
 package pl.uj.io.cuteanimals.model.interfaces;
 
 import java.util.List;
+import pl.uj.io.cuteanimals.model.Result;
 
 /**
  * Provides compatibility with ArgumentAction
@@ -18,4 +19,15 @@ public abstract class ArgumentlessAction implements IAction {
     /** @param args string representation of action arguments, e.g location name or item name */
     @Override
     public void setArgs(List<String> args) {}
+
+    @Override
+    public IResult execute(IPlayer player) {
+        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
+            return new Result("This isn't the time for that.");
+        }
+
+        return actionBody(player);
+    }
+
+    protected abstract IResult actionBody(IPlayer player);
 }

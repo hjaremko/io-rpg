@@ -10,11 +10,7 @@ import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class ShowBackpack extends ArgumentlessAction {
     @Override
-    public IResult execute(IPlayer player) {
-        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
-            return new Result("This isn't the time for that.");
-        }
-
+    public IResult actionBody(IPlayer player) {
         var spaceLeft =
                 "Space left: "
                         + ((PlayerBackpack) player.getEquipment()).getRemainingCapacity()

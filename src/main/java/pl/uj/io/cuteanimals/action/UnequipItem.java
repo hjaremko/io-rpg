@@ -4,28 +4,17 @@ import java.util.List;
 import java.util.Optional;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
-import pl.uj.io.cuteanimals.model.interfaces.ArgumentAction;
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
-import pl.uj.io.cuteanimals.model.interfaces.IItem;
-import pl.uj.io.cuteanimals.model.interfaces.IResult;
+import pl.uj.io.cuteanimals.model.interfaces.*;
 
 public class UnequipItem extends ArgumentAction {
     @Override
-    public IResult execute(IPlayer player) {
-        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
-            return new Result("This isn't the time for that.");
-        }
-
-        var joined = String.join(" ", getArgs());
-        getArgs().clear();
-
-        var toUnequip = getItem(player.getArmor().getItems(), joined);
+    public IResult actionBody(IPlayer player, String itemName) {
+        var toUnequip = getItem(player.getArmor().getItems(), itemName);
 
         if (toUnequip.isEmpty()) {
             return new Result("You are not wearing that");
         }
 
-        var itemName = toUnequip.get().getName();
         player.getArmor().removeItem(toUnequip.get());
 
         if (player.getEquipment().putItem(toUnequip.get())) {

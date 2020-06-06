@@ -8,21 +8,13 @@ import pl.uj.io.cuteanimals.model.interfaces.*;
 
 public class ThrowAwayAction extends ArgumentAction {
     @Override
-    public IResult execute(IPlayer player) {
-        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
-            return new Result("This isn't the time for that.");
-        }
-
-        var joined = String.join(" ", getArgs());
-        getArgs().clear();
-
-        var toThrow = getItem(player.getEquipment().getItems(), joined);
+    public IResult actionBody(IPlayer player, String itemName) {
+        var toThrow = getItem(player.getEquipment().getItems(), itemName);
 
         if (toThrow.isEmpty()) {
             return new Result("You don't have that");
         }
 
-        var itemName = toThrow.get().getName();
         player.getEquipment().removeItem(toThrow.get());
         return new Result("You have thrown " + itemName + " away");
     }

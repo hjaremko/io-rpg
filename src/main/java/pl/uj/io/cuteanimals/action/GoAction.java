@@ -14,23 +14,14 @@ import pl.uj.io.cuteanimals.model.interfaces.*;
  * @version %I%
  * @since 0.0.1-SNAPSHOT
  */
-public class GoAction extends ArgumentAction {
-    private final Map<String, ILocation> locations;
-
+public class GoAction extends ContainerArgumentAction<ILocation> {
     public GoAction(Map<String, ILocation> wheres) {
-        super();
-        locations = wheres;
+        super(wheres);
     }
 
     @Override
-    public IResult execute(IPlayer player) {
-        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
-            return new Result("This isn't the time for that.");
-        }
-
-        var joined = String.join(" ", getArgs());
-        var toGo = locations.get(joined);
-        getArgs().clear();
+    public IResult actionBody(IPlayer player, String toGoName) {
+        var toGo = objects.get(toGoName);
 
         if (toGo == null) {
             return new Result("You want to go... where?");

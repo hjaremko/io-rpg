@@ -14,7 +14,7 @@ public class DungeonInvestigateAction extends ArgumentlessAction {
     }
 
     @Override
-    public IResult execute(IPlayer player) {
+    public IResult actionBody(IPlayer player) {
         if (!getAcceptableStates().contains(player.getCurrentGameState())) {
             return new Result("This action cannot be executed now");
         }

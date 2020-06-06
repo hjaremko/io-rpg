@@ -4,11 +4,11 @@ import pl.uj.io.cuteanimals.model.interfaces.*;
 import pl.uj.io.cuteanimals.plot.locations.Trap;
 
 public class Player implements IPlayer {
-    PlayerAttributes stats = new PlayerAttributes(this);
-    ILocation currentLocation = WorldMap.getInstance().getLocation("town");
-    IEquipment armorBackpack = new ArmorBackpack(this);
-    IEquipment backpack = new PlayerBackpack(this);
-    GameState gameState = GameState.EXPLORATION;
+    private final PlayerAttributes stats = new PlayerAttributes(this);
+    private ILocation currentLocation = WorldMap.getInstance().getLocation("town");
+    private final IEquipment armorBackpack = new ArmorBackpack(this);
+    private final IEquipment backpack = new PlayerBackpack(this);
+    private GameState gameState = GameState.EXPLORATION;
 
     @Override
     public IEquipment getEquipment() {

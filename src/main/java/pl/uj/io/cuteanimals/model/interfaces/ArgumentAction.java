@@ -2,6 +2,7 @@ package pl.uj.io.cuteanimals.model.interfaces;
 
 import java.util.ArrayList;
 import java.util.List;
+import pl.uj.io.cuteanimals.model.Result;
 
 /**
  * Extends IAction interface with arguments
@@ -10,7 +11,7 @@ import java.util.List;
  * @since 0.2.0-SNAPSHOT
  */
 public abstract class ArgumentAction implements IAction {
-    private List<String> args;
+    protected List<String> args;
 
     public ArgumentAction() {
         this.args = new ArrayList<>();
@@ -27,4 +28,17 @@ public abstract class ArgumentAction implements IAction {
     public void setArgs(List<String> args) {
         this.args = args;
     }
+
+    @Override
+    public IResult execute(IPlayer player) {
+        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
+            return new Result("This isn't the time for that.");
+        }
+
+        var joined = String.join(" ", args);
+        args.clear();
+        return actionBody(player, joined);
+    }
+
+    protected abstract IResult actionBody(IPlayer player, String object);
 }

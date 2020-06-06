@@ -6,23 +6,15 @@ import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
-public class PickupAction extends ArgumentAction {
-    private final Map<String, IItem> items;
+public class PickupAction extends ContainerArgumentAction<IItem> {
 
     public PickupAction(Map<String, IItem> items) {
-        super();
-        this.items = items;
+        super(items);
     }
 
     @Override
-    public IResult execute(IPlayer player) {
-        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
-            return new Result("This isn't the time for that.");
-        }
-
-        var joined = String.join(" ", getArgs());
-        var toPickup = items.get(joined);
-        getArgs().clear();
+    public IResult actionBody(IPlayer player, String toPickupName) {
+        var toPickup = objects.get(toPickupName);
 
         if (toPickup == null) {
             return new Result("Nothing here");
@@ -35,7 +27,7 @@ public class PickupAction extends ArgumentAction {
         // TODO: after picking up gold in chamberOfWealth add money
 
         var itemName = toPickup.getName();
-        items.remove(joined);
+        objects.remove(toPickupName);
         return new Result("You have picked " + itemName + " up");
     }
 

@@ -7,32 +7,19 @@ import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
 public class TalkAction extends ArgumentAction {
-    private ILocation location;
+    private final ILocation location;
 
-    public TalkAction() {
+    public TalkAction(ILocation location) {
         super();
-    }
-
-    public TalkAction(List<String> args, ILocation location) {
-        super();
-        setArgs(args);
         this.location = location;
     }
 
     @Override
-    public IResult execute(IPlayer player) {
-        if (getArgs().isEmpty()) {
-            return new Result("Who do you want to talk to?");
-        }
-
-        if (!getAcceptableStates().contains(player.getCurrentGameState())) {
-            return new Result("This isn't the time for that.");
-        }
-
+    public IResult actionBody(IPlayer player, String npcName) {
         var npc =
                 location.getNPCs()
                         .stream()
-                        .filter(x -> x.getName().toLowerCase().equals(getArgs().get(0)))
+                        .filter(x -> x.getName().toLowerCase().equals(npcName))
                         .collect(Collectors.toList());
         getArgs().clear();
 

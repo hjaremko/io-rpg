@@ -1,4 +1,4 @@
-package pl.uj.io.cuteanimals.plot.actions;
+package pl.uj.io.cuteanimals.action.entrance;
 
 import java.util.List;
 import pl.uj.io.cuteanimals.model.GameState;
@@ -8,8 +8,12 @@ import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
-public class TrapEntranceRemoveHealthAction implements IAction {
-    private final int healthLoss = 10;
+public class EntranceRemoveHealthAction implements IAction {
+    private final int healthLoss;
+
+    public EntranceRemoveHealthAction(int healthLoss) {
+        this.healthLoss = healthLoss;
+    }
 
     @Override
     public IResult execute(IPlayer player) {

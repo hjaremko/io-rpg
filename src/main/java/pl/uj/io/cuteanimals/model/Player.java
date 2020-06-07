@@ -2,6 +2,12 @@ package pl.uj.io.cuteanimals.model;
 
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
+/**
+ * Provides methods to manage player.
+ *
+ * @version %I%
+ * @since 0.2.0-SNAPSHOT
+ */
 public class Player implements IPlayer {
     private final PlayerAttributes stats = new PlayerAttributes(this);
     private ILocation currentLocation = WorldMap.getInstance().getLocation("town");

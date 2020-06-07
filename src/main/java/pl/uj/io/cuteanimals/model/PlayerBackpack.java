@@ -3,6 +3,12 @@ package pl.uj.io.cuteanimals.model;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
 
+/**
+ * Provides methods to manage player's backpack
+ *
+ * @version %I%
+ * @since 0.2.0-SNAPSHOT
+ */
 public class PlayerBackpack extends Backpack {
     private final ICharacter owner;
     private int currentWeight;
@@ -32,12 +38,22 @@ public class PlayerBackpack extends Backpack {
         return true;
     }
 
+    /**
+     * Gives the capacity of the player's backpack. The stronger a player is, the more he can carry.
+     *
+     * @return int type capacity
+     */
     public int getCapacity() {
-        // The stronger a player is, the more he can carry
         int baseCapacity = 10;
         return baseCapacity + 3 * owner.getAttributes().getAttack();
     }
 
+    /**
+     * Gives the remaining capacity of the player's backpack. Subtracts the weight of the items worn
+     * from the capacity number.
+     *
+     * @return int type remaining capacity
+     */
     public int getRemainingCapacity() {
         return getCapacity() - currentWeight;
     }

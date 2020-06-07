@@ -3,6 +3,12 @@ package pl.uj.io.cuteanimals.model;
 import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 
+/**
+ * Provides methods to manage player's attributes.
+ *
+ * @version %I%
+ * @since 0.2.0-SNAPSHOT
+ */
 public class PlayerAttributes implements IAttributes {
     private final ICharacter owner;
     private int health;

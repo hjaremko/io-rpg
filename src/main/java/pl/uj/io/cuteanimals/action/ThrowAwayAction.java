@@ -6,6 +6,12 @@ import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
+/**
+ * Provides methods that let the Player get rid of his items.
+ *
+ * @version %I%
+ * @since 0.0.1-SNAPSHOT
+ */
 public class ThrowAwayAction extends ArgumentAction {
     @Override
     public IResult actionBody(IPlayer player, String itemName) {

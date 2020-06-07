@@ -6,6 +6,12 @@ import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
+/**
+ * Provides methods to pick up items and put them in the backpack.
+ *
+ * @version %I%
+ * @since 0.0.1-SNAPSHOT
+ */
 public class PickupAction extends ContainerArgumentAction<IItem> {
 
     public PickupAction(Map<String, IItem> items) {

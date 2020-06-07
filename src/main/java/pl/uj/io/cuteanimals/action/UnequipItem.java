@@ -6,6 +6,12 @@ import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
+/**
+ * Provides methods that let the Player put currently equipped items to his backpack.
+ *
+ * @version %I%
+ * @since 0.0.1-SNAPSHOT
+ */
 public class UnequipItem extends ArgumentAction {
     @Override
     public IResult actionBody(IPlayer player, String itemName) {

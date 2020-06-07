@@ -6,6 +6,13 @@ import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
 
+/**
+ * Provides methods to menage Player's Armor Backpack. Allows him to put, remove and display those
+ * items.
+ *
+ * @version %I%
+ * @since 0.0.1-SNAPSHOT
+ */
 public class ArmorBackpack implements IEquipment {
     private final ICharacter owner;
     private IItem weapon;

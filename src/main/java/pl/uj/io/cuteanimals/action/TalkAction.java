@@ -6,6 +6,12 @@ import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
+/**
+ * Provides methods to engage a conversation with NPC's.
+ *
+ * @version %I%
+ * @since 0.0.1-SNAPSHOT
+ */
 public class TalkAction extends ArgumentAction {
     private final ILocation location;
 

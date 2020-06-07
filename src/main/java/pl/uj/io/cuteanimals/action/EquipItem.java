@@ -6,6 +6,12 @@ import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
+/**
+ * Provides methods to equip item from Character's backpack.
+ *
+ * @version %I%
+ * @since 0.0.1-SNAPSHOT
+ */
 public class EquipItem extends ArgumentAction {
     @Override
     protected IResult actionBody(IPlayer player, String toEquipName) {

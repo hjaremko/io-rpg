@@ -5,6 +5,12 @@ import java.util.List;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
 
+/**
+ * Provides methods to manage Player's Backpack. Allows him to put, remove and display those items.
+ *
+ * @version %I%
+ * @since 0.0.1-SNAPSHOT
+ */
 public class Backpack implements IEquipment {
     private final List<IItem> items = new ArrayList<>();
 

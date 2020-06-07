@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.Map;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
+/**
+ * Provides methods to manage any Location.
+ *
+ * @version %I%
+ * @since 0.0.1-SNAPSHOT
+ */
 public class DefaultLocation implements ILocation {
     protected String description;
     protected Map<String, IAction> actionMap;

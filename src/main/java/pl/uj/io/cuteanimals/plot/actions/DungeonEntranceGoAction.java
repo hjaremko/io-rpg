@@ -6,6 +6,12 @@ import java.util.Random;
 import pl.uj.io.cuteanimals.model.*;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
+/**
+ * Provides methods that moves Character to the MedicalCabin in case of him falling from the bridge.
+ *
+ * @version %I%
+ * @since 0.0.1-SNAPSHOT
+ */
 public class DungeonEntranceGoAction extends ContainerArgumentAction<ILocation> {
     public DungeonEntranceGoAction(Map<String, ILocation> wheres) {
         super(wheres);

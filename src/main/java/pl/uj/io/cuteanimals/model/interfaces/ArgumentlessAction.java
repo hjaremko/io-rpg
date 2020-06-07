@@ -1,5 +1,6 @@
 package pl.uj.io.cuteanimals.model.interfaces;
 
+import java.util.ArrayList;
 import java.util.List;
 import pl.uj.io.cuteanimals.model.Result;
 
@@ -13,7 +14,7 @@ public abstract class ArgumentlessAction implements IAction {
     /** @return string representation of action arguments, e.g location name or item name */
     @Override
     public List<String> getArgs() {
-        return null;
+        return new ArrayList<>();
     }
 
     /** @param args string representation of action arguments, e.g location name or item name */

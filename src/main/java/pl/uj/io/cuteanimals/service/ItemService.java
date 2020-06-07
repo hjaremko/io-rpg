@@ -88,6 +88,15 @@ public class ItemService {
                         1,
                         attributesService.getAttributes(7),
                         ItemType.NEUTRAL));
+
+        addItem(
+                new Item(
+                        8,
+                        "Torch",
+                        "Regular torch",
+                        3,
+                        attributesService.getAttributes(8),
+                        ItemType.USABLE));
     }
 
     public List<Item> getAllItems() {

@@ -29,6 +29,7 @@ public class AttributesService {
         var arrowAttr = new Attributes(5, 0, 1, 1, 0);
         var coinAttr = new Attributes(6, 0, 0, 0, 0);
         var amuletAttr = new Attributes(7, 0, 0, 5, 0);
+        var torchAttr = new Attributes(8, 0, 1, 0, 0);
 
         attributesRepository.saveAndFlush(swordAttr);
         attributesRepository.saveAndFlush(shieldAttr);
@@ -37,6 +38,7 @@ public class AttributesService {
         attributesRepository.saveAndFlush(arrowAttr);
         attributesRepository.saveAndFlush(coinAttr);
         attributesRepository.saveAndFlush(amuletAttr);
+        attributesRepository.saveAndFlush(torchAttr);
     }
 
     public List<Attributes> getAllAttributes() {

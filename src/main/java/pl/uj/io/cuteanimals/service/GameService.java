@@ -23,9 +23,7 @@ public class GameService {
     public GameService(ItemService itemService) {
         // TODO: use repository
         WorldMap.getInstance().initialize(itemService);
-        // Every new player should spawn with sword
         player = new Player();
-        player.getEquipment().putItem(itemService.getItem(1));
     }
 
     public String execute(int characterId, String command) throws InvalidCommandException {

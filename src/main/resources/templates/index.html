@@ -5,7 +5,9 @@
     <title>Cute Animals</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <link href="../static/style.css" rel="stylesheet" th:href="@{/style.css}" type="text/css">
-    <link href="https://maxbeier.github.io/text-spinners/spinners.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/xterm@4.0.0/css/xterm.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600,700|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic'
+          rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -24,25 +26,15 @@
     const URL = "https://io-rpg.herokuapp.com/game/1/msg";
 
     let requestURL = proxyURL + URL;
-    let inBox;
-    let outBox;
 
-    var loadingIndicator = document.createElement('span')
-    loadingIndicator.className = 'loading open-circle';
-
-    function populateOutput(jsonObj) {
-        outBox.value += jsonObj + '\n';
-        outBox.scrollTop = outBox.scrollHeight;
+    function populateOutput(output) {
+        term.write('\n\r' + output)
     }
 
     window.onload = function () {
-        outBox = document.getElementById('output');
-        inBox = document.getElementById('input');
     }
 
-    function sendRequest() {
-        let input = inBox.value;
-
+    function sendRequest(input) {
         if (input === "")
             return;
 
@@ -56,21 +48,17 @@
             console.error("The request for " + url + " timed out.");
         };
 
-        populateOutput("> " + inBox.value);
-        inBox.value = "";
-        button = document.getElementById("sendButton");
-        button.innerText = "Loading "
-        button.appendChild(loadingIndicator);
-
         request.onload = function () {
+            term.write('...');
+
             if (request.readyState === 4) {
+                term.write('\b\b\b    ')
                 const serverResponse = request.response;
                 console.log(serverResponse);
-                populateOutput(serverResponse);
+                populateOutput("\u001b[0m" + serverResponse.split('\n').join('\n\r'));
             }
 
-            button.removeChild(loadingIndicator);
-            button.innerText = "Send"
+            prompt(term);
         }
     }
 
@@ -79,14 +67,60 @@
 
 <h1> Cute Animals </h1>
 
-<div>
-    <label for="output"></label><textarea cols="80" id="output" rows="24" readonly></textarea>
-    <label for="input"></label><input id="input" size="74" type="text"/>
-    <button id="sendButton" onclick="sendRequest()">Send</button>
-</div>
+<div id="terminal" class="outputTerm"></div>
+<script src="https://unpkg.com/xterm@4.0.0/lib/xterm.js"></script>
+<script>
+    var term = new window.Terminal.Terminal({
+        theme: {
+            background: '#181A1B',
+            foreground: '#A9A9A9'
+        },
+        cols: 100,
+        fontFamily: "Source Code Pro, courier-new, courier, monospace",
+        fontSize: 18,
+    });
+
+    term.open(document.getElementById('terminal'));
+
+    function runTerminal() {
+        if (term._initialized) {
+            return;
+        }
+
+        term._initialized = true;
+
+        term.writeln('Welcome to Cute Animals v0.2.0');
+        prompt(term);
+        var commandBuffer = "";
+
+        term.onKey(e => {
+            const printable = !e.domEvent.altKey && !e.domEvent.altGraphKey && !e.domEvent.ctrlKey && !e.domEvent.metaKey;
+
+            if (e.domEvent.keyCode === 13) {
+                sendRequest(commandBuffer);
+                commandBuffer = "";
+            } else if (e.domEvent.keyCode === 8) {
+                // Do not delete the prompt
+                if (term._core.buffer.x > 2) {
+                    term.write('\b \b');
+                    commandBuffer = commandBuffer.slice(0, -1);
+                }
+            } else if (printable) {
+                term.write(e.key);
+                commandBuffer += e.key;
+            }
+        });
+    }
+
+    function prompt(term) {
+        term.write('\r\n\u001b[33;1m> \u001b[37;1m');
+    }
+
+    runTerminal();
+</script>
 
 <div>
-<!--    TODO: make this look nice-->
+    <!--    TODO: make this look nice-->
     <h3>Available actions:</h3>
     <ul>
         <li>go ... - change location</li>
@@ -101,18 +135,6 @@
         <li>stats - print player stats</li>
     </ul>
 </div>
-
-<script>
-    var input = document.getElementById("input");
-    input.addEventListener("keyup", function (event) {
-        if (event.keyCode === 13) {
-            event.preventDefault();
-            document.getElementById("sendButton").click();
-        }
-    });
-
-
-</script>
 
 </body>
 </html>

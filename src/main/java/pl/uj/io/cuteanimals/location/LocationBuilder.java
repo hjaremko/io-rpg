@@ -14,23 +14,19 @@ import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 
 /** Helper class used to build locations during WorldMap initialization */
 public class LocationBuilder {
-    DefaultLocation location;
-    String description;
-    Map<String, IAction> actionMap;
-    List<NPC> npcList;
-    List<IEquipment> equipmentList;
-    IAction actionOnEnter;
+    private final DefaultLocation location;
+    private final Map<String, IAction> actionMap;
+    private final List<NPC> npcList;
+    private final List<IEquipment> equipmentList;
+    private String description;
+    private IAction actionOnEnter;
 
-    public LocationBuilder() {
+    public LocationBuilder(DefaultLocation location) {
         this.description = "";
         this.actionMap = new HashMap<>();
         this.npcList = new ArrayList<>();
         this.equipmentList = new ArrayList<>();
         this.actionOnEnter = null;
-    }
-
-    public LocationBuilder(DefaultLocation location) {
-        this();
         this.location = location;
     }
 

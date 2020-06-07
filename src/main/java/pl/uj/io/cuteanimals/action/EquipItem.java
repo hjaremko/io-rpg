@@ -33,7 +33,7 @@ public class EquipItem extends ArgumentAction {
     }
 
     private Optional<IItem> getItem(final List<IItem> list, final String name) {
-        return list.stream().filter(o -> o.getName().equals(name)).findFirst();
+        return list.stream().filter(o -> o.getName().toLowerCase().equals(name)).findFirst();
     }
 
     @Override

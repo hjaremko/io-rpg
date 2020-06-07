@@ -32,7 +32,7 @@ public class TalkAction extends ArgumentAction {
         var npc =
                 location.getNPCs()
                         .stream()
-                        .filter(x -> x.getName().equals(getArgs().get(0)))
+                        .filter(x -> x.getName().toLowerCase().equals(getArgs().get(0)))
                         .collect(Collectors.toList());
         getArgs().clear();
 

@@ -22,7 +22,7 @@ public class GameController {
     // Maybe we should wrap this with ResponseEntity?
     @PostMapping(value = "/{id}/msg", consumes = "text/plain", produces = "text/plain")
     public String receiveOrderAndReturnResult(@PathVariable int id, @RequestBody String command) {
-        // TODO: make command all lowercase
+        command = command.toLowerCase();
         // TODO: expand logging
 
         logger.info("User (" + id + ") sent command: " + command);

@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Optional;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
-import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.model.interfaces.ArgumentAction;
+import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
+import pl.uj.io.cuteanimals.model.interfaces.IItem;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class UnequipItem extends ArgumentAction {
     @Override
@@ -33,7 +36,7 @@ public class UnequipItem extends ArgumentAction {
     }
 
     private Optional<IItem> getItem(final List<IItem> list, final String name) {
-        return list.stream().filter(o -> o.getName().equals(name)).findFirst();
+        return list.stream().filter(o -> o.getName().toLowerCase().equals(name)).findFirst();
     }
 
     @Override

@@ -40,7 +40,7 @@ public class Interpreter {
         return availableActions
                 .keySet()
                 .stream()
-                .filter(s -> s.equals(token))
+                .filter(s -> s.toLowerCase().equals(token))
                 .findFirst()
                 .map(s -> parseActionToken(s, stack))
                 .orElseGet(() -> parseArgumentToken(token, stack));

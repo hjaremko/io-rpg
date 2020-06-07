@@ -1,22 +1,20 @@
 package pl.uj.io.cuteanimals.model.fight;
 
-import pl.uj.io.cuteanimals.model.Monster;
-import pl.uj.io.cuteanimals.model.Player;
-import pl.uj.io.cuteanimals.model.Result;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class ExplorationState extends FightState {
-    public ExplorationState(Player owner, Monster fightingWith, FightManager manager) {
-        super(owner, fightingWith, manager);
+    public ExplorationState(IPlayer owner) {
+        super(owner);
     }
 
     @Override
-    IResult attack() {
-        return new Result("");
+    public IResult attack() {
+        return null;
     }
 
     @Override
-    IResult contrAttack() {
-        return new Result("");
+    public IResult contrAttack() {
+        return null;
     }
 }

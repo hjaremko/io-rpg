@@ -50,6 +50,7 @@ public class LocationBuilder {
         this.actionMap.put("attack", new StandardAttack());
         this.actionMap.put("block", new Block());
         this.actionMap.put("use", new UseAction());
+        this.actionMap.put("cast", new CastAction());
         return this;
     }
 

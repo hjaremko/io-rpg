@@ -1,21 +1,11 @@
 package pl.uj.io.cuteanimals.model.fight;
 
-import pl.uj.io.cuteanimals.model.Monster;
-import pl.uj.io.cuteanimals.model.Player;
-import pl.uj.io.cuteanimals.model.interfaces.IResult;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
 
-public abstract class FightState {
-    protected final Player owner;
-    protected final Monster fightingWith;
-    protected final FightManager manager;
+public abstract class FightState implements IFightState {
+    protected final IPlayer player;
 
-    public FightState(Player owner, Monster fightingWith, FightManager manager) {
-        this.owner = owner;
-        this.fightingWith = fightingWith;
-        this.manager = manager;
+    public FightState(IPlayer player) {
+        this.player = player;
     }
-
-    abstract IResult attack();
-
-    abstract IResult contrAttack();
 }

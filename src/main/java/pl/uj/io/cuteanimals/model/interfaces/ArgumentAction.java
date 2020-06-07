@@ -32,6 +32,7 @@ public abstract class ArgumentAction implements IAction {
     @Override
     public IResult execute(IPlayer player) {
         if (!getAcceptableStates().contains(player.getCurrentGameState())) {
+            args.clear();
             return new Result("This isn't the time for that.");
         }
 

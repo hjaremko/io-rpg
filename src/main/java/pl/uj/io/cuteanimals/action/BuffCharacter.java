@@ -21,7 +21,7 @@ public class BuffCharacter extends ArgumentlessAction {
 
         var message = "";
         message += (attributes.getHealth() != 0 ? "+" + attributes.getHealth() + " health " : "");
-        message += (attributes.getAttack() != 0 ? "+" + attributes.getAttack() + " attack" : "");
+        message += (attributes.getAttack() != 0 ? "+" + attributes.getAttack() + " attack " : "");
         message +=
                 (attributes.getDefence() != 0 ? "+" + attributes.getDefence() + " defence " : "");
 

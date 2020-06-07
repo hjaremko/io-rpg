@@ -22,14 +22,14 @@ public class AttributesService {
 
         // Add dummy attributes to prevent game from crashing
         var swordAttr = new Attributes(1, 0, 1, 1, 0);
-        var shieldAttr = new Attributes(2, 0, 0, 1, 5);
+        var shieldAttr = new Attributes(2, 0, 0, 1, 2);
         var magicWandAttr = new Attributes(3, 0, 3, 1, 0);
         var bowAttr = new Attributes(4, 0, 2, 1, 0);
         var arrowAttr = new Attributes(5, 0, 1, 1, 0);
         var coinAttr = new Attributes(6, 0, 0, 0, 0);
         var amuletAttr = new Attributes(7, 0, 0, 5, 0);
         var torchAttr = new Attributes(8, 0, 1, 0, 0);
-        var appleAttr = new Attributes(9, 30, 0, 1, 0);
+        var appleAttr = new Attributes(9, 15, 0, 1, 0);
 
         attributesRepository.saveAndFlush(swordAttr);
         attributesRepository.saveAndFlush(shieldAttr);

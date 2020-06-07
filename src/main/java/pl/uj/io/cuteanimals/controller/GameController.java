@@ -3,6 +3,7 @@ package pl.uj.io.cuteanimals.controller;
 import static pl.uj.io.cuteanimals.model.Color.GREEN;
 import static pl.uj.io.cuteanimals.model.Color.RED;
 
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +43,11 @@ public class GameController {
             if (result.getClass().equals(CompoundResult.class)) {
                 logger.info("Adding color to compound Result");
 
-                StringBuilder output = new StringBuilder();
-                for (var r : ((CompoundResult) result).getResults()) {
-                    output.append(addColor(r.getMessage(), r.getColor())).append("\n");
-                }
-
-                return output.toString();
+                return ((CompoundResult) result)
+                        .getResults()
+                        .stream()
+                        .map(r -> addColor(r.getMessage(), r.getColor()))
+                        .collect(Collectors.joining("\n"));
             }
 
             logger.info("Adding color to normal Result with message:");

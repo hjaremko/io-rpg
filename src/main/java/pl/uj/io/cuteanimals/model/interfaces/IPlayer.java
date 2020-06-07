@@ -1,5 +1,6 @@
 package pl.uj.io.cuteanimals.model.interfaces;
 
+import java.util.Map;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.fight.FightManager;
 
@@ -20,5 +21,7 @@ public interface IPlayer extends ICharacter {
 
     FightManager getFightManager();
 
-    int getDamage(int damage);
+    int takeDamage(int damage);
+
+    Map<String, IAction> getAbilities();
 }

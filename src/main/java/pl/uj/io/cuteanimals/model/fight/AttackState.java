@@ -2,43 +2,34 @@ package pl.uj.io.cuteanimals.model.fight;
 
 import java.util.List;
 import pl.uj.io.cuteanimals.model.*;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class AttackState extends FightState {
 
-    public AttackState(Player owner, Monster fightingWith, FightManager manager) {
-        super(owner, fightingWith, manager);
+    public AttackState(IPlayer owner) {
+        super(owner);
     }
 
     @Override
     public IResult attack() {
-        fightingWith.getAttributes().addHealth(-5);
-        var mobHealthLeft = fightingWith.getAttributes().getHealth();
+        var damageDone = ((PlayerAttributes) player.getAttributes()).getDamage();
+        player.getFightManager().getEnemy().getAttributes().addHealth(-damageDone);
+        var mobHealthLeft = player.getFightManager().getEnemy().getAttributes().getHealth();
 
         if (mobHealthLeft <= 0) {
-            owner.setGameState(GameState.EXPLORATION);
-            ((PlayerAttributes) owner.getAttributes()).addExperience(10);
-            manager.setState(new ExplorationState(owner, null, manager));
-
-            return new FightLog(
-                    fightingWith.getName()
-                            + " is dead.\n"
-                            + owner.toString()
-                            + " gets "
-                            + 10
-                            + " experience.",
-                    Color.YELLOW);
+            return player.getFightManager().endBattle();
         }
 
         var playerAttackResult =
                 new FightLog(
-                        owner.toString()
+                        player.toString()
                                 + " attacks "
-                                + fightingWith.getName()
+                                + player.getFightManager().getEnemy().getName()
                                 + " for "
-                                + 5
+                                + damageDone
                                 + " damage. "
-                                + fightingWith.getName()
+                                + player.getFightManager().getEnemy().getName()
                                 + " has "
                                 + mobHealthLeft
                                 + " HP left.",
@@ -49,17 +40,22 @@ public class AttackState extends FightState {
 
     @Override
     public IResult contrAttack() {
-        var took = owner.getDamage(10);
-        var playerHealthLeft = owner.getAttributes().getHealth();
+        var enemyStats = player.getFightManager().getEnemy().getAttributes();
+        int took =
+                player.takeDamage(
+                        (int)
+                                (enemyStats.getAttack()
+                                        + Math.round((Math.random() * enemyStats.getLevel() * 3))));
+        var playerHealthLeft = player.getAttributes().getHealth();
 
         return new FightLog(
-                fightingWith.getName()
+                player.getFightManager().getEnemy().getName()
                         + " attacks "
-                        + owner.toString()
+                        + player.toString()
                         + " for "
                         + took
                         + " damage. "
-                        + owner.toString()
+                        + player.toString()
                         + " has "
                         + playerHealthLeft
                         + " HP left.",

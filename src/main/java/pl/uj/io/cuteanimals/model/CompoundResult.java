@@ -1,6 +1,7 @@
 package pl.uj.io.cuteanimals.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class CompoundResult implements IResult {
@@ -12,7 +13,7 @@ public class CompoundResult implements IResult {
 
     @Override
     public String getMessage() {
-        return String.join("\n", (CharSequence) results);
+        return results.stream().map(IResult::getMessage).collect(Collectors.joining("\n"));
     }
 
     @Override
@@ -22,7 +23,7 @@ public class CompoundResult implements IResult {
 
     @Override
     public Color getColor() {
-        return Color.NORMAL;
+        return results.get(0).getColor();
     }
 
     public void addResult(IResult result) {

@@ -12,11 +12,13 @@ public class PlayerAttributes extends NPCAttributes {
     private final ICharacter owner;
 
     private int experience;
+    private int mana;
 
     public PlayerAttributes(ICharacter owner) {
-        super(100, 1, 1, 0);
+        super(30, 1, 1, 0);
         this.owner = owner;
         this.experience = 0;
+        this.mana = 100;
     }
 
     @Override
@@ -60,7 +62,7 @@ public class PlayerAttributes extends NPCAttributes {
 
     public int getRequiredExperience() {
         // TODO: some sane formula
-        return super.getLevel() * 100;
+        return super.getLevel() * 10;
     }
 
     public void addExperience(int experience) {
@@ -70,5 +72,38 @@ public class PlayerAttributes extends NPCAttributes {
         if (this.experience < expBefore) {
             addLevel(1);
         }
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void addMana(int mana) {
+        this.mana += mana;
+    }
+
+    public int getDamage() {
+        return getAttack() + (int) (Math.random() * getAttack() * 1.5);
+    }
+
+    @Override
+    public String toString() {
+        var exp = "Experience: " + getExperience() + " / " + getRequiredExperience() + "\n";
+        var stats =
+                "Health:     "
+                        + getHealth()
+                        + "\n"
+                        + "Mana:       "
+                        + getMana()
+                        + "\n"
+                        + "Level:      "
+                        + getLevel()
+                        + "\n"
+                        + "Attack:     "
+                        + getAttack()
+                        + "\n"
+                        + "Defence:    "
+                        + getDefence();
+        return exp + stats;
     }
 }

@@ -230,7 +230,8 @@ public final class WorldMap {
         townItems.put("apple", itemService.getItem(9));
 
         var townMonsters = new HashMap<String, Monster>();
-        townMonsters.put("dummy", new Monster("Dummy", new NPCAttributes(30, 1, 1, 2)));
+        townMonsters.put("dummy", new Monster("Dummy", new NPCAttributes(20, 1, 1, 2)));
+        townMonsters.put("dummy2", new Monster("Bigger Dummy", new NPCAttributes(20, 1, 2, 2)));
 
         town =
                 new LocationBuilder(town)

@@ -7,6 +7,7 @@ import pl.uj.io.cuteanimals.action.GoAction;
 import pl.uj.io.cuteanimals.action.InvestigateAction;
 import pl.uj.io.cuteanimals.action.PickupAction;
 import pl.uj.io.cuteanimals.action.TalkAction;
+import pl.uj.io.cuteanimals.action.entrance.EntranceRemoveHealthAction;
 import pl.uj.io.cuteanimals.location.LocationBuilder;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
@@ -377,6 +378,7 @@ public final class WorldMap {
                                         + "moving under your foot. You have activated a trap!"
                                         + "Poisoned arrow hits you in the arm and you feel awful "
                                         + "pain.")
+                        .addActionOnEnter(new EntranceRemoveHealthAction(10))
                         .addAction(
                                 "investigate",
                                 new InvestigateAction(

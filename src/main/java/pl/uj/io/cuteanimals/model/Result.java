@@ -9,10 +9,17 @@ import pl.uj.io.cuteanimals.model.interfaces.IResult;
  * @since 0.0.1-SNAPSHOT
  */
 public class Result implements IResult {
-    private String message;
+    protected String message;
+    protected Color color;
 
     public Result(String message) {
         this.message = message;
+        this.color = Color.NORMAL;
+    }
+
+    public Result(String message, Color color) {
+        this.message = message;
+        this.color = color;
     }
 
     @Override
@@ -28,5 +35,10 @@ public class Result implements IResult {
     @Override
     public String toString() {
         return message;
+    }
+
+    @Override
+    public Color getColor() {
+        return color;
     }
 }

@@ -1,6 +1,7 @@
 package pl.uj.io.cuteanimals.model.fight;
 
 import pl.uj.io.cuteanimals.model.*;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class FightManager {
     private final Player owner;
@@ -28,11 +29,11 @@ public class FightManager {
                 + ")";
     }
 
-    public Result attack() {
-        return new Result(fightState.attack());
+    public IResult attack() {
+        return fightState.attack();
     }
 
-    public String contrAttack() {
+    public IResult contrAttack() {
         return fightState.contrAttack();
     }
 

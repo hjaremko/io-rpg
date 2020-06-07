@@ -2,9 +2,11 @@ package pl.uj.io.cuteanimals.action;
 
 import java.util.List;
 import java.util.Map;
+import pl.uj.io.cuteanimals.model.Color;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Monster;
 import pl.uj.io.cuteanimals.model.Result;
+import pl.uj.io.cuteanimals.model.fight.FightLog;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
 public class FightAction extends ContainerArgumentAction<Monster> {
@@ -24,7 +26,7 @@ public class FightAction extends ContainerArgumentAction<Monster> {
             return new Result(toFight.getName() + " is already dead.");
         }
 
-        return new Result(player.getFightManager().beginFight(toFight));
+        return new FightLog(player.getFightManager().beginFight(toFight), Color.YELLOW);
     }
 
     @Override

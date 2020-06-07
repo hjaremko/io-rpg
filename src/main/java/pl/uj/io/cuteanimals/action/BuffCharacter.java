@@ -1,6 +1,7 @@
 package pl.uj.io.cuteanimals.action;
 
 import java.util.List;
+import pl.uj.io.cuteanimals.model.Color;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.*;
@@ -24,7 +25,7 @@ public class BuffCharacter extends ArgumentlessAction {
         message +=
                 (attributes.getDefence() != 0 ? "+" + attributes.getDefence() + " defence " : "");
 
-        return new Result(message);
+        return new Result(message, Color.GREEN);
     }
 
     @Override

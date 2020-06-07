@@ -1,5 +1,6 @@
 package pl.uj.io.cuteanimals.model;
 
+import java.util.List;
 import pl.uj.io.cuteanimals.action.BuffCharacter;
 import pl.uj.io.cuteanimals.model.fight.FightManager;
 import pl.uj.io.cuteanimals.model.interfaces.*;
@@ -46,7 +47,7 @@ public class Player implements IPlayer {
         var eatingResult = new BuffCharacter(item.getAttributes()).execute(this);
         getEquipment().removeItem(item);
         var attackResult = fightManager.contrAttack();
-        return new Result(eatingResult.toString() + "\n" + attackResult);
+        return new CompoundResult(List.of(eatingResult, attackResult));
     }
 
     @Override

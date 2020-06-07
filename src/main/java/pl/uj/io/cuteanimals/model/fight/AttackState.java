@@ -1,9 +1,8 @@
 package pl.uj.io.cuteanimals.model.fight;
 
-import pl.uj.io.cuteanimals.model.GameState;
-import pl.uj.io.cuteanimals.model.Monster;
-import pl.uj.io.cuteanimals.model.Player;
-import pl.uj.io.cuteanimals.model.PlayerAttributes;
+import java.util.List;
+import pl.uj.io.cuteanimals.model.*;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class AttackState extends FightState {
 
@@ -12,7 +11,7 @@ public class AttackState extends FightState {
     }
 
     @Override
-    public String attack() {
+    public IResult attack() {
         fightingWith.getAttributes().addHealth(-5);
         var mobHealthLeft = fightingWith.getAttributes().getHealth();
 
@@ -21,47 +20,49 @@ public class AttackState extends FightState {
             ((PlayerAttributes) owner.getAttributes()).addExperience(10);
             manager.setState(new ExplorationState(owner, null, manager));
 
-            return "\u001b[33m+ "
-                    + fightingWith.getName()
-                    + " is dead.\n* "
-                    + owner.toString()
-                    + " gets "
-                    + 10
-                    + " experience.\u001b[0m";
+            return new FightLog(
+                    fightingWith.getName()
+                            + " is dead.\n"
+                            + owner.toString()
+                            + " gets "
+                            + 10
+                            + " experience.",
+                    Color.YELLOW);
         }
 
         var playerAttackResult =
-                "\u001b[32m+ "
-                        + owner.toString()
-                        + " attacks "
-                        + fightingWith.getName()
-                        + " for "
-                        + 5
-                        + " damage.\u001b[0m\n* "
-                        + fightingWith.getName()
-                        + " has "
-                        + mobHealthLeft
-                        + " HP left.";
+                new FightLog(
+                        owner.toString()
+                                + " attacks "
+                                + fightingWith.getName()
+                                + " for "
+                                + 5
+                                + " damage. "
+                                + fightingWith.getName()
+                                + " has "
+                                + mobHealthLeft
+                                + " HP left.",
+                        Color.GREEN);
         var contrAttackResult = contrAttack();
-
-        return playerAttackResult + "\n" + contrAttackResult;
+        return new CompoundResult(List.of(playerAttackResult, contrAttackResult));
     }
 
     @Override
-    public String contrAttack() {
+    public IResult contrAttack() {
         var took = owner.getDamage(10);
         var playerHealthLeft = owner.getAttributes().getHealth();
 
-        return "\u001b[31m- "
-                + fightingWith.getName()
-                + " attacks "
-                + owner.toString()
-                + " for "
-                + took
-                + " damage.\u001b[0m\n* "
-                + owner.toString()
-                + " has "
-                + playerHealthLeft
-                + " HP left.";
+        return new FightLog(
+                fightingWith.getName()
+                        + " attacks "
+                        + owner.toString()
+                        + " for "
+                        + took
+                        + " damage. "
+                        + owner.toString()
+                        + " has "
+                        + playerHealthLeft
+                        + " HP left.",
+                Color.RED);
     }
 }

@@ -26,12 +26,11 @@ public class GameService {
         player = new Player();
     }
 
-    public String execute(int characterId, String command) throws InvalidCommandException {
+    public IResult execute(int characterId, String command) throws InvalidCommandException {
         Expression expr =
                 Interpreter.parse(command, player.getCurrentLocation().getAvailableActions());
         IAction action = expr.interpret(player.getCurrentLocation().getAvailableActions());
-        IResult result = action.execute(player);
-        return result.getMessage();
+        return action.execute(player);
     }
 
     public String getLocationInfo() {

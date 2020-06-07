@@ -1,10 +1,15 @@
 package pl.uj.io.cuteanimals.controller;
 
+import static pl.uj.io.cuteanimals.model.Color.GREEN;
+import static pl.uj.io.cuteanimals.model.Color.RED;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
+import pl.uj.io.cuteanimals.model.Color;
+import pl.uj.io.cuteanimals.model.CompoundResult;
 import pl.uj.io.cuteanimals.service.GameService;
 
 @RestController
@@ -31,12 +36,46 @@ public class GameController {
         if ("start".equals(command)) {
             return gameService.getLocationInfo();
         }
-
         try {
-            return gameService.execute(id, command);
+            var result = gameService.execute(id, command);
+
+            if (result.getClass().equals(CompoundResult.class)) {
+                logger.info("Adding color to compound Result");
+
+                StringBuilder output = new StringBuilder();
+                for (var r : ((CompoundResult) result).getResults()) {
+                    output.append(addColor(r.getMessage(), r.getColor())).append("\n");
+                }
+
+                return output.toString();
+            }
+
+            logger.info("Adding color to normal Result with message:");
+            logger.info(result.getMessage());
+            return addColor(result.getMessage(), result.getColor());
         } catch (InvalidCommandException e) {
             logger.debug("Parsing user provided command failed.", e);
             return e.getMessage();
         }
+    }
+
+    static String addColor(String string, Color color) {
+        StringBuilder stringResult = new StringBuilder();
+
+        switch (color) {
+            case RED:
+                stringResult.append("\u001b[31m").append(string).append("\u001b[0m");
+                break;
+            case GREEN:
+                stringResult.append("\u001b[32m").append(string).append("\u001b[0m");
+                break;
+            case YELLOW:
+                stringResult.append("\u001b[33m").append(string).append("\u001b[0m");
+                break;
+            default:
+                stringResult.append(string);
+        }
+
+        return stringResult.toString();
     }
 }

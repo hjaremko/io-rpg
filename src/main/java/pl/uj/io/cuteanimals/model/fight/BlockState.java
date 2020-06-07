@@ -1,7 +1,11 @@
 package pl.uj.io.cuteanimals.model.fight;
 
+import java.util.List;
+import pl.uj.io.cuteanimals.model.Color;
+import pl.uj.io.cuteanimals.model.CompoundResult;
 import pl.uj.io.cuteanimals.model.Monster;
 import pl.uj.io.cuteanimals.model.Player;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class BlockState extends AttackState {
     private final int defenceIncrease;
@@ -15,19 +19,20 @@ public class BlockState extends AttackState {
     }
 
     @Override
-    public String attack() {
-        return "\u001b[33m+ " + owner.toString() + " is blocking.\u001b[0m\n" + contrAttack();
+    public IResult attack() {
+        return new FightLog(owner.toString() + " is blocking.\n" + contrAttack(), Color.YELLOW);
     }
 
     @Override
-    public String contrAttack() {
+    public IResult contrAttack() {
         var result = super.contrAttack();
         uses--;
 
         if (uses == 0) {
             owner.getAttributes().addDefence(-defenceIncrease);
             manager.setState(new AttackState(owner, fightingWith, manager));
-            result += "\nBlock wears off.";
+            return new CompoundResult(
+                    List.of(result, new FightLog("Block wears off.", Color.YELLOW)));
         }
 
         return result;

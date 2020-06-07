@@ -12,7 +12,7 @@ public interface IPlayer extends ICharacter {
      */
     Result use(IAction action);
 
-    void changeLocation(ILocation where);
+    IResult changeLocation(ILocation where);
 
     GameState getCurrentGameState();
 

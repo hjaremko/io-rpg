@@ -44,4 +44,18 @@ public interface ILocation {
      * @return list of elements of IEquipment type.
      */
     List<IEquipment> getItems();
+
+    /**
+     * Lets location execute any action on player when entering it.
+     *
+     * @param player player entering location
+     */
+    IResult onEnter(IPlayer player);
+
+    /**
+     * Gives an action that is executed on player entering location.
+     *
+     * @return action executed on player entering location
+     */
+    IAction getActionOnEnter();
 }

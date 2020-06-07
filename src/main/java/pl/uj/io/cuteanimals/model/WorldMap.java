@@ -12,7 +12,7 @@ import pl.uj.io.cuteanimals.model.interfaces.IItem;
 import pl.uj.io.cuteanimals.model.interfaces.ILocation;
 import pl.uj.io.cuteanimals.plot.actions.DungeonEntranceGoAction;
 import pl.uj.io.cuteanimals.plot.actions.DungeonInvestigateAction;
-import pl.uj.io.cuteanimals.plot.locations.*;
+import pl.uj.io.cuteanimals.plot.actions.TrapEntranceRemoveHealthAction;
 import pl.uj.io.cuteanimals.service.ItemService;
 
 public final class WorldMap {
@@ -26,23 +26,23 @@ public final class WorldMap {
     }
 
     public void initialize(ItemService itemService) {
-        var town = new Town();
-        var forest = new Forest();
-        var forestGlade = new ForestGlade();
-        var shamanCabin = new ShamanCabin();
-        var dungeonEntrance = new DungeonEntrance();
-        var dungeon = new Dungeon();
-        var trap = new Trap();
-        var chamberOfWealth = new ChamberOfWealth();
-        var dungeonEgress = new DungeonEgress();
-        var village = new Village();
-        var inn = new Inn();
-        var stable = new Stable();
-        var devastatedLands = new DevastatedLands();
-        var moat = new Moat();
-        var castle = new Castle();
-        var supervillain = new Supervillain();
-        var medicalCabin = new MedicalCabin();
+        var town = new DefaultLocation();
+        var forest = new DefaultLocation();
+        var forestGlade = new DefaultLocation();
+        var shamanCabin = new DefaultLocation();
+        var dungeonEntrance = new DefaultLocation();
+        var dungeon = new DefaultLocation();
+        var trap = new DefaultLocation();
+        var chamberOfWealth = new DefaultLocation();
+        var dungeonEgress = new DefaultLocation();
+        var village = new DefaultLocation();
+        var inn = new DefaultLocation();
+        var stable = new DefaultLocation();
+        var devastatedLands = new DefaultLocation();
+        var moat = new DefaultLocation();
+        var castle = new DefaultLocation();
+        var supervillain = new DefaultLocation();
+        var medicalCabin = new DefaultLocation();
 
         // All NPCs
         var headmanBackpack = new Backpack();
@@ -230,283 +230,325 @@ public final class WorldMap {
         townItems.put("arrow", itemService.getItem(5));
         townItems.put("coin", itemService.getItem(6));
         town =
-                (Town)
-                        new LocationBuilder(town)
-                                .addDefaultActions()
-                                .addAction("talk", new TalkAction(town))
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "Looking around all you can see are empty streets and"
-                                                        + "desolated buildings. The only person in your eyesight "
-                                                        + "is your headman and he looks like he wants to talk to you..."
-                                                        + "(Creatures around you: Headman)"))
-                                .addAction("go", new GoAction(Map.of("straight", forest)))
-                                .addAction("pick", new PickupAction(townItems))
-                                .addNPC(headman)
-                                .build();
+                new LocationBuilder(town)
+                        .addDefaultActions()
+                        .setDescription(
+                                "You are in your hometown. Every place is currently closed even an elegant inn, built within"
+                                        + "an ancient tower of rune-carved stone which usually bustling with life."
+                                        + "You can feel the terror in the air. Your leader has a task for you, approach him to talk to him.")
+                        .addAction("talk", new TalkAction(town))
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "Looking around all you can see are empty streets and"
+                                                + "desolated buildings. The only person in your eyesight "
+                                                + "is your headman and he looks like he wants to talk to you..."
+                                                + "(Creatures around you: Headman)"))
+                        .addAction("go", new GoAction(Map.of("straight", forest)))
+                        .addAction("pick", new PickupAction(townItems))
+                        .addNPC(headman)
+                        .build();
 
         forest =
-                (Forest)
-                        new LocationBuilder(forest)
-                                .addDefaultActions()
-                                .addAction("talk", new TalkAction(forest))
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "You are surrounded by oaks and ferns."
-                                                        + "Wild animals seem to be restless."
-                                                        + "Suddenly little squirrel jumps on your shoulder!"
-                                                        + "She has something important to tell you!"
-                                                        + "(Creatures around you: Jingle)"))
-                                .addAction(
-                                        "go",
-                                        new GoAction(
-                                                Map.of(
-                                                        "left", forestGlade,
-                                                        "right", shamanCabin)))
-                                .addNPC(magicSquirrel)
-                                .build();
+                new LocationBuilder(forest)
+                        .addDefaultActions()
+                        .setDescription(
+                                "You enter the forest. You can fell warm sunlight coming"
+                                        + "through the green treetops. The sounds of nature surround you."
+                                        + "In the distance you spot fork in the road."
+                                        + "(You can go left or right).")
+                        .addAction("talk", new TalkAction(forest))
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "You are surrounded by oaks and ferns."
+                                                + "Wild animals seem to be restless."
+                                                + "Suddenly little squirrel jumps on your shoulder!"
+                                                + "She has something important to tell you!"
+                                                + "(Creatures around you: Jingle)"))
+                        .addAction(
+                                "go",
+                                new GoAction(
+                                        Map.of(
+                                                "left", forestGlade,
+                                                "right", shamanCabin)))
+                        .addNPC(magicSquirrel)
+                        .build();
 
         var gladeItems = new HashMap<String, IItem>();
         gladeItems.put("amulet", itemService.getItem(7));
         forestGlade =
-                (ForestGlade)
-                        new LocationBuilder(forestGlade)
-                                .addDefaultActions()
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "In the middle of glade you spot something shinny."
-                                                        + "You are drawn to this object by the power of magic..."
-                                                        + "Now you are sure that it is amulet of eternal love!"
-                                                        + "(There is no one here)"))
-                                .addAction("go", new GoAction(Map.of("straight", dungeonEntrance)))
-                                .addAction("pick", new PickupAction(gladeItems))
-                                .build();
+                new LocationBuilder(forestGlade)
+                        .addDefaultActions()
+                        .setDescription(
+                                "You are in the wild forest glade and you can feel great power...")
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "In the middle of glade you spot something shinny."
+                                                + "You are drawn to this object by the power of magic..."
+                                                + "Now you are sure that it is amulet of eternal love!"
+                                                + "(There is no one here)"))
+                        .addAction("go", new GoAction(Map.of("straight", dungeonEntrance)))
+                        .addAction("pick", new PickupAction(gladeItems))
+                        .build();
 
         shamanCabin =
-                (ShamanCabin)
-                        new LocationBuilder(shamanCabin)
-                                .addDefaultActions()
-                                .addAction("talk", new TalkAction(shamanCabin))
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "You are blinded! You can't see anything!"
-                                                        + "(Creatures around you: Thaddeus)"))
-                                .addAction("go", new GoAction(Map.of("straight", dungeonEntrance)))
-                                .addNPC(shaman)
-                                .build();
+                new LocationBuilder(shamanCabin)
+                        .addDefaultActions()
+                        .setDescription(
+                                "You are in the strange cabin... Walking in you feel"
+                                        + "overwhelmed by the mysterious atmosphere. Severed human heads, dried plants and"
+                                        + "various mixtures are all over the place. Scents are extremely intense."
+                                        + "Suddenly you are blinded by the grate light and you can see creature"
+                                        + "walking out of it.")
+                        .addAction("talk", new TalkAction(shamanCabin))
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "You are blinded! You can't see anything!"
+                                                + "(Creatures around you: Thaddeus)"))
+                        .addAction("go", new GoAction(Map.of("straight", dungeonEntrance)))
+                        .addNPC(shaman)
+                        .build();
 
         medicalCabin =
-                (MedicalCabin)
-                        new LocationBuilder(medicalCabin)
-                                .addDefaultActions()
-                                .addAction("talk", new TalkAction(medicalCabin))
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "You are in the cabin... all you can see is various mixtures and medical tools."
-                                                        + "(Creatures around you: Britt)"))
-                                .addAction("go", new GoAction(Map.of("straight", dungeonEntrance)))
-                                .addNPC(medical)
-                                .build();
+                new LocationBuilder(medicalCabin)
+                        .addDefaultActions()
+                        .setDescription(
+                                "You woke up with horrible headache... You see that someone leans over you.")
+                        .addAction("talk", new TalkAction(medicalCabin))
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "You are in the cabin... all you can see is various mixtures and medical tools."
+                                                + "(Creatures around you: Britt)"))
+                        .addAction("go", new GoAction(Map.of("straight", dungeonEntrance)))
+                        .addNPC(medical)
+                        .build();
 
         dungeonEntrance =
-                (DungeonEntrance)
-                        new LocationBuilder(dungeonEntrance)
-                                .addDefaultActions()
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "What are you looking at?"
-                                                        + "The bridge won't cross itself!"
-                                                        + "(There is no one here)"))
-                                .addAction(
-                                        "go",
-                                        new DungeonEntranceGoAction(Map.of("straight", dungeon)))
-                                .build();
+                new LocationBuilder(dungeonEntrance)
+                        .addDefaultActions()
+                        .setDescription(
+                                "You are in front of the dungeon. If you choose to walk in"
+                                        + "you have to cross the devastated bridge... There is a risk that you can fall!")
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "What are you looking at?"
+                                                + "The bridge won't cross itself!"
+                                                + "(There is no one here)"))
+                        .addAction("go", new DungeonEntranceGoAction(Map.of("straight", dungeon)))
+                        .build();
 
         dungeon =
-                (Dungeon)
-                        new LocationBuilder(dungeon)
-                                .addDefaultActions()
-                                .addAction(
-                                        "investigate",
-                                        new DungeonInvestigateAction(
-                                                "Your torch allows you to see drawings and symbols on the walls,"
-                                                        + "pillaged and wrecked by time itself... Further ahead are two paths."
-                                                        + "(There is no one here)"))
-                                .addAction(
-                                        "go",
-                                        new GoAction(
-                                                Map.of(
-                                                        "left", trap,
-                                                        "right", chamberOfWealth)))
-                                .build();
+                new LocationBuilder(dungeon)
+                        .addDefaultActions()
+                        .setDescription(
+                                "You successfully pass through the bridge! Now you are in the dungeon "
+                                        + "and you can see nothing but the darkness. (You have to use your torch).")
+                        .addAction(
+                                "investigate",
+                                new DungeonInvestigateAction(
+                                        "Your torch allows you to see drawings and symbols on the walls,"
+                                                + "pillaged and wrecked by time itself... Further ahead are two paths."
+                                                + "(There is no one here)"))
+                        .addAction(
+                                "go",
+                                new GoAction(
+                                        Map.of(
+                                                "left", trap,
+                                                "right", chamberOfWealth)))
+                        .build();
 
         trap =
-                (Trap)
-                        new LocationBuilder(trap)
-                                .addDefaultActions()
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "You feel too weak to look around..."
-                                                        + "(There is no one here)"))
-                                .addAction("go", new GoAction(Map.of("straight", dungeonEgress)))
-                                .build();
+                new LocationBuilder(trap)
+                        .addDefaultActions()
+                        .setDescription(
+                                "Walking into the room you feel the rock "
+                                        + "moving under your foot. You have activated a trap!"
+                                        + "Poisoned arrow hits you in the arm and you feel awful "
+                                        + "pain.")
+                        .addActionOnEnter(new TrapEntranceRemoveHealthAction())
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "You feel too weak to look around..."
+                                                + "(There is no one here)"))
+                        .addAction("go", new GoAction(Map.of("straight", dungeonEgress)))
+                        .build();
 
         chamberOfWealth =
-                (ChamberOfWealth)
-                        new LocationBuilder(chamberOfWealth)
-                                .addDefaultActions()
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "You notice that treasure had to be stuck here for hundreds years..."
-                                                        + "(There is no one here)"))
-                                .addAction("go", new GoAction(Map.of("straight", dungeonEgress)))
-                                .build();
+                new LocationBuilder(chamberOfWealth)
+                        .addDefaultActions()
+                        .setDescription(
+                                "You are walking into the room and you can't "
+                                        + "believe what you see! Chamber is full of gold!")
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "You notice that treasure had to be stuck here for hundreds years..."
+                                                + "(There is no one here)"))
+                        .addAction("go", new GoAction(Map.of("straight", dungeonEgress)))
+                        .build();
 
         dungeonEgress =
-                (DungeonEgress)
-                        new LocationBuilder(dungeonEgress)
-                                .addDefaultActions()
-                                .addAction("talk", new TalkAction(dungeonEgress))
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "You can't see any useful objects around you "
-                                                        + "you have to deal with them with what you got!"
-                                                        + "(Creatures around you: Marc, Hubhert)"))
-                                .addAction("go", new GoAction(Map.of("straight", village)))
-                                .addNPC(beast1)
-                                .addNPC(beast2)
-                                .build();
+                new LocationBuilder(dungeonEgress)
+                        .addDefaultActions()
+                        .setDescription(
+                                "You see end of the dungeon... "
+                                        + "Suddenly you spot two enemies approaching!")
+                        .addAction("talk", new TalkAction(dungeonEgress))
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "You can't see any useful objects around you "
+                                                + "you have to deal with them with what you got!"
+                                                + "(Creatures around you: Marc, Hubhert)"))
+                        .addAction("go", new GoAction(Map.of("straight", village)))
+                        .addNPC(beast1)
+                        .addNPC(beast2)
+                        .build();
 
         village =
-                (Village)
-                        new LocationBuilder(village)
-                                .addDefaultActions()
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "In front of you devastated lands stretching out for several "
-                                                        + "hundred kilometers across but you also spot the inn and the stable."
-                                                        + "(There is no one here)"))
-                                .addAction(
-                                        "go",
-                                        new GoAction(
-                                                Map.of(
-                                                        "stable", stable,
-                                                        "inn", inn,
-                                                        "tavern", inn,
-                                                        "devastated lands", devastatedLands)))
-                                .build();
+                new LocationBuilder(village)
+                        .addDefaultActions()
+                        .setDescription(
+                                "After darkness of the dungeon there is nothing better in here...")
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "In front of you devastated lands stretching out for several "
+                                                + "hundred kilometers across but you also spot the inn and the stable."
+                                                + "(There is no one here)"))
+                        .addAction(
+                                "go",
+                                new GoAction(
+                                        Map.of(
+                                                "stable", stable,
+                                                "inn", inn,
+                                                "tavern", inn,
+                                                "devastated lands", devastatedLands)))
+                        .build();
 
         inn =
-                (Inn)
-                        new LocationBuilder(inn)
-                                .addDefaultActions()
-                                .addAction("talk", new TalkAction(inn))
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "The innkeeper is a short female. Room is full of injured soldiers... "
-                                                        + "You can hear someone is chanting songs of the fallen lands. "
-                                                        + "(Creatures around you: Domenic, Raphael, Avery, Galen, Hilda, Darell)"))
-                                .addAction("go", new GoAction(Map.of("straight", village)))
-                                .addNPC(innNPC1)
-                                .addNPC(innNPC2)
-                                .addNPC(innNPC3)
-                                .addNPC(innNPC4)
-                                .addNPC(innNPC5)
-                                .addNPC(innkeeper)
-                                .addNPC(stranger)
-                                .build();
+                new LocationBuilder(inn)
+                        .addDefaultActions()
+                        .setDescription(
+                                "You are in the inn. It is a building of stone walls, "
+                                        + "with several stained glass windows. Accomodations consist "
+                                        + "of several large rooms with beds and woolen mattresses.")
+                        .addAction("talk", new TalkAction(inn))
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "The innkeeper is a short female. Room is full of injured soldiers... "
+                                                + "You can hear someone is chanting songs of the fallen lands. "
+                                                + "(Creatures around you: Domenic, Raphael, Avery, Galen, Hilda, Darell)"))
+                        .addAction("go", new GoAction(Map.of("straight", village)))
+                        .addNPC(innNPC1)
+                        .addNPC(innNPC2)
+                        .addNPC(innNPC3)
+                        .addNPC(innNPC4)
+                        .addNPC(innNPC5)
+                        .addNPC(innkeeper)
+                        .addNPC(stranger)
+                        .build();
 
         stable =
-                (Stable)
-                        new LocationBuilder(stable)
-                                .addDefaultActions()
-                                .addAction("talk", new TalkAction(stable))
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "You spot a tall man who smiles at you and "
-                                                        + "looks like he wants to offer something."
-                                                        + "(Creatures around you: Elvin)"))
-                                .addAction("go", new GoAction(Map.of("straight", moat)))
-                                .addNPC(horseBoy)
-                                .build();
+                new LocationBuilder(stable)
+                        .addDefaultActions()
+                        .setDescription(
+                                "You are in the small stable. The place is divided into three separate stalls with horses.")
+                        .addAction("talk", new TalkAction(stable))
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "You spot a tall man who smiles at you and "
+                                                + "looks like he wants to offer something."
+                                                + "(Creatures around you: Elvin)"))
+                        .addAction("go", new GoAction(Map.of("straight", moat)))
+                        .addNPC(horseBoy)
+                        .build();
 
         devastatedLands =
-                (DevastatedLands)
-                        new LocationBuilder(devastatedLands)
-                                .addDefaultActions()
-                                .addAction("talk", new TalkAction(devastatedLands))
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "There is no time to investigate! Hurry or you will die!"
-                                                        + "(Creatures around you: Lucas, Claudius, Julian, Annis)"))
-                                .addAction("go", new GoAction(Map.of("straight", moat)))
-                                .addNPC(warrior1)
-                                .addNPC(warrior2)
-                                .addNPC(warrior3)
-                                .addNPC(warrior4)
-                                .build();
+                new LocationBuilder(devastatedLands)
+                        .addDefaultActions()
+                        .setDescription(
+                                "There are devastated lands all around you... Every little"
+                                        + "piece of ground tells you that horrible battles took place in here."
+                                        + "Out of nowhere a bunch of Fasilius' servants attacks you!")
+                        .addAction("talk", new TalkAction(devastatedLands))
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "There is no time to investigate! Hurry or you will die!"
+                                                + "(Creatures around you: Lucas, Claudius, Julian, Annis)"))
+                        .addAction("go", new GoAction(Map.of("straight", moat)))
+                        .addNPC(warrior1)
+                        .addNPC(warrior2)
+                        .addNPC(warrior3)
+                        .addNPC(warrior4)
+                        .build();
 
         moat =
-                (Moat)
-                        new LocationBuilder(moat)
-                                .addDefaultActions()
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "You are looking around and search something that could help you "
-                                                        + "pass the moat... you can't see anything useful but thin piece of wood. "
-                                                        + "You pick it up and place it across the moat. Now you can use it to go 'through'!"
-                                                        + "(There is no one here)"))
-                                .addAction("go", new GoAction(Map.of("straight", castle)))
-                                .build();
+                new LocationBuilder(moat)
+                        .addDefaultActions()
+                        .setDescription(
+                                "You see moat excavated around castle as part of the defensive "
+                                        + "system as an obstacle immediately outside the walls.")
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "You are looking around and search something that could help you "
+                                                + "pass the moat... you can't see anything useful but thin piece of wood. "
+                                                + "You pick it up and place it across the moat. Now you can use it to go 'through'!"
+                                                + "(There is no one here)"))
+                        .addAction("go", new GoAction(Map.of("straight", castle)))
+                        .build();
 
         castle =
-                (Castle)
-                        new LocationBuilder(castle)
-                                .addDefaultActions()
-                                .addAction("talk", new TalkAction(castle))
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "At the beginning of the corridor you spot a small cell full of unconscious prisoners..."
-                                                        + "Only three of them appear to be awake. You recognised them as mags from your village."
-                                                        + "A massive granite door blocked your path. Dire warning messages are all over it, "
-                                                        + "somehow untouched by time. You step closer to inspect it and... wait... you think "
-                                                        + "you can hear a whisper coming from behind the door... You can feel that "
-                                                        + "evil power is closer then ever... waiting on you."
-                                                        + "(Creatures around you: Herschel, Merlin, Donovan)"))
-                                .addAction("go", new GoAction(Map.of("straight", supervillain)))
-                                .addNPC(mag1)
-                                .addNPC(mag2)
-                                .addNPC(mag3)
-                                .build();
+                new LocationBuilder(castle)
+                        .addDefaultActions()
+                        .setDescription(
+                                "This large walled castle has black stone walls and defensive earthworks, "
+                                        + "and a shell keep. It appears deserted, but is inhabited by brigands led by Fasilius.")
+                        .addAction("talk", new TalkAction(castle))
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "At the beginning of the corridor you spot a small cell full of unconscious prisoners..."
+                                                + "Only three of them appear to be awake. You recognised them as mags from your village."
+                                                + "A massive granite door blocked your path. Dire warning messages are all over it, "
+                                                + "somehow untouched by time. You step closer to inspect it and... wait... you think "
+                                                + "you can hear a whisper coming from behind the door... You can feel that "
+                                                + "evil power is closer then ever... waiting on you."
+                                                + "(Creatures around you: Herschel, Merlin, Donovan)"))
+                        .addAction("go", new GoAction(Map.of("straight", supervillain)))
+                        .addNPC(mag1)
+                        .addNPC(mag2)
+                        .addNPC(mag3)
+                        .build();
 
         supervillain =
-                (Supervillain)
-                        new LocationBuilder(supervillain)
-                                .addDefaultActions()
-                                .addAction("talk", new TalkAction(supervillain))
-                                .addAction(
-                                        "investigate",
-                                        new InvestigateAction(
-                                                "You looked around but the only thing you could see were visions of all those "
-                                                        + "horrible things that must have happened in here..."
-                                                        + "(Creatures around you: Fasilius)"))
-                                .addNPC(fasilius)
-                                .build();
+                new LocationBuilder(supervillain)
+                        .addDefaultActions()
+                        .setDescription(
+                                "The room had that spooky looks, cobwebs everywhere, chandeliers suspended from the ceiling."
+                                        + "A foul stench invaded your nostrils, You looked around to see where the smell was coming from "
+                                        + "and nearly vomited at the sight, it was a rotting body. You recognised him as your friend from "
+                                        + "the different clan who was also sent here to defeat Fasilius... You felt great sorrow and rage. "
+                                        + "You turned around and saw him watching you... In that very moment you knew that you are ready to kill him...")
+                        .addAction("talk", new TalkAction(supervillain))
+                        .addAction(
+                                "investigate",
+                                new InvestigateAction(
+                                        "You looked around but the only thing you could see were visions of all those "
+                                                + "horrible things that must have happened in here..."
+                                                + "(Creatures around you: Fasilius)"))
+                        .addNPC(fasilius)
+                        .build();
 
         // Add to map
         locations.put("town", town);

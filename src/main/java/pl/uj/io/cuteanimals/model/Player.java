@@ -1,7 +1,6 @@
 package pl.uj.io.cuteanimals.model;
 
 import pl.uj.io.cuteanimals.model.interfaces.*;
-import pl.uj.io.cuteanimals.plot.locations.Trap;
 
 public class Player implements IPlayer {
     private final PlayerAttributes stats = new PlayerAttributes(this);
@@ -31,12 +30,9 @@ public class Player implements IPlayer {
     }
 
     @Override
-    public void changeLocation(ILocation where) {
-        if (where.getClass().equals(Trap.class)) {
-            stats.addHealth(-10);
-        }
-
+    public IResult changeLocation(ILocation where) {
         currentLocation = where;
+        return currentLocation.onEnter(this);
     }
 
     public ILocation getCurrentLocation() {

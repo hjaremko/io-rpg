@@ -27,8 +27,8 @@ public class GoAction extends ContainerArgumentAction<ILocation> {
             return new Result("You want to go... where?");
         }
 
-        player.changeLocation(toGo);
-        return new Result(toGo.getDescription());
+        IResult enterResult = player.changeLocation(toGo);
+        return new Result(toGo.getDescription() + enterResult.getMessage());
     }
 
     @Override

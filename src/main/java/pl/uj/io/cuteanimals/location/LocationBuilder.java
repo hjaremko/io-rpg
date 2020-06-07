@@ -7,8 +7,8 @@ import java.util.Map;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import pl.uj.io.cuteanimals.action.*;
+import pl.uj.io.cuteanimals.model.DefaultLocation;
 import pl.uj.io.cuteanimals.model.NPC;
-import pl.uj.io.cuteanimals.model.interfaces.DefaultLocation;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 
@@ -19,12 +19,14 @@ public class LocationBuilder {
     Map<String, IAction> actionMap;
     List<NPC> npcList;
     List<IEquipment> equipmentList;
+    IAction actionOnEnter;
 
     public LocationBuilder() {
         this.description = "";
         this.actionMap = new HashMap<>();
         this.npcList = new ArrayList<>();
         this.equipmentList = new ArrayList<>();
+        this.actionOnEnter = null;
     }
 
     public LocationBuilder(DefaultLocation location) {
@@ -62,11 +64,17 @@ public class LocationBuilder {
         return this;
     }
 
+    public LocationBuilder addActionOnEnter(@NotNull IAction action) {
+        this.actionOnEnter = action;
+        return this;
+    }
+
     public DefaultLocation build() {
         location.setDescription(description);
         location.setAvailableActions(actionMap);
         location.setItems(equipmentList);
         location.setNPCs(npcList);
+        location.setActionOnEnter(actionOnEnter);
         return location;
     }
 }

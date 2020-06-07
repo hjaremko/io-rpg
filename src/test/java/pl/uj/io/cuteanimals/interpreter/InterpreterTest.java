@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 import pl.uj.io.cuteanimals.action.GoAction;
 import pl.uj.io.cuteanimals.action.InvestigateAction;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
+import pl.uj.io.cuteanimals.model.DefaultLocation;
 import pl.uj.io.cuteanimals.model.Player;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
-import pl.uj.io.cuteanimals.plot.locations.Town;
 
 class InterpreterTest {
     @Test
@@ -32,7 +32,7 @@ class InterpreterTest {
     void actionWithArgsParseTest() throws InvalidCommandException {
         Player player = new Player();
         Map<String, IAction> context = new HashMap<>();
-        context.put("go", new GoAction(Map.of("flavour", new Town())));
+        context.put("go", new GoAction(Map.of("flavour", new DefaultLocation())));
         var expr = parse("go flavour town", context);
 
         var result = expr.interpret(context);

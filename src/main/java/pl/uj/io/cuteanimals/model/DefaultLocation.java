@@ -1,22 +1,24 @@
-package pl.uj.io.cuteanimals.model.interfaces;
+package pl.uj.io.cuteanimals.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import pl.uj.io.cuteanimals.model.NPC;
+import pl.uj.io.cuteanimals.model.interfaces.*;
 
-public abstract class DefaultLocation implements ILocation {
+public class DefaultLocation implements ILocation {
     protected String description;
     protected Map<String, IAction> actionMap;
     protected List<NPC> npcList;
     protected List<IEquipment> equipmentList;
+    protected IAction actionOnEnter;
 
-    protected DefaultLocation() {
+    public DefaultLocation() {
         this.description = "";
         this.actionMap = new HashMap<>();
         this.npcList = new ArrayList<>();
         this.equipmentList = new ArrayList<>();
+        this.actionOnEnter = null;
     }
 
     @Override
@@ -53,5 +55,22 @@ public abstract class DefaultLocation implements ILocation {
 
     public void setItems(List<IEquipment> items) {
         this.equipmentList = items;
+    }
+
+    @Override
+    public IAction getActionOnEnter() {
+        return actionOnEnter;
+    }
+
+    public void setActionOnEnter(IAction actionOnEnter) {
+        this.actionOnEnter = actionOnEnter;
+    }
+
+    @Override
+    public IResult onEnter(IPlayer player) {
+        if (actionOnEnter != null) {
+            return actionOnEnter.execute(player);
+        }
+        return new Result("");
     }
 }

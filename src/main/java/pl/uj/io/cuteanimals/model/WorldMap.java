@@ -40,6 +40,9 @@ public final class WorldMap {
         var castle = new DefaultLocation();
         var supervillain = new DefaultLocation();
         var medicalCabin = new DefaultLocation();
+        var leftGate = new DefaultLocation();
+        var middleGate = new DefaultLocation();
+        var rightGate = new DefaultLocation();
 
         // All NPCs
         var headmanBackpack = new Backpack();
@@ -102,14 +105,14 @@ public final class WorldMap {
                                         + "Last night a magical squirrel named Jingle informed me and my husband about an accident that occurred on the bridge... "
                                         + "I guess you tried to get to the other side. I cured you and you can go back to the dungeon. I am returning to healing the wounded."));
 
-        var beast1 =
+        var hubhert =
                 new NPC(
                         null,
                         null,
                         "Hubhert",
                         List.of("Wooooaaahhhhhh!!! Smash! Smash! Smaaaaash!"));
 
-        var beast2 = new NPC(null, null, "Marc", List.of("Wrrr..."));
+        var marc = new NPC(null, null, "Marc", List.of("Wrrr..."));
 
         var innNPC1 =
                 new NPC(
@@ -162,7 +165,7 @@ public final class WorldMap {
 
         var innkeeper = new NPC(null, null, "Hilda", List.of("I'm too busy to talk to you."));
 
-        var stranger =
+        var darell =
                 new NPC(
                         null,
                         null,
@@ -182,18 +185,18 @@ public final class WorldMap {
                                         + "I heard that you set out on this dangerous journey to save us. In return, I would like to give you my best steed, Bernard... ",
                                 "Take good care of him, and good luck!"));
 
-        var warrior1 = new NPC(null, null, "Lucas", List.of("Taste my sword you fagot!"));
+        var lucas = new NPC(null, null, "Lucas", List.of("Taste my sword you fagot!"));
 
-        var warrior2 =
+        var claudius =
                 new NPC(
                         null,
                         null,
                         "Claudius",
                         List.of("If I were you I would run as fast as I can..."));
 
-        var warrior3 = new NPC(null, null, "Julian", List.of("I will cut off all your limbs!"));
+        var julian = new NPC(null, null, "Julian", List.of("I will cut off all your limbs!"));
 
-        var warrior4 = new NPC(null, null, "Annis", List.of("I will break your neck!"));
+        var annis = new NPC(null, null, "Annis", List.of("I will break your neck!"));
 
         var mag1 = new NPC(null, null, "Herschel", List.of("Please... help us!"));
 
@@ -213,7 +216,7 @@ public final class WorldMap {
                         "Fasilius",
                         List.of(
                                 "I was expecting you... I see you noticed your predecessor. As you can see, it didn't end well for him... "
-                                        + "killing him was a minor matter. Do I see tears in your eyes? Don't worry, his life was worth nothing anyway. "
+                                        + "Killing him was a minor matter. Do I see tears in your eyes? Don't worry, his life was worth nothing anyway. "
                                         + "I hope that the fight with you will be more exciting... ",
                                 "Your nation is the last obstacle to me taking over the whole world. Every little creature on this earth will have to submit to my power. "
                                         + "A new era begins... An era in which I proclaim the truth. ",
@@ -229,16 +232,12 @@ public final class WorldMap {
         townItems.put("torch", itemService.getItem(8));
         townItems.put("apple", itemService.getItem(9));
 
-        var townMonsters = new HashMap<String, Monster>();
-        townMonsters.put("dummy", new Monster("Dummy", new NPCAttributes(20, 1, 1, 2)));
-        townMonsters.put("dummy2", new Monster("Bigger Dummy", new NPCAttributes(20, 1, 2, 2)));
-
         town =
                 new LocationBuilder(town)
                         .addDefaultActions()
                         .setDescription(
-                                "You are in your hometown. Every place is currently closed even an elegant inn, built within"
-                                        + "an ancient tower of rune-carved stone which usually bustling with life."
+                                "You are in your hometown. Every place is currently closed even an elegant inn, built within "
+                                        + "an ancient tower of rune-carved stone which usually bustling with life. "
                                         + "You can feel the terror in the air. Your leader has a task for you, approach him to talk to him.")
                         .addAction("talk", new TalkAction(town))
                         .addAction(
@@ -251,7 +250,6 @@ public final class WorldMap {
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", forest)))
                         .addAction("pick", new PickupAction(townItems))
-                        .addAction("fight", new FightAction(townMonsters))
                         .addNPC(headman)
                         .build();
 
@@ -259,10 +257,9 @@ public final class WorldMap {
                 new LocationBuilder(forest)
                         .addDefaultActions()
                         .setDescription(
-                                "You enter the forest. You can fell warm sunlight coming"
-                                        + "through the green treetops. The sounds of nature surround you."
-                                        + "In the distance you spot fork in the road."
-                                        + "(You can go left or right).")
+                                "You enter the forest. You can fell warm sunlight coming "
+                                        + "through the green treetops. The sounds of nature surround you. "
+                                        + "In the distance you spot fork in the road.")
                         .addAction("talk", new TalkAction(forest))
                         .addAction(
                                 "investigate",
@@ -305,10 +302,10 @@ public final class WorldMap {
                 new LocationBuilder(shamanCabin)
                         .addDefaultActions()
                         .setDescription(
-                                "You are in the strange cabin... Walking in you feel"
-                                        + "overwhelmed by the mysterious atmosphere. Severed human heads, dried plants and"
-                                        + "various mixtures are all over the place. Scents are extremely intense."
-                                        + "Suddenly you are blinded by the grate light and you can see creature"
+                                "You are in the strange cabin... Walking in you feel "
+                                        + "overwhelmed by the mysterious atmosphere. Severed human heads, dried plants and "
+                                        + "various mixtures are all over the place. Scents are extremely intense. "
+                                        + "Suddenly you are blinded by the grate light and you can see creature "
                                         + "walking out of it.")
                         .addAction("talk", new TalkAction(shamanCabin))
                         .addAction(
@@ -341,7 +338,7 @@ public final class WorldMap {
                 new LocationBuilder(dungeonEntrance)
                         .addDefaultActions()
                         .setDescription(
-                                "You are in front of the dungeon. If you choose to walk in"
+                                "You are in front of the dungeon. If you choose to walk in "
                                         + "you have to cross the devastated bridge... There is a risk that you can fall!")
                         .addAction(
                                 "investigate",
@@ -379,7 +376,7 @@ public final class WorldMap {
                         .addDefaultActions()
                         .setDescription(
                                 "Walking into the room you feel the rock "
-                                        + "moving under your foot. You have activated a trap!"
+                                        + "moving under your foot. You have activated a trap! "
                                         + "Poisoned arrow hits you in the arm and you feel awful "
                                         + "pain.")
                         .addActionOnEnter(new EntranceRemoveHealthAction(10))
@@ -407,6 +404,10 @@ public final class WorldMap {
                         .addAction("go", new GoAction(Map.of("straight", dungeonEgress)))
                         .build();
 
+        var dungeonEgressMonsters = new HashMap<String, Monster>();
+        dungeonEgressMonsters.put(
+                "hubhert", new Monster("Hubhert", new NPCAttributes(20, 1, 1, 1)));
+        dungeonEgressMonsters.put("marc", new Monster("Marc", new NPCAttributes(20, 1, 1, 1)));
         dungeonEgress =
                 new LocationBuilder(dungeonEgress)
                         .addDefaultActions()
@@ -422,8 +423,9 @@ public final class WorldMap {
                                                 + "(Creatures around you: Marc, Hubhert)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", village)))
-                        .addNPC(beast1)
-                        .addNPC(beast2)
+                        .addAction("fight", new FightAction(dungeonEgressMonsters))
+                        .addNPC(hubhert)
+                        .addNPC(marc)
                         .build();
 
         village =
@@ -447,6 +449,8 @@ public final class WorldMap {
                                                 "straight", devastatedLands)))
                         .build();
 
+        var innMonsters = new HashMap<String, Monster>();
+        innMonsters.put("darell", new Monster("Darell", new NPCAttributes(15, 1, 1, 1)));
         inn =
                 new LocationBuilder(inn)
                         .addDefaultActions()
@@ -463,13 +467,14 @@ public final class WorldMap {
                                                 + "(Creatures around you: Domenic, Raphael, Avery, Galen, Hilda, Darell)\n"
                                                 + "(Where you can go: village)"))
                         .addAction("go", new GoAction(Map.of("straight", village)))
+                        .addAction("fight", new FightAction(innMonsters))
                         .addNPC(innNPC1)
                         .addNPC(innNPC2)
                         .addNPC(innNPC3)
                         .addNPC(innNPC4)
                         .addNPC(innNPC5)
                         .addNPC(innkeeper)
-                        .addNPC(stranger)
+                        .addNPC(darell)
                         .build();
 
         stable =
@@ -489,12 +494,19 @@ public final class WorldMap {
                         .addNPC(horseBoy)
                         .build();
 
+        var devastatedLandsMonsters = new HashMap<String, Monster>();
+        devastatedLandsMonsters.put("lucas", new Monster("Lucas", new NPCAttributes(20, 1, 1, 1)));
+        devastatedLandsMonsters.put(
+                "claudius", new Monster("Claudius", new NPCAttributes(20, 1, 1, 1)));
+        devastatedLandsMonsters.put(
+                "julius", new Monster("Julius", new NPCAttributes(20, 1, 1, 1)));
+        devastatedLandsMonsters.put("annis", new Monster("Annis", new NPCAttributes(20, 1, 1, 1)));
         devastatedLands =
                 new LocationBuilder(devastatedLands)
                         .addDefaultActions()
                         .setDescription(
-                                "There are devastated lands all around you... Every little"
-                                        + "piece of ground tells you that horrible battles took place in here."
+                                "There are devastated lands all around you... Every little "
+                                        + "piece of ground tells you that horrible battles took place in here. "
                                         + "Out of nowhere a bunch of Fasilius' servants attacks you!")
                         .addAction("talk", new TalkAction(devastatedLands))
                         .addAction(
@@ -504,10 +516,11 @@ public final class WorldMap {
                                                 + "(Creatures around you: Lucas, Claudius, Julian, Annis)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", moat)))
-                        .addNPC(warrior1)
-                        .addNPC(warrior2)
-                        .addNPC(warrior3)
-                        .addNPC(warrior4)
+                        .addAction("fight", new FightAction(devastatedLandsMonsters))
+                        .addNPC(lucas)
+                        .addNPC(claudius)
+                        .addNPC(julian)
+                        .addNPC(annis)
                         .build();
 
         moat =
@@ -551,11 +564,14 @@ public final class WorldMap {
                         .addNPC(mag3)
                         .build();
 
+        var supervillainMonsters = new HashMap<String, Monster>();
+        supervillainMonsters.put(
+                "fasilius", new Monster("Fasilius", new NPCAttributes(100, 3, 3, 3)));
         supervillain =
                 new LocationBuilder(supervillain)
                         .addDefaultActions()
                         .setDescription(
-                                "The room had that spooky looks, cobwebs everywhere, chandeliers suspended from the ceiling."
+                                "The room had that spooky looks, cobwebs everywhere, chandeliers suspended from the ceiling. "
                                         + "A foul stench invaded your nostrils, You looked around to see where the smell was coming from "
                                         + "and nearly vomited at the sight, it was a rotting body. You recognised him as your friend from "
                                         + "the different clan who was also sent here to defeat Fasilius... You felt great sorrow and rage. "
@@ -567,7 +583,45 @@ public final class WorldMap {
                                         "You looked around but the only thing you could see were visions of all those "
                                                 + "horrible things that must have happened in here...\n"
                                                 + "(Creatures around you: Fasilius)"))
+                        .addAction(
+                                "go",
+                                new GoAction(
+                                        Map.of(
+                                                "left",
+                                                leftGate,
+                                                "straight",
+                                                middleGate,
+                                                "right",
+                                                rightGate)))
+                        .addAction("fight", new FightAction(supervillainMonsters))
                         .addNPC(fasilius)
+                        .build();
+
+        leftGate =
+                new LocationBuilder(leftGate)
+                        .addDefaultActions()
+                        .setDescription(
+                                "After passing through the left gate, you learn that the Facilius troops managed to reach your homeland and razed them to the ground. "
+                                        + "Everyone you knew and loved died. You realize that you are all alone in the world. Your heart breaks, you fall to your knees and die from despair and exhaustion, "
+                                        + "with the memory of the faces of your loved ones which brings you some relief.")
+                        .build();
+
+        middleGate =
+                new LocationBuilder(middleGate)
+                        .addDefaultActions()
+                        .setDescription(
+                                "After passing through the middle gate, you begin to feel the power resulting from the destruction of the most powerful being in the universe. "
+                                        + "You feel like the whole world is at your feet. "
+                                        + "You start to hear the evil forces whispering in your ear ... "
+                                        + "Fasilius intentions so far completely incomprehensible to you, make sense. Dark forces absorb you completely.")
+                        .build();
+
+        rightGate =
+                new LocationBuilder(rightGate)
+                        .addDefaultActions()
+                        .setDescription(
+                                "After passing through the right gate you see a world full of happiness, peace and mutual respect. "
+                                        + "The other three clans managed to rebuild their cities, and you return to your homeland, live a life free from all evil.")
                         .build();
 
         // Add to map
@@ -588,6 +642,9 @@ public final class WorldMap {
         locations.put("moat", moat);
         locations.put("castle", castle);
         locations.put("supervillain", supervillain);
+        locations.put("left gate", leftGate);
+        locations.put("middle gate", middleGate);
+        locations.put("right gate", rightGate);
     }
 
     public ILocation getLocation(String name) {

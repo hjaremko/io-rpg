@@ -40,7 +40,7 @@ public class GameController {
         try {
             var result = gameService.execute(id, command);
 
-            if (result.getClass().equals(CompoundResult.class)) {
+            if (result instanceof CompoundResult) {
                 logger.info("Adding color to compound Result");
 
                 return ((CompoundResult) result)

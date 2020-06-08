@@ -11,7 +11,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
+import pl.uj.io.cuteanimals.model.Color;
+import pl.uj.io.cuteanimals.model.CompoundResult;
 import pl.uj.io.cuteanimals.model.ItemType;
+import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.entity.Item;
 import pl.uj.io.cuteanimals.service.GameService;
 import pl.uj.io.cuteanimals.service.ItemService;
@@ -74,7 +77,7 @@ public class GameControllerTest {
     @Test
     public void receiveOrderAndReturnResultSucceedWhenCommandIsValidAndNotEqualToStart()
             throws Exception {
-        given(gameService.execute(1, "command")).willReturn("result 1");
+        given(gameService.execute(1, "command")).willReturn(new Result("result 1"));
 
         var response = mockMvc.perform(post("/game/1/msg")
                 .accept(MediaType.TEXT_PLAIN)
@@ -87,5 +90,24 @@ public class GameControllerTest {
         assertThat(response.getContentAsString()).isEqualTo("result 1");
     }
 
+    @Test
+    public void receiveOrderAndReturnResultSucceedWhenExecutionResultIsCompoundResult()
+            throws Exception {
+        given(gameService.execute(1, "command")).willReturn(new CompoundResult(
+                List.of(new Result("result 1", Color.RED), new Result("result 2", Color.GREEN),
+                        new Result("result 3", Color.YELLOW))));
 
+        var response = mockMvc.perform(post("/game/1/msg")
+                .accept(MediaType.TEXT_PLAIN)
+                .content("command")
+                .contentType(MediaType.TEXT_PLAIN))
+                .andReturn()
+                .getResponse();
+
+        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.getContentAsString()).contains("result 1");
+        assertThat(response.getContentAsString()).contains("result 2");
+        assertThat(response.getContentAsString()).contains("result 3");
+
+    }
 }

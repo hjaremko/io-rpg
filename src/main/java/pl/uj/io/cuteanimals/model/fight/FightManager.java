@@ -39,7 +39,7 @@ public class FightManager {
     }
 
     public IResult block() {
-        if (fightState.getClass().equals(BlockState.class)) {
+        if (fightState instanceof BlockState) {
             return new FightLog("You are already blocking.", Color.YELLOW);
         }
 

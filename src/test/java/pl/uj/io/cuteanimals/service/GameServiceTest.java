@@ -1,21 +1,24 @@
 package pl.uj.io.cuteanimals.service;
 
+import org.hibernate.mapping.Any;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import pl.uj.io.cuteanimals.exception.InvalidCommandException;
+import pl.uj.io.cuteanimals.interpreter.Expression;
 import pl.uj.io.cuteanimals.interpreter.Interpreter;
-import pl.uj.io.cuteanimals.model.GameState;
-import pl.uj.io.cuteanimals.model.Player;
-import pl.uj.io.cuteanimals.model.interfaces.IAction;
-import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
-import pl.uj.io.cuteanimals.model.interfaces.IResult;
+import pl.uj.io.cuteanimals.model.*;
+import pl.uj.io.cuteanimals.model.entity.Item;
+import pl.uj.io.cuteanimals.model.interfaces.*;
 
 import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -29,57 +32,83 @@ public class GameServiceTest {
     @Mock
     private Interpreter interpreter;
 
+    @Mock
+    private ItemService itemService;
+
     @InjectMocks
     private GameService gameService;
 
-    private IAction action = new IAction() {
-        @Override
-        public IResult execute(IPlayer player) {
-            return null;
-        }
+    private Expression expression;
 
-        @Override
-        public List<String> getArgs() {
-            return null;
-        }
+    private IAction action;
 
-        @Override
-        public void setArgs(List<String> args) {
+    private ILocation location;
 
-        }
+    @BeforeEach
+    private void setup() {
+        action = new IAction() {
+            @Override
+            public IResult execute(IPlayer player) {
+                return new Result("first result", Color.BOLD);
+            }
 
-        @Override
-        public List<GameState> getAcceptableStates() {
-            return null;
-        }
-    };
+            @Override
+            public List<String> getArgs() {
+                return null;
+            }
 
-    private
+            @Override
+            public void setArgs(List<String> args) {}
+
+            @Override
+            public List<GameState> getAcceptableStates() {
+                return null;
+            }
+        };
+
+        location = new ILocation() {
+            @Override
+            public String getDescription() {
+                return "first description";
+            }
+
+            @Override
+            public Map<String, IAction> getAvailableActions() {
+                return Map.of("aaa", action);
+            }
+
+            @Override
+            public List<NPC> getNPCs() {
+                return null;
+            }
+
+            @Override
+            public List<IEquipment> getItems() {
+                return null;
+            }
+
+            @Override
+            public IResult onEnter(IPlayer player) {
+                return null;
+            }
+
+            @Override
+            public IAction getActionOnEnter() {
+                return null;
+            }
+        };
+
+        expression = context -> action;
+
+    }
 
     @Test
-    public void executeSucceedAndReturnsProperResult() {
-        given(player.getCurrentLocation().getAvailableActions()).willReturn(
-                Map.of("a", new IAction() {
-                            @Override
-                            public IResult execute(IPlayer player) {
-                                return null;
-                            }
+    public void executeSucceedAndReturnsProperResult() throws Exception {
+        given(interpreter.parse(any(String.class), any(Map.class))).willReturn(expression);
 
-                            @Override
-                            public List<String> getArgs() {
-                                return null;
-                            }
+        var result = gameService.execute(1, "aaa");
 
-                            @Override
-                            public void setArgs(List<String> args) {
-
-                            }
-
-                            @Override
-                            public List<GameState> getAcceptableStates() {
-                                return null;
-                            }
-                        }
-//        given(interpreter.parse())
+        assertThat(result.getMessage()).isEqualTo("first result");
+        assertThat(result.getColor()).isEqualTo(Color.BOLD);
     }
 }

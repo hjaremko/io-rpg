@@ -51,7 +51,7 @@ public class AttributesService {
         return attr.orElseThrow(
                 () ->
                         new ResponseStatusException(
-                                HttpStatus.NOT_FOUND, "Unknown item with id " + id));
+                                HttpStatus.NOT_FOUND, "Unknown attributes with id " + id));
     }
 
     public void addAttributes(Attributes attributes) {

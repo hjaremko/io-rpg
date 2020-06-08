@@ -19,16 +19,19 @@ public class GameService {
     // TODO: replace with multiple players, they should be initialized after WorldMap
     private final Player player;
 
+    private final Interpreter interpreter;
+
     @Autowired
-    public GameService(ItemService itemService) {
+    public GameService(ItemService itemService, Interpreter interpreter) {
         // TODO: use repository
         WorldMap.getInstance().initialize(itemService);
         player = new Player();
+        this.interpreter = interpreter;
     }
 
     public IResult execute(int characterId, String command) throws InvalidCommandException {
         Expression expr =
-                Interpreter.parse(command, player.getCurrentLocation().getAvailableActions());
+                interpreter.parse(command, player.getCurrentLocation().getAvailableActions());
         IAction action = expr.interpret(player.getCurrentLocation().getAvailableActions());
         return action.execute(player);
     }

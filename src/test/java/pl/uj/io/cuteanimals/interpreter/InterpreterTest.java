@@ -2,11 +2,13 @@ package pl.uj.io.cuteanimals.interpreter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static pl.uj.io.cuteanimals.interpreter.Interpreter.parse;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.uj.io.cuteanimals.action.GoAction;
 import pl.uj.io.cuteanimals.action.InvestigateAction;
@@ -16,12 +18,15 @@ import pl.uj.io.cuteanimals.model.Player;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 
 class InterpreterTest {
+
+    private Interpreter interpreter = new Interpreter();
+
     @Test
     void singleActionParseTest() throws InvalidCommandException {
         Player player = new Player();
         Map<String, IAction> context = new HashMap<>();
         context.put("investigate", new InvestigateAction("Looking around null"));
-        var expr = parse("investigate", context);
+        var expr = interpreter.parse("investigate", context);
 
         var result = expr.interpret(context);
 
@@ -33,7 +38,7 @@ class InterpreterTest {
         Player player = new Player();
         Map<String, IAction> context = new HashMap<>();
         context.put("go", new GoAction(Map.of("flavour", new DefaultLocation())));
-        var expr = parse("go flavour town", context);
+        var expr = interpreter.parse("go flavour town", context);
 
         var result = expr.interpret(context);
 
@@ -71,14 +76,14 @@ class InterpreterTest {
         Map<String, IAction> context = new HashMap<>();
 
         assertThrows(
-                InvalidCommandException.class, () -> Interpreter.parse("i am invalid", context));
+                InvalidCommandException.class, () -> interpreter.parse("i am invalid", context));
     }
 
     @Test
     void singleInvalidTokenTest() {
         Map<String, IAction> context = new HashMap<>();
 
-        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("invalid", context));
+        assertThrows(InvalidCommandException.class, () -> interpreter.parse("invalid", context));
     }
 
     @Test
@@ -87,19 +92,19 @@ class InterpreterTest {
 
         assertThrows(
                 InvalidCommandException.class,
-                () -> Interpreter.parse("go go invalid go", context));
+                () -> interpreter.parse("go go invalid go", context));
         assertThrows(
-                InvalidCommandException.class, () -> Interpreter.parse("go go go go go", context));
+                InvalidCommandException.class, () -> interpreter.parse("go go go go go", context));
         assertThrows(
-                InvalidCommandException.class, () -> Interpreter.parse("go go go go", context));
-        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go go", context));
-        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("go go", context));
+                InvalidCommandException.class, () -> interpreter.parse("go go go go", context));
+        assertThrows(InvalidCommandException.class, () -> interpreter.parse("go go go", context));
+        assertThrows(InvalidCommandException.class, () -> interpreter.parse("go go", context));
     }
 
     @Test
     void reversedArgumentsTest() {
         Map<String, IAction> context = new HashMap<>();
 
-        assertThrows(InvalidCommandException.class, () -> Interpreter.parse("flavour go", context));
+        assertThrows(InvalidCommandException.class, () -> interpreter.parse("flavour go", context));
     }
 }

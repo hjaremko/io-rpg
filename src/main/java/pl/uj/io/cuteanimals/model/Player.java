@@ -20,8 +20,8 @@ public class Player implements IPlayer {
     private final IEquipment armorBackpack = new ArmorBackpack(this);
     private final IEquipment backpack = new PlayerBackpack(this);
     private GameState gameState = GameState.EXPLORATION;
-    Map<String, IAction> abilities;
-    FightManager fightManager;
+    private final Map<String, IAction> abilities;
+    private final FightManager fightManager;
 
     public Player() {
         this.abilities = new HashMap<>();

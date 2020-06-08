@@ -1,5 +1,11 @@
 package pl.uj.io.cuteanimals.interpreter;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import pl.uj.io.cuteanimals.action.GoAction;
 import pl.uj.io.cuteanimals.action.InvestigateAction;
@@ -7,13 +13,6 @@ import pl.uj.io.cuteanimals.exception.InvalidCommandException;
 import pl.uj.io.cuteanimals.model.DefaultLocation;
 import pl.uj.io.cuteanimals.model.Player;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class InterpreterTest {
 

@@ -55,13 +55,10 @@ public class FightManager {
         var playerAttrs = (PlayerAttributes) player.getAttributes();
         var playerLevel = playerAttrs.getLevel();
         var enemyLevel = fightingWith.getAttributes().getLevel();
-        var gainedExperience =
-                (int)
-                        Math.round(
-                                ((playerAttrs.getRequiredExperience() / 6.0)
-                                        * (playerLevel < enemyLevel
-                                                ? 0.5
-                                                : 1 + Math.abs(playerLevel - enemyLevel) * 0.5)));
+        var expBonus = playerLevel < enemyLevel ? Math.abs(playerLevel - enemyLevel) / 2 : 0;
+        var baseExp = playerAttrs.getRequiredExperience() / 6;
+        var levelPenalty = playerLevel < enemyLevel ? 2 : 1;
+        var gainedExperience = baseExp / levelPenalty + expBonus;
 
         ((PlayerAttributes) player.getAttributes()).addExperience(gainedExperience);
         player.getFightManager().setState(new ExplorationState(player));

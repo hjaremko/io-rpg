@@ -39,7 +39,7 @@ public class Focus extends ArgumentlessAction implements IFightState, IAbility {
         player.getFightManager()
                 .getEnemy()
                 .getAttributes()
-                .addHealth(damageDone - additionalDamage);
+                .addHealth(-damageDone - additionalDamage);
         var mobHealthLeft = player.getFightManager().getEnemy().getAttributes().getHealth();
 
         if (mobHealthLeft <= 0) {

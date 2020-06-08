@@ -3,7 +3,7 @@
 
 ### Opis projektu
 
-**Sweet Animals** to internetowa, tekstowa gra RPG stworzona w ramach projektu końcowego
+**Cute Animals** to internetowa, tekstowa gra RPG stworzona w ramach projektu końcowego
 podczas kursu Inżynieria Oprogramowania prowadzonego
 na Instytucie Informatyki i Matematyki Komputerowej Uniwersytetu Jagiellońskiego.  
 Gra jest dostępna pod adresem https://io-rpg.herokuapp.com/.
@@ -46,6 +46,18 @@ TODO
 ```
 
 ### Dokumentacja
-```
-TODO
-```
+```investigate``` - udostępnia opis aktualnego otoczenia  
+```talk <nazwa_postaci>``` - umożliwia rozmowę z poszczególnymi postaciami  
+```go <nazwa_lokaji>``` - pozwala na przejście do innej lokacji.  
+```pick <nazwa_przedmiotu>``` - pozwala podnieść dany przedmiot i umieścić go w plecaku  
+```throw <nazwa_przedmiotu>``` - pozwala wyrzucić dany przedmiot z plecaka  
+```equip <nazwa_przedmiotu>``` - umożliwia założenie przedmiotu z plecaka  
+```off <nazwa_przedmiotu>```- umożliwia zdjęcie przedmiotu i włożenie go do plecaka  
+```backpack``` - listuje aktualny stan plecaka  
+```eq``` - listuje aktualnie założone przedmioty  
+```stats``` - wypisuje statystyki postaci  
+```fight <nazwa_postaci>``` - udostępnia możliwość walki z daną postacią  
+```attack``` - umożliwia zaatakowanie przeciwnika  
+```block``` - umożliwia zablokowanie ataku  
+```use <nazwa_przedmiotu>``` - umożliwia użycie danego przedmiotu  
+```cast <nazwa_umiejetnosci>``` - umożliwia użycie danej umięjętności  

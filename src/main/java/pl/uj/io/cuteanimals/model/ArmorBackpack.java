@@ -73,6 +73,20 @@ public class ArmorBackpack implements IEquipment {
 
     @Override
     public String showItems() {
-        return getItems().toString();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("You wear the following items: ").append("\n \n");
+        stringBuilder.append("Left hand: ").append(weapon.getName()).append("\n");
+        stringBuilder.append("Description: ").append(weapon.getDescription());
+        stringBuilder.append(", Type: ").append(weapon.getType().toString());
+        stringBuilder.append(", Size: ").append(weapon.getSize()).append(", ");
+        stringBuilder.append(weapon.getAttributes().toString());
+        stringBuilder.append("\n \n");
+        stringBuilder.append("Right hand: ").append(armor.getName()).append("\n");
+        stringBuilder.append("Description: ").append(armor.getDescription());
+        stringBuilder.append(", Type: ").append(armor.getType().toString());
+        stringBuilder.append(", Size: ").append(armor.getSize()).append(", ");
+        stringBuilder.append(armor.getAttributes().toString());
+
+        return stringBuilder.toString();
     }
 }

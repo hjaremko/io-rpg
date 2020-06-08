@@ -1,11 +1,5 @@
 package pl.uj.io.cuteanimals.service;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
-
-import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,8 +8,20 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.uj.io.cuteanimals.interpreter.Expression;
 import pl.uj.io.cuteanimals.interpreter.Interpreter;
-import pl.uj.io.cuteanimals.model.*;
-import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.model.Color;
+import pl.uj.io.cuteanimals.model.GameState;
+import pl.uj.io.cuteanimals.model.Player;
+import pl.uj.io.cuteanimals.model.Result;
+import pl.uj.io.cuteanimals.model.interfaces.IAction;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
+
+import java.util.List;
+import java.util.Map;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
 public class GameServiceTest {
@@ -31,8 +37,6 @@ public class GameServiceTest {
     private Expression expression;
 
     private IAction action;
-
-    private ILocation location;
 
     @BeforeEach
     private void setup() {
@@ -53,39 +57,6 @@ public class GameServiceTest {
 
                     @Override
                     public List<GameState> getAcceptableStates() {
-                        return null;
-                    }
-                };
-
-        location =
-                new ILocation() {
-                    @Override
-                    public String getDescription() {
-                        return "first description";
-                    }
-
-                    @Override
-                    public Map<String, IAction> getAvailableActions() {
-                        return Map.of("aaa", action);
-                    }
-
-                    @Override
-                    public List<NPC> getNPCs() {
-                        return null;
-                    }
-
-                    @Override
-                    public List<IEquipment> getItems() {
-                        return null;
-                    }
-
-                    @Override
-                    public IResult onEnter(IPlayer player) {
-                        return null;
-                    }
-
-                    @Override
-                    public IAction getActionOnEnter() {
                         return null;
                     }
                 };

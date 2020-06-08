@@ -1,10 +1,5 @@
 package pl.uj.io.cuteanimals.controller;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,6 +15,12 @@ import pl.uj.io.cuteanimals.model.Color;
 import pl.uj.io.cuteanimals.model.CompoundResult;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.service.GameService;
+
+import java.util.List;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 @ExtendWith(MockitoExtension.class)
 public class GameControllerTest {

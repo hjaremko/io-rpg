@@ -1,5 +1,12 @@
 package pl.uj.io.cuteanimals.service;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.mockito.BDDMockito.given;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,22 +19,12 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.uj.io.cuteanimals.model.entity.Attributes;
 import pl.uj.io.cuteanimals.repository.AttributesRepository;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
-import static org.mockito.BDDMockito.given;
-
 @ExtendWith(MockitoExtension.class)
 public class AttributesServiceTest {
 
-    @Mock
-    private AttributesRepository attributesRepository;
+    @Mock private AttributesRepository attributesRepository;
 
-    @InjectMocks
-    private AttributesService attributesService;
+    @InjectMocks private AttributesService attributesService;
 
     private Attributes firstAttributes;
 
@@ -41,7 +38,8 @@ public class AttributesServiceTest {
 
     @Test
     public void getAllItemsReturnsProperListIfThereAreAnyItems() {
-        given(attributesRepository.findAll()).willReturn(List.of(firstAttributes, secondAttributes));
+        given(attributesRepository.findAll())
+                .willReturn(List.of(firstAttributes, secondAttributes));
 
         var attributesList = attributesService.getAllAttributes();
 
@@ -70,10 +68,11 @@ public class AttributesServiceTest {
     public void getItemThrowsNotFoundWhenItemDoesntExist() {
         given(attributesRepository.findById(1)).willReturn(Optional.empty());
 
-
-        assertThatThrownBy(() -> {
-            attributesService.getAttributes(1);
-        }).isInstanceOf(ResponseStatusException.class)
+        assertThatThrownBy(
+                        () -> {
+                            attributesService.getAttributes(1);
+                        })
+                .isInstanceOf(ResponseStatusException.class)
                 .hasFieldOrPropertyWithValue("status", HttpStatus.NOT_FOUND)
                 .hasFieldOrPropertyWithValue("reason", "Unknown attributes with id 1");
     }

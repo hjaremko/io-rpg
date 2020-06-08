@@ -1,42 +1,32 @@
 package pl.uj.io.cuteanimals.service;
 
-import org.hibernate.mapping.Any;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
+
+import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pl.uj.io.cuteanimals.exception.InvalidCommandException;
 import pl.uj.io.cuteanimals.interpreter.Expression;
 import pl.uj.io.cuteanimals.interpreter.Interpreter;
 import pl.uj.io.cuteanimals.model.*;
-import pl.uj.io.cuteanimals.model.entity.Item;
 import pl.uj.io.cuteanimals.model.interfaces.*;
-
-import java.util.List;
-import java.util.Map;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 @ExtendWith(MockitoExtension.class)
 public class GameServiceTest {
 
-    @Mock
-    private Player player;
+    @Mock private Player player;
 
-    @Mock
-    private Interpreter interpreter;
+    @Mock private Interpreter interpreter;
 
-    @Mock
-    private ItemService itemService;
+    @Mock private ItemService itemService;
 
-    @InjectMocks
-    private GameService gameService;
+    @InjectMocks private GameService gameService;
 
     private Expression expression;
 
@@ -46,60 +36,61 @@ public class GameServiceTest {
 
     @BeforeEach
     private void setup() {
-        action = new IAction() {
-            @Override
-            public IResult execute(IPlayer player) {
-                return new Result("first result", Color.BOLD);
-            }
+        action =
+                new IAction() {
+                    @Override
+                    public IResult execute(IPlayer player) {
+                        return new Result("first result", Color.BOLD);
+                    }
 
-            @Override
-            public List<String> getArgs() {
-                return null;
-            }
+                    @Override
+                    public List<String> getArgs() {
+                        return null;
+                    }
 
-            @Override
-            public void setArgs(List<String> args) {}
+                    @Override
+                    public void setArgs(List<String> args) {}
 
-            @Override
-            public List<GameState> getAcceptableStates() {
-                return null;
-            }
-        };
+                    @Override
+                    public List<GameState> getAcceptableStates() {
+                        return null;
+                    }
+                };
 
-        location = new ILocation() {
-            @Override
-            public String getDescription() {
-                return "first description";
-            }
+        location =
+                new ILocation() {
+                    @Override
+                    public String getDescription() {
+                        return "first description";
+                    }
 
-            @Override
-            public Map<String, IAction> getAvailableActions() {
-                return Map.of("aaa", action);
-            }
+                    @Override
+                    public Map<String, IAction> getAvailableActions() {
+                        return Map.of("aaa", action);
+                    }
 
-            @Override
-            public List<NPC> getNPCs() {
-                return null;
-            }
+                    @Override
+                    public List<NPC> getNPCs() {
+                        return null;
+                    }
 
-            @Override
-            public List<IEquipment> getItems() {
-                return null;
-            }
+                    @Override
+                    public List<IEquipment> getItems() {
+                        return null;
+                    }
 
-            @Override
-            public IResult onEnter(IPlayer player) {
-                return null;
-            }
+                    @Override
+                    public IResult onEnter(IPlayer player) {
+                        return null;
+                    }
 
-            @Override
-            public IAction getActionOnEnter() {
-                return null;
-            }
-        };
+                    @Override
+                    public IAction getActionOnEnter() {
+                        return null;
+                    }
+                };
 
         expression = context -> action;
-
     }
 
     @Test

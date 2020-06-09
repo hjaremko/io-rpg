@@ -1,14 +1,9 @@
 package pl.uj.io.cuteanimals.model.entity;
 
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.w3c.dom.Attr;
-
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-
 
 public class AttributesTest {
 
@@ -16,7 +11,7 @@ public class AttributesTest {
 
     @BeforeEach
     private void setup() {
-        attributes = new Attributes(1, 10, 0, 10, 0);
+        attributes = new Attributes(1, 10, 0, 10, 0, 0);
     }
 
     @Test

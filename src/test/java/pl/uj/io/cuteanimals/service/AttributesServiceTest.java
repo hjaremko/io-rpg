@@ -32,8 +32,8 @@ public class AttributesServiceTest {
 
     @BeforeEach
     private void setup() {
-        firstAttributes = new Attributes(1, 10, 20, 30, 40);
-        secondAttributes = new Attributes(2, 12, 22, 32, 42);
+        firstAttributes = new Attributes(1, 10, 20, 30, 40, 50);
+        secondAttributes = new Attributes(2, 12, 22, 32, 42, 52);
     }
 
     @Test

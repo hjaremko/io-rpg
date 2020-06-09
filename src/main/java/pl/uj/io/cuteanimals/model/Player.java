@@ -15,18 +15,30 @@ import pl.uj.io.cuteanimals.model.interfaces.*;
  * @since 0.2.0-SNAPSHOT
  */
 public class Player implements IPlayer {
-    private final PlayerAttributes stats = new PlayerAttributes(this);
-    private ILocation currentLocation = WorldMap.getInstance().getLocation("town");
-    private final IEquipment armorBackpack = new ArmorBackpack(this);
-    private final IEquipment backpack = new PlayerBackpack(this);
-    private GameState gameState = GameState.EXPLORATION;
+    private PlayerAttributes stats;
+    private ILocation currentLocation;
+    private final IEquipment armorBackpack;
+    private final IEquipment backpack;
+    private GameState gameState;
     private final Map<String, IAction> abilities;
     private final FightManager fightManager;
 
     public Player() {
+        this.stats = new PlayerAttributes(this);
+        this.currentLocation = WorldMap.getInstance().getLocation("town");
+        this.armorBackpack = new ArmorBackpack(this);
+        this.backpack = new PlayerBackpack(this);
+        this.gameState = GameState.EXPLORATION;
         this.abilities = new HashMap<>();
-        this.abilities.put("focus", new Focus());
         this.fightManager = new FightManager(this);
+
+        this.abilities.put("focus", new Focus());
+    }
+
+    public Player(RandomInteger random) {
+        this();
+        this.stats = new PlayerAttributes(this, random);
+        this.abilities.put("focus", new Focus());
     }
 
     @Override

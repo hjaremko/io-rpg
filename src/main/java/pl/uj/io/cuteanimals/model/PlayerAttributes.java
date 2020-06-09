@@ -1,6 +1,7 @@
 package pl.uj.io.cuteanimals.model;
 
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
+import pl.uj.io.cuteanimals.model.interfaces.RandomInteger;
 
 /**
  * Provides methods to manage player's attributes.
@@ -9,14 +10,22 @@ import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
  * @since 0.2.0-SNAPSHOT
  */
 public class PlayerAttributes extends NPCAttributes {
-
     private final ICharacter owner;
+    private final RandomInteger random;
     private int experience;
 
     public PlayerAttributes(ICharacter owner) {
         super(30, 1, 1, 0, 100);
         this.owner = owner;
         this.experience = 0;
+        random = new RandomIntegerImpl();
+    }
+
+    public PlayerAttributes(ICharacter owner, RandomInteger random) {
+        super(30, 1, 1, 0, 100);
+        this.owner = owner;
+        this.experience = 0;
+        this.random = random;
     }
 
     @Override
@@ -81,7 +90,8 @@ public class PlayerAttributes extends NPCAttributes {
     }
 
     public int getDamage() {
-        return getAttack() + (int) (Math.random() * getAttack() * 1.5);
+        var attackBonus = (int) (getAttack() / 2.0);
+        return getAttack() + (attackBonus > 0 ? random.nextInt(attackBonus) : 0);
     }
 
     @Override

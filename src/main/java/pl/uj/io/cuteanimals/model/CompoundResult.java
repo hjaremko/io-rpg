@@ -6,9 +6,16 @@ import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class CompoundResult implements IResult {
     private final List<IResult> results;
+    private final Color color;
 
     public CompoundResult(List<IResult> results) {
         this.results = results;
+        this.color = null;
+    }
+
+    public CompoundResult(List<IResult> results, Color color) {
+        this.results = results;
+        this.color = color;
     }
 
     @Override
@@ -23,7 +30,11 @@ public class CompoundResult implements IResult {
 
     @Override
     public Color getColor() {
-        return results.get(0).getColor();
+        if (color == null) {
+            return results.get(results.size() - 1).getColor();
+        }
+
+        return color;
     }
 
     public void addResult(IResult result) {

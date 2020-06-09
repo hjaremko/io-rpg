@@ -88,6 +88,10 @@ public class FightManager {
                                 Color.YELLOW)));
     }
 
+    public IResult defeat() {
+        return new FightLog(player.toString() + " is dead.", Color.RED);
+    }
+
     public Monster getEnemy() {
         return fightingWith;
     }

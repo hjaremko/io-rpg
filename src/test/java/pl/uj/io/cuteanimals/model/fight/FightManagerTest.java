@@ -4,18 +4,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pl.uj.io.cuteanimals.model.Monster;
-import pl.uj.io.cuteanimals.model.NPCAttributes;
-import pl.uj.io.cuteanimals.model.Player;
-import pl.uj.io.cuteanimals.model.PlayerAttributes;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import pl.uj.io.cuteanimals.model.*;
 
+@ExtendWith(MockitoExtension.class)
 class FightManagerTest {
-    private Player player;
+    @Mock private WorldMap world;
+    @InjectMocks private Player player;
     private PlayerAttributes attrs;
 
     @BeforeEach
     void setUp() {
-        player = new Player();
         attrs = (PlayerAttributes) player.getAttributes();
     }
 

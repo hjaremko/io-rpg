@@ -35,11 +35,12 @@ public class GameController {
 
         // TODO: replace with login
         if ("start".equals(command)) {
-            return gameService.getLocationInfo();
+            return gameService.getLocationInfo(id);
         }
         try {
             var result = gameService.execute(id, command);
 
+            // TODO: fix printing nested results
             if (result instanceof CompoundResult) {
                 logger.info("Adding color to compound Result");
 

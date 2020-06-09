@@ -37,7 +37,7 @@ public class GameControllerTest {
 
     @Test
     public void receiveOrderAndReturnResultSucceedWhenCommandIsEqualToStart() throws Exception {
-        given(gameService.getLocationInfo()).willReturn("Info 1");
+        given(gameService.getLocationInfo(1)).willReturn("Info 1");
 
         var response =
                 mockMvc.perform(

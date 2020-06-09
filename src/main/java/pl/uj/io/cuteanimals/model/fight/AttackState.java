@@ -34,8 +34,8 @@ public class AttackState extends FightState {
                                 + mobHealthLeft
                                 + " HP left.",
                         Color.GREEN);
-        var contrAttackResult = contrAttack();
-        return new CompoundResult(List.of(playerAttackResult, contrAttackResult));
+
+        return new CompoundResult(List.of(playerAttackResult, contrAttack()));
     }
 
     @Override
@@ -47,18 +47,25 @@ public class AttackState extends FightState {
                                 (enemyStats.getAttack()
                                         + Math.round((Math.random() * enemyStats.getLevel() * 3))));
         var playerHealthLeft = player.getAttributes().getHealth();
+        var contrAttackResult =
+                new FightLog(
+                        player.getFightManager().getEnemy().getName()
+                                + " attacks "
+                                + player.toString()
+                                + " for "
+                                + took
+                                + " damage. "
+                                + player.toString()
+                                + " has "
+                                + playerHealthLeft
+                                + " HP left.",
+                        Color.RED);
 
-        return new FightLog(
-                player.getFightManager().getEnemy().getName()
-                        + " attacks "
-                        + player.toString()
-                        + " for "
-                        + took
-                        + " damage. "
-                        + player.toString()
-                        + " has "
-                        + playerHealthLeft
-                        + " HP left.",
-                Color.RED);
+        if (playerHealthLeft <= 0) {
+            return new CompoundResult(
+                    List.of(contrAttackResult, player.getFightManager().defeat()), Color.RED);
+        }
+
+        return contrAttackResult;
     }
 }

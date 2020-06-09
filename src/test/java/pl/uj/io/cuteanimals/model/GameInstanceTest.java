@@ -1,4 +1,4 @@
-package pl.uj.io.cuteanimals.service;
+package pl.uj.io.cuteanimals.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -14,27 +14,17 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.uj.io.cuteanimals.interpreter.Expression;
 import pl.uj.io.cuteanimals.interpreter.Interpreter;
-import pl.uj.io.cuteanimals.model.Color;
-import pl.uj.io.cuteanimals.model.GameState;
-import pl.uj.io.cuteanimals.model.Player;
-import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
+import pl.uj.io.cuteanimals.service.ItemService;
 
 @ExtendWith(MockitoExtension.class)
-public class GameServiceTest {
-
-    @Mock private Player player;
-
+public class GameInstanceTest {
     @Mock private Interpreter interpreter;
-
     @Mock private ItemService itemService;
-
-    @InjectMocks private GameService gameService;
-
+    @InjectMocks private GameInstance gameInstance;
     private Expression expression;
-
     private IAction action;
 
     @BeforeEach
@@ -67,7 +57,7 @@ public class GameServiceTest {
     public void executeSucceedAndReturnsProperResult() throws Exception {
         given(interpreter.parse(any(String.class), any(Map.class))).willReturn(expression);
 
-        var result = gameService.execute(1, "aaa");
+        var result = gameInstance.executeInput("aaa");
 
         assertThat(result.getMessage()).isEqualTo("first result");
         assertThat(result.getColor()).isEqualTo(Color.BOLD);

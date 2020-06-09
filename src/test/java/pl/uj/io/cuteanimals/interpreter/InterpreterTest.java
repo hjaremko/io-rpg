@@ -7,20 +7,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import pl.uj.io.cuteanimals.action.GoAction;
 import pl.uj.io.cuteanimals.action.InvestigateAction;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
 import pl.uj.io.cuteanimals.model.DefaultLocation;
 import pl.uj.io.cuteanimals.model.Player;
+import pl.uj.io.cuteanimals.model.WorldMap;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 
+@ExtendWith(MockitoExtension.class)
 class InterpreterTest {
-
-    private Interpreter interpreter = new Interpreter();
+    private final Interpreter interpreter = new Interpreter();
+    @Mock private WorldMap world;
+    @InjectMocks private Player player;
 
     @Test
     void singleActionParseTest() throws InvalidCommandException {
-        Player player = new Player();
         Map<String, IAction> context = new HashMap<>();
         context.put("investigate", new InvestigateAction("Looking around null"));
         var expr = interpreter.parse("investigate", context);
@@ -32,7 +38,6 @@ class InterpreterTest {
 
     @Test
     void actionWithArgsParseTest() throws InvalidCommandException {
-        Player player = new Player();
         Map<String, IAction> context = new HashMap<>();
         context.put("go", new GoAction(Map.of("flavour", new DefaultLocation())));
         var expr = interpreter.parse("go flavour town", context);
@@ -44,7 +49,6 @@ class InterpreterTest {
 
     @Test
     void argumentInterpretTest() throws InvalidCommandException {
-        Player player = new Player();
         Map<String, IAction> context = new HashMap<>();
         var arg = Expression.argument("left");
 
@@ -63,7 +67,7 @@ class InterpreterTest {
         var result = up.interpret(context);
 
         assertThat(
-                result.execute(new Player())
+                result.execute(player)
                         .getMessage()
                         .equals(List.of("up", "right", "left").toString()));
     }

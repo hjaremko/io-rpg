@@ -3,6 +3,7 @@ package pl.uj.io.cuteanimals.model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Component;
 import pl.uj.io.cuteanimals.action.*;
 import pl.uj.io.cuteanimals.action.entrance.EntranceRemoveHealthAction;
 import pl.uj.io.cuteanimals.location.LocationBuilder;
@@ -12,14 +13,12 @@ import pl.uj.io.cuteanimals.plot.actions.DungeonEntranceGoAction;
 import pl.uj.io.cuteanimals.plot.actions.DungeonInvestigateAction;
 import pl.uj.io.cuteanimals.service.ItemService;
 
-public final class WorldMap {
-    private static final WorldMap instance = new WorldMap();
+@Component
+public class WorldMap {
     private final Map<String, ILocation> locations = new HashMap<>();
 
-    private WorldMap() {}
-
-    public static WorldMap getInstance() {
-        return instance;
+    public WorldMap(ItemService itemService) {
+        initialize(itemService);
     }
 
     public void initialize(ItemService itemService) {
@@ -232,6 +231,12 @@ public final class WorldMap {
         townItems.put("torch", itemService.getItem(8));
         townItems.put("apple", itemService.getItem(9));
 
+        // TODO: remove before release
+        var townMonsters = new HashMap<String, Monster>();
+        townMonsters.put("weak", new Monster("debug monster", new NPCAttributes(15, 2, 1, 1, 1)));
+        townMonsters.put(
+                "tough", new Monster("debug monster", new NPCAttributes(100, 50, 1, 1, 1)));
+
         town =
                 new LocationBuilder(town)
                         .addDefaultActions()
@@ -251,6 +256,7 @@ public final class WorldMap {
                         .addAction("go", new GoAction(Map.of("straight", forest)))
                         .addAction("pick", new PickupAction(townItems))
                         .addNPC(headman)
+                        .addAction("fight", new FightAction(townMonsters))
                         .build();
 
         forest =

@@ -28,7 +28,7 @@ public class DungeonEntranceGoAction extends ContainerArgumentAction<ILocation> 
         Random rand = new Random();
         int result = rand.nextInt(10);
         if (result < 4) {
-            toGo = WorldMap.getInstance().getLocation("medical");
+            toGo = player.getWorld().getLocation("medical");
         }
 
         player.changeLocation(toGo);

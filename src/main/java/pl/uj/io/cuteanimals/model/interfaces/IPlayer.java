@@ -2,6 +2,7 @@ package pl.uj.io.cuteanimals.model.interfaces;
 
 import java.util.Map;
 import pl.uj.io.cuteanimals.model.GameState;
+import pl.uj.io.cuteanimals.model.WorldMap;
 import pl.uj.io.cuteanimals.model.fight.FightManager;
 
 public interface IPlayer extends ICharacter {
@@ -24,4 +25,6 @@ public interface IPlayer extends ICharacter {
     int takeDamage(int damage);
 
     Map<String, IAction> getAbilities();
+
+    WorldMap getWorld();
 }

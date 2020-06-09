@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.uj.io.cuteanimals.model.interfaces.RandomInteger;
@@ -14,11 +15,13 @@ import pl.uj.io.cuteanimals.model.interfaces.RandomInteger;
 @ExtendWith(MockitoExtension.class)
 class PlayerAttributesTest {
     @Mock private RandomInteger random;
+    @Mock private WorldMap world;
+    @InjectMocks Player player;
     private PlayerAttributes attrs;
 
     @BeforeEach
     void setUp() {
-        attrs = new PlayerAttributes(new Player(), random);
+        attrs = (PlayerAttributes) player.getAttributes();
     }
 
     @Test

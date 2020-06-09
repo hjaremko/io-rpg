@@ -7,24 +7,22 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pl.uj.io.cuteanimals.model.Monster;
-import pl.uj.io.cuteanimals.model.NPCAttributes;
-import pl.uj.io.cuteanimals.model.Player;
-import pl.uj.io.cuteanimals.model.PlayerAttributes;
+import pl.uj.io.cuteanimals.model.*;
 import pl.uj.io.cuteanimals.model.interfaces.RandomInteger;
 
 @ExtendWith(MockitoExtension.class)
 class FocusTest {
     @Mock private RandomInteger random;
-    private Player player;
+    @Mock private WorldMap world;
+    @InjectMocks private Player player;
     private Monster dummy;
     private PlayerAttributes attrs;
 
     @BeforeEach
     void setUp() {
-        player = new Player(random);
         attrs = (PlayerAttributes) player.getAttributes();
 
         dummy = new Monster("dummy", new NPCAttributes(0, 1, 1, 0, 0));

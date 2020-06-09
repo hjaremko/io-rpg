@@ -8,27 +8,30 @@ import pl.uj.io.cuteanimals.model.interfaces.IAbility;
 import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
-public class Focus extends ArgumentlessAction implements IFightState, IAbility {
+public class DoubleDown extends ArgumentlessAction implements IFightState, IAbility {
     private IPlayer player;
     private IFightState lastState;
+    private static final int manaCost = 50;
 
     @Override
     protected IResult actionBody(IPlayer player) {
-        if (player.getAttributes().getMana() < 20) {
+        if (player.getAttributes().getMana() < manaCost) {
             return new FightLog(
-                    "Not enough mana! You need at least 20 mana to use this ability.",
+                    "Not enough energy! You need at least "
+                            + manaCost
+                            + " energy to use this ability.",
                     Color.YELLOW);
         }
 
-        if (player.getFightManager().getState() instanceof Focus) {
-            return new FightLog("You are already focusing.", Color.YELLOW);
+        if (player.getFightManager().getState() instanceof IAbility) {
+            return new FightLog("You need to unleash your rage now.", Color.YELLOW);
         }
 
         this.player = player;
         this.lastState = player.getFightManager().getState();
         this.player.getFightManager().setState(this);
 
-        return new FightLog(player.toString() + " is focusing...", Color.YELLOW);
+        return new FightLog(player.toString() + " is getting angry...", Color.YELLOW);
     }
 
     @Override
@@ -38,13 +41,16 @@ public class Focus extends ArgumentlessAction implements IFightState, IAbility {
 
     @Override
     public IResult attack() {
-        player.getAttributes().addMana(-20);
+        player.getAttributes().addMana(-manaCost);
         var damageDone = ((PlayerAttributes) player.getAttributes()).getDamage();
-        var additionalDamage = 2 * player.getAttributes().getAttack();
+        var firstHitDmg = (int) (damageDone * 1.25);
+        var secondHitDmg = (int) (damageDone * 1.70);
+        var thirdHitDmg = damageDone * 2;
+
         player.getFightManager()
                 .getEnemy()
                 .getAttributes()
-                .addHealth(-damageDone - additionalDamage);
+                .addHealth(-(firstHitDmg + secondHitDmg + thirdHitDmg));
         var mobHealthLeft = player.getFightManager().getEnemy().getAttributes().getHealth();
 
         if (mobHealthLeft <= 0) {
@@ -54,12 +60,14 @@ public class Focus extends ArgumentlessAction implements IFightState, IAbility {
         var playerAttackResult =
                 new FightLog(
                         player.toString()
-                                + " attacks "
+                                + " furiously attacks "
                                 + player.getFightManager().getEnemy().getName()
-                                + " vital points for "
-                                + damageDone
+                                + " for "
+                                + firstHitDmg
                                 + "+"
-                                + additionalDamage
+                                + secondHitDmg
+                                + "+"
+                                + thirdHitDmg
                                 + " damage. "
                                 + player.getFightManager().getEnemy().getName()
                                 + " has "
@@ -80,6 +88,8 @@ public class Focus extends ArgumentlessAction implements IFightState, IAbility {
 
     @Override
     public String getDescription() {
-        return "Focus your attack on enemy's vital points. +(2 * Attack) damage. Costs 20 mana.";
+        return "Attack your enemy three consecutive times. Respectively: x1.25 dmg, x1.70 dmg, x2 dmg. Costs "
+                + manaCost
+                + " energy.";
     }
 }

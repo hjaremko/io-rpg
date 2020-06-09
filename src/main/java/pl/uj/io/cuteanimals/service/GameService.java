@@ -26,4 +26,8 @@ public class GameService {
     public String getLocationInfo(int characterId) {
         return gameInstance.getPlayer().getCurrentLocation().getDescription();
     }
+
+    public String pickClass(int characterId) {
+        return gameInstance.pickClass();
+    }
 }

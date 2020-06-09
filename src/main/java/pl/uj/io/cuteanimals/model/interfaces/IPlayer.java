@@ -16,6 +16,8 @@ public interface IPlayer extends ICharacter {
 
     IResult changeLocation(ILocation where);
 
+    ILocation getCurrentLocation();
+
     GameState getCurrentGameState();
 
     void setGameState(GameState gameState);
@@ -27,4 +29,6 @@ public interface IPlayer extends ICharacter {
     Map<String, IAction> getAbilities();
 
     WorldMap getWorld();
+
+    void setClass(PlayerClass playerClass);
 }

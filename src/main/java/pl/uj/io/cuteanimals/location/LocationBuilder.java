@@ -56,6 +56,13 @@ public class LocationBuilder {
         return this;
     }
 
+    public LocationBuilder addStartingActions() {
+        this.actionMap.put("magician", new PickMagician());
+        this.actionMap.put("warrior", new PickWarrior());
+        this.actionMap.put("archer", new PickArcher());
+        return this;
+    }
+
     public LocationBuilder addNPC(@NotNull NPC npc) {
         this.npcList.add(npc);
         return this;

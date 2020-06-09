@@ -240,6 +240,7 @@ public class WorldMap {
         town =
                 new LocationBuilder(town)
                         .addDefaultActions()
+                        .addStartingActions()
                         .setDescription(
                                 "You are in your hometown. Every place is currently closed even an elegant inn, built within "
                                         + "an ancient tower of rune-carved stone which usually bustling with life. "

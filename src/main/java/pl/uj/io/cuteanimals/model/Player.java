@@ -1,12 +1,10 @@
 package pl.uj.io.cuteanimals.model;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.uj.io.cuteanimals.action.BuffCharacter;
-import pl.uj.io.cuteanimals.action.ability.Focus;
 import pl.uj.io.cuteanimals.model.fight.FightManager;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
@@ -24,8 +22,8 @@ public class Player implements IPlayer {
     private final IEquipment armorBackpack;
     private final IEquipment backpack;
     private GameState gameState;
-    private final Map<String, IAction> abilities;
     private final FightManager fightManager;
+    private PlayerClass playerClass;
 
     public Player(WorldMap world) {
         this.world = world;
@@ -33,18 +31,15 @@ public class Player implements IPlayer {
         this.currentLocation = world.getLocation("town");
         this.armorBackpack = new ArmorBackpack(this);
         this.backpack = new PlayerBackpack(this);
-        this.gameState = GameState.EXPLORATION;
-        this.abilities = new HashMap<>();
+        this.gameState = GameState.LIMBO;
         this.fightManager = new FightManager(this);
-
-        this.abilities.put("focus", new Focus());
+        this.playerClass = new Slave();
     }
 
     @Autowired
     public Player(WorldMap world, RandomInteger random) {
         this(world);
         this.stats = new PlayerAttributes(this, random);
-        this.abilities.put("focus", new Focus());
     }
 
     @Override
@@ -81,6 +76,7 @@ public class Player implements IPlayer {
         return currentLocation.onEnter(this);
     }
 
+    @Override
     public ILocation getCurrentLocation() {
         return currentLocation;
     }
@@ -97,7 +93,7 @@ public class Player implements IPlayer {
 
     @Override
     public String toString() {
-        return "Player";
+        return playerClass.toString();
     }
 
     @Override
@@ -114,11 +110,16 @@ public class Player implements IPlayer {
 
     @Override
     public Map<String, IAction> getAbilities() {
-        return abilities;
+        return playerClass.getAbilities();
     }
 
     @Override
     public WorldMap getWorld() {
         return world;
+    }
+
+    @Override
+    public void setClass(PlayerClass playerClass) {
+        this.playerClass = playerClass;
     }
 }

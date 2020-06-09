@@ -53,4 +53,12 @@ public class GameInstance {
     private boolean isPlayerDead() {
         return player.getAttributes().getHealth() <= 0;
     }
+
+    public String pickClass() {
+        if (!player.getCurrentGameState().equals(GameState.LIMBO)) {
+            return "You can't do that anymore.";
+        }
+
+        return "Pick your destiny.\n(Warrior, Magician, Archer)";
+    }
 }

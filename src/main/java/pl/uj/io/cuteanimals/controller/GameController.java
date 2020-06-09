@@ -35,7 +35,7 @@ public class GameController {
 
         // TODO: replace with login
         if ("start".equals(command)) {
-            return gameService.getLocationInfo(id);
+            return gameService.pickClass(id);
         }
         try {
             var result = gameService.execute(id, command);

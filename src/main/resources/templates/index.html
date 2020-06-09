@@ -31,9 +31,6 @@
         term.write('\n\r' + output)
     }
 
-    window.onload = function () {
-    }
-
     function sendRequest(input) {
         if (input === "")
             return;
@@ -90,7 +87,9 @@
         term._initialized = true;
 
         term.writeln('Welcome to Cute Animals v0.2.0');
-        prompt(term);
+
+        sendRequest("start");
+
         var commandBuffer = "";
 
         term.onKey(e => {
@@ -117,29 +116,30 @@
     }
 
     runTerminal();
+
 </script>
 
 <div>
     <h3><u>Available actions</u></h3>
     <p>
-    <b>investigate</b> - look around you!<br>
-    <b>talk ...</b> - try to talk with someone<br>
-    <b>go ...</b> - change location<br>
-    <b>pick ...</b> - pick something off the ground<br>
-    <b>throw ...</b> - permanently discard item from your backpack<br>
-    <b>equip ...</b> - equip item from your backpack<br>
-    <b>off ...</b> - take off item and put back in your backpack<br>
-    <b>backpack</b> - show carried items<br>
-    <b>eq</b> - show worn items<br>
-    <b>stats</b> - print player stats<br>
-    <b>skills</b> - print your abilities<br>
-    <b>fight ...</b> - enter fight mode<br>
-    <b>attack</b> - perform standard attack<br>
-    <b>block</b> - increase your defence for next incoming attacks, you can use items and abilities
-    during this time<br>
-    <b>use ...</b> - use item<br>
-    <b>cast ...</b> - use ability<br>
-    <b>suicide</b> - commit suicide<br>
+        <b>investigate</b> - look around you!<br>
+        <b>talk ...</b> - try to talk with someone<br>
+        <b>go ...</b> - change location<br>
+        <b>pick ...</b> - pick something off the ground<br>
+        <b>throw ...</b> - permanently discard item from your backpack<br>
+        <b>equip ...</b> - equip item from your backpack<br>
+        <b>off ...</b> - take off item and put back in your backpack<br>
+        <b>backpack</b> - show carried items<br>
+        <b>eq</b> - show worn items<br>
+        <b>stats</b> - print player stats<br>
+        <b>skills</b> - print your abilities<br>
+        <b>fight ...</b> - enter fight mode<br>
+        <b>attack</b> - perform standard attack<br>
+        <b>block</b> - increase your defence for next incoming attacks, you can use items and abilities
+        during this time<br>
+        <b>use ...</b> - use item<br>
+        <b>cast ...</b> - use ability<br>
+        <b>suicide</b> - commit suicide<br>
     </p>
 
 </div>

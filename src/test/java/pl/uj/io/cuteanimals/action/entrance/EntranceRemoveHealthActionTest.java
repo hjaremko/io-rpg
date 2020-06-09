@@ -5,6 +5,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.uj.io.cuteanimals.action.entrance.EntranceRemoveHealthAction;
 import pl.uj.io.cuteanimals.model.Player;
 
 public class EntranceRemoveHealthActionTest {
@@ -23,7 +24,7 @@ public class EntranceRemoveHealthActionTest {
     }
 
     @Test
-    public void execute() {
+    public void executeProperlyReducePlayersHealthAndReturnProperMessage() {
         var defaultHealth = player.getAttributes().getHealth();
         var result = entranceRemoveHealthAction.execute(player);
 

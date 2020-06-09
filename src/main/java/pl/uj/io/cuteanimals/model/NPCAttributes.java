@@ -7,12 +7,14 @@ public class NPCAttributes implements IAttributes {
     protected int attack;
     protected int level;
     protected int defence;
+    protected int mana;
 
-    public NPCAttributes(int health, int attack, int level, int defence) {
+    public NPCAttributes(int health, int attack, int level, int defence, int mana) {
         this.health = health;
         this.attack = attack;
         this.level = level;
         this.defence = defence;
+        this.mana = mana;
     }
 
     @Override
@@ -36,6 +38,11 @@ public class NPCAttributes implements IAttributes {
     }
 
     @Override
+    public int getMana() {
+        return mana;
+    }
+
+    @Override
     public void addHealth(int health) {
         this.health += health;
     }
@@ -53,5 +60,10 @@ public class NPCAttributes implements IAttributes {
     @Override
     public void addDefence(int defence) {
         this.defence += defence;
+    }
+
+    @Override
+    public void addMana(int mana) {
+        this.mana += mana;
     }
 }

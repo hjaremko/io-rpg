@@ -36,6 +36,13 @@ public interface IAttributes {
      */
     int getDefence();
 
+    /**
+     * Gives character's magic mana points.
+     *
+     * @return int type magic mana points.
+     */
+    int getMana();
+
     void addHealth(int health);
 
     void addAttack(int attack);
@@ -43,4 +50,6 @@ public interface IAttributes {
     void addLevel(int level);
 
     void addDefence(int defence);
+
+    void addMana(int mana);
 }

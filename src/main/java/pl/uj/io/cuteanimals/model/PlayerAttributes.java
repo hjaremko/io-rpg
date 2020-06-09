@@ -2,23 +2,21 @@ package pl.uj.io.cuteanimals.model;
 
 import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
 
+/**
+ * Provides methods to manage player's attributes.
+ *
+ * @version %I%
+ * @since 0.2.0-SNAPSHOT
+ */
 public class PlayerAttributes extends NPCAttributes {
-    /**
-     * Provides methods to manage player's attributes.
-     *
-     * @version %I%
-     * @since 0.2.0-SNAPSHOT
-     */
-    private final ICharacter owner;
 
+    private final ICharacter owner;
     private int experience;
-    private int mana;
 
     public PlayerAttributes(ICharacter owner) {
-        super(30, 1, 1, 0);
+        super(30, 1, 1, 0, 100);
         this.owner = owner;
         this.experience = 0;
-        this.mana = 100;
     }
 
     @Override

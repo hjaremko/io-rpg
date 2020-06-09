@@ -20,7 +20,7 @@ class FocusTest {
         attrs = (PlayerAttributes) player.getAttributes();
         player.getAttributes().addLevel(4);
 
-        dummy = new Monster("dummy", new NPCAttributes(0, 1, 1, 0));
+        dummy = new Monster("dummy", new NPCAttributes(0, 1, 1, 0, 0));
         player.getFightManager().beginFight(dummy);
         var focus = new Focus();
         focus.execute(player);

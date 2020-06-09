@@ -406,8 +406,8 @@ public final class WorldMap {
 
         var dungeonEgressMonsters = new HashMap<String, Monster>();
         dungeonEgressMonsters.put(
-                "hubhert", new Monster("Hubhert", new NPCAttributes(20, 1, 1, 1)));
-        dungeonEgressMonsters.put("marc", new Monster("Marc", new NPCAttributes(20, 1, 1, 1)));
+                "hubhert", new Monster("Hubhert", new NPCAttributes(20, 1, 1, 1, 0)));
+        dungeonEgressMonsters.put("marc", new Monster("Marc", new NPCAttributes(20, 1, 1, 1, 0)));
         dungeonEgress =
                 new LocationBuilder(dungeonEgress)
                         .addDefaultActions()
@@ -450,7 +450,7 @@ public final class WorldMap {
                         .build();
 
         var innMonsters = new HashMap<String, Monster>();
-        innMonsters.put("darell", new Monster("Darell", new NPCAttributes(15, 1, 1, 1)));
+        innMonsters.put("darell", new Monster("Darell", new NPCAttributes(15, 1, 1, 1, 0)));
         inn =
                 new LocationBuilder(inn)
                         .addDefaultActions()
@@ -495,12 +495,14 @@ public final class WorldMap {
                         .build();
 
         var devastatedLandsMonsters = new HashMap<String, Monster>();
-        devastatedLandsMonsters.put("lucas", new Monster("Lucas", new NPCAttributes(20, 1, 1, 1)));
         devastatedLandsMonsters.put(
-                "claudius", new Monster("Claudius", new NPCAttributes(20, 1, 1, 1)));
+                "lucas", new Monster("Lucas", new NPCAttributes(20, 1, 1, 1, 0)));
         devastatedLandsMonsters.put(
-                "julius", new Monster("Julius", new NPCAttributes(20, 1, 1, 1)));
-        devastatedLandsMonsters.put("annis", new Monster("Annis", new NPCAttributes(20, 1, 1, 1)));
+                "claudius", new Monster("Claudius", new NPCAttributes(20, 1, 1, 1, 0)));
+        devastatedLandsMonsters.put(
+                "julius", new Monster("Julius", new NPCAttributes(20, 1, 1, 1, 0)));
+        devastatedLandsMonsters.put(
+                "annis", new Monster("Annis", new NPCAttributes(20, 1, 1, 1, 0)));
         devastatedLands =
                 new LocationBuilder(devastatedLands)
                         .addDefaultActions()
@@ -566,7 +568,7 @@ public final class WorldMap {
 
         var supervillainMonsters = new HashMap<String, Monster>();
         supervillainMonsters.put(
-                "fasilius", new Monster("Fasilius", new NPCAttributes(100, 3, 3, 3)));
+                "fasilius", new Monster("Fasilius", new NPCAttributes(100, 3, 3, 3, 3)));
         supervillain =
                 new LocationBuilder(supervillain)
                         .addDefaultActions()

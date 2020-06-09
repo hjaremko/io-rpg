@@ -32,12 +32,16 @@ public class Attributes implements IAttributes {
     @JsonProperty("defence")
     private int defence;
 
+    @JsonProperty("mana")
+    private int mana;
+
     public Attributes() {
         id = 0;
         health = 0;
         attack = 0;
         level = 0;
         defence = 0;
+        mana = 0;
     }
 
     public Attributes(
@@ -45,12 +49,14 @@ public class Attributes implements IAttributes {
             @JsonProperty("health") int health,
             @JsonProperty("attack") int attack,
             @JsonProperty("level") int level,
-            @JsonProperty("defence") int defence) {
+            @JsonProperty("defence") int defence,
+            @JsonProperty("mana") int mana) {
         this.id = id;
         this.health = health;
         this.attack = attack;
         this.level = level;
         this.defence = defence;
+        this.mana = mana;
     }
 
     @Override
@@ -60,6 +66,7 @@ public class Attributes implements IAttributes {
         output += (level != 0 ? "Level: " + level + ". " : "");
         output += (attack != 0 ? "Attack: " + attack + ". " : "");
         output += (defence != 0 ? "Defence: " + defence + ". " : "");
+        output += (mana != 0 ? "Mana: " + mana + ". " : "");
         return output;
     }
 
@@ -84,6 +91,11 @@ public class Attributes implements IAttributes {
     }
 
     @Override
+    public int getMana() {
+        return mana;
+    }
+
+    @Override
     public void addHealth(int health) {
         this.health += health;
     }
@@ -101,5 +113,10 @@ public class Attributes implements IAttributes {
     @Override
     public void addDefence(int defence) {
         this.defence += defence;
+    }
+
+    @Override
+    public void addMana(int mana) {
+        this.mana += mana;
     }
 }

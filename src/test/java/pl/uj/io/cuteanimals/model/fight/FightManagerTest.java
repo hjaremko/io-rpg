@@ -21,7 +21,7 @@ class FightManagerTest {
 
     @Test
     void endBattleEqualLevelExperienceTest() {
-        var dummy = new Monster("dummy", new NPCAttributes(1, 1, 1, 1));
+        var dummy = new Monster("dummy", new NPCAttributes(1, 1, 1, 1, 0));
 
         player.getFightManager().beginFight(dummy);
         player.getFightManager().endBattle();
@@ -30,7 +30,7 @@ class FightManagerTest {
 
     @Test
     void endBattleMonsterHigherLevelExperienceTest() {
-        var dummy = new Monster("dummy", new NPCAttributes(1, 1, 11, 1));
+        var dummy = new Monster("dummy", new NPCAttributes(1, 1, 11, 1, 0));
 
         player.getFightManager().beginFight(dummy);
         player.getFightManager().endBattle();
@@ -40,7 +40,7 @@ class FightManagerTest {
     @Test
     void endBattleMonsterLowerLevelExperienceTest() {
         player.getAttributes().addLevel(1);
-        var dummy = new Monster("dummy", new NPCAttributes(1, 1, 11, 1));
+        var dummy = new Monster("dummy", new NPCAttributes(1, 1, 11, 1, 0));
 
         player.getFightManager().beginFight(dummy);
         player.getFightManager().endBattle();

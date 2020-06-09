@@ -4,6 +4,7 @@ import java.util.List;
 import pl.uj.io.cuteanimals.model.*;
 import pl.uj.io.cuteanimals.model.fight.*;
 import pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction;
+import pl.uj.io.cuteanimals.model.interfaces.IAbility;
 import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
@@ -75,6 +76,6 @@ public class Focus extends ArgumentlessAction implements IFightState, IAbility {
 
     @Override
     public String getDescription() {
-        return "Focus your attack on enemy's vital points. +2 * Attack damage. Costs 20 mana.";
+        return "Focus your attack on enemy's vital points. +(2 * Attack) damage. Costs 20 mana.";
     }
 }

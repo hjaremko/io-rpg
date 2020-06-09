@@ -46,6 +46,7 @@ public class LocationBuilder {
         this.actionMap.put("equip", new EquipItem());
         this.actionMap.put("off", new UnequipItem());
         this.actionMap.put("stats", new ShowStats());
+        this.actionMap.put("skills", new ShowAbilities());
         this.actionMap.put("eq", new ShowArmor());
         this.actionMap.put("attack", new StandardAttack());
         this.actionMap.put("block", new Block());

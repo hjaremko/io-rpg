@@ -52,6 +52,7 @@ public class LocationBuilder {
         this.actionMap.put("block", new Block());
         this.actionMap.put("use", new UseAction());
         this.actionMap.put("cast", new CastAction());
+        this.actionMap.put("suicide", new SuicideAction());
         return this;
     }
 

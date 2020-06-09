@@ -252,6 +252,7 @@ public class WorldMap {
                                                 + "desolated buildings. The only person in your eyesight "
                                                 + "is your headman and he looks like he wants to talk to you...\n"
                                                 + "(Creatures around you: Headman)\n"
+                                                + "(Items around you: sword, shield, wand, bow, arrow, coin, torch, apple)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", forest)))
                         .addAction("pick", new PickupAction(townItems))
@@ -275,6 +276,7 @@ public class WorldMap {
                                                 + "Suddenly little squirrel jumps on your shoulder! "
                                                 + "She has something important to tell you!\n"
                                                 + "(Creatures around you: Jingle)\n"
+                                                + "(There is nothing to pick up)\n"
                                                 + "(Where you can go: left, right)"))
                         .addAction(
                                 "go",
@@ -299,11 +301,14 @@ public class WorldMap {
                                                 + "You are drawn to this object by the power of magic... "
                                                 + "Now you are sure that it is amulet of eternal love!\n"
                                                 + "(There is no one here)\n"
+                                                + "(Items around you: amulet)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", dungeonEntrance)))
                         .addAction("pick", new PickupAction(gladeItems))
                         .build();
 
+        var shamanCabinItems = new HashMap<String, IItem>();
+        shamanCabinItems.put("apple", itemService.getItem(9));
         shamanCabin =
                 new LocationBuilder(shamanCabin)
                         .addDefaultActions()
@@ -319,11 +324,15 @@ public class WorldMap {
                                 new InvestigateAction(
                                         "You are blinded! You can't see anything!\n"
                                                 + "(Creatures around you: Thaddeus)\n"
+                                                + "(Items around you: apple)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", dungeonEntrance)))
+                        .addAction("pick", new PickupAction(shamanCabinItems))
                         .addNPC(shaman)
                         .build();
 
+        var medicalCabinItems = new HashMap<String, IItem>();
+        medicalCabinItems.put("apple", itemService.getItem(9));
         medicalCabin =
                 new LocationBuilder(medicalCabin)
                         .addDefaultActions()
@@ -335,8 +344,10 @@ public class WorldMap {
                                 new InvestigateAction(
                                         "You are in the cabin... all you can see is various mixtures and medical tools.\n"
                                                 + "(Creatures around you: Britt)\n"
+                                                + "(Items around you: apple)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", dungeonEntrance)))
+                        .addAction("pick", new PickupAction(medicalCabinItems))
                         .addNPC(medical)
                         .build();
 
@@ -352,6 +363,7 @@ public class WorldMap {
                                         "What are you looking at? "
                                                 + "The bridge won't cross itself!\n"
                                                 + "(There is no one here)\n"
+                                                + "(There is nothing to pick up)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new DungeonEntranceGoAction(Map.of("straight", dungeon)))
                         .build();
@@ -368,6 +380,7 @@ public class WorldMap {
                                         "Your torch allows you to see drawings and symbols on the walls, "
                                                 + "pillaged and wrecked by time itself... Further ahead are two paths.\n"
                                                 + "(There is no one here)\n"
+                                                + "(There is nothing to pick up)\n"
                                                 + "(Where you can go: left, right)"))
                         .addAction(
                                 "go",
@@ -391,10 +404,13 @@ public class WorldMap {
                                 new InvestigateAction(
                                         "You feel too weak to look around...\n"
                                                 + "(There is no one here)\n"
+                                                + "(There is nothing to pick up)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", dungeonEgress)))
                         .build();
 
+        var chamberOfWealthItems = new HashMap<String, IItem>();
+        chamberOfWealthItems.put("apple", itemService.getItem(9));
         chamberOfWealth =
                 new LocationBuilder(chamberOfWealth)
                         .addDefaultActions()
@@ -406,13 +422,15 @@ public class WorldMap {
                                 new InvestigateAction(
                                         "You notice that treasure had to be stuck here for hundreds years...\n"
                                                 + "(There is no one here)\n"
+                                                + "(Items around you: apple)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", dungeonEgress)))
+                        .addAction("pick", new PickupAction(chamberOfWealthItems))
                         .build();
 
         var dungeonEgressMonsters = new HashMap<String, Monster>();
         dungeonEgressMonsters.put(
-                "hubhert", new Monster("Hubhert", new NPCAttributes(20, 1, 1, 1, 0)));
+                "hubhert", new Monster("Hubhert", new NPCAttributes(20, 1, 1, 2, 0)));
         dungeonEgressMonsters.put("marc", new Monster("Marc", new NPCAttributes(20, 1, 1, 1, 0)));
         dungeonEgress =
                 new LocationBuilder(dungeonEgress)
@@ -427,6 +445,7 @@ public class WorldMap {
                                         "You can't see any useful objects around you "
                                                 + "you have to deal with them with what you got!\n"
                                                 + "(Creatures around you: Marc, Hubhert)\n"
+                                                + "(There is nothing to pick up)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", village)))
                         .addAction("fight", new FightAction(dungeonEgressMonsters))
@@ -434,6 +453,8 @@ public class WorldMap {
                         .addNPC(marc)
                         .build();
 
+        var villageItems = new HashMap<String, IItem>();
+        villageItems.put("apple", itemService.getItem(9));
         village =
                 new LocationBuilder(village)
                         .addDefaultActions()
@@ -445,6 +466,7 @@ public class WorldMap {
                                         "In front of you devastated lands stretching out for several "
                                                 + "hundred kilometers across but you also spot the inn and the stable.\n"
                                                 + "(There is no one here)\n"
+                                                + "(Items around you: apple)\n"
                                                 + "(Where you can go: straight, inn, stable)"))
                         .addAction(
                                 "go",
@@ -453,6 +475,7 @@ public class WorldMap {
                                                 "stable", stable,
                                                 "inn", inn,
                                                 "straight", devastatedLands)))
+                        .addAction("pick", new PickupAction(villageItems))
                         .build();
 
         var innMonsters = new HashMap<String, Monster>();
@@ -471,6 +494,7 @@ public class WorldMap {
                                         "The innkeeper is a short female. Room is full of injured soldiers... "
                                                 + "You can hear someone is chanting songs of the fallen lands.\n"
                                                 + "(Creatures around you: Domenic, Raphael, Avery, Galen, Hilda, Darell)\n"
+                                                + "(There is nothing to pick up)\n"
                                                 + "(Where you can go: village)"))
                         .addAction("go", new GoAction(Map.of("straight", village)))
                         .addAction("fight", new FightAction(innMonsters))
@@ -495,6 +519,7 @@ public class WorldMap {
                                         "You spot a tall man who smiles at you and "
                                                 + "looks like he wants to offer something.\n"
                                                 + "(Creatures around you: Elvin)\n"
+                                                + "(There is nothing to pick up)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", moat)))
                         .addNPC(horseBoy)
@@ -502,13 +527,13 @@ public class WorldMap {
 
         var devastatedLandsMonsters = new HashMap<String, Monster>();
         devastatedLandsMonsters.put(
-                "lucas", new Monster("Lucas", new NPCAttributes(20, 1, 1, 1, 0)));
+                "lucas", new Monster("Lucas", new NPCAttributes(10, 2, 2, 2, 0)));
         devastatedLandsMonsters.put(
-                "claudius", new Monster("Claudius", new NPCAttributes(20, 1, 1, 1, 0)));
+                "claudius", new Monster("Claudius", new NPCAttributes(10, 2, 2, 2, 0)));
         devastatedLandsMonsters.put(
-                "julius", new Monster("Julius", new NPCAttributes(20, 1, 1, 1, 0)));
+                "julius", new Monster("Julius", new NPCAttributes(10, 2, 2, 2, 0)));
         devastatedLandsMonsters.put(
-                "annis", new Monster("Annis", new NPCAttributes(20, 1, 1, 1, 0)));
+                "annis", new Monster("Annis", new NPCAttributes(10, 2, 2, 2, 0)));
         devastatedLands =
                 new LocationBuilder(devastatedLands)
                         .addDefaultActions()
@@ -521,7 +546,8 @@ public class WorldMap {
                                 "investigate",
                                 new InvestigateAction(
                                         "There is no time to investigate! Hurry or you will die!\n"
-                                                + "(Creatures around you: Lucas, Claudius, Julian, Annis)\n"
+                                                + "(Creatures around you: Lucas, Claudius, Julius, Annis)\n"
+                                                + "(There is nothing to pick up)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", moat)))
                         .addAction("fight", new FightAction(devastatedLandsMonsters))
@@ -544,10 +570,13 @@ public class WorldMap {
                                                 + "pass the moat... you can't see anything useful but thin piece of wood. "
                                                 + "You pick it up and place it across the moat. Now you can use it to go through!\n"
                                                 + "(There is no one here)\n"
+                                                + "(There is nothing to pick up)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", castle)))
                         .build();
 
+        var castleItems = new HashMap<String, IItem>();
+        castleItems.put("apple", itemService.getItem(9));
         castle =
                 new LocationBuilder(castle)
                         .addDefaultActions()
@@ -565,8 +594,10 @@ public class WorldMap {
                                                 + "you can hear a whisper coming from behind the door... You can feel that "
                                                 + "evil power is closer then ever... waiting on you.\n"
                                                 + "(Creatures around you: Herschel, Merlin, Donovan)\n"
+                                                + "(Items around you: apple)\n"
                                                 + "(Where you can go: straight)"))
                         .addAction("go", new GoAction(Map.of("straight", supervillain)))
+                        .addAction("pick", new PickupAction(castleItems))
                         .addNPC(mag1)
                         .addNPC(mag2)
                         .addNPC(mag3)
@@ -590,7 +621,8 @@ public class WorldMap {
                                 new InvestigateAction(
                                         "You looked around but the only thing you could see were visions of all those "
                                                 + "horrible things that must have happened in here...\n"
-                                                + "(Creatures around you: Fasilius)"))
+                                                + "(Creatures around you: Fasilius)\n"
+                                                + "(There is nothing to pick up)"))
                         .addAction(
                                 "go",
                                 new GoAction(

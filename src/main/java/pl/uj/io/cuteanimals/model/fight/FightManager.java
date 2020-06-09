@@ -55,7 +55,7 @@ public class FightManager {
         var playerAttrs = (PlayerAttributes) player.getAttributes();
         var playerLevel = playerAttrs.getLevel();
         var enemyLevel = fightingWith.getAttributes().getLevel();
-        var expBonus = playerLevel < enemyLevel ? Math.abs(playerLevel - enemyLevel) / 2 : 0;
+        var expBonus = playerLevel <= enemyLevel ? (enemyLevel - playerLevel + 2) : 1;
         var baseExp = playerAttrs.getRequiredExperience() / 6;
         var levelPenalty = playerLevel < enemyLevel ? 2 : 1;
         var gainedExperience = baseExp / levelPenalty + expBonus;

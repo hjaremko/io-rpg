@@ -96,7 +96,7 @@ public class ItemService {
                         "Regular torch",
                         3,
                         attributesService.getAttributes(8),
-                        ItemType.USABLE));
+                        ItemType.WEAPON));
         addItem(
                 new Item(
                         9,

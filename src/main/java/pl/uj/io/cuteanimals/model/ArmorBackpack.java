@@ -74,18 +74,39 @@ public class ArmorBackpack implements IEquipment {
     @Override
     public String showItems() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("You wear the following items: ").append("\n \n");
-        stringBuilder.append("Left hand: ").append(weapon.getName()).append("\n");
-        stringBuilder.append("Description: ").append(weapon.getDescription());
-        stringBuilder.append(", Type: ").append(weapon.getType().toString());
-        stringBuilder.append(", Size: ").append(weapon.getSize()).append(", ");
-        stringBuilder.append(weapon.getAttributes().toString());
-        stringBuilder.append("\n \n");
-        stringBuilder.append("Right hand: ").append(armor.getName()).append("\n");
-        stringBuilder.append("Description: ").append(armor.getDescription());
-        stringBuilder.append(", Type: ").append(armor.getType().toString());
-        stringBuilder.append(", Size: ").append(armor.getSize()).append(", ");
-        stringBuilder.append(armor.getAttributes().toString());
+        if (weapon != null || armor != null) {
+            stringBuilder.append("You wear the following items: ");
+        }
+        if (weapon != null) {
+            stringBuilder
+                    .append("\n \n")
+                    .append("Left hand: ")
+                    .append(weapon.getName())
+                    .append("\n")
+                    .append("Description: ")
+                    .append(weapon.getDescription())
+                    .append(", Type: ")
+                    .append(weapon.getType().toString())
+                    .append(", Size: ")
+                    .append(weapon.getSize())
+                    .append(", ")
+                    .append(weapon.getAttributes().toString());
+        }
+        if (armor != null) {
+            stringBuilder
+                    .append("\n \n")
+                    .append("Right hand: ")
+                    .append(armor.getName())
+                    .append("\n")
+                    .append("Description: ")
+                    .append(armor.getDescription())
+                    .append(", Type: ")
+                    .append(armor.getType().toString())
+                    .append(", Size: ")
+                    .append(armor.getSize())
+                    .append(", ")
+                    .append(armor.getAttributes().toString());
+        }
 
         return stringBuilder.toString();
     }

@@ -15,7 +15,7 @@ public class PlayerAttributes extends NPCAttributes {
     private int experience;
 
     public PlayerAttributes(ICharacter owner) {
-        super(30, 1, 1, 0, 100);
+        super(50, 1, 1, 0, 100);
         this.owner = owner;
         this.experience = 0;
         random = new RandomIntegerImpl();
@@ -68,15 +68,19 @@ public class PlayerAttributes extends NPCAttributes {
     }
 
     public int getRequiredExperience() {
-        // TODO: some sane formula
-        return super.getLevel() * 10;
+        return super.getLevel() * 2;
     }
 
     public void addExperience(int experience) {
         var expBefore = this.experience;
+        boolean levelUp = this.experience + experience >= getRequiredExperience();
         this.experience = (this.experience + experience) % getRequiredExperience();
 
-        if (this.experience < expBefore) {
+        if (levelUp) {
+            addAttack(getLevel());
+            addDefence(getLevel());
+            // addMana(getMana() * getLevel());
+            addHealth(getLevel() * 10);
             addLevel(1);
         }
     }

@@ -26,7 +26,7 @@ public class DungeonInvestigateAction extends ArgumentlessAction {
         }
 
         for (IItem item : player.getArmor().getItems()) {
-            if (item.getName().equals("Torch")) {
+            if (item.getName().equals("torch")) {
                 return new Result(infoMessage);
             }
         }

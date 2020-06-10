@@ -10,6 +10,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import pl.uj.io.cuteanimals.model.entity.Attributes;
+import pl.uj.io.cuteanimals.model.entity.Item;
 import pl.uj.io.cuteanimals.model.interfaces.RandomInteger;
 
 @ExtendWith(MockitoExtension.class)
@@ -63,5 +65,71 @@ class PlayerAttributesTest {
         when(random.nextInt(anyInt())).thenReturn(25);
         attrs.addAttack(49);
         assertThat(attrs.getDamage()).isEqualTo(75);
+    }
+
+    @Test
+    void getHealthWithItem() {
+        var weapon =
+                new Item(1, "pach", "aaa", 1, new Attributes(1, 100, 0, 0, 0, 0), ItemType.WEAPON);
+        player.getArmor().putItem(weapon);
+        assertThat(attrs.getHealth()).isEqualTo(150);
+        player.getArmor().removeItem(weapon);
+        assertThat(attrs.getHealth()).isEqualTo(50);
+    }
+
+    @Test
+    void getAttackWithItem() {
+        var weapon =
+                new Item(1, "pach", "aaa", 1, new Attributes(1, 0, 100, 0, 0, 0), ItemType.ARMOR);
+        player.getArmor().putItem(weapon);
+        assertThat(attrs.getAttack()).isEqualTo(101);
+        player.getArmor().removeItem(weapon);
+        assertThat(attrs.getAttack()).isEqualTo(1);
+    }
+
+    @Test
+    void getDefenceWithItem() {
+        var weapon =
+                new Item(1, "pach", "aaa", 1, new Attributes(1, 0, 0, 0, 100, 0), ItemType.WEAPON);
+        player.getArmor().putItem(weapon);
+        assertThat(attrs.getDefence()).isEqualTo(100);
+        player.getArmor().removeItem(weapon);
+        assertThat(attrs.getDefence()).isEqualTo(0);
+    }
+
+    @Test
+    void getManaWithItem() {
+        var weapon =
+                new Item(1, "pach", "aaa", 1, new Attributes(1, 0, 0, 0, 0, 100), ItemType.WEAPON);
+        player.getArmor().putItem(weapon);
+        assertThat(attrs.getMana()).isEqualTo(200);
+        player.getArmor().removeItem(weapon);
+        assertThat(attrs.getMana()).isEqualTo(100);
+    }
+
+    @Test
+    void getRequiredExperience() {
+        assertThat(attrs.getLevel() == 1);
+        assertThat(attrs.getRequiredExperience() == 2);
+        attrs.addLevel(1);
+        assertThat(attrs.getRequiredExperience() == 4);
+    }
+
+    @Test
+    void getMana() {
+        assertThat(attrs.getMana()).isEqualTo(100);
+    }
+
+    @Test
+    void addMana() {
+        attrs.addMana(100);
+        assertThat(attrs.getMana()).isEqualTo(200);
+        attrs.addMana(-100);
+        assertThat(attrs.getMana()).isEqualTo(100);
+    }
+
+    @Test
+    void testToString() {
+        assertThat(attrs.toString()).isNotBlank();
     }
 }

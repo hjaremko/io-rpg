@@ -33,6 +33,7 @@ class FocusTest {
 
     @Test
     void shouldDrain20Mana() {
+        attrs.addLevel(10); // Prevent level-up
         var manaBefore = attrs.getMana();
         player.getFightManager().attack();
         assertThat(attrs.getMana()).isEqualTo(manaBefore - 20);

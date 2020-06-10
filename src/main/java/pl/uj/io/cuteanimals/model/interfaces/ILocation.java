@@ -41,9 +41,9 @@ public interface ILocation {
      * Gives a list of items that are currently in the Location that the Player can integrate with
      * (take them, use them, drink/eat them etc.).
      *
-     * @return list of elements of IEquipment type.
+     * @return IEquipment containing items.
      */
-    List<IEquipment> getItems();
+    IEquipment getItems();
 
     /**
      * Lets location execute any action on player when entering it.

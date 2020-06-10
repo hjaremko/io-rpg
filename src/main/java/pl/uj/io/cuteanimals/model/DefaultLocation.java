@@ -16,14 +16,15 @@ public class DefaultLocation implements ILocation {
     protected String description;
     protected Map<String, IAction> actionMap;
     protected List<NPC> npcList;
-    protected List<IEquipment> equipmentList;
+    // TODO: remove probably
+    protected IEquipment equipment;
     protected IAction actionOnEnter;
 
     public DefaultLocation() {
         this.description = "";
         this.actionMap = new HashMap<>();
         this.npcList = new ArrayList<>();
-        this.equipmentList = new ArrayList<>();
+        this.equipment = new Backpack();
         this.actionOnEnter = null;
     }
 
@@ -55,12 +56,12 @@ public class DefaultLocation implements ILocation {
     }
 
     @Override
-    public List<IEquipment> getItems() {
-        return equipmentList;
+    public IEquipment getItems() {
+        return equipment;
     }
 
-    public void setItems(List<IEquipment> items) {
-        this.equipmentList = items;
+    public void setItems(IEquipment items) {
+        this.equipment = items;
     }
 
     @Override

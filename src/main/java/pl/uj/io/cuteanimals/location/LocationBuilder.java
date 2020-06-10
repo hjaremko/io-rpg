@@ -7,17 +7,19 @@ import java.util.Map;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import pl.uj.io.cuteanimals.action.*;
+import pl.uj.io.cuteanimals.model.Backpack;
 import pl.uj.io.cuteanimals.model.DefaultLocation;
 import pl.uj.io.cuteanimals.model.NPC;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
+import pl.uj.io.cuteanimals.model.interfaces.IItem;
 
 /** Helper class used to build locations during WorldMap initialization */
 public class LocationBuilder {
     private final DefaultLocation location;
     private final Map<String, IAction> actionMap;
     private final List<NPC> npcList;
-    private final List<IEquipment> equipmentList;
+    private final IEquipment equipment;
     private String description;
     private IAction actionOnEnter;
 
@@ -25,7 +27,7 @@ public class LocationBuilder {
         this.description = "";
         this.actionMap = new HashMap<>();
         this.npcList = new ArrayList<>();
-        this.equipmentList = new ArrayList<>();
+        this.equipment = new Backpack();
         this.actionOnEnter = null;
         this.location = location;
     }
@@ -68,8 +70,8 @@ public class LocationBuilder {
         return this;
     }
 
-    public LocationBuilder addItem(@NotNull IEquipment equipment) {
-        this.equipmentList.add(equipment);
+    public LocationBuilder addItem(@NotNull IItem item) {
+        this.equipment.putItem(item);
         return this;
     }
 
@@ -81,7 +83,7 @@ public class LocationBuilder {
     public DefaultLocation build() {
         location.setDescription(description);
         location.setAvailableActions(actionMap);
-        location.setItems(equipmentList);
+        location.setItems(equipment);
         location.setNPCs(npcList);
         location.setActionOnEnter(actionOnEnter);
         return location;

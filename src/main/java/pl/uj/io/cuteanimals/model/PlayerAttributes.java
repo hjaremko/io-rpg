@@ -22,7 +22,7 @@ public class PlayerAttributes extends NPCAttributes {
     }
 
     public PlayerAttributes(ICharacter owner, RandomInteger random) {
-        super(30, 1, 1, 0, 100);
+        super(50, 1, 1, 0, 100);
         this.owner = owner;
         this.experience = 0;
         this.random = random;
@@ -79,14 +79,19 @@ public class PlayerAttributes extends NPCAttributes {
         if (levelUp) {
             addAttack(getLevel());
             addDefence(getLevel());
-            // addMana(getMana() * getLevel());
+            addMana(100);
             addHealth(getLevel() * 10);
             addLevel(1);
         }
     }
 
     public int getMana() {
-        return mana;
+        return mana
+                + owner.getArmor()
+                        .getItems()
+                        .stream()
+                        .mapToInt(i -> i.getAttributes().getMana())
+                        .sum();
     }
 
     public void addMana(int mana) {

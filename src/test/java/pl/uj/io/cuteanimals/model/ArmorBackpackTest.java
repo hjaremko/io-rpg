@@ -166,6 +166,8 @@ class ArmorBackpackTest {
 
     @Test
     void removeNotEquippedShouldFail() {
+        when(attrMock.getLevel()).thenReturn(1);
+
         var weapon =
                 new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
 
@@ -174,10 +176,21 @@ class ArmorBackpackTest {
         assertThat(!eq.removeItem(armor));
         assertThat(eq.getItems().contains(weapon));
         assertThat(!eq.getItems().contains(armor));
+        assertThat(eq.getItems().size()).isEqualTo(1);
     }
 
     @Test
     void showItemsDoesntCrash() {
-        assertThat(!eq.showItems().isBlank());
+        when(attrMock.getLevel()).thenReturn(1);
+
+        assertThat(eq.showItems()).isEqualTo("");
+
+        var weapon =
+                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
+        var armor = new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.ARMOR);
+        assertThat(eq.putItem(weapon));
+        assertThat(eq.showItems()).isNotEqualTo("");
+        assertThat(eq.putItem(armor));
+        assertThat(eq.showItems()).isNotEqualTo("");
     }
 }

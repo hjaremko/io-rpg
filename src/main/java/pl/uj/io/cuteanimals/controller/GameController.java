@@ -22,7 +22,7 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public int receiveFirstFreeID() {
         int id = gameService.getFirstFreeID();
         logger.info("New player ID: " + id);

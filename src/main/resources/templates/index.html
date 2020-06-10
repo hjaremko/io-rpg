@@ -36,8 +36,10 @@
     }
 
     function initialize() {
+        console.log("initialization")
         let request = new XMLHttpRequest();
         request.open('GET', URLprefix);
+        request.responseType = 'text';
 
         request.ontimeout = function () {
             console.error("The request for " + URLprefix + " timed out.");
@@ -50,13 +52,16 @@
                 term.write('\b\b\b    ')
                 const serverResponse = request.response;
                 console.log(serverResponse);
-                var id = request.responseText;
 
-                if (id === "-1") {
-                    initialize();
-                } else {
+                var id = request.responseText;
+                console.log("Initialization id: " + id)
+
+                if (id !== "-1") {
                     requestURL = proxyURL + URLprefix + id + URLsuffix;
                     console.log("requestURL: " + requestURL)
+                    sendRequest("start");
+                } else {
+                    initialize();
                 }
             }
         }
@@ -121,12 +126,9 @@
         term._initialized = true;
 
         term.writeln('Welcome to Cute Animals v1.0.0');
-
-        sendRequest("start");
+        initialize();
 
         var commandBuffer = "";
-
-        initialize();
 
         term.onKey(e => {
             const printable = !e.domEvent.altKey && !e.domEvent.altGraphKey && !e.domEvent.ctrlKey && !e.domEvent.metaKey;

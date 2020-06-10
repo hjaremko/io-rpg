@@ -84,7 +84,7 @@ public class GameControllerTest {
                         .getResponse();
 
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
-        assertThat(response.getContentAsString()).isEqualTo("result 1");
+        assertThat(response.getContentAsString()).isEqualTo("result 1\n");
     }
 
     @Test

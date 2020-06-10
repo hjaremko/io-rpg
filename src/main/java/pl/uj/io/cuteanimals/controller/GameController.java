@@ -1,5 +1,6 @@
 package pl.uj.io.cuteanimals.controller;
 
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,9 +55,11 @@ public class GameController {
         StringBuilder stringResult = new StringBuilder();
 
         if (result instanceof CompoundResult) {
-            for (var r : ((CompoundResult) result).getResults()) {
-                stringResult.append(addColor(r)).append("\n");
-            }
+            return ((CompoundResult) result)
+                    .getResults()
+                    .stream()
+                    .map(this::addColor)
+                    .collect(Collectors.joining());
         } else {
             var color = result.getColor();
             var message = result.getMessage();
@@ -73,6 +76,7 @@ public class GameController {
                 default:
                     stringResult.append(message);
             }
+            stringResult.append("\n");
         }
 
         return stringResult.toString();

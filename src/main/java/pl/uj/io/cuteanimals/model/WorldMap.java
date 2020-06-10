@@ -669,7 +669,6 @@ public class WorldMap {
                         .addActionOnEnter(new EndGameAction())
                         .build();
 
-
         // Add to map
         locations.put("town", town);
         locations.put("forest", forest);

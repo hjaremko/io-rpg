@@ -1,12 +1,11 @@
 package pl.uj.io.cuteanimals.action.end;
 
+import java.util.List;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
-
-import java.util.List;
 
 public class EndGameAction implements IAction {
 
@@ -22,9 +21,7 @@ public class EndGameAction implements IAction {
     }
 
     @Override
-    public void setArgs(List<String> args) {
-
-    }
+    public void setArgs(List<String> args) {}
 
     @Override
     public List<GameState> getAcceptableStates() {

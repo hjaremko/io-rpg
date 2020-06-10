@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
-import pl.uj.io.cuteanimals.model.Color;
 import pl.uj.io.cuteanimals.model.CompoundResult;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 import pl.uj.io.cuteanimals.service.GameService;
@@ -67,7 +66,7 @@ public class GameController {
         StringBuilder stringResult = new StringBuilder();
 
         if (result instanceof CompoundResult) {
-            for (var r: ((CompoundResult) result).getResults()) {
+            for (var r : ((CompoundResult) result).getResults()) {
                 stringResult.append(addColor(r));
             }
         } else {
@@ -87,7 +86,6 @@ public class GameController {
                     stringResult.append(message);
             }
         }
-
 
         return stringResult.toString();
     }

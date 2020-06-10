@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
 import pl.uj.io.cuteanimals.model.Color;
 import pl.uj.io.cuteanimals.model.CompoundResult;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 import pl.uj.io.cuteanimals.service.GameService;
 
 @RestController
@@ -49,35 +50,44 @@ public class GameController {
                 return ((CompoundResult) result)
                         .getResults()
                         .stream()
-                        .map(r -> addColor(r.getMessage(), r.getColor()))
+                        .map(this::addColor)
                         .collect(Collectors.joining("\n"));
             }
 
             logger.trace("Adding color to normal Result with message:");
             logger.debug(result.getMessage());
-            return addColor(result.getMessage(), result.getColor());
+            return addColor(result);
         } catch (InvalidCommandException e) {
             logger.debug("Parsing user provided command failed.", e);
             return e.getMessage();
         }
     }
 
-    private String addColor(String string, Color color) {
+    private String addColor(IResult result) {
         StringBuilder stringResult = new StringBuilder();
 
-        switch (color) {
-            case RED:
-                stringResult.append("\u001b[31m").append(string).append("\u001b[0m");
-                break;
-            case GREEN:
-                stringResult.append("\u001b[32m").append(string).append("\u001b[0m");
-                break;
-            case YELLOW:
-                stringResult.append("\u001b[33m").append(string).append("\u001b[0m");
-                break;
-            default:
-                stringResult.append(string);
+        if (result instanceof CompoundResult) {
+            for (var r: ((CompoundResult) result).getResults()) {
+                stringResult.append(addColor(r));
+            }
+        } else {
+            var color = result.getColor();
+            var message = result.getMessage();
+            switch (color) {
+                case RED:
+                    stringResult.append("\u001b[31m").append(message).append("\u001b[0m");
+                    break;
+                case GREEN:
+                    stringResult.append("\u001b[32m").append(message).append("\u001b[0m");
+                    break;
+                case YELLOW:
+                    stringResult.append("\u001b[33m").append(message).append("\u001b[0m");
+                    break;
+                default:
+                    stringResult.append(message);
+            }
         }
+
 
         return stringResult.toString();
     }

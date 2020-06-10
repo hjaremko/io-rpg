@@ -11,36 +11,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pl.uj.io.cuteanimals.model.entity.Attributes;
 import pl.uj.io.cuteanimals.model.entity.Item;
 import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
-import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 
 @ExtendWith(MockitoExtension.class)
 class ArmorBackpackTest {
     private ArmorBackpack eq;
     @Mock IAttributes attrMock;
-    ICharacter playerMock;
 
     @BeforeEach
     void setUp() {
-        playerMock =
-                new ICharacter() {
-                    @Override
-                    public IEquipment getEquipment() {
-                        return null;
-                    }
-
-                    @Override
-                    public IEquipment getArmor() {
-                        return null;
-                    }
-
-                    @Override
-                    public IAttributes getAttributes() {
-                        return attrMock;
-                    }
-                };
-
-        eq = new ArmorBackpack(playerMock);
+        eq = new ArmorBackpack(attrMock);
     }
 
     @Test

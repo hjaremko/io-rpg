@@ -16,19 +16,19 @@ import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
 
 @ExtendWith(MockitoExtension.class)
 class DefaultLocationTest {
-    @Mock IAction ac;
-    @Mock IPlayer p;
-    private DefaultLocation loc;
+    @Mock IAction action;
+    @Mock IPlayer player;
+    private DefaultLocation defaultLocation;
 
     @BeforeEach
     void setUp() {
-        loc = new DefaultLocation();
-        loc.setDescription("desc");
+        defaultLocation = new DefaultLocation();
+        defaultLocation.setDescription("desc");
     }
 
     @Test
     void getDescription() {
-        assertThat(loc.getDescription()).isEqualTo("desc");
+        assertThat(defaultLocation.getDescription()).isEqualTo("desc");
     }
 
     @Test
@@ -47,9 +47,9 @@ class DefaultLocationTest {
                         List.of("If I were you I would run as fast as I can..."));
         var mag1 = new NPC(null, null, "Herschel", List.of("Please... help us!"));
 
-        loc.setNPCs(List.of(claudius, mag1));
-        assertThat(loc.getNPCs()).contains(mag1);
-        assertThat(loc.getNPCs()).contains(claudius);
+        defaultLocation.setNPCs(List.of(claudius, mag1));
+        assertThat(defaultLocation.getNPCs()).contains(mag1);
+        assertThat(defaultLocation.getNPCs()).contains(claudius);
     }
 
     @Test
@@ -72,24 +72,24 @@ class DefaultLocationTest {
                         new Attributes(1, 1, 1, 1, 1, 1),
                         ItemType.ARMOR,
                         ItemClass.ANY);
-        var bp = new Backpack();
-        bp.putItem(armor2);
-        bp.putItem(armor);
-        loc.setItems(bp);
-        assertThat(loc.getItems().getItems()).contains(armor);
-        assertThat(loc.getItems().getItems()).contains(armor2);
+        var backpack = new Backpack();
+        backpack.putItem(armor2);
+        backpack.putItem(armor);
+        defaultLocation.setItems(backpack);
+        assertThat(defaultLocation.getItems().getItems()).contains(armor);
+        assertThat(defaultLocation.getItems().getItems()).contains(armor2);
     }
 
     @Test
     void actionOnEnter() {
-        loc.setActionOnEnter(ac);
-        assertThat(loc.getActionOnEnter()).isEqualTo(ac);
-        loc.onEnter(p);
-        verify(ac).execute(p);
+        defaultLocation.setActionOnEnter(action);
+        assertThat(defaultLocation.getActionOnEnter()).isEqualTo(action);
+        defaultLocation.onEnter(player);
+        verify(action).execute(player);
     }
 
     @Test
     void nullActionOnEnter() {
-        assertThat(loc.onEnter(p).getMessage()).isBlank();
+        assertThat(defaultLocation.onEnter(player).getMessage()).isBlank();
     }
 }

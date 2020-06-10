@@ -8,11 +8,11 @@ import pl.uj.io.cuteanimals.model.entity.Attributes;
 import pl.uj.io.cuteanimals.model.entity.Item;
 
 class BackpackTest {
-    private Backpack bp;
+    private Backpack backpack;
 
     @BeforeEach
     void setUp() {
-        bp = new Backpack();
+        backpack = new Backpack();
     }
 
     @Test
@@ -36,22 +36,22 @@ class BackpackTest {
                         ItemType.ARMOR,
                         ItemClass.ANY);
 
-        assertThat(bp.putItem(weapon));
-        assertThat(bp.putItem(heavy));
-        assertThat(bp.getItems().size()).isEqualTo(2);
-        assertThat(bp.getItems()).contains(heavy);
-        assertThat(bp.getItems()).contains(weapon);
-        assertThat(bp.removeItem(weapon));
-        assertThat(bp.getItems().size()).isEqualTo(1);
-        assertThat(bp.removeItem(heavy));
-        assertThat(bp.getItems()).isEmpty();
+        assertThat(backpack.putItem(weapon));
+        assertThat(backpack.putItem(heavy));
+        assertThat(backpack.getItems().size()).isEqualTo(2);
+        assertThat(backpack.getItems()).contains(heavy);
+        assertThat(backpack.getItems()).contains(weapon);
+        assertThat(backpack.removeItem(weapon));
+        assertThat(backpack.getItems().size()).isEqualTo(1);
+        assertThat(backpack.removeItem(heavy));
+        assertThat(backpack.getItems()).isEmpty();
     }
 
     @Test
     void showItemsDoesntCrash() {
-        assertThat(bp.showItems()).isNotBlank();
+        assertThat(backpack.showItems()).isNotBlank();
         assertThat(
-                bp.putItem(
+                backpack.putItem(
                         new Item(
                                 1,
                                 "pach",
@@ -60,6 +60,6 @@ class BackpackTest {
                                 new Attributes(1, 1, 1, 1, 1, 1),
                                 ItemType.WEAPON,
                                 ItemClass.ANY)));
-        assertThat(bp.showItems()).isNotBlank();
+        assertThat(backpack.showItems()).isNotBlank();
     }
 }

@@ -14,17 +14,17 @@ import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
 
 @ExtendWith(MockitoExtension.class)
 class PlayerBackpackTest {
-    @Mock private IAttributes attrs;
-    private PlayerBackpack bp;
+    @Mock private IAttributes attributes;
+    private PlayerBackpack playerBackpack;
 
     @BeforeEach
     void setUp() {
-        bp = new PlayerBackpack(attrs);
+        playerBackpack = new PlayerBackpack(attributes);
     }
 
     @Test
     void putItem() {
-        when(attrs.getAttack()).thenReturn(1);
+        when(attributes.getAttack()).thenReturn(1);
         var weapon =
                 new Item(
                         1,
@@ -44,10 +44,10 @@ class PlayerBackpackTest {
                         ItemType.WEAPON,
                         ItemClass.ANY);
 
-        assertThat(bp.putItem(weapon));
-        assertThat(!bp.putItem(heavy));
-        assertThat(bp.getItems().size()).isEqualTo(1);
-        assertThat(bp.getItems()).contains(weapon);
+        assertThat(playerBackpack.putItem(weapon));
+        assertThat(!playerBackpack.putItem(heavy));
+        assertThat(playerBackpack.getItems().size()).isEqualTo(1);
+        assertThat(playerBackpack.getItems()).contains(weapon);
     }
 
     @Test
@@ -62,18 +62,18 @@ class PlayerBackpackTest {
                         ItemType.WEAPON,
                         ItemClass.ANY);
 
-        assertThat(bp.putItem(weapon));
-        assertThat(bp.getItems()).contains(weapon);
-        assertThat(bp.removeItem(weapon));
-        assertThat(bp.getItems()).isEmpty();
+        assertThat(playerBackpack.putItem(weapon));
+        assertThat(playerBackpack.getItems()).contains(weapon);
+        assertThat(playerBackpack.removeItem(weapon));
+        assertThat(playerBackpack.getItems()).isEmpty();
     }
 
     @Test
     void getCapacity() {
-        when(attrs.getAttack()).thenReturn(0);
-        assertThat(bp.getCapacity()).isEqualTo(10);
+        when(attributes.getAttack()).thenReturn(0);
+        assertThat(playerBackpack.getCapacity()).isEqualTo(10);
 
-        when(attrs.getAttack()).thenReturn(10);
-        assertThat(bp.getCapacity()).isEqualTo(40);
+        when(attributes.getAttack()).thenReturn(10);
+        assertThat(playerBackpack.getCapacity()).isEqualTo(40);
     }
 }

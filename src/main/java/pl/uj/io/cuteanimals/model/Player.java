@@ -28,7 +28,7 @@ public class Player implements IPlayer {
         this.world = world;
         this.stats = new PlayerAttributes(this);
         this.currentLocation = world.getLocation("town");
-        this.armorBackpack = new ArmorBackpack(this);
+        this.armorBackpack = new ArmorBackpack(this.stats);
         this.backpack = new PlayerBackpack(this.stats);
         this.gameState = GameState.LIMBO;
         this.fightManager = new FightManager(this);

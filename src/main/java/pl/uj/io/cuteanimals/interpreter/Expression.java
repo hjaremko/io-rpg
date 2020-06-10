@@ -3,7 +3,7 @@ package pl.uj.io.cuteanimals.interpreter;
 import java.util.List;
 import java.util.Map;
 import pl.uj.io.cuteanimals.action.ActionBuilder;
-import pl.uj.io.cuteanimals.action.MessageAction;
+import pl.uj.io.cuteanimals.action.InvestigateAction;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 
@@ -43,7 +43,7 @@ public interface Expression {
                 context.getOrDefault(
                         arg,
                         new ActionBuilder()
-                                .addAction(new MessageAction())
+                                .addAction(new InvestigateAction(""))
                                 .addArgs(List.of(arg))
                                 .collect());
     }

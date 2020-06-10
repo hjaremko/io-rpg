@@ -2,7 +2,7 @@ package pl.uj.io.cuteanimals.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
+import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
 import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
 
@@ -14,12 +14,12 @@ import pl.uj.io.cuteanimals.model.interfaces.IItem;
  * @since 0.0.1-SNAPSHOT
  */
 public class ArmorBackpack implements IEquipment {
-    private final ICharacter owner;
+    private final IAttributes ownerAttributes;
     private IItem weapon;
     private IItem armor;
 
-    public ArmorBackpack(ICharacter owner) {
-        this.owner = owner;
+    public ArmorBackpack(IAttributes ownerAttributes) {
+        this.ownerAttributes = ownerAttributes;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class ArmorBackpack implements IEquipment {
 
     @Override
     public boolean putItem(IItem item) {
-        if (item.getAttributes().getLevel() > owner.getAttributes().getLevel()) {
+        if (item.getAttributes().getLevel() > ownerAttributes.getLevel()) {
             return false;
         }
 

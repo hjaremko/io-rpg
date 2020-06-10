@@ -11,13 +11,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 class NPCTest {
-    @Mock private ArmorBackpack abp;
-    @Mock private Backpack bp;
+    @Mock private ArmorBackpack armorBackpack;
+    @Mock private Backpack backpack;
     private NPC npc;
 
     @BeforeEach
     void setUp() {
-        npc = new NPC(abp, bp, "test", List.of("t1", "t2", "t3"));
+        npc = new NPC(armorBackpack, backpack, "test", List.of("t1", "t2", "t3"));
     }
 
     @Test

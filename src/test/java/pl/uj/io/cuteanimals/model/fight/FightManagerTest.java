@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.uj.io.cuteanimals.model.*;
@@ -13,11 +12,12 @@ import pl.uj.io.cuteanimals.model.*;
 @ExtendWith(MockitoExtension.class)
 class FightManagerTest {
     @Mock private WorldMap world;
-    @InjectMocks private Player player;
+    private Player player;
     private PlayerAttributes attrs;
 
     @BeforeEach
     void setUp() {
+        player = new Player(0, world);
         attrs = (PlayerAttributes) player.getAttributes();
     }
 

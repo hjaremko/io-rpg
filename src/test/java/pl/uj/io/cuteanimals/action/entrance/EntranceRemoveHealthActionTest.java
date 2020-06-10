@@ -5,7 +5,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.uj.io.cuteanimals.model.Player;
@@ -16,10 +15,11 @@ public class EntranceRemoveHealthActionTest {
     private int healthLoss;
     private EntranceRemoveHealthAction entranceRemoveHealthAction;
     @Mock WorldMap world;
-    @InjectMocks private Player player;
+    private Player player;
 
     @BeforeEach
     private void setup() {
+        player = new Player(0, world);
         healthLoss = 15;
         entranceRemoveHealthAction = new EntranceRemoveHealthAction(healthLoss);
     }

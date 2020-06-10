@@ -7,7 +7,6 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.uj.io.cuteanimals.model.*;
@@ -17,12 +16,13 @@ import pl.uj.io.cuteanimals.model.interfaces.RandomInteger;
 class FocusTest {
     @Mock private RandomInteger random;
     @Mock private WorldMap world;
-    @InjectMocks private Player player;
+    private Player player;
     private Monster dummy;
     private PlayerAttributes attrs;
 
     @BeforeEach
     void setUp() {
+        player = new Player(0, world, random);
         attrs = (PlayerAttributes) player.getAttributes();
 
         dummy = new Monster("dummy", new NPCAttributes(0, 1, 1, 0, 0));

@@ -7,7 +7,6 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.uj.io.cuteanimals.model.entity.Attributes;
@@ -18,11 +17,12 @@ import pl.uj.io.cuteanimals.model.interfaces.RandomInteger;
 class PlayerAttributesTest {
     @Mock private RandomInteger random;
     @Mock private WorldMap world;
-    @InjectMocks Player player;
+    private Player player;
     private PlayerAttributes attrs;
 
     @BeforeEach
     void setUp() {
+        player = new Player(0, world, random);
         attrs = (PlayerAttributes) player.getAttributes();
     }
 

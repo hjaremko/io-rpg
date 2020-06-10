@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Component;
 import pl.uj.io.cuteanimals.action.*;
+import pl.uj.io.cuteanimals.action.end.EndGameAction;
 import pl.uj.io.cuteanimals.action.entrance.EntranceRemoveHealthAction;
 import pl.uj.io.cuteanimals.location.LocationBuilder;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
@@ -645,6 +646,7 @@ public class WorldMap {
                                 "After passing through the left gate, you learn that the Facilius troops managed to reach your homeland and razed them to the ground. "
                                         + "Everyone you knew and loved died. You realize that you are all alone in the world. Your heart breaks, you fall to your knees and die from despair and exhaustion, "
                                         + "with the memory of the faces of your loved ones which brings you some relief.")
+                        .addActionOnEnter(new EndGameAction())
                         .build();
 
         middleGate =
@@ -655,6 +657,7 @@ public class WorldMap {
                                         + "You feel like the whole world is at your feet. "
                                         + "You start to hear the evil forces whispering in your ear ... "
                                         + "Fasilius intentions so far completely incomprehensible to you, make sense. Dark forces absorb you completely.")
+                        .addActionOnEnter(new EndGameAction())
                         .build();
 
         rightGate =
@@ -663,7 +666,9 @@ public class WorldMap {
                         .setDescription(
                                 "After passing through the right gate you see a world full of happiness, peace and mutual respect. "
                                         + "The other three clans managed to rebuild their cities, and you return to your homeland, live a life free from all evil.")
+                        .addActionOnEnter(new EndGameAction())
                         .build();
+
 
         // Add to map
         locations.put("town", town);

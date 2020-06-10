@@ -59,7 +59,7 @@ public class LocationBuilder {
     }
 
     public LocationBuilder addStartingActions() {
-        this.actionMap.put("magician", new PickMagician());
+        this.actionMap.put("monk", new PickMonk());
         this.actionMap.put("warrior", new PickWarrior());
         this.actionMap.put("archer", new PickArcher());
         return this;

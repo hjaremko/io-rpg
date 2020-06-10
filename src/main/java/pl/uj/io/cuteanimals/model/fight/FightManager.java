@@ -69,7 +69,7 @@ public class FightManager {
                             new FightLog(
                                     "You managed to defeat Fasilius! It seems as if deadly danger has been averted. "
                                             + "You are bursting with pride. You feel incredibly exhausted. "
-                                            + "You realized that the magicians are still stuck in a cell so you rush to their rescue. "
+                                            + "You realized that the monks are still stuck in a cell so you rush to their rescue. "
                                             + "You feel relief and incredible happiness incomparably with anything you have experienced so far. \n"
                                             + "Merlin: \"Thank you Lord for your rescue. According to the parable of the great wanderers, three alternative paths of the future await you. It is our duty to present them to you. I, Merlin present the left gate for you ...\n"
                                             + "Herschel: \"I Herschel introduce you to the middle gate ...\"\n"

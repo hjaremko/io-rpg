@@ -88,7 +88,7 @@ public class WorldMap {
                                 "I didn't expect guests...",
                                 "Either way, I'm Thaddeus, make yourself comfortable, I haven't talked to anyone in a long time. "
                                         + "I will prepare an infusion of earthy leaves. You've probably heard of Fasylius' conquests... ",
-                                "Fasilius chose a particularly cruel way to conquer the world. He hired a group of magicians who created "
+                                "Fasilius chose a particularly cruel way to conquer the world. He hired a group of monks who created "
                                         + "a magic potion that turned every animal into a warrior entirely devoted to the forces of evil. "
                                         + "If the mixture doesn't work, the unfortunate who was given it changes into a brainless being who only wants to murder. ",
                                 "That's all I know about it. I'm going back to work. Stay as long as you like and good luck on your journey wherever you go. "

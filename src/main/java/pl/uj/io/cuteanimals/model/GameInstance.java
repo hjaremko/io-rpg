@@ -60,6 +60,6 @@ public class GameInstance {
             return "You can't do that anymore.";
         }
 
-        return "Pick your destiny.\n(Warrior, Magician, Archer)";
+        return "Pick your destiny.\n(Warrior, Monk, Archer)";
     }
 }

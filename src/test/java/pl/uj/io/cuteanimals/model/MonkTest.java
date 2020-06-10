@@ -5,17 +5,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class MagicianTest {
-    private Magician m;
+class MonkTest {
+    private Monk m;
 
     @BeforeEach
     void setUp() {
-        m = new Magician();
+        m = new Monk();
     }
 
     @Test
     void testToString() {
-        assertThat(m.toString()).isEqualTo("Magician");
+        assertThat(m.toString()).isEqualTo("Monk");
     }
 
     @Test

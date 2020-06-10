@@ -42,7 +42,7 @@ public class GameService {
         int result = -1;
         try {
             result = players.size();
-            players.add(new GameInstance(itemService, interpreter));
+            players.add(new GameInstance(result, itemService, interpreter, this));
         } finally {
             lock.unlock();
         }

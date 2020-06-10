@@ -13,6 +13,7 @@ import pl.uj.io.cuteanimals.model.interfaces.*;
  * @since 0.2.0-SNAPSHOT
  */
 public class Player implements IPlayer {
+    private final int id;
     private final WorldMap world;
     private final IEquipment armorBackpack;
     private final IEquipment backpack;
@@ -22,7 +23,8 @@ public class Player implements IPlayer {
     private ILocation currentLocation;
     private GameState gameState;
 
-    public Player(WorldMap world) {
+    public Player(int id, WorldMap world) {
+        this.id = id;
         this.world = world;
         this.stats = new PlayerAttributes(this);
         this.currentLocation = world.getLocation("town");
@@ -33,8 +35,8 @@ public class Player implements IPlayer {
         this.playerClass = new Slave();
     }
 
-    public Player(WorldMap world, RandomInteger random) {
-        this(world);
+    public Player(int id, WorldMap world, RandomInteger random) {
+        this(id, world);
         this.stats = new PlayerAttributes(this, random);
     }
 
@@ -117,5 +119,9 @@ public class Player implements IPlayer {
     @Override
     public void setClass(PlayerClass playerClass) {
         this.playerClass = playerClass;
+    }
+
+    public int getId() {
+        return id;
     }
 }

@@ -5,23 +5,28 @@ import pl.uj.io.cuteanimals.exception.InvalidCommandException;
 import pl.uj.io.cuteanimals.interpreter.Expression;
 import pl.uj.io.cuteanimals.interpreter.Interpreter;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
+import pl.uj.io.cuteanimals.service.GameService;
 import pl.uj.io.cuteanimals.service.ItemService;
 
 public class GameInstance {
     private final Interpreter interpreter;
     private final ItemService itemService;
+    private final GameService gameService;
     private Player player;
 
-    public GameInstance(ItemService itemService, Interpreter interpreter) {
+    public GameInstance(
+            int id, ItemService itemService, Interpreter interpreter, GameService gameService) {
         this.itemService = itemService;
         this.interpreter = interpreter;
-        this.player = new Player(new WorldMap(itemService));
+        this.gameService = gameService;
+        this.player = new Player(id, new WorldMap(itemService));
     }
 
-    public GameInstance(ItemService itemService) {
+    public GameInstance(int id, ItemService itemService, GameService gameService) {
         this.itemService = itemService;
+        this.gameService = gameService;
         this.interpreter = new Interpreter();
-        this.player = new Player(new WorldMap(itemService));
+        this.player = new Player(id, new WorldMap(itemService));
     }
 
     public IResult executeInput(String input) throws InvalidCommandException {
@@ -42,9 +47,8 @@ public class GameInstance {
     }
 
     public IResult gameOver() {
-
-        this.player = new Player(new WorldMap(itemService));
-        return new Result("oj nie nie byczq");
+        this.player = new Player(player.getId(), new WorldMap(itemService));
+        return new Result(this.gameService.pickClass(player.getId()));
     }
 
     private boolean isPlayerDead() {

@@ -22,26 +22,6 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    static String addColor(String string, Color color) {
-        StringBuilder stringResult = new StringBuilder();
-
-        switch (color) {
-            case RED:
-                stringResult.append("\u001b[31m").append(string).append("\u001b[0m");
-                break;
-            case GREEN:
-                stringResult.append("\u001b[32m").append(string).append("\u001b[0m");
-                break;
-            case YELLOW:
-                stringResult.append("\u001b[33m").append(string).append("\u001b[0m");
-                break;
-            default:
-                stringResult.append(string);
-        }
-
-        return stringResult.toString();
-    }
-
     @GetMapping
     public int receiveFirstFreeID() {
         int id = gameService.getFirstFreeID();
@@ -49,7 +29,6 @@ public class GameController {
         return id;
     }
 
-    // Maybe we should wrap this with ResponseEntity?
     @PostMapping(value = "/{id}/msg", consumes = "text/plain", produces = "text/plain")
     public String receiveOrderAndReturnResult(@PathVariable int id, @RequestBody String command) {
         command = command.toLowerCase();
@@ -82,5 +61,25 @@ public class GameController {
             logger.debug("Parsing user provided command failed.", e);
             return e.getMessage();
         }
+    }
+
+    private String addColor(String string, Color color) {
+        StringBuilder stringResult = new StringBuilder();
+
+        switch (color) {
+            case RED:
+                stringResult.append("\u001b[31m").append(string).append("\u001b[0m");
+                break;
+            case GREEN:
+                stringResult.append("\u001b[32m").append(string).append("\u001b[0m");
+                break;
+            case YELLOW:
+                stringResult.append("\u001b[33m").append(string).append("\u001b[0m");
+                break;
+            default:
+                stringResult.append(string);
+        }
+
+        return stringResult.toString();
     }
 }

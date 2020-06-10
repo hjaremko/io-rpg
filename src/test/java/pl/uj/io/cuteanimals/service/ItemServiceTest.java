@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
+import pl.uj.io.cuteanimals.model.ItemClass;
 import pl.uj.io.cuteanimals.model.ItemType;
 import pl.uj.io.cuteanimals.model.entity.Item;
 import pl.uj.io.cuteanimals.repository.ItemsRepository;
@@ -33,8 +34,17 @@ public class ItemServiceTest {
 
     @BeforeEach
     private void setup() {
-        firstItem = new Item(1, "firstItem", "first of items", 1, null, ItemType.ARMOR);
-        secondItem = new Item(2, "secondItem", "second of items", 2, null, ItemType.WEAPON);
+        firstItem =
+                new Item(1, "firstItem", "first of items", 1, null, ItemType.ARMOR, ItemClass.ANY);
+        secondItem =
+                new Item(
+                        2,
+                        "secondItem",
+                        "second of items",
+                        2,
+                        null,
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
     }
 
     @Test

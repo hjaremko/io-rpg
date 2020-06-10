@@ -53,7 +53,14 @@ class ArmorBackpackTest {
         when(attrMock.getLevel()).thenReturn(1);
 
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
 
         assertThat(eq.putItem(weapon));
         assertThat(eq.getItems().size()).isEqualTo(1);
@@ -65,7 +72,14 @@ class ArmorBackpackTest {
         when(attrMock.getLevel()).thenReturn(1);
 
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 100, 1, 1), ItemType.WEAPON);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 100, 1, 1),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
         assertThat(!eq.putItem(weapon));
         assertThat(eq.getItems().isEmpty());
     }
@@ -81,7 +95,8 @@ class ArmorBackpackTest {
                         "bzzbzz",
                         1,
                         new Attributes(1, 1, 1, 1, 1, 1),
-                        ItemType.ARMOR);
+                        ItemType.ARMOR,
+                        ItemClass.ANY);
         assertThat(eq.putItem(armor));
         assertThat(eq.getItems().size()).isEqualTo(1);
         assertThat(eq.getItems().contains(armor));
@@ -98,7 +113,8 @@ class ArmorBackpackTest {
                         "fnord",
                         1,
                         new Attributes(1, 1, 1, 1, 1, 1),
-                        ItemType.NEUTRAL);
+                        ItemType.NEUTRAL,
+                        ItemClass.ANY);
         assertThat(!eq.putItem(mysteriousItem));
         assertThat(eq.getItems().isEmpty());
     }
@@ -108,9 +124,23 @@ class ArmorBackpackTest {
         when(attrMock.getLevel()).thenReturn(1);
 
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
         var weapon2 =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
         assertThat(eq.putItem(weapon));
         assertThat(!eq.putItem(weapon2));
         assertThat(eq.getItems().size()).isEqualTo(1);
@@ -121,9 +151,24 @@ class ArmorBackpackTest {
     void onlyOneArmorAtOnce() {
         when(attrMock.getLevel()).thenReturn(1);
 
-        var armor = new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.ARMOR);
+        var armor =
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.ARMOR,
+                        ItemClass.ANY);
         var armor2 =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.ARMOR);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.ARMOR,
+                        ItemClass.ANY);
         assertThat(eq.putItem(armor));
         assertThat(!eq.putItem(armor2));
         assertThat(eq.getItems().size()).isEqualTo(1);
@@ -135,8 +180,23 @@ class ArmorBackpackTest {
         when(attrMock.getLevel()).thenReturn(1);
 
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
-        var armor = new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.ARMOR);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
+        var armor =
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.ARMOR,
+                        ItemClass.ANY);
         assertThat(eq.putItem(weapon));
         assertThat(eq.putItem(armor));
         assertThat(eq.getItems().size()).isEqualTo(2);
@@ -152,8 +212,23 @@ class ArmorBackpackTest {
         when(attrMock.getLevel()).thenReturn(1);
 
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
-        var armor = new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.ARMOR);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
+        var armor =
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.ARMOR,
+                        ItemClass.ANY);
         assertThat(eq.putItem(weapon));
         assertThat(eq.putItem(armor));
         assertThat(eq.getItems().size()).isEqualTo(2);
@@ -169,9 +244,24 @@ class ArmorBackpackTest {
         when(attrMock.getLevel()).thenReturn(1);
 
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
 
-        var armor = new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.ARMOR);
+        var armor =
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.ARMOR,
+                        ItemClass.ANY);
         assertThat(eq.putItem(weapon));
         assertThat(!eq.removeItem(armor));
         assertThat(eq.getItems().contains(weapon));
@@ -186,8 +276,23 @@ class ArmorBackpackTest {
         assertThat(eq.showItems()).isEqualTo("");
 
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
-        var armor = new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.ARMOR);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
+        var armor =
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.ARMOR,
+                        ItemClass.ANY);
         assertThat(eq.putItem(weapon));
         assertThat(eq.showItems()).isNotEqualTo("");
         assertThat(eq.putItem(armor));

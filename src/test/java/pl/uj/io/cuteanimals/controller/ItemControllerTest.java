@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import pl.uj.io.cuteanimals.model.ItemClass;
 import pl.uj.io.cuteanimals.model.ItemType;
 import pl.uj.io.cuteanimals.model.entity.Item;
 import pl.uj.io.cuteanimals.service.ItemService;
@@ -37,8 +38,17 @@ public class ItemControllerTest {
     private void setup() {
         mockMvc = MockMvcBuilders.standaloneSetup(itemController).build();
 
-        firstItem = new Item(1, "firstItem", "first of items", 1, null, ItemType.ARMOR);
-        secondItem = new Item(2, "secondItem", "second of items", 2, null, ItemType.WEAPON);
+        firstItem =
+                new Item(1, "firstItem", "first of items", 1, null, ItemType.ARMOR, ItemClass.ANY);
+        secondItem =
+                new Item(
+                        2,
+                        "secondItem",
+                        "second of items",
+                        2,
+                        null,
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
     }
 
     @Test

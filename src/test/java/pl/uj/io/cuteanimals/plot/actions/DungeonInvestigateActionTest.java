@@ -12,6 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.uj.io.cuteanimals.model.GameState;
+import pl.uj.io.cuteanimals.model.ItemClass;
 import pl.uj.io.cuteanimals.model.ItemType;
 import pl.uj.io.cuteanimals.model.Player;
 import pl.uj.io.cuteanimals.model.entity.Item;
@@ -48,7 +49,16 @@ public class DungeonInvestigateActionTest {
         given(player.getCurrentGameState()).willReturn(GameState.EXPLORATION);
         given(player.getArmor()).willReturn(equipment);
         given(equipment.getItems())
-                .willReturn(List.of(new Item(1, "Torch", "aaa", 1, null, ItemType.WEAPON)));
+                .willReturn(
+                        List.of(
+                                new Item(
+                                        1,
+                                        "Torch",
+                                        "aaa",
+                                        1,
+                                        null,
+                                        ItemType.WEAPON,
+                                        ItemClass.ANY)));
 
         var result = action.actionBody(player);
 

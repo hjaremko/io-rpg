@@ -70,7 +70,14 @@ class PlayerAttributesTest {
     @Test
     void getHealthWithItem() {
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 100, 0, 0, 0, 0), ItemType.WEAPON);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 100, 0, 0, 0, 0),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
         player.getArmor().putItem(weapon);
         assertThat(attrs.getHealth()).isEqualTo(150);
         player.getArmor().removeItem(weapon);
@@ -80,7 +87,14 @@ class PlayerAttributesTest {
     @Test
     void getAttackWithItem() {
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 0, 100, 0, 0, 0), ItemType.ARMOR);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 0, 100, 0, 0, 0),
+                        ItemType.ARMOR,
+                        ItemClass.ANY);
         player.getArmor().putItem(weapon);
         assertThat(attrs.getAttack()).isEqualTo(101);
         player.getArmor().removeItem(weapon);
@@ -90,7 +104,14 @@ class PlayerAttributesTest {
     @Test
     void getDefenceWithItem() {
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 0, 0, 0, 100, 0), ItemType.WEAPON);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 0, 0, 0, 100, 0),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
         player.getArmor().putItem(weapon);
         assertThat(attrs.getDefence()).isEqualTo(100);
         player.getArmor().removeItem(weapon);
@@ -100,7 +121,14 @@ class PlayerAttributesTest {
     @Test
     void getManaWithItem() {
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 0, 0, 0, 0, 100), ItemType.WEAPON);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 0, 0, 0, 0, 100),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
         player.getArmor().putItem(weapon);
         assertThat(attrs.getMana()).isEqualTo(200);
         player.getArmor().removeItem(weapon);

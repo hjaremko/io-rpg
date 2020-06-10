@@ -54,9 +54,24 @@ class DefaultLocationTest {
 
     @Test
     void getItems() {
-        var armor = new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.ARMOR);
+        var armor =
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.ARMOR,
+                        ItemClass.ANY);
         var armor2 =
-                new Item(2, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.ARMOR);
+                new Item(
+                        2,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.ARMOR,
+                        ItemClass.ANY);
         var bp = new Backpack();
         bp.putItem(armor2);
         bp.putItem(armor);

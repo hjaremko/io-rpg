@@ -12,7 +12,7 @@ Gra jest dostępna pod adresem https://io-rpg.herokuapp.com/.
 
 Gra jest w pełni tekstowa i zainspirowana gatunkiem *Single-User Dungeon* (np. Otchłań).
 Gracz dokonuje iterakcji ze światem poprzez wpisywanie odpowiednich poleceń,
-takich jak `go`, `investigate` lub `pick up`. Pełny spis możliwych akcji znajduje
+takich jak `go`, `investigate` lub `pick`. Pełny spis możliwych akcji znajduje
 się w sekcji *Dokumentacja*.
 
 
@@ -26,6 +26,9 @@ rozmowa, walka), zbierania przedmiotów.
 walki, obrony lub zwiększenia danego atrybutu).
 1. Wraz z pokonywaniem kolejnych przeszkód gracz będzie zdobywał doświadczenie rozwijając poszczególne atrybuty.
 
+### Zrzuty ekranu
+![](https://i.imgur.com/RdAZ0Jd.png)
+![](https://i.imgur.com/e1WRDis.png)
 
 ### Użyte technologie
 - Serwer
@@ -34,7 +37,7 @@ walki, obrony lub zwiększenia danego atrybutu).
     - PostgreSQL
     - Heroku
 - Klient
-    - `TODO`
+    - xterm.js
 - Testy
     - JUnit 5
     - Mockito
@@ -42,26 +45,35 @@ walki, obrony lub zwiększenia danego atrybutu).
 
 ### Budowa projektu
 ```
-TODO
+./gradlew build -x test
 ```
+Wymaga ustawienia zmiennych środowiskowych zgodnie z opisem na [wiki](https://github.com/hjaremko/cute-animals/wiki/Konfiguracja-zmiennych-%C5%9Brodowiskowych).
 
 ### Dokumentacja
 
-[UML](./assets/UML.md)
+Pełną dokumentację, raporty testów i pokrycia oraz plik `jar`
+można znaleźć w [artefaktach z ostatniego buildu](https://github.com/hjaremko/cute-animals/actions).
+
+#### Diagramy klas znajdują się [tutaj](./assets/UML.md).
 
 
-```investigate``` - udostępnia opis aktualnego otoczenia  
-```talk <nazwa_postaci>``` - umożliwia rozmowę z poszczególnymi postaciami  
-```go <nazwa_lokaji>``` - pozwala na przejście do innej lokacji.  
-```pick <nazwa_przedmiotu>``` - pozwala podnieść dany przedmiot i umieścić go w plecaku  
-```throw <nazwa_przedmiotu>``` - pozwala wyrzucić dany przedmiot z plecaka  
-```equip <nazwa_przedmiotu>``` - umożliwia założenie przedmiotu z plecaka  
-```off <nazwa_przedmiotu>```- umożliwia zdjęcie przedmiotu i włożenie go do plecaka  
-```backpack``` - listuje aktualny stan plecaka  
-```eq``` - listuje aktualnie założone przedmioty  
-```stats``` - wypisuje statystyki postaci  
-```fight <nazwa_postaci>``` - udostępnia możliwość walki z daną postacią  
-```attack``` - umożliwia zaatakowanie przeciwnika  
-```block``` - umożliwia zablokowanie ataku  
-```use <nazwa_przedmiotu>``` - umożliwia użycie danego przedmiotu  
-```cast <nazwa_umiejetnosci>``` - umożliwia użycie danej umięjętności  
+#### Dostępne komendy
+- ```start``` - rozpoczyna rozgrywkę  
+- ```investigate``` - udostępnia opis aktualnego otoczenia  
+- ```talk <nazwa_postaci>``` - umożliwia rozmowę z poszczególnymi postaciami  
+- ```go <nazwa_lokacji>``` - pozwala na przejście do innej lokacji.  
+- ```pick <nazwa_przedmiotu>``` - pozwala podnieść dany przedmiot i umieścić go w plecaku  
+- ```throw <nazwa_przedmiotu>``` - pozwala wyrzucić dany przedmiot z plecaka  
+- ```equip <nazwa_przedmiotu>``` - umożliwia założenie przedmiotu z plecaka  
+- ```off <nazwa_przedmiotu>```- umożliwia zdjęcie przedmiotu i włożenie go do plecaka  
+- ```backpack``` - listuje aktualny stan plecaka  
+- ```eq``` - listuje aktualnie założone przedmioty  
+- ```stats``` - wypisuje statystyki postaci  
+- ```skills``` - wypisuje zdolności postaci  
+- ```fight <nazwa_postaci>``` - udostępnia możliwość walki z daną postacią  
+- ```attack``` - wykonuje turę w trybie walki 
+- ```block``` - zmiejsza obrażenia w dwóch następnych turach w trybie walki 
+- ```use <nazwa_przedmiotu>``` - umożliwia użycie danego przedmiotu 
+- ```cast <nazwa_umiejetnosci>``` - umożliwia użycie danej umięjętności w trybie walki
+- ```suicide``` - umożliwia zresetowanie gry to stanu początkowego
+  

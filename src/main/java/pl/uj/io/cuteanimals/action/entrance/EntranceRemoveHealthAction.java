@@ -1,8 +1,8 @@
 package pl.uj.io.cuteanimals.action.entrance;
 
 import java.util.List;
+import pl.uj.io.cuteanimals.model.Color;
 import pl.uj.io.cuteanimals.model.GameState;
-import pl.uj.io.cuteanimals.model.PlayerAttributes;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
 import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
@@ -17,8 +17,8 @@ public class EntranceRemoveHealthAction implements IAction {
 
     @Override
     public IResult execute(IPlayer player) {
-        ((PlayerAttributes) player.getAttributes()).addHealth(-healthLoss);
-        return new Result("(You lose " + healthLoss + " health points).");
+        player.getAttributes().addHealth(-healthLoss);
+        return new Result("(You lose " + healthLoss + " health points).", Color.RED);
     }
 
     @Override

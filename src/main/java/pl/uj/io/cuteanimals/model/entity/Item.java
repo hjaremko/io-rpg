@@ -2,7 +2,6 @@ package pl.uj.io.cuteanimals.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
-
 import pl.uj.io.cuteanimals.model.ItemClass;
 import pl.uj.io.cuteanimals.model.ItemType;
 import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
@@ -71,15 +70,24 @@ public class Item implements IItem {
 
     @Override
     public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", size=" + size +
-                ", attributes=" + attributes +
-                ", type=" + type +
-                ", itemClass=" + itemClass +
-                '}';
+        return "Item{"
+                + "id="
+                + id
+                + ", name='"
+                + name
+                + '\''
+                + ", description='"
+                + description
+                + '\''
+                + ", size="
+                + size
+                + ", attributes="
+                + attributes
+                + ", type="
+                + type
+                + ", itemClass="
+                + itemClass
+                + '}';
     }
 
     @Override

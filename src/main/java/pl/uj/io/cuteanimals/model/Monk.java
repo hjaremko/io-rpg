@@ -1,8 +1,7 @@
 package pl.uj.io.cuteanimals.model;
 
-import pl.uj.io.cuteanimals.action.ability.Heal;
-
 import java.util.List;
+import pl.uj.io.cuteanimals.action.ability.Heal;
 
 public class Monk extends Slave {
     public Monk() {
@@ -14,7 +13,6 @@ public class Monk extends Slave {
     public String toString() {
         return "Monk";
     }
-
 
     @Override
     public List<ItemClass> getAcceptedItemClasses() {

@@ -1,8 +1,7 @@
 package pl.uj.io.cuteanimals.model;
 
-import pl.uj.io.cuteanimals.action.ability.DoubleDown;
-
 import java.util.List;
+import pl.uj.io.cuteanimals.action.ability.DoubleDown;
 
 public class Warrior extends Slave {
     public Warrior() {

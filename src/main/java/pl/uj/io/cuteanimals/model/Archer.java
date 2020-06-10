@@ -1,8 +1,7 @@
 package pl.uj.io.cuteanimals.model;
 
-import pl.uj.io.cuteanimals.action.ability.Bullseye;
-
 import java.util.List;
+import pl.uj.io.cuteanimals.action.ability.Bullseye;
 
 public class Archer extends Slave {
     public Archer() {

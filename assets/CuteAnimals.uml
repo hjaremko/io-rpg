@@ -4,98 +4,112 @@
   <OriginalElement>pl.uj.io.cuteanimals.action.GoAction</OriginalElement>
   <nodes>
     <node x="112.0" y="0.0">pl.uj.io.cuteanimals.model.interfaces.IAttributes</node>
+    <node x="3196.2386363636365" y="2380.0">pl.uj.io.cuteanimals.model.interfaces.ILocation</node>
     <node x="1100.75" y="1239.0">pl.uj.io.cuteanimals.model.interfaces.IAction</node>
+    <node x="1901.2386363636365" y="2771.0">pl.uj.io.cuteanimals.service.ItemService</node>
+    <node x="4511.0" y="1754.0">pl.uj.io.cuteanimals.action.ShowArmor</node>
     <node x="5029.0" y="1689.0">pl.uj.io.cuteanimals.action.ability.Focus</node>
     <node x="5288.0" y="1754.0">pl.uj.io.cuteanimals.model.fight.FightState</node>
+    <node x="1397.25" y="1965.0">pl.uj.io.cuteanimals.action.FightAction</node>
     <node x="593.0" y="1743.0">pl.uj.io.cuteanimals.action.UnequipItem</node>
+    <node x="4111.488636363636" y="2704.0">pl.uj.io.cuteanimals.repository.AttributesRepository</node>
+    <node x="2875.2386363636365" y="2506.0">pl.uj.io.cuteanimals.model.CompoundResult</node>
     <node x="3494.2386363636365" y="2380.0">pl.uj.io.cuteanimals.location.LocationBuilder</node>
     <node x="919.0" y="1743.0">pl.uj.io.cuteanimals.action.UseAction</node>
     <node x="1819.2386363636365" y="2538.0">pl.uj.io.cuteanimals.model.RandomIntegerImpl</node>
+    <node x="267.0" y="1743.0">pl.uj.io.cuteanimals.action.EquipItem</node>
+    <node x="5384.75" y="1975.0">pl.uj.io.cuteanimals.model.fight.AttackState</node>
+    <node x="553.0" y="377.0">pl.uj.io.cuteanimals.model.entity.Item</node>
     <node x="890.0" y="2484.0">pl.uj.io.cuteanimals.interpreter.Interpreter</node>
+    <node x="1590.2386363636365" y="2782.0">pl.uj.io.cuteanimals.service.AttributesService</node>
+    <node x="28.0" y="3511.0">pl.uj.io.cuteanimals.CuteAnimalsApplication</node>
     <node x="3739.5" y="1449.0">pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction</node>
+    <node x="1044.5" y="3100.0">pl.uj.io.cuteanimals.interpreter.Interpreter.ParseToken.Type</node>
+    <node x="296.0" y="322.0">pl.uj.io.cuteanimals.model.entity.Attributes</node>
     <node x="441.5" y="109.0">javax.persistence.Entity</node>
+    <node x="1018.5" y="2835.0">pl.uj.io.cuteanimals.interpreter.Interpreter.ParseToken</node>
+    <node x="4363.238636363636" y="2380.0">pl.uj.io.cuteanimals.model.fight.FightManager</node>
+    <node x="2417.7386363636365" y="2570.0">pl.uj.io.cuteanimals.model.ArmorBackpack</node>
     <node x="1288.9886363636365" y="2738.0">pl.uj.io.cuteanimals.service.GameService</node>
     <node x="5080.0" y="1481.0">pl.uj.io.cuteanimals.model.interfaces.IAbility</node>
     <node x="3205.0" y="1712.0">pl.uj.io.cuteanimals.action.BuffCharacter</node>
     <node x="4614.238636363636" y="2380.0">pl.uj.io.cuteanimals.model.GameInstance</node>
-    <node x="4940.238636363636" y="2380.0">java.lang.Exception</node>
+    <node x="2428.0" y="1754.0">pl.uj.io.cuteanimals.action.ShowAbilities</node>
+    <node x="3723.0" y="1754.0">pl.uj.io.cuteanimals.action.ShowBackpack</node>
     <node x="634.0" y="2583.0">pl.uj.io.cuteanimals.model.Monster</node>
+    <node x="2230.671544995409" y="1965.0">pl.uj.io.cuteanimals.plot.actions.DungeonEntranceGoAction</node>
+    <node x="2.0" y="2528.0">pl.uj.io.cuteanimals.model.interfaces.IPlayer</node>
+    <node x="4940.238636363636" y="2380.0">java.lang.Exception</node>
+    <node x="2187.2386363636365" y="2888.0">pl.uj.io.cuteanimals.model.PlayerBackpack</node>
     <node x="5384.75" y="2153.0">pl.uj.io.cuteanimals.model.fight.BlockState</node>
+    <node x="0.0" y="2850.0">pl.uj.io.cuteanimals.model.Player</node>
     <node x="5168.75" y="1975.0">pl.uj.io.cuteanimals.model.fight.ExplorationState</node>
+    <node x="4770.0" y="1712.0">pl.uj.io.cuteanimals.action.InvestigateAction</node>
+    <node x="2161.0" y="1754.0">pl.uj.io.cuteanimals.action.CastAction</node>
     <node x="1807.0" y="3319.0">pl.uj.io.cuteanimals.model.ItemType</node>
+    <node x="1411.2386363636365" y="2506.0">pl.uj.io.cuteanimals.model.WorldMap</node>
+    <node x="3839.2386363636365" y="2380.0">org.springframework.data.jpa.repository.JpaRepository</node>
+    <node x="321.0" y="3421.0">pl.uj.io.cuteanimals.interpreter.Expression</node>
     <node x="4106.238636363636" y="2468.0">pl.uj.io.cuteanimals.repository.GeneralRepository</node>
     <node x="2677.7386363636365" y="2802.0">pl.uj.io.cuteanimals.model.fight.FightLog</node>
     <node x="652.0" y="3319.0">pl.uj.io.cuteanimals.action.ActionBuilder</node>
+    <node x="1178.0" y="3319.0">pl.uj.io.cuteanimals.controller.GameController</node>
+    <node x="2306.9886363636365" y="2380.0">pl.uj.io.cuteanimals.model.interfaces.IEquipment</node>
     <node x="1128.25" y="1965.0">pl.uj.io.cuteanimals.action.PickupAction</node>
     <node x="5241.25" y="1470.0">pl.uj.io.cuteanimals.model.fight.IFightState</node>
+    <node x="0.0" y="772.0">pl.uj.io.cuteanimals.model.PlayerAttributes</node>
+    <node x="720.25" y="65.0">pl.uj.io.cuteanimals.model.interfaces.IItem</node>
+    <node x="365.5" y="3319.0">java.lang.FunctionalInterface</node>
+    <node x="4977.738636363636" y="2614.0">pl.uj.io.cuteanimals.exception.InvalidCommandException</node>
     <node x="359.5" y="2380.0">pl.uj.io.cuteanimals.model.interfaces.ICharacter</node>
     <node x="1512.0" y="1754.0">pl.uj.io.cuteanimals.model.interfaces.ContainerArgumentAction</node>
     <node x="2829.7386363636365" y="2380.0">pl.uj.io.cuteanimals.model.interfaces.IResult</node>
     <node x="825.75" y="1407.0">pl.uj.io.cuteanimals.action.entrance.EntranceRemoveHealthAction</node>
+    <node x="1096.75" y="1428.0">pl.uj.io.cuteanimals.model.interfaces.ArgumentAction</node>
+    <node x="3196.2386363636365" y="2614.0">pl.uj.io.cuteanimals.model.DefaultLocation</node>
     <node x="1672.2386363636365" y="2559.0">org.springframework.stereotype.Service</node>
+    <node x="1835.0" y="1743.0">pl.uj.io.cuteanimals.action.ThrowAwayAction</node>
+    <node x="957.0" y="3319.0">pl.uj.io.cuteanimals.model.Color</node>
+    <node x="2191.7386363636365" y="2634.0">pl.uj.io.cuteanimals.model.Backpack</node>
     <node x="3464.0" y="1754.0">pl.uj.io.cuteanimals.action.Block</node>
     <node x="0.0" y="3319.0">org.springframework.boot.autoconfigure.SpringBootApplication</node>
+    <node x="2687.0" y="1754.0">pl.uj.io.cuteanimals.action.ShowStats</node>
     <node x="270.0" y="2528.0">pl.uj.io.cuteanimals.model.NPC</node>
     <node x="1675.25" y="1965.0">pl.uj.io.cuteanimals.action.GoAction</node>
     <node x="2946.0" y="1754.0">pl.uj.io.cuteanimals.action.StandardAttack</node>
     <node x="4241.0" y="1712.0">pl.uj.io.cuteanimals.plot.actions.DungeonInvestigateAction</node>
     <node x="1879.9886363636365" y="2380.0">pl.uj.io.cuteanimals.model.interfaces.RandomInteger</node>
-    <node x="2048.0" y="3319.0">pl.uj.io.cuteanimals.model.GameState</node>
-    <node x="3859.4886363636365" y="2704.0">pl.uj.io.cuteanimals.repository.ItemsRepository</node>
-    <node x="1245.0" y="1712.0">pl.uj.io.cuteanimals.action.TalkAction</node>
-    <node x="3196.2386363636365" y="2380.0">pl.uj.io.cuteanimals.model.interfaces.ILocation</node>
-    <node x="1901.2386363636365" y="2771.0">pl.uj.io.cuteanimals.service.ItemService</node>
-    <node x="4511.0" y="1754.0">pl.uj.io.cuteanimals.action.ShowArmor</node>
-    <node x="1397.25" y="1965.0">pl.uj.io.cuteanimals.action.FightAction</node>
-    <node x="4111.488636363636" y="2704.0">pl.uj.io.cuteanimals.repository.AttributesRepository</node>
-    <node x="2875.2386363636365" y="2506.0">pl.uj.io.cuteanimals.model.CompoundResult</node>
-    <node x="267.0" y="1743.0">pl.uj.io.cuteanimals.action.EquipItem</node>
-    <node x="5384.75" y="1975.0">pl.uj.io.cuteanimals.model.fight.AttackState</node>
-    <node x="553.0" y="377.0">pl.uj.io.cuteanimals.model.entity.Item</node>
-    <node x="1590.2386363636365" y="2782.0">pl.uj.io.cuteanimals.service.AttributesService</node>
-    <node x="28.0" y="3511.0">pl.uj.io.cuteanimals.CuteAnimalsApplication</node>
-    <node x="1044.5" y="3100.0">pl.uj.io.cuteanimals.interpreter.Interpreter.ParseToken.Type</node>
-    <node x="296.0" y="322.0">pl.uj.io.cuteanimals.model.entity.Attributes</node>
-    <node x="1018.5" y="2835.0">pl.uj.io.cuteanimals.interpreter.Interpreter.ParseToken</node>
-    <node x="4363.238636363636" y="2380.0">pl.uj.io.cuteanimals.model.fight.FightManager</node>
-    <node x="2417.7386363636365" y="2570.0">pl.uj.io.cuteanimals.model.ArmorBackpack</node>
-    <node x="2428.0" y="1754.0">pl.uj.io.cuteanimals.action.ShowAbilities</node>
-    <node x="2.0" y="2528.0">pl.uj.io.cuteanimals.model.interfaces.IPlayer</node>
-    <node x="3723.0" y="1754.0">pl.uj.io.cuteanimals.action.ShowBackpack</node>
-    <node x="2230.671544995409" y="1965.0">pl.uj.io.cuteanimals.plot.actions.DungeonEntranceGoAction</node>
-    <node x="2187.2386363636365" y="2888.0">pl.uj.io.cuteanimals.model.PlayerBackpack</node>
-    <node x="0.0" y="2850.0">pl.uj.io.cuteanimals.model.Player</node>
-    <node x="4770.0" y="1712.0">pl.uj.io.cuteanimals.action.InvestigateAction</node>
-    <node x="2161.0" y="1754.0">pl.uj.io.cuteanimals.action.CastAction</node>
-    <node x="1411.2386363636365" y="2506.0">pl.uj.io.cuteanimals.model.WorldMap</node>
-    <node x="3839.2386363636365" y="2380.0">org.springframework.data.jpa.repository.JpaRepository</node>
-    <node x="321.0" y="3421.0">pl.uj.io.cuteanimals.interpreter.Expression</node>
-    <node x="1178.0" y="3319.0">pl.uj.io.cuteanimals.controller.GameController</node>
-    <node x="2306.9886363636365" y="2380.0">pl.uj.io.cuteanimals.model.interfaces.IEquipment</node>
-    <node x="0.0" y="772.0">pl.uj.io.cuteanimals.model.PlayerAttributes</node>
-    <node x="720.25" y="65.0">pl.uj.io.cuteanimals.model.interfaces.IItem</node>
-    <node x="365.5" y="3319.0">java.lang.FunctionalInterface</node>
-    <node x="4977.738636363636" y="2614.0">pl.uj.io.cuteanimals.exception.InvalidCommandException</node>
-    <node x="1096.75" y="1428.0">pl.uj.io.cuteanimals.model.interfaces.ArgumentAction</node>
-    <node x="3196.2386363636365" y="2614.0">pl.uj.io.cuteanimals.model.DefaultLocation</node>
-    <node x="1835.0" y="1743.0">pl.uj.io.cuteanimals.action.ThrowAwayAction</node>
-    <node x="957.0" y="3319.0">pl.uj.io.cuteanimals.model.Color</node>
-    <node x="2191.7386363636365" y="2634.0">pl.uj.io.cuteanimals.model.Backpack</node>
-    <node x="2687.0" y="1754.0">pl.uj.io.cuteanimals.action.ShowStats</node>
     <node x="1570.2386363636365" y="2380.0">org.springframework.stereotype.Component</node>
+    <node x="2048.0" y="3319.0">pl.uj.io.cuteanimals.model.GameState</node>
     <node x="0.0" y="1754.0">pl.uj.io.cuteanimals.action.MessageAction</node>
     <node x="1549.0" y="3319.0">pl.uj.io.cuteanimals.controller.ItemController</node>
+    <node x="3859.4886363636365" y="2704.0">pl.uj.io.cuteanimals.repository.ItemsRepository</node>
+    <node x="1245.0" y="1712.0">pl.uj.io.cuteanimals.action.TalkAction</node>
     <node x="34.0" y="365.0">pl.uj.io.cuteanimals.model.NPCAttributes</node>
     <node x="2685.2386363636365" y="2538.0">pl.uj.io.cuteanimals.model.Result</node>
     <node x="3982.0" y="1754.0">pl.uj.io.cuteanimals.action.SuicideAction</node>
   </nodes>
   <notes />
   <edges>
+    <edge source="pl.uj.io.cuteanimals.repository.ItemsRepository" target="org.springframework.data.jpa.repository.JpaRepository">
+      <point x="-41.5" y="-26.0" />
+      <point x="-61.75" y="137.0" />
+    </edge>
     <edge source="pl.uj.io.cuteanimals.action.MessageAction" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentAction">
       <point x="0.0" y="-48.0" />
       <point x="123.5" y="1639.0" />
       <point x="1112.1875" y="1639.0" />
       <point x="-108.0625" y="80.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.model.GameInstance" target="org.springframework.stereotype.Component">
+      <point x="0.0" y="-145.0" />
+      <point x="1133.25" y="460.0" />
+      <point x="1003.3333333333333" y="460.0" />
+      <point x="10.583333333333258" y="27.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.model.NPC" target="pl.uj.io.cuteanimals.model.interfaces.ICharacter">
+      <point x="0.0" y="-136.0" />
+      <point x="0.0" y="49.0" />
     </edge>
     <edge source="pl.uj.io.cuteanimals.model.DefaultLocation" target="pl.uj.io.cuteanimals.model.interfaces.ILocation">
       <point x="0.0" y="-113.0" />
@@ -105,17 +119,41 @@
       <point x="0.0" y="-27.0" />
       <point x="0.0" y="71.0" />
     </edge>
+    <edge source="pl.uj.io.cuteanimals.model.Player" target="org.springframework.stereotype.Component">
+      <point x="-63.0" y="-212.0" />
+      <point x="1551.3014705882354" y="440.0" />
+      <point x="1045.6666666666667" y="440.0" />
+      <point x="52.91666666666674" y="27.0" />
+    </edge>
     <edge source="pl.uj.io.cuteanimals.action.SuicideAction" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
       <point x="0.0" y="-48.0" />
       <point x="4101.5" y="1669.0" />
       <point x="3861.227272727273" y="1669.0" />
       <point x="18.727272727272748" y="59.0" />
     </edge>
+    <edge source="pl.uj.io.cuteanimals.model.fight.AttackState" target="pl.uj.io.cuteanimals.model.fight.FightState">
+      <point x="0.0" y="-59.0" />
+      <point x="5469.25" y="1945.0" />
+      <point x="5408.0" y="1945.0" />
+      <point x="40.0" y="48.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.action.ability.Focus" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
+      <point x="-79.66666666666674" y="-113.0" />
+      <point x="5068.833333333333" y="1629.0" />
+      <point x="3936.1363636363635" y="1629.0" />
+      <point x="93.63636363636351" y="59.0" />
+    </edge>
     <edge source="pl.uj.io.cuteanimals.model.CompoundResult" target="pl.uj.io.cuteanimals.model.interfaces.IResult">
       <point x="0.0" y="-123.0" />
       <point x="3013.2386363636365" y="2481.0" />
       <point x="2922.7386363636365" y="2481.0" />
       <point x="31.0" y="38.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.model.ArmorBackpack" target="pl.uj.io.cuteanimals.model.interfaces.IEquipment">
+      <point x="0.0" y="-134.0" />
+      <point x="2525.2386363636365" y="2545.0" />
+      <point x="2461.4886363636365" y="2545.0" />
+      <point x="51.5" y="70.0" />
     </edge>
     <edge source="pl.uj.io.cuteanimals.model.PlayerAttributes" target="pl.uj.io.cuteanimals.model.NPCAttributes">
       <point x="0.0" y="-211.0" />
@@ -126,6 +164,16 @@
       <point x="3324.5" y="1659.0" />
       <point x="3805.0454545454545" y="1659.0" />
       <point x="-37.454545454545496" y="59.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.model.fight.FightLog" target="pl.uj.io.cuteanimals.model.Result">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="91.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.action.ShowStats" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
+      <point x="0.0" y="-48.0" />
+      <point x="2806.5" y="1639.0" />
+      <point x="3767.590909090909" y="1639.0" />
+      <point x="-74.90909090909099" y="59.0" />
     </edge>
     <edge source="pl.uj.io.cuteanimals.interpreter.Interpreter.ParseToken.Type" target="pl.uj.io.cuteanimals.interpreter.Interpreter.ParseToken">
       <point x="0.0" y="-81.0" />
@@ -149,13 +197,23 @@
       <point x="2860.7386363636365" y="2481.0" />
       <point x="-31.0" y="38.0" />
     </edge>
-    <edge source="pl.uj.io.cuteanimals.model.entity.Attributes" target="javax.persistence.Entity">
-      <point x="59.25" y="-200.0" />
-      <point x="-32.25" y="27.0" />
+    <edge source="pl.uj.io.cuteanimals.model.RandomIntegerImpl" target="pl.uj.io.cuteanimals.model.interfaces.RandomInteger">
+      <point x="45.25" y="-48.0" />
+      <point x="0.0" y="27.0" />
     </edge>
     <edge source="pl.uj.io.cuteanimals.model.fight.BlockState" target="pl.uj.io.cuteanimals.model.fight.AttackState">
       <point x="0.0" y="-91.0" />
       <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.model.entity.Attributes" target="javax.persistence.Entity">
+      <point x="59.25" y="-200.0" />
+      <point x="-32.25" y="27.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.action.ShowAbilities" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
+      <point x="0.0" y="-48.0" />
+      <point x="2547.5" y="1629.0" />
+      <point x="3748.8636363636365" y="1629.0" />
+      <point x="-93.63636363636351" y="59.0" />
     </edge>
     <edge source="pl.uj.io.cuteanimals.action.entrance.EntranceRemoveHealthAction" target="pl.uj.io.cuteanimals.model.interfaces.IAction">
       <point x="0.0" y="-101.0" />
@@ -169,159 +227,15 @@
       <point x="1649.6136363636365" y="2464.0" />
       <point x="15.875" y="27.0" />
     </edge>
+    <edge source="pl.uj.io.cuteanimals.interpreter.Interpreter.ParseToken" target="pl.uj.io.cuteanimals.interpreter.Interpreter">
+      <point x="0.0" y="-59.0" />
+      <point x="0.0" y="102.0" />
+    </edge>
     <edge source="pl.uj.io.cuteanimals.action.EquipItem" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentAction">
       <point x="0.0" y="-59.0" />
       <point x="420.0" y="1649.0" />
       <point x="1143.0625" y="1649.0" />
       <point x="-77.1875" y="80.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.action.ability.Focus" target="pl.uj.io.cuteanimals.model.interfaces.IAbility">
-      <point x="0.0" y="-113.0" />
-      <point x="0.0" y="27.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.action.Block" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
-      <point x="0.0" y="-48.0" />
-      <point x="3583.5" y="1669.0" />
-      <point x="3823.772727272727" y="1669.0" />
-      <point x="-18.727272727272748" y="59.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.repository.AttributesRepository" target="org.springframework.data.jpa.repository.JpaRepository">
-      <point x="-51.25" y="-26.0" />
-      <point x="4162.738636363636" y="2674.0" />
-      <point x="4024.4886363636365" y="2674.0" />
-      <point x="61.75" y="137.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.model.fight.ExplorationState" target="pl.uj.io.cuteanimals.model.fight.FightState">
-      <point x="0.0" y="-59.0" />
-      <point x="5266.75" y="1945.0" />
-      <point x="5328.0" y="1945.0" />
-      <point x="-40.0" y="48.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.model.Backpack" target="pl.uj.io.cuteanimals.model.interfaces.IEquipment">
-      <point x="0.0" y="-70.0" />
-      <point x="2294.7386363636365" y="2545.0" />
-      <point x="2358.4886363636365" y="2545.0" />
-      <point x="-51.5" y="70.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.model.entity.Attributes" target="pl.uj.io.cuteanimals.model.interfaces.IAttributes">
-      <point x="-59.25" y="-200.0" />
-      <point x="355.25" y="297.0" />
-      <point x="241.0" y="297.0" />
-      <point x="43.0" y="136.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.model.entity.Item" target="javax.persistence.Entity">
-      <point x="-81.25" y="-145.0" />
-      <point x="634.25" y="297.0" />
-      <point x="538.25" y="297.0" />
-      <point x="32.25" y="27.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.action.GoAction" target="pl.uj.io.cuteanimals.model.interfaces.ContainerArgumentAction">
-      <point x="0.0" y="-69.0" />
-      <point x="1800.75" y="1945.0" />
-      <point x="1701.375" y="1945.0" />
-      <point x="37.875" y="48.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.service.GameService" target="org.springframework.stereotype.Service">
-      <point x="0.0" y="-156.0" />
-      <point x="1426.4886363636365" y="2713.0" />
-      <point x="1693.4053030303032" y="2713.0" />
-      <point x="-42.333333333333314" y="27.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.model.PlayerBackpack" target="pl.uj.io.cuteanimals.model.Backpack">
-      <point x="0.0" y="-123.0" />
-      <point x="0.0" y="70.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.action.FightAction" target="pl.uj.io.cuteanimals.model.interfaces.ContainerArgumentAction">
-      <point x="0.0" y="-69.0" />
-      <point x="1526.25" y="1945.0" />
-      <point x="1625.625" y="1945.0" />
-      <point x="-37.875" y="48.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.action.ShowBackpack" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
-      <point x="0.0" y="-48.0" />
-      <point x="0.0" y="59.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.plot.actions.DungeonInvestigateAction" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
-      <point x="0.0" y="-90.0" />
-      <point x="4366.0" y="1659.0" />
-      <point x="3879.9545454545455" y="1659.0" />
-      <point x="37.454545454545496" y="59.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.service.AttributesService" target="org.springframework.stereotype.Service">
-      <point x="0.0" y="-112.0" />
-      <point x="0.0" y="27.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.model.entity.Item" target="pl.uj.io.cuteanimals.model.interfaces.IItem">
-      <point x="81.25" y="-145.0" />
-      <point x="0.0" y="71.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.action.UseAction" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentAction">
-      <point x="0.0" y="-59.0" />
-      <point x="1072.0" y="1669.0" />
-      <point x="1204.8125" y="1669.0" />
-      <point x="-15.4375" y="80.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.model.WorldMap" target="org.springframework.stereotype.Component">
-      <point x="0.0" y="-80.0" />
-      <point x="1531.7386363636365" y="2464.0" />
-      <point x="1617.8636363636365" y="2464.0" />
-      <point x="-15.875" y="27.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.action.UnequipItem" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentAction">
-      <point x="0.0" y="-59.0" />
-      <point x="746.0" y="1659.0" />
-      <point x="1173.9375" y="1659.0" />
-      <point x="-46.3125" y="80.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.repository.ItemsRepository" target="org.springframework.data.jpa.repository.JpaRepository">
-      <point x="-41.5" y="-26.0" />
-      <point x="-61.75" y="137.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.model.NPC" target="pl.uj.io.cuteanimals.model.interfaces.ICharacter">
-      <point x="0.0" y="-136.0" />
-      <point x="0.0" y="49.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.model.fight.AttackState" target="pl.uj.io.cuteanimals.model.fight.FightState">
-      <point x="0.0" y="-59.0" />
-      <point x="5469.25" y="1945.0" />
-      <point x="5408.0" y="1945.0" />
-      <point x="40.0" y="48.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.action.ability.Focus" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
-      <point x="-79.66666666666674" y="-113.0" />
-      <point x="5068.833333333333" y="1629.0" />
-      <point x="3936.1363636363635" y="1629.0" />
-      <point x="93.63636363636351" y="59.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.model.ArmorBackpack" target="pl.uj.io.cuteanimals.model.interfaces.IEquipment">
-      <point x="0.0" y="-134.0" />
-      <point x="2525.2386363636365" y="2545.0" />
-      <point x="2461.4886363636365" y="2545.0" />
-      <point x="51.5" y="70.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.model.fight.FightLog" target="pl.uj.io.cuteanimals.model.Result">
-      <point x="0.0" y="-27.0" />
-      <point x="0.0" y="91.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.action.ShowStats" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
-      <point x="0.0" y="-48.0" />
-      <point x="2806.5" y="1639.0" />
-      <point x="3767.590909090909" y="1639.0" />
-      <point x="-74.90909090909099" y="59.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.model.RandomIntegerImpl" target="pl.uj.io.cuteanimals.model.interfaces.RandomInteger">
-      <point x="45.25" y="-48.0" />
-      <point x="0.0" y="27.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.action.ShowAbilities" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
-      <point x="0.0" y="-48.0" />
-      <point x="2547.5" y="1629.0" />
-      <point x="3748.8636363636365" y="1629.0" />
-      <point x="-93.63636363636351" y="59.0" />
-    </edge>
-    <edge source="pl.uj.io.cuteanimals.interpreter.Interpreter.ParseToken" target="pl.uj.io.cuteanimals.interpreter.Interpreter">
-      <point x="0.0" y="-59.0" />
-      <point x="0.0" y="102.0" />
     </edge>
     <edge source="pl.uj.io.cuteanimals.model.RandomIntegerImpl" target="org.springframework.stereotype.Component">
       <point x="-45.25" y="-48.0" />
@@ -334,6 +248,10 @@
       <point x="1368.5" y="1669.0" />
       <point x="1235.6875" y="1669.0" />
       <point x="15.4375" y="80.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.action.ability.Focus" target="pl.uj.io.cuteanimals.model.interfaces.IAbility">
+      <point x="0.0" y="-113.0" />
+      <point x="0.0" y="27.0" />
     </edge>
     <edge source="pl.uj.io.cuteanimals.action.PickupAction" target="pl.uj.io.cuteanimals.model.interfaces.ContainerArgumentAction">
       <point x="0.0" y="-69.0" />
@@ -353,6 +271,24 @@
       <point x="1777.125" y="1935.0" />
       <point x="113.625" y="48.0" />
     </edge>
+    <edge source="pl.uj.io.cuteanimals.action.Block" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
+      <point x="0.0" y="-48.0" />
+      <point x="3583.5" y="1669.0" />
+      <point x="3823.772727272727" y="1669.0" />
+      <point x="-18.727272727272748" y="59.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.repository.AttributesRepository" target="org.springframework.data.jpa.repository.JpaRepository">
+      <point x="-51.25" y="-26.0" />
+      <point x="4162.738636363636" y="2674.0" />
+      <point x="4024.4886363636365" y="2674.0" />
+      <point x="61.75" y="137.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.model.fight.ExplorationState" target="pl.uj.io.cuteanimals.model.fight.FightState">
+      <point x="0.0" y="-59.0" />
+      <point x="5266.75" y="1945.0" />
+      <point x="5328.0" y="1945.0" />
+      <point x="-40.0" y="48.0" />
+    </edge>
     <edge source="pl.uj.io.cuteanimals.interpreter.Interpreter" target="org.springframework.stereotype.Component">
       <point x="0.0" y="-102.0" />
       <point x="1130.5" y="2454.0" />
@@ -371,23 +307,53 @@
       <point x="3898.681818181818" y="1649.0" />
       <point x="56.181818181818244" y="59.0" />
     </edge>
+    <edge source="pl.uj.io.cuteanimals.model.Backpack" target="pl.uj.io.cuteanimals.model.interfaces.IEquipment">
+      <point x="0.0" y="-70.0" />
+      <point x="2294.7386363636365" y="2545.0" />
+      <point x="2358.4886363636365" y="2545.0" />
+      <point x="-51.5" y="70.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.model.entity.Attributes" target="pl.uj.io.cuteanimals.model.interfaces.IAttributes">
+      <point x="-59.25" y="-200.0" />
+      <point x="355.25" y="297.0" />
+      <point x="241.0" y="297.0" />
+      <point x="43.0" y="136.0" />
+    </edge>
     <edge source="pl.uj.io.cuteanimals.action.StandardAttack" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
       <point x="0.0" y="-48.0" />
       <point x="3065.5" y="1649.0" />
       <point x="3786.318181818182" y="1649.0" />
       <point x="-56.181818181818244" y="59.0" />
     </edge>
+    <edge source="pl.uj.io.cuteanimals.model.entity.Item" target="javax.persistence.Entity">
+      <point x="-81.25" y="-145.0" />
+      <point x="634.25" y="297.0" />
+      <point x="538.25" y="297.0" />
+      <point x="32.25" y="27.0" />
+    </edge>
     <edge source="pl.uj.io.cuteanimals.model.fight.FightState" target="pl.uj.io.cuteanimals.model.fight.IFightState">
       <point x="0.0" y="-48.0" />
       <point x="42.25" y="38.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.action.GoAction" target="pl.uj.io.cuteanimals.model.interfaces.ContainerArgumentAction">
+      <point x="0.0" y="-69.0" />
+      <point x="1800.75" y="1945.0" />
+      <point x="1701.375" y="1945.0" />
+      <point x="37.875" y="48.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.model.Player" target="pl.uj.io.cuteanimals.model.interfaces.IPlayer">
+      <point x="0.0" y="-212.0" />
+      <point x="0.0" y="136.0" />
     </edge>
     <edge source="pl.uj.io.cuteanimals.model.NPCAttributes" target="pl.uj.io.cuteanimals.model.interfaces.IAttributes">
       <point x="0.0" y="-157.0" />
       <point x="-43.0" y="136.0" />
     </edge>
-    <edge source="pl.uj.io.cuteanimals.model.Player" target="pl.uj.io.cuteanimals.model.interfaces.IPlayer">
-      <point x="0.0" y="-212.0" />
-      <point x="0.0" y="136.0" />
+    <edge source="pl.uj.io.cuteanimals.service.GameService" target="org.springframework.stereotype.Service">
+      <point x="0.0" y="-156.0" />
+      <point x="1426.4886363636365" y="2713.0" />
+      <point x="1693.4053030303032" y="2713.0" />
+      <point x="-42.333333333333314" y="27.0" />
     </edge>
     <edge source="pl.uj.io.cuteanimals.model.Monster" target="pl.uj.io.cuteanimals.model.interfaces.ICharacter">
       <point x="0.0" y="-81.0" />
@@ -395,15 +361,35 @@
       <point x="497.0" y="2503.0" />
       <point x="55.0" y="49.0" />
     </edge>
+    <edge source="pl.uj.io.cuteanimals.model.PlayerBackpack" target="pl.uj.io.cuteanimals.model.Backpack">
+      <point x="0.0" y="-123.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.action.FightAction" target="pl.uj.io.cuteanimals.model.interfaces.ContainerArgumentAction">
+      <point x="0.0" y="-69.0" />
+      <point x="1526.25" y="1945.0" />
+      <point x="1625.625" y="1945.0" />
+      <point x="-37.875" y="48.0" />
+    </edge>
     <edge source="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction" target="pl.uj.io.cuteanimals.model.interfaces.IAction">
       <point x="0.0" y="-59.0" />
       <point x="3842.5" y="1382.0" />
       <point x="1299.9166666666667" y="1382.0" />
       <point x="79.66666666666674" y="59.0" />
     </edge>
+    <edge source="pl.uj.io.cuteanimals.action.ShowBackpack" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
+      <point x="0.0" y="-48.0" />
+      <point x="0.0" y="59.0" />
+    </edge>
     <edge source="pl.uj.io.cuteanimals.repository.AttributesRepository" target="pl.uj.io.cuteanimals.repository.GeneralRepository">
       <point x="51.25" y="-26.0" />
       <point x="53.0" y="49.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.plot.actions.DungeonInvestigateAction" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction">
+      <point x="0.0" y="-90.0" />
+      <point x="4366.0" y="1659.0" />
+      <point x="3879.9545454545455" y="1659.0" />
+      <point x="37.454545454545496" y="59.0" />
     </edge>
     <edge source="pl.uj.io.cuteanimals.model.interfaces.ContainerArgumentAction" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentAction">
       <point x="0.0" y="-48.0" />
@@ -416,6 +402,10 @@
       <point x="126.0" y="2503.0" />
       <point x="387.0" y="2503.0" />
       <point x="-55.0" y="49.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.service.AttributesService" target="org.springframework.stereotype.Service">
+      <point x="0.0" y="-112.0" />
+      <point x="0.0" y="27.0" />
     </edge>
     <edge source="pl.uj.io.cuteanimals.exception.InvalidCommandException" target="java.lang.Exception">
       <point x="0.0" y="-27.0" />
@@ -431,9 +421,31 @@
       <point x="3917.409090909091" y="1639.0" />
       <point x="74.90909090909099" y="59.0" />
     </edge>
+    <edge source="pl.uj.io.cuteanimals.model.entity.Item" target="pl.uj.io.cuteanimals.model.interfaces.IItem">
+      <point x="81.25" y="-145.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.action.UseAction" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentAction">
+      <point x="0.0" y="-59.0" />
+      <point x="1072.0" y="1669.0" />
+      <point x="1204.8125" y="1669.0" />
+      <point x="-15.4375" y="80.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.model.WorldMap" target="org.springframework.stereotype.Component">
+      <point x="0.0" y="-80.0" />
+      <point x="1531.7386363636365" y="2464.0" />
+      <point x="1617.8636363636365" y="2464.0" />
+      <point x="-15.875" y="27.0" />
+    </edge>
     <edge source="pl.uj.io.cuteanimals.interpreter.Expression" target="java.lang.FunctionalInterface">
       <point x="0.0" y="-71.0" />
       <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="pl.uj.io.cuteanimals.action.UnequipItem" target="pl.uj.io.cuteanimals.model.interfaces.ArgumentAction">
+      <point x="0.0" y="-59.0" />
+      <point x="746.0" y="1659.0" />
+      <point x="1173.9375" y="1659.0" />
+      <point x="-46.3125" y="80.0" />
     </edge>
     <edge source="pl.uj.io.cuteanimals.action.ability.Focus" target="pl.uj.io.cuteanimals.model.fight.IFightState">
       <point x="79.66666666666674" y="-113.0" />
@@ -442,90 +454,90 @@
       <point x="-42.25" y="38.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.21645746164574617" x="2777.0" y="1772.5" />
+  <settings layout="Hierarchic Group" zoom="0.19590958019375673" x="2777.0" y="1782.5" />
   <SelectedNodes>
     <node>pl.uj.io.cuteanimals.model.interfaces.IAttributes</node>
+    <node>pl.uj.io.cuteanimals.model.interfaces.ILocation</node>
     <node>pl.uj.io.cuteanimals.model.interfaces.IAction</node>
+    <node>pl.uj.io.cuteanimals.service.ItemService</node>
+    <node>pl.uj.io.cuteanimals.action.ShowArmor</node>
     <node>pl.uj.io.cuteanimals.action.ability.Focus</node>
     <node>pl.uj.io.cuteanimals.model.fight.FightState</node>
+    <node>pl.uj.io.cuteanimals.action.FightAction</node>
     <node>pl.uj.io.cuteanimals.action.UnequipItem</node>
+    <node>pl.uj.io.cuteanimals.repository.AttributesRepository</node>
+    <node>pl.uj.io.cuteanimals.model.CompoundResult</node>
     <node>pl.uj.io.cuteanimals.location.LocationBuilder</node>
     <node>pl.uj.io.cuteanimals.action.UseAction</node>
     <node>pl.uj.io.cuteanimals.model.RandomIntegerImpl</node>
+    <node>pl.uj.io.cuteanimals.action.EquipItem</node>
+    <node>pl.uj.io.cuteanimals.model.fight.AttackState</node>
+    <node>pl.uj.io.cuteanimals.model.entity.Item</node>
     <node>pl.uj.io.cuteanimals.interpreter.Interpreter</node>
+    <node>pl.uj.io.cuteanimals.service.AttributesService</node>
+    <node>pl.uj.io.cuteanimals.CuteAnimalsApplication</node>
     <node>pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction</node>
+    <node>pl.uj.io.cuteanimals.interpreter.Interpreter.ParseToken.Type</node>
+    <node>pl.uj.io.cuteanimals.model.entity.Attributes</node>
     <node>javax.persistence.Entity</node>
+    <node>pl.uj.io.cuteanimals.interpreter.Interpreter.ParseToken</node>
+    <node>pl.uj.io.cuteanimals.model.fight.FightManager</node>
+    <node>pl.uj.io.cuteanimals.model.ArmorBackpack</node>
     <node>pl.uj.io.cuteanimals.service.GameService</node>
     <node>pl.uj.io.cuteanimals.model.interfaces.IAbility</node>
     <node>pl.uj.io.cuteanimals.action.BuffCharacter</node>
     <node>pl.uj.io.cuteanimals.model.GameInstance</node>
-    <node>java.lang.Exception</node>
+    <node>pl.uj.io.cuteanimals.action.ShowAbilities</node>
+    <node>pl.uj.io.cuteanimals.action.ShowBackpack</node>
     <node>pl.uj.io.cuteanimals.model.Monster</node>
+    <node>pl.uj.io.cuteanimals.plot.actions.DungeonEntranceGoAction</node>
+    <node>pl.uj.io.cuteanimals.model.interfaces.IPlayer</node>
+    <node>java.lang.Exception</node>
+    <node>pl.uj.io.cuteanimals.model.PlayerBackpack</node>
     <node>pl.uj.io.cuteanimals.model.fight.BlockState</node>
+    <node>pl.uj.io.cuteanimals.model.Player</node>
     <node>pl.uj.io.cuteanimals.model.fight.ExplorationState</node>
+    <node>pl.uj.io.cuteanimals.action.InvestigateAction</node>
+    <node>pl.uj.io.cuteanimals.action.CastAction</node>
     <node>pl.uj.io.cuteanimals.model.ItemType</node>
+    <node>pl.uj.io.cuteanimals.model.WorldMap</node>
+    <node>org.springframework.data.jpa.repository.JpaRepository</node>
+    <node>pl.uj.io.cuteanimals.interpreter.Expression</node>
     <node>pl.uj.io.cuteanimals.repository.GeneralRepository</node>
     <node>pl.uj.io.cuteanimals.model.fight.FightLog</node>
     <node>pl.uj.io.cuteanimals.action.ActionBuilder</node>
+    <node>pl.uj.io.cuteanimals.controller.GameController</node>
+    <node>pl.uj.io.cuteanimals.model.interfaces.IEquipment</node>
     <node>pl.uj.io.cuteanimals.action.PickupAction</node>
     <node>pl.uj.io.cuteanimals.model.fight.IFightState</node>
+    <node>pl.uj.io.cuteanimals.model.PlayerAttributes</node>
+    <node>pl.uj.io.cuteanimals.model.interfaces.IItem</node>
+    <node>java.lang.FunctionalInterface</node>
+    <node>pl.uj.io.cuteanimals.exception.InvalidCommandException</node>
     <node>pl.uj.io.cuteanimals.model.interfaces.ICharacter</node>
     <node>pl.uj.io.cuteanimals.model.interfaces.ContainerArgumentAction</node>
     <node>pl.uj.io.cuteanimals.model.interfaces.IResult</node>
     <node>pl.uj.io.cuteanimals.action.entrance.EntranceRemoveHealthAction</node>
+    <node>pl.uj.io.cuteanimals.model.interfaces.ArgumentAction</node>
+    <node>pl.uj.io.cuteanimals.model.DefaultLocation</node>
     <node>org.springframework.stereotype.Service</node>
+    <node>pl.uj.io.cuteanimals.action.ThrowAwayAction</node>
+    <node>pl.uj.io.cuteanimals.model.Color</node>
+    <node>pl.uj.io.cuteanimals.model.Backpack</node>
     <node>pl.uj.io.cuteanimals.action.Block</node>
     <node>org.springframework.boot.autoconfigure.SpringBootApplication</node>
+    <node>pl.uj.io.cuteanimals.action.ShowStats</node>
     <node>pl.uj.io.cuteanimals.model.NPC</node>
     <node>pl.uj.io.cuteanimals.action.GoAction</node>
     <node>pl.uj.io.cuteanimals.action.StandardAttack</node>
     <node>pl.uj.io.cuteanimals.plot.actions.DungeonInvestigateAction</node>
     <node>pl.uj.io.cuteanimals.model.interfaces.RandomInteger</node>
-    <node>pl.uj.io.cuteanimals.model.GameState</node>
-    <node>pl.uj.io.cuteanimals.repository.ItemsRepository</node>
-    <node>pl.uj.io.cuteanimals.action.TalkAction</node>
-    <node>pl.uj.io.cuteanimals.model.interfaces.ILocation</node>
-    <node>pl.uj.io.cuteanimals.service.ItemService</node>
-    <node>pl.uj.io.cuteanimals.action.ShowArmor</node>
-    <node>pl.uj.io.cuteanimals.action.FightAction</node>
-    <node>pl.uj.io.cuteanimals.repository.AttributesRepository</node>
-    <node>pl.uj.io.cuteanimals.model.CompoundResult</node>
-    <node>pl.uj.io.cuteanimals.action.EquipItem</node>
-    <node>pl.uj.io.cuteanimals.model.fight.AttackState</node>
-    <node>pl.uj.io.cuteanimals.model.entity.Item</node>
-    <node>pl.uj.io.cuteanimals.service.AttributesService</node>
-    <node>pl.uj.io.cuteanimals.CuteAnimalsApplication</node>
-    <node>pl.uj.io.cuteanimals.interpreter.Interpreter.ParseToken.Type</node>
-    <node>pl.uj.io.cuteanimals.model.entity.Attributes</node>
-    <node>pl.uj.io.cuteanimals.interpreter.Interpreter.ParseToken</node>
-    <node>pl.uj.io.cuteanimals.model.fight.FightManager</node>
-    <node>pl.uj.io.cuteanimals.model.ArmorBackpack</node>
-    <node>pl.uj.io.cuteanimals.action.ShowAbilities</node>
-    <node>pl.uj.io.cuteanimals.model.interfaces.IPlayer</node>
-    <node>pl.uj.io.cuteanimals.action.ShowBackpack</node>
-    <node>pl.uj.io.cuteanimals.plot.actions.DungeonEntranceGoAction</node>
-    <node>pl.uj.io.cuteanimals.model.PlayerBackpack</node>
-    <node>pl.uj.io.cuteanimals.model.Player</node>
-    <node>pl.uj.io.cuteanimals.action.InvestigateAction</node>
-    <node>pl.uj.io.cuteanimals.action.CastAction</node>
-    <node>pl.uj.io.cuteanimals.model.WorldMap</node>
-    <node>org.springframework.data.jpa.repository.JpaRepository</node>
-    <node>pl.uj.io.cuteanimals.interpreter.Expression</node>
-    <node>pl.uj.io.cuteanimals.controller.GameController</node>
-    <node>pl.uj.io.cuteanimals.model.interfaces.IEquipment</node>
-    <node>pl.uj.io.cuteanimals.model.PlayerAttributes</node>
-    <node>pl.uj.io.cuteanimals.model.interfaces.IItem</node>
-    <node>java.lang.FunctionalInterface</node>
-    <node>pl.uj.io.cuteanimals.exception.InvalidCommandException</node>
-    <node>pl.uj.io.cuteanimals.model.interfaces.ArgumentAction</node>
-    <node>pl.uj.io.cuteanimals.model.DefaultLocation</node>
-    <node>pl.uj.io.cuteanimals.action.ThrowAwayAction</node>
-    <node>pl.uj.io.cuteanimals.model.Color</node>
-    <node>pl.uj.io.cuteanimals.model.Backpack</node>
-    <node>pl.uj.io.cuteanimals.action.ShowStats</node>
     <node>org.springframework.stereotype.Component</node>
+    <node>pl.uj.io.cuteanimals.model.GameState</node>
     <node>pl.uj.io.cuteanimals.action.MessageAction</node>
     <node>pl.uj.io.cuteanimals.controller.ItemController</node>
+    <node>pl.uj.io.cuteanimals.repository.ItemsRepository</node>
+    <node>pl.uj.io.cuteanimals.action.TalkAction</node>
     <node>pl.uj.io.cuteanimals.model.NPCAttributes</node>
     <node>pl.uj.io.cuteanimals.model.Result</node>
     <node>pl.uj.io.cuteanimals.action.SuicideAction</node>

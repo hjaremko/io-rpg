@@ -46,6 +46,10 @@ TODO
 ```
 
 ### Dokumentacja
+
+[UML](./assets/UML.md)
+
+
 ```investigate``` - udostępnia opis aktualnego otoczenia  
 ```talk <nazwa_postaci>``` - umożliwia rozmowę z poszczególnymi postaciami  
 ```go <nazwa_lokaji>``` - pozwala na przejście do innej lokacji.  

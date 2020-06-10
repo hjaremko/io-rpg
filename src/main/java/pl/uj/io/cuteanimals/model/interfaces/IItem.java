@@ -1,5 +1,6 @@
 package pl.uj.io.cuteanimals.model.interfaces;
 
+import pl.uj.io.cuteanimals.model.ItemClass;
 import pl.uj.io.cuteanimals.model.ItemType;
 
 /**
@@ -39,4 +40,6 @@ public interface IItem {
     IAttributes getAttributes();
 
     ItemType getType();
+
+    ItemClass getItemClass();
 }

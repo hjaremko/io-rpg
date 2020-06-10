@@ -33,6 +33,12 @@ public class PickupAction extends ContainerArgumentAction<IItem> {
             return new Result("This item is too heavy!");
         }
 
+        var playerAcceptedItemClasses = player.getPlayerClass().getAcceptedItemClasses();
+        if (!playerAcceptedItemClasses.contains(toPickup.getItemClass())) {
+            return new Result("You are not allowed to use this item!");
+        }
+
+
         // TODO: after picking up gold in chamberOfWealth add money
 
         var itemName = toPickup.getName();

@@ -31,4 +31,6 @@ public interface IPlayer extends ICharacter {
     WorldMap getWorld();
 
     void setClass(PlayerClass playerClass);
+
+    PlayerClass getPlayerClass();
 }

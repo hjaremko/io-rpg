@@ -1,6 +1,7 @@
 package pl.uj.io.cuteanimals.model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import pl.uj.io.cuteanimals.action.ability.Focus;
 import pl.uj.io.cuteanimals.model.interfaces.IAction;
@@ -22,5 +23,10 @@ public class Slave implements PlayerClass {
     @Override
     public String toString() {
         return "Slave";
+    }
+
+    @Override
+    public List<ItemClass> getAcceptedItemClasses() {
+        return List.of(ItemClass.ANY);
     }
 }

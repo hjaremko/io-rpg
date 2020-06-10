@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import pl.uj.io.cuteanimals.model.ItemClass;
 import pl.uj.io.cuteanimals.model.ItemType;
 import pl.uj.io.cuteanimals.model.entity.Item;
 import pl.uj.io.cuteanimals.repository.ItemsRepository;
@@ -35,7 +36,8 @@ public class ItemService {
                         "Regular sword",
                         3,
                         attributesService.getAttributes(1),
-                        ItemType.WEAPON));
+                        ItemType.WEAPON,
+                        ItemClass.WARRIOR));
         addItem(
                 new Item(
                         2,
@@ -43,7 +45,8 @@ public class ItemService {
                         "Regular shield",
                         3,
                         attributesService.getAttributes(2),
-                        ItemType.ARMOR));
+                        ItemType.ARMOR,
+                        ItemClass.WARRIOR));
         addItem(
                 new Item(
                         3,
@@ -51,7 +54,8 @@ public class ItemService {
                         "Basic magic wand",
                         1,
                         attributesService.getAttributes(3),
-                        ItemType.WEAPON));
+                        ItemType.WEAPON,
+                        ItemClass.MONK));
 
         addItem(
                 new Item(
@@ -60,7 +64,8 @@ public class ItemService {
                         "Regular bow",
                         2,
                         attributesService.getAttributes(4),
-                        ItemType.WEAPON));
+                        ItemType.WEAPON,
+                        ItemClass.ARCHER));
 
         addItem(
                 new Item(
@@ -69,7 +74,8 @@ public class ItemService {
                         "regular arrow",
                         1,
                         attributesService.getAttributes(5),
-                        ItemType.WEAPON));
+                        ItemType.WEAPON,
+                        ItemClass.ARCHER));
 
         addItem(
                 new Item(
@@ -78,7 +84,8 @@ public class ItemService {
                         "Golden coin",
                         1,
                         attributesService.getAttributes(6),
-                        ItemType.USABLE));
+                        ItemType.USABLE,
+                        ItemClass.ANY));
 
         addItem(
                 new Item(
@@ -87,7 +94,8 @@ public class ItemService {
                         "Amulet of eternal love",
                         1,
                         attributesService.getAttributes(7),
-                        ItemType.NEUTRAL));
+                        ItemType.NEUTRAL,
+                        ItemClass.ANY));
 
         addItem(
                 new Item(
@@ -96,7 +104,8 @@ public class ItemService {
                         "Regular torch",
                         3,
                         attributesService.getAttributes(8),
-                        ItemType.WEAPON));
+                        ItemType.WEAPON,
+                        ItemClass.ANY));
         addItem(
                 new Item(
                         9,
@@ -104,7 +113,8 @@ public class ItemService {
                         "Moist nad delicious.",
                         1,
                         attributesService.getAttributes(9),
-                        ItemType.USABLE));
+                        ItemType.USABLE,
+                        ItemClass.ANY));
     }
 
     public List<Item> getAllItems() {

@@ -128,4 +128,9 @@ public class Player implements IPlayer {
     public int getId() {
         return id;
     }
+
+    @Override
+    public PlayerClass getPlayerClass() {
+        return playerClass;
+    }
 }

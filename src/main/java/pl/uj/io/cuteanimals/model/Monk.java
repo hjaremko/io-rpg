@@ -2,6 +2,8 @@ package pl.uj.io.cuteanimals.model;
 
 import pl.uj.io.cuteanimals.action.ability.Heal;
 
+import java.util.List;
+
 public class Monk extends Slave {
     public Monk() {
         super();
@@ -11,5 +13,11 @@ public class Monk extends Slave {
     @Override
     public String toString() {
         return "Monk";
+    }
+
+
+    @Override
+    public List<ItemClass> getAcceptedItemClasses() {
+        return List.of(ItemClass.MONK, ItemClass.ANY);
     }
 }

@@ -24,6 +24,11 @@ public class EquipItem extends ArgumentAction {
             return new Result("You don't have that");
         }
 
+        var playerAcceptedItemClasses = player.getPlayerClass().getAcceptedItemClasses();
+        if (!playerAcceptedItemClasses.contains(toEquip.get().getItemClass())) {
+            return new Result("You are not allowed to use this item!");
+        }
+
         player.getEquipment().removeItem(toEquip.get());
 
         if (player.getArmor().putItem(toEquip.get())) {

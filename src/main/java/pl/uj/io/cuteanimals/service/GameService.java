@@ -50,6 +50,7 @@ public class GameService {
     }
 
     public String pickClass(int characterId) {
+        logger.trace("User with ID: " + characterId + "is picking class");
         return players.get(characterId).pickClass();
     }
 }

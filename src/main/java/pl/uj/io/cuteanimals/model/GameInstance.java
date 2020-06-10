@@ -42,6 +42,7 @@ public class GameInstance {
     }
 
     public IResult gameOver() {
+
         this.player = new Player(new WorldMap(itemService));
         return new Result("oj nie nie byczq");
     }

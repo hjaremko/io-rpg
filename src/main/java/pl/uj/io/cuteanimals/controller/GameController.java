@@ -31,10 +31,9 @@ public class GameController {
 
     @PostMapping(value = "/{id}/msg", consumes = "text/plain", produces = "text/plain")
     public String receiveOrderAndReturnResult(@PathVariable int id, @RequestBody String command) {
-        command = command.toLowerCase();
-        // TODO: expand logging
+        command = command.toLowerCase().trim();
 
-        logger.info("User (" + id + ") sent command: " + command);
+        logger.debug("User (" + id + ") sent command: " + command);
 
         // TODO: replace with login
         if ("start".equals(command)) {
@@ -54,8 +53,8 @@ public class GameController {
                         .collect(Collectors.joining("\n"));
             }
 
-            logger.info("Adding color to normal Result with message:");
-            logger.info(result.getMessage());
+            logger.trace("Adding color to normal Result with message:");
+            logger.debug(result.getMessage());
             return addColor(result.getMessage(), result.getColor());
         } catch (InvalidCommandException e) {
             logger.debug("Parsing user provided command failed.", e);

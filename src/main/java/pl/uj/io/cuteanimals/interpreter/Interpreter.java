@@ -39,7 +39,7 @@ public class Interpreter {
      */
     private ParseToken parseToken(
             String token, Deque<ParseToken> stack, Map<String, IAction> availableActions) {
-        logger.debug("Parsing token: " + token);
+        logger.trace("Parsing token: " + token);
 
         return availableActions
                 .keySet()
@@ -58,7 +58,7 @@ public class Interpreter {
      * @return Expression and Type from it is possible to derive given token
      */
     private ParseToken parseActionToken(String token, Deque<ParseToken> stack) {
-        logger.debug("Parsing action token: " + token);
+        logger.trace("Parsing action token: " + token);
 
         // No argument on stack -> build action with no arguments Expression
         // (rule expr -> action)
@@ -88,7 +88,7 @@ public class Interpreter {
      * @return Expression and Type from it is possible to derive given token
      */
     private ParseToken parseArgumentToken(String token, Deque<ParseToken> stack) {
-        logger.debug("Parsing argument token: " + token);
+        logger.trace("Parsing argument token: " + token);
 
         // Production args -> 'str'
         if (stack.isEmpty()) {

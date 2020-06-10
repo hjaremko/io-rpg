@@ -5,7 +5,7 @@
     <title>Cute Animals</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <link href="../static/style.css" rel="stylesheet" th:href="@{/style.css}" type="text/css">
-    <link rel="stylesheet" href="https://unpkg.com/xterm@4.0.0/css/xterm.css"/>
+    <link href="https://unpkg.com/xterm@4.0.0/css/xterm.css" rel="stylesheet"/>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600,700|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic'
           rel='stylesheet' type='text/css'>
 </head>
@@ -21,14 +21,39 @@
 <script>
     // For localhost testing
     // const proxyURL = "https://cors-anywhere.herokuapp.com/";
-    // const URL = "http://localhost:8080/game/1/msg";
+    // const URLprefix = "http://localhost:8080/game/";
     const proxyURL = "";
-    const URL = "https://io-rpg.herokuapp.com/game/1/msg";
+    const URLprefix = "https://io-rpg.herokuapp.com/game/";
+    const URLsuffix = "/msg";
 
-    let requestURL = proxyURL + URL;
+    var requestURL;
 
     function populateOutput(output) {
         term.write('\n\r' + output)
+    }
+
+    window.onload = function () {
+    }
+
+    function initialize() {
+        let request = new XMLHttpRequest();
+        request.open('GET', URLprefix);
+        request.send();
+
+        request.ontimeout = function () {
+            console.error("The request for " + URLprefix + " timed out.");
+        };
+
+        request.onload = function () {
+            term.write('...');
+
+            if (request.readyState === 4) {
+                term.write('\b\b\b    ')
+                const serverResponse = request.response;
+                console.log(serverResponse);
+                requestURL = proxyURL + URLprefix + request.responseText + URLsuffix;
+            }
+        }
     }
 
     function sendRequest(input) {
@@ -42,7 +67,7 @@
 
         // TODO: fix this
         request.ontimeout = function () {
-            console.error("The request for " + url + " timed out.");
+            console.error("The request for " + requestURL + " timed out.");
         };
 
         request.onload = function () {
@@ -64,7 +89,7 @@
 
 <h1> Cute Animals </h1>
 
-<div id="terminal" class="outputTerm"></div>
+<div class="outputTerm" id="terminal"></div>
 <script src="https://unpkg.com/xterm@4.0.0/lib/xterm.js"></script>
 <script>
     var term = new window.Terminal.Terminal({
@@ -91,6 +116,8 @@
         sendRequest("start");
 
         var commandBuffer = "";
+
+        initialize();
 
         term.onKey(e => {
             const printable = !e.domEvent.altKey && !e.domEvent.altGraphKey && !e.domEvent.ctrlKey && !e.domEvent.metaKey;

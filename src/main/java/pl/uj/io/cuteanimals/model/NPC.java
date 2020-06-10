@@ -1,7 +1,9 @@
 package pl.uj.io.cuteanimals.model;
 
 import java.util.List;
-import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
+import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
+import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 
 /**
  * Provides methods to manage npc character.
@@ -10,10 +12,10 @@ import pl.uj.io.cuteanimals.model.interfaces.*;
  * @since 0.2.0-SNAPSHOT
  */
 public class NPC implements ICharacter {
+    private final List<String> quotes;
     private IEquipment armorBackpack;
     private IEquipment backpack;
     private String name;
-    private final List<String> quotes;
     private int quoteIndex;
 
     public NPC(IEquipment armorBackpack, IEquipment backpack, String name, List<String> quotes) {
@@ -45,10 +47,6 @@ public class NPC implements ICharacter {
 
     public void setBackpack(IEquipment backpack) {
         this.backpack = backpack;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**
@@ -92,5 +90,9 @@ public class NPC implements ICharacter {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

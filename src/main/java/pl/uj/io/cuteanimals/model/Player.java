@@ -1,12 +1,13 @@
 package pl.uj.io.cuteanimals.model;
 
-import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.uj.io.cuteanimals.action.BuffCharacter;
 import pl.uj.io.cuteanimals.model.fight.FightManager;
 import pl.uj.io.cuteanimals.model.interfaces.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Provides methods to manage player.
@@ -14,16 +15,15 @@ import pl.uj.io.cuteanimals.model.interfaces.*;
  * @version %I%
  * @since 0.2.0-SNAPSHOT
  */
-@Component
 public class Player implements IPlayer {
     private final WorldMap world;
-    private PlayerAttributes stats;
-    private ILocation currentLocation;
     private final IEquipment armorBackpack;
     private final IEquipment backpack;
-    private GameState gameState;
     private final FightManager fightManager;
     private PlayerClass playerClass;
+    private PlayerAttributes stats;
+    private ILocation currentLocation;
+    private GameState gameState;
 
     public Player(WorldMap world) {
         this.world = world;
@@ -36,7 +36,6 @@ public class Player implements IPlayer {
         this.playerClass = new Slave();
     }
 
-    @Autowired
     public Player(WorldMap world, RandomInteger random) {
         this(world);
         this.stats = new PlayerAttributes(this, random);

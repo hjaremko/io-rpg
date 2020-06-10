@@ -7,7 +7,9 @@ import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Monster;
 import pl.uj.io.cuteanimals.model.Result;
 import pl.uj.io.cuteanimals.model.fight.FightLog;
-import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.model.interfaces.ContainerArgumentAction;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class FightAction extends ContainerArgumentAction<Monster> {
     public FightAction(Map<String, Monster> monsters) {

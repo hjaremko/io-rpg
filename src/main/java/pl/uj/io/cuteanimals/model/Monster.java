@@ -1,6 +1,8 @@
 package pl.uj.io.cuteanimals.model;
 
-import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
+import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
+import pl.uj.io.cuteanimals.model.interfaces.IEquipment;
 
 public class Monster implements ICharacter {
     private final IEquipment loots;

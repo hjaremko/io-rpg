@@ -1,21 +1,18 @@
 package pl.uj.io.cuteanimals.model;
 
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import pl.uj.io.cuteanimals.exception.InvalidCommandException;
 import pl.uj.io.cuteanimals.interpreter.Expression;
 import pl.uj.io.cuteanimals.interpreter.Interpreter;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 import pl.uj.io.cuteanimals.service.ItemService;
 
-@Component
+import java.util.List;
+
 public class GameInstance {
     private final Interpreter interpreter;
     private final ItemService itemService;
     private Player player;
 
-    @Autowired
     public GameInstance(ItemService itemService, Interpreter interpreter) {
         this.itemService = itemService;
         this.interpreter = interpreter;

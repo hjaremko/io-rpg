@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Optional;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
-import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.model.interfaces.ArgumentAction;
+import pl.uj.io.cuteanimals.model.interfaces.IItem;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 /**
  * Provides methods that let the Player put currently equipped items to his backpack.

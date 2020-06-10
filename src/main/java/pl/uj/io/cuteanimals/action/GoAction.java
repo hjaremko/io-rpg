@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Map;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
-import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.model.interfaces.ContainerArgumentAction;
+import pl.uj.io.cuteanimals.model.interfaces.ILocation;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 // TODO: find out if we can reduce boilerplate using FunctionalInterface like Interpreter
 

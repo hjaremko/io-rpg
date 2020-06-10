@@ -5,7 +5,10 @@ import java.util.Optional;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.ItemType;
 import pl.uj.io.cuteanimals.model.Result;
-import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.model.interfaces.ArgumentAction;
+import pl.uj.io.cuteanimals.model.interfaces.IItem;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 public class UseAction extends ArgumentAction {
     @Override

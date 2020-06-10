@@ -3,7 +3,10 @@ package pl.uj.io.cuteanimals.plot.actions;
 import java.util.List;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
-import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction;
+import pl.uj.io.cuteanimals.model.interfaces.IItem;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 /**
  * Provides method that forbid Character to investigate the Dungeon without the Torch equipped.

@@ -1,7 +1,9 @@
 package pl.uj.io.cuteanimals.model.fight;
 
 import java.util.List;
-import pl.uj.io.cuteanimals.model.*;
+import pl.uj.io.cuteanimals.model.Color;
+import pl.uj.io.cuteanimals.model.CompoundResult;
+import pl.uj.io.cuteanimals.model.PlayerAttributes;
 import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
 import pl.uj.io.cuteanimals.model.interfaces.IResult;
 

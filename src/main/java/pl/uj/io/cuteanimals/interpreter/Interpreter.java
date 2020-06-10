@@ -27,6 +27,8 @@ public class Interpreter {
 
     private static final Logger logger = LoggerFactory.getLogger(Interpreter.class);
 
+    public Interpreter() {}
+
     /**
      * Forms Expression object from given token and put it on the stack.
      *
@@ -179,6 +181,4 @@ public class Interpreter {
             Argument,
         }
     }
-
-    public Interpreter() {}
 }

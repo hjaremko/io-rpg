@@ -1,8 +1,11 @@
 package pl.uj.io.cuteanimals.action;
 
 import java.util.List;
-import pl.uj.io.cuteanimals.model.*;
-import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.model.GameState;
+import pl.uj.io.cuteanimals.model.Result;
+import pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 /**
  * Prints Location's "look around" message.

@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import pl.uj.io.cuteanimals.model.GameState;
 import pl.uj.io.cuteanimals.model.Result;
-import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.model.interfaces.ArgumentAction;
+import pl.uj.io.cuteanimals.model.interfaces.ILocation;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 /**
  * Provides methods to engage a conversation with NPC's.

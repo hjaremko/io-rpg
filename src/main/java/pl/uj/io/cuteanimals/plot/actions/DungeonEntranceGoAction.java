@@ -3,8 +3,12 @@ package pl.uj.io.cuteanimals.plot.actions;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import pl.uj.io.cuteanimals.model.*;
-import pl.uj.io.cuteanimals.model.interfaces.*;
+import pl.uj.io.cuteanimals.model.GameState;
+import pl.uj.io.cuteanimals.model.Result;
+import pl.uj.io.cuteanimals.model.interfaces.ContainerArgumentAction;
+import pl.uj.io.cuteanimals.model.interfaces.ILocation;
+import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
+import pl.uj.io.cuteanimals.model.interfaces.IResult;
 
 /**
  * Provides methods that moves Character to the MedicalCabin in case of him falling from the bridge.

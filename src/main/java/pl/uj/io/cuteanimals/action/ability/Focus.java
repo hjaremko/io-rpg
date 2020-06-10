@@ -1,8 +1,12 @@
 package pl.uj.io.cuteanimals.action.ability;
 
 import java.util.List;
-import pl.uj.io.cuteanimals.model.*;
-import pl.uj.io.cuteanimals.model.fight.*;
+import pl.uj.io.cuteanimals.model.Color;
+import pl.uj.io.cuteanimals.model.CompoundResult;
+import pl.uj.io.cuteanimals.model.GameState;
+import pl.uj.io.cuteanimals.model.PlayerAttributes;
+import pl.uj.io.cuteanimals.model.fight.FightLog;
+import pl.uj.io.cuteanimals.model.fight.IFightState;
 import pl.uj.io.cuteanimals.model.interfaces.ArgumentlessAction;
 import pl.uj.io.cuteanimals.model.interfaces.IAbility;
 import pl.uj.io.cuteanimals.model.interfaces.IPlayer;

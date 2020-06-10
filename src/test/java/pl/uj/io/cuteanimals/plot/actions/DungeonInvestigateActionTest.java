@@ -48,7 +48,7 @@ public class DungeonInvestigateActionTest {
         given(player.getCurrentGameState()).willReturn(GameState.EXPLORATION);
         given(player.getArmor()).willReturn(equipment);
         given(equipment.getItems())
-                .willReturn(List.of(new Item(1, "torch", "aaa", 1, null, ItemType.WEAPON)));
+                .willReturn(List.of(new Item(1, "Torch", "aaa", 1, null, ItemType.WEAPON)));
 
         var result = action.actionBody(player);
 

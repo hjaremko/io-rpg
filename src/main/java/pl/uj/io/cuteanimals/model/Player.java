@@ -29,7 +29,7 @@ public class Player implements IPlayer {
         this.stats = new PlayerAttributes(this);
         this.currentLocation = world.getLocation("town");
         this.armorBackpack = new ArmorBackpack(this);
-        this.backpack = new PlayerBackpack(this);
+        this.backpack = new PlayerBackpack(this.stats);
         this.gameState = GameState.LIMBO;
         this.fightManager = new FightManager(this);
         this.playerClass = new Slave();
@@ -57,6 +57,10 @@ public class Player implements IPlayer {
 
     @Override
     public IResult use(IItem item) {
+        if (item.getType() != ItemType.USABLE) {
+            return new Result("You can't use that.");
+        }
+
         var eatingResult = new BuffCharacter(item.getAttributes()).execute(this);
         getEquipment().removeItem(item);
         var attackResult = fightManager.contrAttack();

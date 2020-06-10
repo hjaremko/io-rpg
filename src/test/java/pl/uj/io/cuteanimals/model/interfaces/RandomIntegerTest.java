@@ -11,6 +11,6 @@ class RandomIntegerTest {
     @Test
     void nextInt() {
         var random = new RandomIntegerImpl();
-        assertThat(random.nextInt(10)).isBetween(1, 10);
+        assertThat(random.nextInt(10)).isBetween(0, 10);
     }
 }

@@ -24,7 +24,7 @@ public class Focus extends ArgumentlessAction implements IFightState, IAbility {
                     Color.YELLOW);
         }
 
-        if (player.getFightManager().getState() instanceof Focus) {
+        if (player.getFightManager().getState() instanceof IAbility) {
             return new FightLog("You are already focusing.", Color.YELLOW);
         }
 

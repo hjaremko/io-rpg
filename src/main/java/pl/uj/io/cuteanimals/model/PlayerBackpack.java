@@ -1,6 +1,6 @@
 package pl.uj.io.cuteanimals.model;
 
-import pl.uj.io.cuteanimals.model.interfaces.ICharacter;
+import pl.uj.io.cuteanimals.model.interfaces.IAttributes;
 import pl.uj.io.cuteanimals.model.interfaces.IItem;
 
 /**
@@ -10,12 +10,12 @@ import pl.uj.io.cuteanimals.model.interfaces.IItem;
  * @since 0.2.0-SNAPSHOT
  */
 public class PlayerBackpack extends Backpack {
-    private final ICharacter owner;
+    private final IAttributes ownerAttrs;
     private int currentWeight;
 
-    public PlayerBackpack(ICharacter owner) {
+    public PlayerBackpack(IAttributes ownerAttrs) {
         super();
-        this.owner = owner;
+        this.ownerAttrs = ownerAttrs;
         this.currentWeight = 0;
     }
 
@@ -34,7 +34,6 @@ public class PlayerBackpack extends Backpack {
     public boolean removeItem(IItem item) {
         getItems().remove(item);
         currentWeight -= item.getSize();
-        // TODO: check of possible (e.g. soul bounded items?)
         return true;
     }
 
@@ -45,7 +44,7 @@ public class PlayerBackpack extends Backpack {
      */
     public int getCapacity() {
         int baseCapacity = 10;
-        return baseCapacity + 3 * owner.getAttributes().getAttack();
+        return baseCapacity + 3 * ownerAttrs.getAttack();
     }
 
     /**

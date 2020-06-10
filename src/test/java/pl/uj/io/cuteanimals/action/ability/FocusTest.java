@@ -25,7 +25,7 @@ class FocusTest {
         player = new Player(0, world, random);
         attrs = (PlayerAttributes) player.getAttributes();
 
-        dummy = new Monster("dummy", new NPCAttributes(0, 1, 1, 0, 0));
+        dummy = new Monster("dummy", new NPCAttributes(100, 1, 1, 0, 0));
         player.getFightManager().beginFight(dummy);
         var focus = new Focus();
         focus.execute(player);
@@ -50,7 +50,7 @@ class FocusTest {
     @Test
     void attackShouldInflictAdditionalDamageLevelOneTest() {
         player.getFightManager().attack();
-        assertThat(dummy.getAttributes().getHealth()).isEqualTo(-3);
+        assertThat(dummy.getAttributes().getHealth()).isEqualTo(100 - 3);
     }
 
     @Test
@@ -59,6 +59,18 @@ class FocusTest {
 
         attrs.addAttack(49);
         player.getFightManager().attack();
-        assertThat(dummy.getAttributes().getHealth()).isEqualTo(-175);
+        assertThat(dummy.getAttributes().getHealth()).isEqualTo(100 - 175);
+    }
+
+    @Test
+    void cannotCastMultipleTimes() {
+        assertThat(new Focus().execute(player).getMessage())
+                .isEqualTo("* You are already focusing.");
+    }
+
+    @Test
+    void cannotCastSomethingElse() {
+        assertThat(new DoubleDown().execute(player).getMessage())
+                .isEqualTo("* You need to unleash your rage now.");
     }
 }

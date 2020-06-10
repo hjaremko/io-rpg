@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Component;
 import pl.uj.io.cuteanimals.model.interfaces.*;
 
 /**
@@ -12,6 +13,7 @@ import pl.uj.io.cuteanimals.model.interfaces.*;
  * @version %I%
  * @since 0.0.1-SNAPSHOT
  */
+@Component
 public class DefaultLocation implements ILocation {
     protected String description;
     protected Map<String, IAction> actionMap;

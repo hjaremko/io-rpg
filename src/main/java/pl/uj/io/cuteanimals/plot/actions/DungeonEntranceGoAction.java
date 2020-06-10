@@ -2,13 +2,10 @@ package pl.uj.io.cuteanimals.plot.actions;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import pl.uj.io.cuteanimals.model.GameState;
+import pl.uj.io.cuteanimals.model.RandomIntegerImpl;
 import pl.uj.io.cuteanimals.model.Result;
-import pl.uj.io.cuteanimals.model.interfaces.ContainerArgumentAction;
-import pl.uj.io.cuteanimals.model.interfaces.ILocation;
-import pl.uj.io.cuteanimals.model.interfaces.IPlayer;
-import pl.uj.io.cuteanimals.model.interfaces.IResult;
+import pl.uj.io.cuteanimals.model.interfaces.*;
 
 /**
  * Provides methods that moves Character to the MedicalCabin in case of him falling from the bridge.
@@ -16,9 +13,18 @@ import pl.uj.io.cuteanimals.model.interfaces.IResult;
  * @version %I%
  * @since 0.0.1-SNAPSHOT
  */
+// @Component
 public class DungeonEntranceGoAction extends ContainerArgumentAction<ILocation> {
+    private final RandomInteger rand;
+
     public DungeonEntranceGoAction(Map<String, ILocation> wheres) {
         super(wheres);
+        this.rand = new RandomIntegerImpl();
+    }
+
+    public DungeonEntranceGoAction(Map<String, ILocation> wheres, RandomInteger rand) {
+        super(wheres);
+        this.rand = rand;
     }
 
     @Override
@@ -29,9 +35,7 @@ public class DungeonEntranceGoAction extends ContainerArgumentAction<ILocation> 
             return new Result("You want to go... where?");
         }
 
-        Random rand = new Random();
-        int result = rand.nextInt(10);
-        if (result < 4) {
+        if (rand.nextInt(10) < 4) {
             toGo = player.getWorld().getLocation("medical");
         }
 

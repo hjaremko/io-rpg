@@ -21,12 +21,14 @@ public class BuffCharacter extends ArgumentlessAction {
         player.getAttributes().addHealth(attributes.getHealth());
         player.getAttributes().addAttack(attributes.getAttack());
         player.getAttributes().addDefence(attributes.getDefence());
+        player.getAttributes().addMana(attributes.getMana());
 
         var message = "";
         message += (attributes.getHealth() != 0 ? "+" + attributes.getHealth() + " health " : "");
         message += (attributes.getAttack() != 0 ? "+" + attributes.getAttack() + " attack " : "");
         message +=
                 (attributes.getDefence() != 0 ? "+" + attributes.getDefence() + " defence " : "");
+        message += (attributes.getMana() != 0 ? "+" + attributes.getMana() + " mana " : "");
 
         return new Result(message, Color.GREEN);
     }

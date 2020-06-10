@@ -18,9 +18,23 @@ class BackpackTest {
     @Test
     void putAndRemoveItem() {
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
         var heavy =
-                new Item(1, "pach", "aaa", 40, new Attributes(1, 1, 1, 1, 1, 1), ItemType.ARMOR);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        40,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.ARMOR,
+                        ItemClass.ANY);
 
         assertThat(bp.putItem(weapon));
         assertThat(bp.putItem(heavy));
@@ -44,7 +58,8 @@ class BackpackTest {
                                 "aaa",
                                 1,
                                 new Attributes(1, 1, 1, 1, 1, 1),
-                                ItemType.WEAPON)));
+                                ItemType.WEAPON,
+                                ItemClass.ANY)));
         assertThat(bp.showItems()).isNotBlank();
     }
 }

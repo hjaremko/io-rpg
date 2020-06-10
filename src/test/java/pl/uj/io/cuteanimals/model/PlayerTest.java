@@ -49,7 +49,8 @@ class PlayerTest {
                         "desc",
                         1,
                         new Attributes(1, 100, 100, 100, 100, 100),
-                        ItemType.USABLE);
+                        ItemType.USABLE,
+                        ItemClass.ANY);
         player.use(item);
 
         assertThat(attrs.getHealth())
@@ -74,7 +75,8 @@ class PlayerTest {
                         "desc",
                         1,
                         new Attributes(1, 100, 100, 100, 100, 100),
-                        ItemType.NEUTRAL);
+                        ItemType.NEUTRAL,
+                        ItemClass.ANY);
         player.use(item);
 
         assertThat(attrs.getHealth()).isEqualTo(statsBefore.getHealth());

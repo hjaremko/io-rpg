@@ -26,9 +26,23 @@ class PlayerBackpackTest {
     void putItem() {
         when(attrs.getAttack()).thenReturn(1);
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
         var heavy =
-                new Item(1, "pach", "aaa", 40, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        40,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
 
         assertThat(bp.putItem(weapon));
         assertThat(!bp.putItem(heavy));
@@ -39,7 +53,14 @@ class PlayerBackpackTest {
     @Test
     void removeItem() {
         var weapon =
-                new Item(1, "pach", "aaa", 1, new Attributes(1, 1, 1, 1, 1, 1), ItemType.WEAPON);
+                new Item(
+                        1,
+                        "pach",
+                        "aaa",
+                        1,
+                        new Attributes(1, 1, 1, 1, 1, 1),
+                        ItemType.WEAPON,
+                        ItemClass.ANY);
 
         assertThat(bp.putItem(weapon));
         assertThat(bp.getItems()).contains(weapon);

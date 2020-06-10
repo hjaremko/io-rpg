@@ -14,7 +14,11 @@ public class PickWarrior extends ArgumentlessAction {
 
         return new CompoundResult(
                 List.of(
-                        new Result("You are now a Warrior.", Color.YELLOW),
+                        new Result(
+                                "You are now a Warrior from Brave Hedgehogs' Clan.\n"
+                                        + "An extremely dangerous adventure awaits you, full of unexpected twists.\n"
+                                        + "Use your strong body and skill in wielding the sword to overcome all difficulties.\n",
+                                Color.YELLOW),
                         new Result(player.getCurrentLocation().getDescription())));
     }
 

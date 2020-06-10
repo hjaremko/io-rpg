@@ -14,7 +14,11 @@ public class PickArcher extends ArgumentlessAction {
 
         return new CompoundResult(
                 List.of(
-                        new Result("You are now an Archer.", Color.YELLOW),
+                        new Result(
+                                "You are now an Archer from Clever Hares' Clan.\n"
+                                        + "An extremely dangerous adventure awaits you, full of unexpected twists.\n"
+                                        + "Use your eagle eye and your extraordinary bow ability to overcome any difficulties encountered.\n",
+                                Color.YELLOW),
                         new Result(player.getCurrentLocation().getDescription())));
     }
 

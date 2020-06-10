@@ -86,6 +86,7 @@ public class LocationBuilder {
         location.setItems(equipment);
         location.setNPCs(npcList);
         location.setActionOnEnter(actionOnEnter);
+
         return location;
     }
 }

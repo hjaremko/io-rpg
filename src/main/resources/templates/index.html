@@ -38,7 +38,6 @@
     function initialize() {
         let request = new XMLHttpRequest();
         request.open('GET', URLprefix);
-        request.send();
 
         request.ontimeout = function () {
             console.error("The request for " + URLprefix + " timed out.");
@@ -51,9 +50,18 @@
                 term.write('\b\b\b    ')
                 const serverResponse = request.response;
                 console.log(serverResponse);
-                requestURL = proxyURL + URLprefix + request.responseText + URLsuffix;
+                var id = request.responseText;
+
+                if (id === "-1") {
+                    initialize();
+                } else {
+                    requestURL = proxyURL + URLprefix + id + URLsuffix;
+                    console.log("requestURL: " + requestURL)
+                }
             }
         }
+
+        request.send();
     }
 
     function sendRequest(input) {
@@ -63,7 +71,6 @@
         let request = new XMLHttpRequest();
         request.open('POST', requestURL);
         request.responseType = 'text';
-        request.send(input);
 
         // TODO: fix this
         request.ontimeout = function () {
@@ -82,6 +89,8 @@
 
             prompt(term);
         }
+
+        request.send(input);
     }
 
 

@@ -39,9 +39,13 @@ public class GameService {
 
     public int getFirstFreeID() {
         lock.lock();
-        int result = players.size();
-        players.add(new GameInstance(itemService, interpreter));
-        lock.unlock();
+        int result = -1;
+        try {
+            result = players.size();
+            players.add(new GameInstance(itemService, interpreter));
+        } finally {
+            lock.unlock();
+        }
         return result;
     }
 

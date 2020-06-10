@@ -1,13 +1,10 @@
 package pl.uj.io.cuteanimals.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import java.util.List;
+import java.util.Map;
 import pl.uj.io.cuteanimals.action.BuffCharacter;
 import pl.uj.io.cuteanimals.model.fight.FightManager;
 import pl.uj.io.cuteanimals.model.interfaces.*;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * Provides methods to manage player.

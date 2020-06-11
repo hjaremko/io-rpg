@@ -498,7 +498,7 @@ public class WorldMap {
                                                 + "(Creatures around you: Domenic, Raphael, Avery, Galen, Hilda, Darell)\n"
                                                 + "(There is nothing to pick up)\n"
                                                 + "(Where you can go: village)"))
-                        .addAction("go", new GoAction(Map.of("straight", village)))
+                        .addAction("go", new GoAction(Map.of("village", village)))
                         .addAction("fight", new FightAction(innMonsters))
                         .addNPC(innNPC1)
                         .addNPC(innNPC2)

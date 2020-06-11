@@ -15,7 +15,7 @@ plugins {
 }
 
 group = 'pl.uj.io'
-version = '1.0.2'
+version = '1.0.3'
 sourceCompatibility = JavaVersion.VERSION_11
 
 configurations {

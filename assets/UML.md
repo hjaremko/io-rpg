@@ -1,25 +1,25 @@
-# Schematy UML (ver 0.2.0)
+# UML (ver 0.2.0)
 
-## Ogólny
-![Ogólny schemat UML](CuteAnimals.svg)
+## General
+![General UML](CuteAnimals.svg)
 
-## Akcje
-![Schemat UML akcji](CuteAnimalsActions.svg)
+## Actions
+![Actions UML](CuteAnimalsActions.svg)
 
-## Postacie
-![Schemat UML postaci](CuteAnimalsCharacters.svg)
+## Characters
+![Characters UML](CuteAnimalsCharacters.svg)
 
-## Encja
-![Schemat UML encji](CuteAnimalsEntities.svg)
+## Enitities
+![Enitities UML](CuteAnimalsEntities.svg)
 
-## Logika gry
-![Schemat UML logiki gry](CuteAnimalsGameLogic.svg)
+## Game logic
+![Game logic UML](CuteAnimalsGameLogic.svg)
 
 ## Interpeter
-![Schemat UML Interpretera](CuteAnimalsInterpreter.svg)
+![Interpreter UML](CuteAnimalsInterpreter.svg)
 
-## Repozytoria
-![Schemat UML repozytoriów](CuteAnimalsRepositories.svg)
+## Repositories
+![Repositories UML](CuteAnimalsRepositories.svg)
 
-## Reszta
-![Schemat UML reszty](CuteAnimalsMisc.svg)
+## Misc
+![Misc UML](CuteAnimalsMisc.svg)

@@ -1,79 +1,77 @@
-# Inżynieria oprogramowania 2019/2020 - Projekt końcowy ![Java CI](https://github.com/hjaremko/io-rpg/workflows/Java%20CI/badge.svg)
-**Zespół:** Julia Cichosz, Klaudia Goska, Marek Grzelak, Hubert Jaremko, Anna Misiewicz, Łukasz Sereda
+# Software Engineering 2019/2020 - Final project ![Java CI](https://github.com/hjaremko/io-rpg/workflows/Java%20CI/badge.svg)
+**Team:** Julia Cichosz, Klaudia Goska, Marek Grzelak, Hubert Jaremko, Anna Misiewicz, Łukasz Sereda
 
-### Opis projektu
+### Project description
 
-**Cute Animals** to internetowa, tekstowa gra RPG stworzona w ramach projektu końcowego
-podczas kursu Inżynieria Oprogramowania prowadzonego
-na Instytucie Informatyki i Matematyki Komputerowej Uniwersytetu Jagiellońskiego.  
-Gra jest dostępna pod adresem https://io-rpg.herokuapp.com/.
+**Cute Animals** is a dark fantasy single-user dungeon RPG made as a semester project for the Software Engineering course at Jagiellonian University  
+The game is available at https://io-rpg.herokuapp.com/.
 
-#### Rozgrywka
+#### Gameplay
 
-Gra jest w pełni tekstowa i zainspirowana gatunkiem *Single-User Dungeon* (np. Otchłań).
-Gracz dokonuje iterakcji ze światem poprzez wpisywanie odpowiednich poleceń,
-takich jak `go`, `investigate` lub `pick`. Pełny spis możliwych akcji znajduje
-się w sekcji *Dokumentacja*.
+The game is using a text-user-interface inspired by the Single-User Dungeon genre *(ex. Otchłań (pol))*.
+The player interacts with the world by typing in proper commands such as `go`, `investigate` or `pick`.
+Full list of available commands is in the *Documentation* section.
 
+The game flow is as follows:
+1. First, the player picks his character's class.
+1. Every class offers unique abilities.
+1. The player goes through successive locations, where he has the opportunity to explore, interact with other characters (e.g. conversation, fight), and collect items.
+1. At each stage of the game, there are different possible courses of the game.
+1. The collected items can be used in the further course of the game (depending on the item: for combat, defense, or to increase a given attribute)
+1. As the player overcomes successive obstacles, the player will gain experience and develop individual attributes.
 
-Formuła gry wygląda następująco:
-1. Na samym początku gracz dokonuje wyboru klasy postaci.
-1. Każda z klas oferuje unikalne zdolności.
-1. Gracz pokonuje kolejne lokacje, w których ma możliwość eksploracji, interakcji z innymi postaciami (np.
-rozmowa, walka), zbierania przedmiotów.
-1. Na każdym etapie gry istnieją różne możliwości dalszego przebiegu rozgrywki.
-1. Zebrane przedmioty gracz może wykorzystać w dalszym przebiegu gry (w zależności od przedmiotu do
-walki, obrony lub zwiększenia danego atrybutu).
-1. Wraz z pokonywaniem kolejnych przeszkód gracz będzie zdobywał doświadczenie rozwijając poszczególne atrybuty.
-
-### Zrzuty ekranu
+### Screenshots
 ![](https://i.imgur.com/RdAZ0Jd.png)
 ![](https://i.imgur.com/e1WRDis.png)
 
-### Użyte technologie
-- Serwer
+### Used technologies
+- Server
     - Java 11
     - Spring MVC
     - PostgreSQL
     - Heroku
-- Klient
+- Client
     - xterm.js
-- Testy
+- Tests
     - JUnit 5
     - Mockito
     - AssertJ
 
-### Budowa projektu
+### Building
 ```
 ./gradlew build -x test
 ```
-Wymaga ustawienia zmiennych środowiskowych zgodnie z opisem na [wiki](https://github.com/hjaremko/cute-animals/wiki/Konfiguracja-zmiennych-%C5%9Brodowiskowych).
+#### Required environment variables
+`SPRING_DATASOURCE_URL` : `jdbc:postgresql://localhost:5432/<database name>`  
+`SPRING_DATASOURCE_USERNAME` : `postgres`  
+`SPRING_DATASOURCE_PASSWORD` : your password  
+`SPRING_PROFILES_ACTIVE` : `dev` or `prod`
 
-### Dokumentacja
-
-Pełną dokumentację, raporty testów i pokrycia oraz plik `jar`
-można znaleźć w [artefaktach z ostatniego buildu](https://github.com/hjaremko/cute-animals/actions).
-
-#### Diagramy klas znajdują się [tutaj](./assets/UML.md).
+### Documentation
 
 
-#### Dostępne komendy
-- ```start``` - rozpoczyna rozgrywkę  
-- ```investigate``` - udostępnia opis aktualnego otoczenia  
-- ```talk <nazwa_postaci>``` - umożliwia rozmowę z poszczególnymi postaciami  
-- ```go <nazwa_lokacji>``` - pozwala na przejście do innej lokacji.  
-- ```pick <nazwa_przedmiotu>``` - pozwala podnieść dany przedmiot i umieścić go w plecaku  
-- ```throw <nazwa_przedmiotu>``` - pozwala wyrzucić dany przedmiot z plecaka  
-- ```equip <nazwa_przedmiotu>``` - umożliwia założenie przedmiotu z plecaka  
-- ```off <nazwa_przedmiotu>```- umożliwia zdjęcie przedmiotu i włożenie go do plecaka  
-- ```backpack``` - listuje aktualny stan plecaka  
-- ```eq``` - listuje aktualnie założone przedmioty  
-- ```stats``` - wypisuje statystyki postaci  
-- ```skills``` - wypisuje zdolności postaci  
-- ```fight <nazwa_postaci>``` - udostępnia możliwość walki z daną postacią  
-- ```attack``` - wykonuje turę w trybie walki 
-- ```block``` - zmiejsza obrażenia w dwóch następnych turach w trybie walki 
-- ```use <nazwa_przedmiotu>``` - umożliwia użycie danego przedmiotu 
-- ```cast <nazwa_umiejetnosci>``` - umożliwia użycie danej umięjętności w trybie walki
-- ```suicide``` - umożliwia zresetowanie gry to stanu początkowego
+Full documentation, test and coverage reports, binary files are in [artifacts](https://github.com/hjaremko/cute-animals/actions).
+
+#### UML diagrams are [here](./assets/UML.md).
+
+
+#### Avaiable commands
+- ```start``` - starts the game  
+- ```investigate``` - provides a description of the current location  
+- ```talk <character_name>``` - allows you to talk to individual characters
+- ```go <location_name>``` - allows you to go to another location  
+- ```pick <item_name>``` - allows you to pick up an item and put it in your backpack  
+- ```throw <item_name>``` - allows you to discard an item out of the backpack  
+- ```equip <item_name>``` - allows you to put on an item from a backpack  
+- ```off <item_name>```- allows you to unequip an item and put it in the backpack  
+- ```backpack``` - lists the current state of the backpack  
+- ```eq``` - lists the currently equipped items  
+- ```stats``` - lists the character's statistics  
+- ```skills``` - lists the character's abilities  
+- ```fight <character_name>``` - allows you to fight individual characters  
+- ```attack``` - allows you to attack in combat mode 
+- ```block``` - reduces damage in the next two turns in combat mode
+- ```use <item_name>``` - allows you to use an item 
+- ```cast <skill_name>``` - allows the use of a given skill in combat mode
+- ```suicide``` - allows you to reset the game to its initial state
   

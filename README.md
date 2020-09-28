@@ -1,4 +1,6 @@
-# Software Engineering 2019/2020 - Final project ![Java CI](https://github.com/hjaremko/io-rpg/workflows/Java%20CI/badge.svg)
+# Software Engineering 2019/2020 - Final project
+![Build](https://github.com/hjaremko/io-rpg/workflows/Build/badge.svg) ![Release](https://github.com/hjaremko/cute-animals/workflows/Release/badge.svg)
+
 **Team:** Julia Cichosz, Klaudia Goska, Marek Grzelak, Hubert Jaremko, Anna Misiewicz, Łukasz Sereda
 
 ### Project description

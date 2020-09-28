@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  create:
+    tags:
+      - v*
+
+jobs:
+  build:
+    name: Build project
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Cache Gradle packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+      - name: Build with Gradle
+        run: ./gradlew build -x verifyGoogleJavaFormat -x test
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: binary
+          path: build/libs
+
+  deploy:
+    name: Deploy on Heroku
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Download binary
+        uses: actions/download-artifact@v2
+        with:
+          name: binary
+          path: build/libs
+      - run: ls -R
+      - name: Deploy
+        uses: akhileshns/heroku-deploy@v3.0.4
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "io-rpg"
+          heroku_email: "hjaremko@outlook.com"
+          usedocker: true
+          docker_heroku_process_type: "web"

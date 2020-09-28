@@ -1,17 +1,11 @@
-name: Java CI
+name: Build
 
-on:
-  push:
-    branches:
-      - '*'
-  pull_request:
-    branches:
-      - '*'
+on: [push]
 
 jobs:
   build:
     name: Build project
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     services:
       postgres:
@@ -34,7 +28,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Cache Gradle packages
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
@@ -106,8 +100,8 @@ jobs:
 
   deploy:
     name: Deploy on Heroku
-    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     needs: build
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -122,7 +116,7 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.0.4
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "io-rpg"
+          heroku_app_name: "io-rpg-dev"
           heroku_email: "hjaremko@outlook.com"
           usedocker: true
           docker_heroku_process_type: "web"
